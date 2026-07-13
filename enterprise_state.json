@@ -1,95 +1,95 @@
 {
-    "equity": 100000.0,
-    "initial_capital": 100000.0,
-    "trades": [
-        {
-            "instrument": "XAUUSD",
-            "direction": -1,
-            "entry_price": 3000.0,
-            "size": 10.0,
-            "sl_price": 3030.0,
-            "tp_price": 2400.0,
-            "pnl": 1000.0,
-            "timestamp": "2026-07-13T14:08:32.711163"
-        }
-    ],
-    "opportunities": [
-        {
-            "id": "XAUUSD-20260713120000",
-            "asset": "XAUUSD",
-            "timestamp": "2026-07-13T14:08:32.711147",
-            "score": 0.97,
-            "status": "INEVITABLE",
-            "regime": "CONTRACTION",
-            "direction": -1,
-            "manifold_snapshot": {
-                "NASA": 0.2,
-                "EIA": 0.5,
-                "OpenAQ": 0.3,
-                "ETH": 0.4,
-                "RealYield": 1.89,
-                "OBI": -0.8
-            },
-            "executed": false,
-            "trade_id": null
-        }
-    ],
-    "history": {
-        "XAUUSD": [
-            {
-                "time": "2026-07-13T14:08:32.711156",
-                "score": 0.97,
-                "status": "INEVITABLE",
-                "regime": "CONTRACTION"
-            }
-        ],
-        "XAGUSD": [
-            {
-                "time": "2026-07-13T14:08:32.711158",
-                "score": 0.97,
-                "status": "INEVITABLE",
-                "regime": "CONTRACTION"
-            }
-        ],
-        "HG=F": [
-            {
-                "time": "2026-07-13T14:08:32.711159",
-                "score": 0.97,
-                "status": "INEVITABLE",
-                "regime": "CONTRACTION"
-            }
-        ],
-        "EURUSD": [
-            {
-                "time": "2026-07-13T14:08:32.711161",
-                "score": 0.97,
-                "status": "INEVITABLE",
-                "regime": "CONTRACTION"
-            }
-        ],
-        "AUDUSD": [
-            {
-                "time": "2026-07-13T14:08:32.711162",
-                "score": 0.97,
-                "status": "INEVITABLE",
-                "regime": "CONTRACTION"
-            }
-        ]
-    },
-    "settings": {
-        "CONTRACTION_YIELD": 0.7,
-        "CONTRACTION_OBI": -0.7,
-        "EXPANSION_YIELD": -0.1,
-        "EXPANSION_OBI": 0.7,
-        "INEVITABLE_SCORE": 0.95,
-        "HARD_STOP_PCT": 0.01
-    },
-    "api_health": {
-        "NASA": "ONLINE",
-        "EIA": "ONLINE",
-        "OpenAQ": "ONLINE",
-        "ETH": "ONLINE",
-        "RealYield": "ONLINE",
-        "OBI": "ONLINE"
+  "equity": 100000.0,
+  "initial_capital": 100000.0,
+  "trades": [
+    {
+      "instrument": "XAUUSD",
+      "direction": -1,
+      "entry_price": 3000.0,
+      "size": 10.0,
+      "sl_price": 3030.0,
+      "tp_price": 2400.0,
+      "pnl": 1000.0,
+      "timestamp": "2026-07-13T14:08:32.711163"
     }
+  ],
+  "opportunities": [
+    {
+      "id": "XAUUSD-20260713120000",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-13T14:08:32.711147",
+      "score": 0.97,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "manifold_snapshot": {
+        "NASA": 0.2,
+        "EIA": 0.5,
+        "OpenAQ": 0.3,
+        "ETH": 0.4,
+        "RealYield": 1.89,
+        "OBI": -0.8
+      },
+      "executed": false,
+      "trade_id": null
+    }
+  ],
+  "history": {
+    "XAUUSD": [
+      {
+        "time": "2026-07-13T14:08:32.711156",
+        "score": 0.97,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      }
+    ],
+    "XAGUSD": [
+      {
+        "time": "2026-07-13T14:08:32.711158",
+        "score": 0.97,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      }
+    ],
+    "HG=F": [
+      {
+        "time": "2026-07-13T14:08:32.711159",
+        "score": 0.97,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      }
+    ],
+    "EURUSD": [
+      {
+        "time": "2026-07-13T14:08:32.711161",
+        "score": 0.97,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      }
+    ],
+    "AUDUSD": [
+      {
+        "time": "2026-07-13T14:08:32.711162",
+        "score": 0.97,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      }
+    ]
+  },
+  "settings": {
+    "CONTRACTION_YIELD": 0.7,
+    "CONTRACTION_OBI": -0.7,
+    "EXPANSION_YIELD": -0.1,
+    "EXPANSION_OBI": 0.7,
+    "INEVITABLE_SCORE": 0.95,
+    "HARD_STOP_PCT": 0.01
+  },
+  "api_health": {
+    "NASA": "ONLINE",
+    "EIA": "ONLINE",
+    "OpenAQ": "ONLINE",
+    "ETH": "ONLINE",
+    "RealYield": "ONLINE",
+    "OBI": "ONLINE"
+  }
 }
