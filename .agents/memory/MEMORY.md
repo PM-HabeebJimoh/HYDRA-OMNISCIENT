@@ -1,0 +1,3 @@
+- [Telegram alerts integration](telegram-alerts.md) — token/chat_id from Replit Secrets only; dedup logic in core/telegram_alerts.py
+- [Streamlit dark theme](streamlit-dark-theme.md) — must set base="dark" in config.toml AND inject full CSS override; use clamp() for KPI font sizes in 6-col layout
+- [Deployment config](deployment-config.md) — autoscale target, run=["streamlit","run","app.py","--server.port=5000","--server.address=0.0.0.0"]

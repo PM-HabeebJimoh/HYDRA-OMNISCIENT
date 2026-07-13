@@ -5,6 +5,9 @@ import os
 from datetime import datetime
 from core.collector import S3CausalCollector
 from core.convergence import S3ConvergenceEngine
+from core.telegram_alerts import (
+    send_alert_async, fmt_startup, dispatch_opportunity_alert
+)
 from config import MONITORED_ASSETS, THRESHOLDS, SYMBOL_MAP
 
 # Setup high-conviction logging
@@ -43,7 +46,10 @@ def save_state(state):
 
 async def live_daemon():
     logger.info("🔱 HYDRA-S3 ENTERPRISE DAEMON: ACTIVATING 24/7 MULTI-ASSET MONITORING")
-    
+
+    # ── Startup Telegram alert ────────────────────────────────────────────────
+    await send_alert_async(fmt_startup())
+
     engine = S3ConvergenceEngine()
     state = load_state()
     
@@ -107,7 +113,13 @@ async def live_daemon():
                             
                             state['opportunities'].append(opportunity)
                             logger.info(f"🔥 OPPORTUNITY [{asset}]: {opp_id} | Score: {score:.4f} | Regime: {regime}")
-                            
+
+                            # ── Telegram alert (non-blocking) ─────────────
+                            await dispatch_opportunity_alert(
+                                asset=asset, score=score, regime=regime,
+                                direction=direction, status=status, opp_id=opp_id
+                            )
+
                             if status == "INEVITABLE":
                                 logger.warning(f"🚨 S-ALERT: {asset} CONVERGENCE INEVITABLE | {opp_id}")
 

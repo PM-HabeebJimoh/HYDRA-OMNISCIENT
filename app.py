@@ -9,6 +9,7 @@ import json, os, time, math
 
 from core.convergence import S3ConvergenceEngine
 from core.allocator import S3AntiFragileAllocator
+from core.telegram_alerts import send_alert_sync, fmt_test, fmt_inevitable, fmt_high_conviction
 from config import MONITORED_ASSETS, REGIMES, THRESHOLDS, SYMBOL_MAP
 
 # ── PAGE CONFIG ──────────────────────────────────────────────────────────────
@@ -1054,6 +1055,79 @@ elif "CONFIGURATION" in nav:
             }
             save_state(state)
             st.success("✅  SYSTEM PARAMETERS DEPLOYED  ·  Engine reconfigured successfully.")
+
+    # ── Telegram Alert Control Panel ──
+    st.markdown("<br/>", unsafe_allow_html=True)
+    st.markdown('<div class="section-header">■ TELEGRAM ALERT SYSTEM</div>', unsafe_allow_html=True)
+
+    tg_token   = os.environ.get('TELEGRAM_TOKEN', '')
+    tg_chat_id = os.environ.get('TELEGRAM_CHAT_ID', '')
+    tg_ok      = bool(tg_token and tg_chat_id)
+    tg_dot     = '<span class="dot-live"></span>' if tg_ok else '<span class="dot-off"></span>'
+    tg_status  = "CONFIGURED — ALERTS ACTIVE" if tg_ok else "NOT CONFIGURED"
+    tg_color   = "#3fb950" if tg_ok else "#ff4444"
+
+    tg1, tg2, tg3 = st.columns([2, 2, 2])
+    with tg1:
+        st.markdown(f"""
+        <div class="kpi-card {'safe-card' if tg_ok else 'danger-card'}">
+            <div class="kpi-label">TELEGRAM STATUS</div>
+            <div style="margin:8px 0 4px;">{tg_dot}<span style="color:{tg_color};font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;">{tg_status}</span></div>
+            <div class="kpi-delta muted">Chat ID: {tg_chat_id if tg_chat_id else '—'}</div>
+        </div>""", unsafe_allow_html=True)
+    with tg2:
+        st.markdown(f"""
+        <div class="kpi-card">
+            <div class="kpi-label">ALERT TRIGGERS</div>
+            <div class="kpi-value" style="font-size:13px;color:#e6edf3;">
+                🔴 INEVITABLE (score ≥ 0.95)<br/>
+                🟡 HIGH CONVICTION (score ≥ 0.80)
+            </div>
+            <div class="kpi-delta muted">5-min cooldown on HIGH CONVICTION</div>
+        </div>""", unsafe_allow_html=True)
+    with tg3:
+        st.markdown(f"""
+        <div class="kpi-card blue-card">
+            <div class="kpi-label">ALERT TYPES</div>
+            <div class="kpi-value" style="font-size:13px;color:#388bfd;">
+                ✅ Daemon Startup<br/>
+                🔔 Score Threshold Hit<br/>
+                💼 Trade Executed
+            </div>
+        </div>""", unsafe_allow_html=True)
+
+    st.markdown("<br/>", unsafe_allow_html=True)
+    ta1, ta2, ta3 = st.columns([1, 1, 2])
+    with ta1:
+        if st.button("📡  SEND TEST ALERT", key="tg_test", disabled=not tg_ok):
+            ok = send_alert_sync(fmt_test())
+            if ok:
+                st.success("✅  Test alert delivered to Telegram.")
+            else:
+                st.error("❌  Delivery failed — check token / chat ID.")
+    with ta2:
+        # Demo: fire a sample INEVITABLE alert
+        inevitable_opps = [o for o in state['opportunities'] if o['status'] == "INEVITABLE"]
+        if st.button("🚨  DEMO INEVITABLE ALERT", key="tg_inev_demo", disabled=not tg_ok):
+            if inevitable_opps:
+                opp = inevitable_opps[-1]
+                msg = fmt_inevitable(opp['asset'], opp['score'], opp['regime'],
+                                     opp['direction'], opp['id'])
+            else:
+                msg = fmt_inevitable("XAUUSD", 0.9700, "CONTRACTION", -1, "DEMO-001")
+            ok = send_alert_sync(msg)
+            if ok:
+                st.success("✅  Inevitable alert sent.")
+            else:
+                st.error("❌  Send failed.")
+    with ta3:
+        if not tg_ok:
+            st.markdown("""
+            <div style="background:#1a0d00;border:1px solid #f0a430;border-radius:4px;padding:10px 14px;">
+                <span style="color:#f0a430;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;">
+                ⚠️  Set TELEGRAM_TOKEN and TELEGRAM_CHAT_ID as Replit Secrets to activate alerts.
+                </span>
+            </div>""", unsafe_allow_html=True)
 
     # ── System Info ──
     st.markdown("<br/>", unsafe_allow_html=True)

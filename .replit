@@ -42,6 +42,8 @@ EIA_KEY = "Mf8KoXCW4x8B61Bhe6qnjTkUqf1hrMj9hIfrvRHc"
 ETHERSCAN_KEY = "ASQM5BAMNEPYQNRBDZ671QPUXSGKVUMPTX"
 NASA_FIRMS_KEY = "87a49964d715930ff463e734dfde2ff6"
 OPENAQ_KEY = "b3ec85742e441854b043c6ab1d391c3b6981b000dc4c902f15e95ebd066e66c3"
+TELEGRAM_CHAT_ID = "1360440672"
 
 [deployment]
-deploymentTarget = "cloudrun"
+deploymentTarget = "autoscale"
+run = ["streamlit", "run", "app.py", "--server.port=5000", "--server.address=0.0.0.0"]
