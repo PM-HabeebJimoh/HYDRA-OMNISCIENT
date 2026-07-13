@@ -11,6 +11,17 @@
       "tp_price": 2400.0,
       "pnl": 1000.0,
       "timestamp": "2026-07-13T14:08:32.711163"
+    },
+    {
+      "instrument": "XAUUSD",
+      "direction": -1,
+      "entry_price": 3000,
+      "size": 100.0,
+      "sl_price": 3030.0,
+      "tp_price": 2400.0,
+      "timestamp": "2026-07-13T14:34:59.152348",
+      "pnl": 0.0,
+      "asset": "XAUUSD"
     }
   ],
   "opportunities": [
