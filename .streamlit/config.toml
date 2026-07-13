@@ -1,0 +1,10 @@
+[server]
+port = 5000
+address = "0.0.0.0"
+headless = true
+# XSRF protection enabled; Streamlit enforces CORS=true alongside it automatically.
+enableXsrfProtection = true
+enableCORS = true
+
+[browser]
+gatherUsageStats = false

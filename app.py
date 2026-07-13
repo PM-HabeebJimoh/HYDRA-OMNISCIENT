@@ -244,7 +244,7 @@ if nav == "Matrix Dashboard":
                 vals = [ws[k] for k in valid_cols]
                 fig = go.Figure(go.Bar(x=valid_cols, y=vals, marker_color='#00ffcc'))
                 fig.update_layout(template="plotly_dark", height=200, margin=dict(l=10, r=10, t=10, b=10))
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, width="stretch")
     else:
         st.info("No high-conviction manifolds to project yet.")
 
@@ -261,7 +261,7 @@ elif nav == "Opportunity Hub":
         display_df['timestamp'] = pd.to_datetime(display_df['timestamp']).dt.strftime('%Y-%m-%d %H:%M')
         
         st.markdown("### 📋 All-Asset Setup Ledger")
-        st.dataframe(display_df, use_container_width=True)
+        st.dataframe(display_df, width="stretch")
         
         selected_opp_id = st.selectbox("Deep-Dive Analysis", display_df['id'].tolist())
         if selected_opp_id:
@@ -278,7 +278,7 @@ elif nav == "Opportunity Hub":
             vals = [ws[k] for k in valid_cols]
             fig = go.Figure(go.Bar(x=valid_cols, y=vals, marker_color='#00ffcc'))
             fig.update_layout(template="plotly_dark", height=300)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
 # --- MODULE 3: TRADE AUDIT LEDGER ---
 elif nav == "Trade Audit Ledger":
@@ -294,8 +294,8 @@ elif nav == "Trade Audit Ledger":
             current += t.get('pnl', 0)
             equities.append(current)
         fig = px.line(y=equities, template="plotly_dark", color_discrete_sequence=['#00ffcc'])
-        st.plotly_chart(fig, use_container_width=True)
-        st.dataframe(pd.DataFrame(state['trades']), use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
+        st.dataframe(pd.DataFrame(state['trades']), width="stretch")
 
 # --- MODULE 4: SURGICAL CAUSAL LAB ---
 elif nav == "Surgical Causal Lab":
@@ -306,7 +306,7 @@ elif nav == "Surgical Causal Lab":
         df_hist = pd.DataFrame(state['history'][selected_asset])
         df_hist['time'] = pd.to_datetime(df_hist['time'])
         fig = px.line(df_hist, x='time', y='score', template="plotly_dark", color_discrete_sequence=['#00ffcc'])
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
         
         st.markdown("### 🌐 API Health Matrix")
         health = state['api_health']

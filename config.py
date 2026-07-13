@@ -1,3 +1,5 @@
+import os
+
 # Asset to Binance Symbol Mapping
 # This ensures the S3 OBI signal is pulled for the correct asset
 SYMBOL_MAP = {
@@ -8,11 +10,13 @@ SYMBOL_MAP = {
     'AUDUSD': 'AUDUSDT'
 }
 
+# API keys loaded from environment — never hardcode credentials in source.
+# Set these as Replit Secrets: NASA_FIRMS_KEY, EIA_KEY, OPENAQ_KEY, ETHERSCAN_KEY
 API_KEYS = {
-    'nasa_firms': '87a49964d715930ff463e734dfde2ff6',
-    'eia': 'Mf8KoXCW4x8B61Bhe6qnjTkUqf1hrMj9hIfrvRHc',
-    'openaq': 'b3ec85742e441854b043c6ab1d391c3b6981b000dc4c902f15e95ebd066e66c3',
-    'etherscan': 'ASQM5BAMNEPYQNRBDZ671QPUXSGKVUMPTX',
+    'nasa_firms': os.environ.get('NASA_FIRMS_KEY', ''),
+    'eia': os.environ.get('EIA_KEY', ''),
+    'openaq': os.environ.get('OPENAQ_KEY', ''),
+    'etherscan': os.environ.get('ETHERSCAN_KEY', ''),
 }
 
 # S3 Convergence Thresholds (Surgical Truth)

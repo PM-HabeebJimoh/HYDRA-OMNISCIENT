@@ -4,3 +4,9 @@ numpy
 aiohttp
 plotly
 torch
+aiohttp
+numpy
+pandas
+plotly
+streamlit
+torch

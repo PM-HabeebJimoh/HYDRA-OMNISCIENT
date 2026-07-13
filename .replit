@@ -1,0 +1,44 @@
+modules = ["python-3.11"]
+
+[agent]
+expertMode = true
+
+[nix]
+channel = "stable-25_05"
+packages = ["glibcLocales"]
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Start application"
+
+[[workflows.workflow]]
+name = "Start application"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "streamlit run app.py"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[userenv]
+
+[userenv.shared]
+EIA_KEY = "Mf8KoXCW4x8B61Bhe6qnjTkUqf1hrMj9hIfrvRHc"
+ETHERSCAN_KEY = "ASQM5BAMNEPYQNRBDZ671QPUXSGKVUMPTX"
+NASA_FIRMS_KEY = "87a49964d715930ff463e734dfde2ff6"
+OPENAQ_KEY = "b3ec85742e441854b043c6ab1d391c3b6981b000dc4c902f15e95ebd066e66c3"
