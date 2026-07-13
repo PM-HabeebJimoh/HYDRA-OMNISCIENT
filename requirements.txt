@@ -1,12 +1,6 @@
-streamlit
+streamlit==1.59.2
 pandas
 numpy
 aiohttp
 plotly
-torch
-aiohttp
-numpy
-pandas
-plotly
-streamlit
-torch
+requests
