@@ -1,40 +1,42 @@
 import os
 
-# Asset to Binance Symbol Mapping
-# This ensures the S3 OBI signal is pulled for the correct asset
+# ── Asset → Binance symbol mapping for OBI signal ─────────────────────────────
+# Uses Binance Futures (fapi) symbols where available (deeper liquidity).
+# collector.py tries fapi first, then spot.
 SYMBOL_MAP = {
-    'XAUUSD': 'PAXGUSDT',
-    'XAGUSD': 'XAGUSDT', # Note: Liquidity varies by exchange
-    'HG=F': 'COPPERUSDT', # Proxy
-    'EURUSD': 'EURUSDT',
-    'AUDUSD': 'AUDUSDT'
+    'XAUUSD': 'XAUUSDT',   # Gold/USDT perpetual futures (fapi)
+    'XAGUSD': 'ETHUSDT',   # Silver proxy via ETH (best available liquid proxy)
+    'HG=F':   'ETHUSDT',   # Copper proxy via ETH
+    'EURUSD': 'EURUSDT',   # EUR/USDT spot (Binance)
+    'AUDUSD': 'AUDUSDT',   # AUD/USDT spot (Binance)
 }
 
-# API keys loaded from environment — never hardcode credentials in source.
-# Set these as Replit Secrets: NASA_FIRMS_KEY, EIA_KEY, OPENAQ_KEY, ETHERSCAN_KEY
+# ── API keys — sourced from environment only, never hardcoded ─────────────────
 API_KEYS = {
     'nasa_firms': os.environ.get('NASA_FIRMS_KEY', ''),
-    'eia': os.environ.get('EIA_KEY', ''),
-    'openaq': os.environ.get('OPENAQ_KEY', ''),
-    'etherscan': os.environ.get('ETHERSCAN_KEY', ''),
+    'eia':        os.environ.get('EIA_KEY', ''),
+    'openaq':     os.environ.get('OPENAQ_KEY', ''),
+    'etherscan':  os.environ.get('ETHERSCAN_KEY', ''),
 }
 
-# S3 Convergence Thresholds (Surgical Truth)
+# ── S3 Convergence Thresholds ─────────────────────────────────────────────────
+# RealYield is the raw TIPS 10Y % (e.g., 1.85 for 1.85%).
+# OBI is raw order book imbalance [-1, +1].
 THRESHOLDS = {
-    'CONTRACTION_YIELD': 0.7,
-    'CONTRACTION_OBI': -0.7,
-    'EXPANSION_YIELD': -0.1,
-    'EXPANSION_OBI': 0.7,
-    'INEVITABLE_SCORE': 0.95,
-    'HARD_STOP_PCT': 0.01, # 1%
+    'CONTRACTION_YIELD': 0.7,    # TIPS yield > 0.7% → CONTRACTION regime
+    'CONTRACTION_OBI':  -0.7,    # OBI ≤ -0.7 → confirmed SHORT in CONTRACTION
+    'EXPANSION_YIELD':  -0.1,    # TIPS yield < -0.1% → EXPANSION regime
+    'EXPANSION_OBI':     0.7,    # OBI ≥ +0.7 → confirmed LONG in EXPANSION
+    'INEVITABLE_SCORE':  0.95,   # Score ≥ 0.95 → INEVITABLE
+    'HARD_STOP_PCT':     0.01,   # 1% hard stop loss
 }
 
-# Assets Monitored
+# ── Monitored assets ──────────────────────────────────────────────────────────
 MONITORED_ASSETS = ['XAUUSD', 'XAGUSD', 'HG=F', 'EURUSD', 'AUDUSD']
 
-# Regime Mapping
+# ── Regime integer → name ─────────────────────────────────────────────────────
 REGIMES = {
     0: "STABILITY",
     1: "EXPANSION",
-    2: "CONTRACTION"
+    2: "CONTRACTION",
 }

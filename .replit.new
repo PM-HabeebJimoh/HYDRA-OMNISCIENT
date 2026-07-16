@@ -43,6 +43,9 @@ author = "agent"
 task = "shell.exec"
 args = "python live_engine.py"
 
+[workflows.workflow.metadata]
+outputType = "terminal"
+
 [[ports]]
 localPort = 5000
 externalPort = 80
@@ -58,5 +61,5 @@ TELEGRAM_CHAT_ID = "1360440672"
 
 [deployment]
 deploymentTarget = "autoscale"
-run = ["streamlit", "run", "app.py", "--server.port=5000", "--server.address=0.0.0.0"]
+run = ["bash", "startup.sh"]
 build = ["bash", "build.sh"]

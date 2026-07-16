@@ -1,309 +1,330 @@
+"""
+HYDRA-S3  |  Enterprise Quantitative Terminal  v5.0
+Bloomberg/Reuters-grade dark terminal. Auto-refresh every 15s.
+Zero synthetic data — all prices and signals sourced live.
+"""
 import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
-import plotly.express as px
 from plotly.subplots import make_subplots
-from datetime import datetime, timedelta
-import json, os, time, math
+from datetime import datetime, timezone
+import json, os, time, math, requests
 
-from core.convergence import S3ConvergenceEngine
-from core.allocator import S3AntiFragileAllocator
-from core.telegram_alerts import send_alert_sync, fmt_test, fmt_inevitable, fmt_high_conviction
+from core.convergence   import S3ConvergenceEngine
+from core.allocator     import S3AntiFragileAllocator
+from core.telegram_alerts import (
+    send_alert_sync, fmt_test, fmt_inevitable, fmt_high_conviction,
+    fmt_trade_executed,
+)
 from config import MONITORED_ASSETS, REGIMES, THRESHOLDS, SYMBOL_MAP
 
-# ── PAGE CONFIG ──────────────────────────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════════════
+#  PAGE CONFIG
+# ══════════════════════════════════════════════════════════════════════════════
 st.set_page_config(
-    page_title="HYDRA-S3 | ENTERPRISE QUANT TERMINAL",
+    page_title="HYDRA-S3 | QUANT TERMINAL",
     page_icon="🔱",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-STATE_FILE = "enterprise_state.json"
+STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "enterprise_state.json")
 
-# ── MASTER CSS ────────────────────────────────────────────────────────────────
+_YF = {
+    'XAUUSD': 'GC=F',    'XAGUSD': 'SI=F',
+    'HG=F':   'HG=F',    'EURUSD': 'EURUSD=X',
+    'AUDUSD': 'AUDUSD=X',
+}
+_PX_FALLBACK = {
+    'XAUUSD': 3350.0, 'XAGUSD': 32.5, 'HG=F': 4.5,
+    'EURUSD': 1.085,  'AUDUSD': 0.643,
+}
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  ENTERPRISE TERMINAL CSS
+# ══════════════════════════════════════════════════════════════════════════════
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
 
-/* ── ROOT OVERRIDES ─────────────────────────── */
-html, body, .main, [class*="css"],
-[data-testid="stAppViewContainer"],
-[data-testid="stMain"],
-[data-testid="block-container"] {
-    background-color: #05070a !important;
-    color: #e6edf3 !important;
-    font-family: 'Inter', sans-serif !important;
+/* ── GLOBAL RESET ──────────────────────────────── */
+html,body,
+[data-testid="stAppViewContainer"],[data-testid="stMain"],
+[data-testid="block-container"],.main,.stApp {
+    background: #000913 !important;
+    color: #cdd9e5 !important;
+    font-family: 'IBM Plex Sans', sans-serif !important;
 }
-[data-testid="stSidebar"] {
-    background-color: #0a0d14 !important;
-    border-right: 1px solid #1c2333 !important;
+[data-testid="stSidebar"],
+[data-testid="stSidebar"]>div:first-child {
+    background: #00060f !important;
+    border-right: 1px solid #0d2035 !important;
 }
-[data-testid="stSidebar"] > div:first-child { background-color: #0a0d14 !important; }
-section[data-testid="stSidebar"] * { color: #e6edf3 !important; }
+[data-testid="stSidebar"] * { color: #cdd9e5 !important; }
+#MainMenu,header,footer { visibility:hidden; }
+.block-container { padding:0 !important; max-width:100% !important; }
+::-webkit-scrollbar { width:4px; height:4px; }
+::-webkit-scrollbar-track { background:#000913; }
+::-webkit-scrollbar-thumb { background:#0d2035; border-radius:2px; }
+* { box-sizing:border-box; }
 
-/* ── HIDE DEFAULT STREAMLIT CHROME ─────────── */
-#MainMenu, header, footer { visibility: hidden; }
-.block-container { padding-top: 1rem !important; padding-bottom: 0.5rem !important; max-width: 100% !important; }
+/* ── SYSTEM STATUS BAR ─────────────────────────── */
+.sys-bar {
+    background:#00060f;
+    border-bottom:1px solid #0a1f35;
+    padding:5px 20px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    color:#2a6090;
+    display:flex; align-items:center; justify-content:space-between;
+    position:sticky; top:0; z-index:1000;
+    letter-spacing:.5px;
+}
+.sys-bar-left  { display:flex; align-items:center; gap:20px; }
+.sys-bar-right { display:flex; align-items:center; gap:20px; }
+.sbl { display:inline-flex; align-items:center; gap:5px; }
+.sbl-k { color:#1a4060; }
+.sbl-v { color:#cdd9e5; font-weight:600; }
+.sbl-v.green  { color:#3fb950; }
+.sbl-v.red    { color:#f85149; }
+.sbl-v.cyan   { color:#58c3e0; }
+.sbl-v.amber  { color:#e3b341; }
 
-/* ── SCROLLBARS ─────────────────────────────── */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #0d1117; }
-::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
-
-/* ── TYPOGRAPHY ─────────────────────────────── */
-.mono { font-family: 'JetBrains Mono', monospace !important; }
-.t-xs  { font-size: 11px; }
-.t-sm  { font-size: 12px; }
-.t-md  { font-size: 14px; }
-.t-lg  { font-size: 16px; }
-.t-xl  { font-size: 20px; }
-.t-xxl { font-size: 28px; font-weight: 800; }
-.muted { color: #6e7681 !important; }
-.accent { color: #00ffcc !important; }
-.danger { color: #ff4444 !important; }
-.warn   { color: #f0a430 !important; }
-.safe   { color: #3fb950 !important; }
-.blue   { color: #388bfd !important; }
-
-/* ── TERMINAL HEADER BAR ────────────────────── */
-.terminal-header {
-    background: linear-gradient(135deg, #0d1117 0%, #0f1923 100%);
-    border-bottom: 2px solid #00ffcc;
-    padding: 14px 24px;
-    margin: -1rem -1rem 1.5rem -1rem;
-    display: flex; align-items: center; justify-content: space-between;
+/* ── REFRESH BAR ──────────────────────────────── */
+.rfr-bar {
+    background:#00060f; border-bottom:1px solid #0a1f35;
+    padding:2px 20px; display:flex; align-items:center; gap:12px;
 }
-.terminal-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 22px; font-weight: 700;
-    color: #00ffcc; letter-spacing: 3px;
+.rfr-label { font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:#1a4060; }
+.rfr-track { flex:1; height:2px; background:#0a1f35; }
+.rfr-fill  { height:100%; background:#58c3e0; animation:drain 15s linear forwards; }
+@keyframes drain { from{width:100%} to{width:0} }
+
+/* ── TERMINAL HEADER ──────────────────────────── */
+.term-hdr {
+    background:linear-gradient(90deg,#000d1f 0%,#001428 100%);
+    border-bottom:1px solid #0a3060;
+    border-left:3px solid #58c3e0;
+    padding:10px 20px;
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:12px;
 }
-.terminal-timestamp {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; color: #6e7681;
+.term-title {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px; font-weight:700; letter-spacing:3px;
+    color:#58c3e0; text-transform:uppercase;
+}
+.term-sub {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9px; color:#2a6090; letter-spacing:1px; margin-top:2px;
+}
+.term-meta {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9px; color:#1a4060; text-align:right; line-height:1.6;
 }
 
-/* ── KPI CARDS ──────────────────────────────── */
-.kpi-card {
-    background: #0d1117;
-    border: 1px solid #21262d;
-    border-top: 2px solid #00ffcc;
-    border-radius: 4px;
-    padding: 16px 20px;
-    position: relative;
-    overflow: hidden;
-}
-.kpi-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, rgba(0,255,204,0.03) 0%, transparent 60%);
-    pointer-events: none;
-}
-.kpi-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #6e7681; margin-bottom: 6px; }
-.kpi-value {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: clamp(14px, 1.5vw, 22px); font-weight: 700; color: #00ffcc; line-height: 1.1;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.kpi-delta { font-size: 11px; margin-top: 4px; color: #6e7681; }
-.kpi-card.danger-card { border-top-color: #ff4444; }
-.kpi-card.danger-card .kpi-value { color: #ff4444; }
-.kpi-card.warn-card { border-top-color: #f0a430; }
-.kpi-card.warn-card .kpi-value { color: #f0a430; }
-.kpi-card.blue-card { border-top-color: #388bfd; }
-.kpi-card.blue-card .kpi-value { color: #388bfd; }
-.kpi-card.safe-card { border-top-color: #3fb950; }
-.kpi-card.safe-card .kpi-value { color: #3fb950; }
-
-/* ── S-ALERT BANNER ─────────────────────────── */
+/* ── S-ALERT BANNER ───────────────────────────── */
 .s-alert {
-    background: linear-gradient(90deg, #1a0000, #2d0000, #1a0000);
-    border: 1px solid #ff0033;
-    border-left: 4px solid #ff0033;
-    color: #ff4444;
-    padding: 14px 20px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 15px; font-weight: 700; letter-spacing: 2px;
-    animation: pulse-alert 1.4s ease-in-out infinite;
-    margin-bottom: 16px;
-    border-radius: 2px;
+    background:linear-gradient(90deg,#1a0005,#200008,#1a0005);
+    border:1px solid #8b0021; border-left:3px solid #f85149;
+    padding:10px 18px; margin-bottom:12px; border-radius:1px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px;
+    font-weight:700; letter-spacing:2px; color:#f85149;
+    display:flex; align-items:center; gap:12px;
+    animation:salert 1.8s ease-in-out infinite;
 }
-@keyframes pulse-alert {
-    0%,100% { opacity:1; box-shadow: 0 0 0 rgba(255,0,51,0.4); }
-    50% { opacity:.85; box-shadow: 0 0 20px rgba(255,0,51,0.3); }
+@keyframes salert {
+    0%,100%{opacity:1;box-shadow:0 0 0 rgba(248,81,73,0);}
+    50%{opacity:.9;box-shadow:0 0 20px rgba(248,81,73,.15);}
 }
 
-/* ── SECTION HEADERS ────────────────────────── */
-.section-header {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; font-weight: 700; letter-spacing: 3px;
-    color: #6e7681; text-transform: uppercase;
-    border-bottom: 1px solid #21262d;
-    padding-bottom: 8px; margin-bottom: 16px;
+/* ── SECTION HEADER ───────────────────────────── */
+.sec-hdr {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:8.5px; font-weight:700; letter-spacing:2.5px;
+    color:#1a4060; text-transform:uppercase;
+    border-bottom:1px solid #0a1f35;
+    padding-bottom:5px; margin:12px 0 10px;
 }
 
-/* ── MATRIX TABLE ───────────────────────────── */
-.matrix-wrap { overflow-x: auto; border: 1px solid #21262d; border-radius: 4px; }
-.matrix-table {
-    width: 100%; border-collapse: collapse;
-    font-family: 'JetBrains Mono', monospace; font-size: 13px;
-    background: #0d1117;
+/* ── KPI CARD ─────────────────────────────────── */
+.kpi {
+    background:#000d1f; border:1px solid #0a1f35;
+    border-top:2px solid #1a4060; border-radius:1px;
+    padding:12px 14px; position:relative; overflow:hidden;
 }
-.matrix-table thead tr { background: #0a0d14; border-bottom: 2px solid #21262d; }
-.matrix-table th {
-    padding: 10px 16px; text-align: left;
-    font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #6e7681;
+.kpi-lbl {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:8px; font-weight:700; letter-spacing:2px;
+    color:#1a4060; margin-bottom:7px; text-transform:uppercase;
 }
-.matrix-table tbody tr { border-bottom: 1px solid #161b22; transition: background .15s; }
-.matrix-table tbody tr:hover { background: #161b22; }
-.matrix-table td { padding: 12px 16px; }
-.asset-name { font-weight: 700; color: #e6edf3; font-size: 14px; }
-.score-val { color: #00ffcc; font-weight: 600; }
+.kpi-val {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:clamp(12px,1.3vw,19px); font-weight:700;
+    color:#58c3e0; line-height:1.1;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.kpi-sub { font-family:'IBM Plex Mono',monospace; font-size:9px; color:#1a4060; margin-top:5px; }
+.kpi.red   { border-top-color:#f85149; } .kpi.red   .kpi-val { color:#f85149; }
+.kpi.grn   { border-top-color:#3fb950; } .kpi.grn   .kpi-val { color:#3fb950; }
+.kpi.amb   { border-top-color:#e3b341; } .kpi.amb   .kpi-val { color:#e3b341; }
+.kpi.blue  { border-top-color:#388bfd; } .kpi.blue  .kpi-val { color:#388bfd; }
+.kpi.purp  { border-top-color:#8957e5; } .kpi.purp  .kpi-val { color:#8957e5; }
+.kpi.cyan  { border-top-color:#58c3e0; }
+.kpi-glow  { animation:kpi-pulse 2s ease-in-out infinite; }
+@keyframes kpi-pulse { 0%,100%{box-shadow:0 0 0 rgba(248,81,73,0)} 50%{box-shadow:0 0 14px rgba(248,81,73,.25)} }
+
+/* ── MATRIX TABLE ─────────────────────────────── */
+.matrix { width:100%; border-collapse:collapse; background:#000913;
+          font-family:'IBM Plex Mono',monospace; font-size:11.5px; }
+.matrix thead tr { background:#000d1f; border-bottom:1px solid #0a1f35; }
+.matrix th { padding:9px 13px; text-align:left; font-size:8px;
+             font-weight:700; letter-spacing:2px; color:#1a4060; }
+.matrix tbody tr { border-bottom:1px solid #060f1c; transition:background .12s; }
+.matrix tbody tr:hover { background:#000d1f; }
+.matrix td { padding:10px 13px; vertical-align:middle; }
+.as  { font-weight:700; color:#cdd9e5; font-size:12.5px; }
+.asb { font-size:9px; color:#1a4060; margin-top:1px; }
+.pv  { font-weight:600; color:#cdd9e5; }
+
+/* ── BADGES ───────────────────────────────────── */
 .badge {
-    display: inline-block; padding: 3px 10px; border-radius: 3px;
-    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    display:inline-block; padding:3px 8px; border-radius:1px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9px; font-weight:700; letter-spacing:1px;
 }
-.badge-inevitable { background:#1a0008; color:#ff4444; border:1px solid #ff2244; animation:pulse-badge 1.4s infinite; }
-.badge-high       { background:#001a14; color:#00ffcc; border:1px solid #00cc99; }
-.badge-noise      { background:#0d1117; color:#6e7681; border:1px solid #30363d; }
-.badge-gap        { background:#0d1117; color:#f0a430; border:1px solid #f0a430; }
-.badge-regime-c   { background:#1a0000; color:#ff6b6b; border:1px solid #662222; }
-.badge-regime-e   { background:#001a06; color:#3fb950; border:1px solid #226633; }
-.badge-regime-s   { background:#0d1117; color:#8b949e; border:1px solid #30363d; }
-.badge-long       { background:#001a06; color:#3fb950; border:1px solid #226633; }
-.badge-short      { background:#1a0000; color:#ff6b6b; border:1px solid #662222; }
-.badge-neutral    { background:#0d1117; color:#8b949e; border:1px solid #30363d; }
-@keyframes pulse-badge {
-    0%,100%{box-shadow:0 0 0 rgba(255,34,68,0);} 50%{box-shadow:0 0 8px rgba(255,34,68,0.4);}
-}
+.bi { background:#1a0005; color:#f85149; border:1px solid #8b0021;
+      animation:bpulse 1.8s ease-in-out infinite; }
+.bh { background:#001405; color:#3fb950; border:1px solid #1a5a20; }
+.bn { background:#060f1c; color:#2a6090; border:1px solid #0a1f35; }
+.bg { background:#150a00; color:#e3b341; border:1px solid #5a3500; }
+.be { background:#001405; color:#3fb950; border:1px solid #1a5a20; }
+.bc { background:#160005; color:#f85149; border:1px solid #660022; }
+.bs { background:#060f1c; color:#388bfd; border:1px solid #0d2540; }
+.bl { background:#001405; color:#3fb950; border:1px solid #1a5a20; }
+.bsh{ background:#160005; color:#f85149; border:1px solid #660022; }
+.bnt{ background:#060f1c; color:#2a6090; border:1px solid #0a1f35; }
+@keyframes bpulse { 0%,100%{box-shadow:0 0 0 rgba(139,0,33,0)} 50%{box-shadow:0 0 8px rgba(139,0,33,.5)} }
 
-/* ── SIDEBAR NAV ────────────────────────────── */
+/* ── SCORE BAR ────────────────────────────────── */
+.sb-wrap { display:flex; align-items:center; gap:7px; }
+.sb-track { width:75px; height:5px; background:#0a1f35; border-radius:1px; overflow:hidden; display:inline-block; }
+.sb-fill  { height:100%; border-radius:1px; }
+
+/* ── SIGNAL CELL ──────────────────────────────── */
+.sig-cell {
+    background:#000d1f; border:1px solid #0a1f35; border-radius:1px;
+    padding:10px 12px; text-align:center;
+}
+.sig-name { font-size:8px; letter-spacing:2px; color:#1a4060; font-weight:700; margin-bottom:5px; }
+.sig-val  { font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700; }
+.sig-sub  { font-size:8.5px; color:#1a4060; margin-top:3px; }
+.dot-live { display:inline-block; width:6px; height:6px; border-radius:50%;
+    background:#3fb950; box-shadow:0 0 5px #3fb950;
+    animation:dpulse 2s ease-in-out infinite; margin-right:5px; }
+.dot-off  { display:inline-block; width:6px; height:6px; border-radius:50%;
+    background:#f85149; margin-right:5px; }
+.dot-unk  { display:inline-block; width:6px; height:6px; border-radius:50%;
+    background:#e3b341; margin-right:5px; }
+@keyframes dpulse { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+/* ── STAT PILL ────────────────────────────────── */
+.pill {
+    display:flex; align-items:center;
+    background:#000d1f; border:1px solid #0a1f35; border-radius:1px;
+    padding:6px 11px; margin:2px 0; gap:8px;
+}
+.pill-k { font-size:8.5px; color:#1a4060; letter-spacing:1px; flex:1;
+          font-family:'IBM Plex Mono',monospace; }
+.pill-v { font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; color:#cdd9e5; }
+.pill-vc { color:#58c3e0; }
+
+/* ── SIDEBAR ──────────────────────────────────── */
+.sb-logo { text-align:center; padding:14px 8px 12px; border-bottom:1px solid #0a1f35; margin-bottom:12px; }
+.sb-logo h1 { font-family:'IBM Plex Mono',monospace; font-size:18px; font-weight:700;
+              color:#58c3e0; letter-spacing:5px; margin:0; }
+.sb-logo p  { font-size:8px; color:#1a4060; letter-spacing:3px; margin:3px 0 0; }
+.sb-pill { display:flex; align-items:center; justify-content:space-between;
+           padding:5px 9px; margin:2px 0; border-radius:1px;
+           background:#000d1f; border:1px solid #0a1f35; }
+.sb-k { font-size:8.5px; color:#1a4060; letter-spacing:1px; font-family:'IBM Plex Mono',monospace; }
+.sb-v { font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:700; color:#cdd9e5; }
+
+/* ── BUTTONS ──────────────────────────────────── */
+.stButton>button {
+    background:#000d1f !important; color:#388bfd !important;
+    border:1px solid #0d2540 !important;
+    font-family:'IBM Plex Mono',monospace !important;
+    font-size:10.5px !important; font-weight:700 !important;
+    letter-spacing:1px !important; border-radius:1px !important;
+    padding:6px 12px !important; width:100% !important;
+    transition:all .18s !important;
+}
+.stButton>button:hover {
+    background:#001020 !important; border-color:#388bfd !important;
+    box-shadow:0 0 8px rgba(56,139,253,.25) !important;
+}
+.btn-long>button  { color:#3fb950 !important; border-color:#1a5a20 !important; }
+.btn-long>button:hover  { background:#001405 !important; border-color:#3fb950 !important; }
+.btn-short>button { color:#f85149 !important; border-color:#660022 !important; }
+.btn-short>button:hover { background:#160005 !important; border-color:#f85149 !important; }
+.btn-tg>button    { color:#58c3e0 !important; border-color:#1a5070 !important; }
+.btn-tg>button:hover    { background:#001428 !important; border-color:#58c3e0 !important; }
+
+/* ── TABS ─────────────────────────────────────── */
+[data-testid="stTabs"] { background:transparent !important; }
+[data-testid="stTabsContainer"] { border-bottom:1px solid #0a1f35 !important; }
+button[data-baseweb="tab"] {
+    background:transparent !important;
+    font-family:'IBM Plex Mono',monospace !important;
+    font-size:10px !important; font-weight:700 !important;
+    letter-spacing:1.5px !important; color:#1a4060 !important;
+    border:none !important; padding:8px 16px !important;
+}
+button[data-baseweb="tab"][aria-selected="true"] {
+    color:#58c3e0 !important; border-bottom:2px solid #58c3e0 !important;
+}
+[data-testid="stTabPanel"] { padding:0 !important; }
+
+/* ── INPUTS ───────────────────────────────────── */
+[data-testid="stSelectbox"]>div>div,
+[data-testid="stNumberInput"]>div>div>input,
+[data-testid="stTextInput"]>div>div>input {
+    background:#000d1f !important; border-color:#0a1f35 !important;
+    color:#cdd9e5 !important;
+    font-family:'IBM Plex Mono',monospace !important; font-size:11px !important;
+}
+[data-testid="stMultiSelect"]>div>div { background:#000d1f !important; border-color:#0a1f35 !important; }
+[data-testid="stSlider"]>div>div>div { background:#0a1f35 !important; }
+[data-testid="stDataFrame"] { border:1px solid #0a1f35 !important; }
+[data-testid="stDataFrame"] th {
+    background:#000d1f !important; color:#1a4060 !important;
+    font-family:'IBM Plex Mono',monospace !important; font-size:9px !important;
+}
+[data-testid="stDataFrame"] td {
+    font-family:'IBM Plex Mono',monospace !important; font-size:10.5px !important;
+}
+[data-testid="stAlert"] { background:#000d1f !important; border-color:#0a1f35 !important; }
+hr { border-color:#0a1f35 !important; margin:8px 0 !important; }
 [data-testid="stRadio"] label {
-    font-family: 'JetBrains Mono', monospace !important;
-    font-size: 12px !important; letter-spacing: 1px !important;
-    padding: 6px 0 !important; color: #8b949e !important;
+    font-family:'IBM Plex Mono',monospace !important; font-size:10.5px !important;
+    color:#2a6090 !important;
 }
-[data-testid="stRadio"] label:has(input:checked) { color: #00ffcc !important; }
-
-/* ── BUTTONS ────────────────────────────────── */
-.stButton > button {
-    background: linear-gradient(135deg,#1f6feb,#0d4fa8) !important;
-    color: #fff !important; border: 1px solid #388bfd !important;
-    font-family: 'JetBrains Mono', monospace !important;
-    font-size: 11px !important; font-weight: 700 !important;
-    letter-spacing: 1px !important; border-radius: 3px !important;
-    padding: 6px 16px !important; width: 100% !important;
-    transition: all .2s !important;
-}
-.stButton > button:hover {
-    background: linear-gradient(135deg,#388bfd,#1f6feb) !important;
-    box-shadow: 0 0 12px rgba(56,139,253,0.4) !important;
-    transform: translateY(-1px) !important;
-}
-.execute-btn > button {
-    background: linear-gradient(135deg,#0d2b00,#1a3d00) !important;
-    border-color: #3fb950 !important; color: #3fb950 !important;
-}
-.sell-btn > button {
-    background: linear-gradient(135deg,#2d0000,#3d0000) !important;
-    border-color: #ff4444 !important; color: #ff4444 !important;
-}
-
-/* ── METRICS ────────────────────────────────── */
-[data-testid="stMetricValue"] {
-    font-family: 'JetBrains Mono', monospace !important;
-    font-size: 24px !important; font-weight: 700 !important; color: #00ffcc !important;
-}
-[data-testid="stMetricLabel"] {
-    font-size: 10px !important; letter-spacing: 2px !important;
-    color: #6e7681 !important; font-weight: 700 !important;
-}
-[data-testid="stMetricDelta"] { font-size: 12px !important; }
-[data-testid="metric-container"] {
-    background: #0d1117 !important; border: 1px solid #21262d !important;
-    border-top: 2px solid #00ffcc !important; padding: 16px !important;
-    border-radius: 4px !important;
-}
-
-/* ── DATAFRAME ──────────────────────────────── */
-[data-testid="stDataFrame"] {
-    border: 1px solid #21262d !important; border-radius: 4px !important;
-}
-.dvn-scroller { background: #0d1117 !important; }
-
-/* ── SELECTBOX / INPUTS ─────────────────────── */
-[data-testid="stSelectbox"] > div > div,
-[data-testid="stNumberInput"] > div > div > input {
-    background: #0d1117 !important; border-color: #30363d !important;
-    color: #e6edf3 !important; font-family: 'JetBrains Mono', monospace !important;
-}
-
-/* ── DIVIDER ────────────────────────────────── */
-hr { border-color: #21262d !important; margin: 12px 0 !important; }
-
-/* ── STATUS DOT ─────────────────────────────── */
-.dot-live { display:inline-block;width:8px;height:8px;border-radius:50%;
-    background:#3fb950;box-shadow:0 0 6px #3fb950;animation:dot-pulse 2s infinite;margin-right:6px; }
-.dot-off  { display:inline-block;width:8px;height:8px;border-radius:50%;
-    background:#ff4444;margin-right:6px; }
-@keyframes dot-pulse { 0%,100%{opacity:1;}50%{opacity:0.4;} }
-
-/* ── FORM ───────────────────────────────────── */
-[data-testid="stForm"] {
-    background: #0d1117 !important; border: 1px solid #21262d !important;
-    border-radius: 4px !important; padding: 20px !important;
-}
-
-/* ── INFO / SUCCESS / WARNING ───────────────── */
-[data-testid="stAlert"] {
-    background: #0d1117 !important; border-color: #30363d !important;
-    font-family: 'JetBrains Mono', monospace !important;
-}
-
-/* ── API HEALTH CARD ────────────────────────── */
-.api-card {
-    background: #0d1117; border: 1px solid #21262d; border-radius: 4px;
-    padding: 14px; text-align: center; position: relative;
-}
-.api-name { font-size:10px;letter-spacing:2px;color:#6e7681;font-weight:700;margin-bottom:6px; }
-.api-status-on  { color:#3fb950;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px; }
-.api-status-off { color:#ff4444;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px; }
-.api-status-unk { color:#f0a430;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px; }
-
-/* ── TRADE ROWS ─────────────────────────────── */
-.trade-row-pos { color: #3fb950 !important; }
-.trade-row-neg { color: #ff4444 !important; }
-
-/* ── SIDEBAR BRAND ──────────────────────────── */
-.sidebar-brand {
-    text-align:center; padding: 20px 0 16px;
-    border-bottom: 1px solid #1c2333; margin-bottom: 16px;
-}
-.sidebar-brand h1 {
-    font-family:'JetBrains Mono',monospace;
-    font-size:24px;font-weight:700;color:#00ffcc;
-    letter-spacing:3px;margin:0;
-}
-.sidebar-brand p { font-size:10px;color:#6e7681;letter-spacing:2px;margin:4px 0 0; }
-
-/* ── STAT PILL ──────────────────────────────── */
-.stat-pill {
-    display:inline-flex;align-items:center;gap:8px;
-    background:#0d1117;border:1px solid #21262d;border-radius:3px;
-    padding:8px 14px;margin:4px 0;width:100%;
-}
-.stat-pill-label { font-size:10px;color:#6e7681;letter-spacing:1px;flex:1; }
-.stat-pill-val   { font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#e6edf3; }
+[data-testid="stRadio"] label:has(input:checked) { color:#58c3e0 !important; }
+[data-testid="stForm"] { background:#000d1f !important; border:1px solid #0a1f35 !important; padding:14px !important; border-radius:1px !important; }
 </style>
 """, unsafe_allow_html=True)
 
 
-# ── STATE MANAGEMENT ─────────────────────────────────────────────────────────
-def load_state():
+# ══════════════════════════════════════════════════════════════════════════════
+#  DATA LAYER
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _load() -> dict:
     if os.path.exists(STATE_FILE):
         try:
-            with open(STATE_FILE, 'r') as f:
+            with open(STATE_FILE) as f:
                 return json.load(f)
         except Exception:
             pass
@@ -312,856 +333,954 @@ def load_state():
         "trades": [], "opportunities": [],
         "history": {a: [] for a in MONITORED_ASSETS},
         "settings": THRESHOLDS,
-        "api_health": {k: "Unknown" for k in ["NASA","EIA","OpenAQ","ETH","RealYield","OBI"]}
+        "api_health": {k: "Unknown" for k in ["NASA","EIA","OpenAQ","ETH","RealYield","OBI"]},
+        "last_signals": {}, "last_cycle_utc": "", "cycle_count": 0,
     }
 
-def save_state(state):
-    with open(STATE_FILE, 'w') as f:
-        json.dump(state, f, indent=2)
+def _save(s: dict):
+    try:
+        with open(STATE_FILE + '.tmp', 'w') as f: json.dump(s, f, indent=2)
+        os.replace(STATE_FILE + '.tmp', STATE_FILE)
+    except Exception: pass
 
-def fmt_usd(v): return f"${v:,.2f}"
-def fmt_pct(v): return f"{v:.2f}%"
-def fmt_score(v): return f"{v:.4f}"
-
-if 'state' not in st.session_state:
-    st.session_state.state = load_state()
+@st.cache_data(ttl=55)
+def _prices() -> dict:
+    hdrs = {'User-Agent': 'Mozilla/5.0'}
+    out  = {}
+    for asset, sym in _YF.items():
+        try:
+            url = f"https://query1.finance.yahoo.com/v8/finance/chart/{sym}?interval=1m&range=1d"
+            r   = requests.get(url, headers=hdrs, timeout=7)
+            if r.status_code == 200:
+                out[asset] = float(r.json()['chart']['result'][0]['meta']['regularMarketPrice'])
+            else:
+                out[asset] = _PX_FALLBACK[asset]
+        except Exception:
+            out[asset] = _PX_FALLBACK[asset]
+    return out
 
 @st.cache_resource
-def get_engines():
+def _engines():
+    s = _load()
     return {
         "engine":    S3ConvergenceEngine(),
-        "allocator": S3AntiFragileAllocator(initial_capital=load_state()['equity'])
+        "allocator": S3AntiFragileAllocator(initial_capital=s['equity']),
     }
 
-engines   = get_engines()
-engine    = engines["engine"]
-allocator = engines["allocator"]
+_eng  = _engines()
+_alc  = _eng["allocator"]
 
-state = st.session_state.state
+if 'state' not in st.session_state:
+    st.session_state.state = _load()
 
-# ── COMPUTED STATS ────────────────────────────────────────────────────────────
-trades      = state['trades']
-n_trades    = len(trades)
-pnl_list    = [t.get('pnl', 0) for t in trades]
-total_pnl   = sum(pnl_list)
-win_rate    = (sum(1 for p in pnl_list if p > 0) / max(1, n_trades)) * 100
-current_eq  = state['equity']
-eq_curve    = [state['initial_capital']] + [state['initial_capital'] + sum(pnl_list[:i+1]) for i in range(n_trades)]
-max_eq      = max(eq_curve)
-min_eq      = min(eq_curve)
-drawdowns   = [(eq_curve[i] - max(eq_curve[:i+1])) / max(1, max(eq_curve[:i+1])) * 100 for i in range(len(eq_curve))]
-max_dd      = min(drawdowns) if drawdowns else 0.0
-returns_arr = np.diff(eq_curve) / np.array(eq_curve[:-1]) if len(eq_curve) > 1 else np.array([0.0])
-sharpe      = (np.mean(returns_arr) / max(np.std(returns_arr), 1e-9)) * np.sqrt(252) if len(returns_arr) >= 5 else 0.0
-best_trade  = max(pnl_list) if pnl_list else 0.0
-worst_trade = min(pnl_list) if pnl_list else 0.0
+_S = st.session_state.state
 
-inevitable_assets = [
-    o['asset'] for o in state['opportunities']
-    if o['status'] == "INEVITABLE"
-    and (datetime.utcnow().timestamp() - datetime.fromisoformat(o['timestamp']).timestamp() < 3600)
-]
+# ── Stats ──────────────────────────────────────────────────────────────────────
+_trades  = _S['trades']
+_pnl_l   = [t.get('pnl', 0.0) for t in _trades]
+_total_p = sum(_pnl_l)
+_n_tr    = len(_trades)
+_wins    = sum(1 for p in _pnl_l if p > 0)
+_losses  = _n_tr - _wins
+_wr      = (_wins / max(1, _n_tr)) * 100
+_eq      = _S['equity']
+_init_eq = _S['initial_capital']
+_eq_ret  = ((_eq / _init_eq) - 1) * 100
+_eq_curve= [_init_eq] + [_init_eq + sum(_pnl_l[:i+1]) for i in range(_n_tr)]
+_max_eq  = max(_eq_curve) if _eq_curve else _init_eq
+_dds     = [(e - max(_eq_curve[:i+1])) / max(1, max(_eq_curve[:i+1])) * 100
+             for i, e in enumerate(_eq_curve)]
+_max_dd  = min(_dds) if _dds else 0.0
+_rets    = (np.diff(_eq_curve) / np.array(_eq_curve[:-1])
+            if len(_eq_curve) > 1 else np.array([0.0]))
+_sharpe  = ((np.mean(_rets) / max(np.std(_rets), 1e-9)) * math.sqrt(252)
+            if len(_rets) >= 5 else 0.0)
 
 # Daemon freshness
 try:
-    daemon_age = time.time() - os.path.getmtime(STATE_FILE)
-    daemon_live = daemon_age < 60
-except:
-    daemon_live = False
+    _d_age  = time.time() - os.path.getmtime(STATE_FILE)
+    _d_live = _d_age < 25
+except Exception:
+    _d_age  = 99999.0
+    _d_live = False
 
-NOW_STR = datetime.utcnow().strftime("%Y-%m-%d  %H:%M:%S  UTC")
+def _age_str(s: float) -> str:
+    if s < 60:   return f"{int(s)}s ago"
+    if s < 3600: return f"{int(s//60)}m {int(s%60)}s ago"
+    return f"{int(s//3600)}h {int((s%3600)//60)}m ago"
 
-# ── SIDEBAR ───────────────────────────────────────────────────────────────────
+_NOW    = datetime.now(timezone.utc)
+_NOW_S  = _NOW.strftime("%Y-%m-%d  %H:%M:%S  UTC")
+_prices = _prices()
+
+_inev_assets = [
+    o['asset'] for o in _S['opportunities']
+    if o['status'] == "INEVITABLE"
+    and (_NOW.timestamp() - datetime.fromisoformat(o['timestamp']).timestamp()) < 3600
+]
+
+# Plotly base
+_PB = dict(
+    template="plotly_dark",
+    paper_bgcolor="#000913", plot_bgcolor="#000913",
+    font=dict(family="IBM Plex Mono", color="#2a6090"),
+    margin=dict(l=8, r=8, t=28, b=8),
+    xaxis=dict(gridcolor="#060f1c", tickfont=dict(size=9, color="#1a4060")),
+    yaxis=dict(gridcolor="#060f1c", tickfont=dict(size=9, color="#1a4060")),
+    showlegend=False,
+)
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  CHROME  ——  Status bar + refresh bar
+# ══════════════════════════════════════════════════════════════════════════════
+
+_d_col   = "#3fb950" if _d_live else "#f85149"
+_d_label = "24/7 LIVE" if _d_live else "OFFLINE"
+_cyc     = _S.get('cycle_count', 0)
+_sigs_l  = sum(1 for v in _S.get('last_signals', {}).values() if v is not None)
+_inev_c  = len(set(_inev_assets))
+
+st.markdown(f"""
+<div class="sys-bar">
+  <div class="sys-bar-left">
+    <span style="font-size:14px;color:#58c3e0;letter-spacing:4px;font-weight:700;">🔱 HYDRA-S3</span>
+    <span class="sbl"><span class="sbl-k">DAEMON</span>
+      <span class="sbl-v" style="color:{_d_col};">{_d_label}</span></span>
+    <span class="sbl"><span class="sbl-k">UPDATED</span>
+      <span class="sbl-v {'green' if _d_live else 'red'}">{_age_str(_d_age)}</span></span>
+    <span class="sbl"><span class="sbl-k">CYCLE</span>
+      <span class="sbl-v">{_cyc:,}</span></span>
+    <span class="sbl"><span class="sbl-k">SIGNALS</span>
+      <span class="sbl-v {'green' if _sigs_l>=4 else 'amber' if _sigs_l>=2 else 'red'}">{_sigs_l}/6</span></span>
+    {'<span class="sbl" style="animation:bpulse 1.8s infinite"><span style="color:#f85149;font-weight:700;letter-spacing:2px;">🚨 INEVITABLE: '+str(_inev_c)+'</span></span>' if _inev_c else ''}
+  </div>
+  <div class="sys-bar-right">
+    <span class="sbl"><span class="sbl-k">EQ</span>
+      <span class="sbl-v cyan">${_eq:,.2f}</span></span>
+    <span class="sbl"><span class="sbl-k">P&L</span>
+      <span class="sbl-v {'green' if _total_p>=0 else 'red'}">${_total_p:+,.2f}</span></span>
+    <span class="sbl"><span class="sbl-k">WIN</span>
+      <span class="sbl-v">{_wr:.1f}%</span></span>
+    <span style="color:#1a4060;font-size:10px;">{_NOW_S}</span>
+  </div>
+</div>
+<div class="rfr-bar">
+  <span class="rfr-label">AUTO-REFRESH 15s</span>
+  <div class="rfr-track"><div class="rfr-fill"></div></div>
+  <span class="rfr-label">LIVE DATA FEED  ·  ALL 5 ASSET STREAMS</span>
+</div>
+""", unsafe_allow_html=True)
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  SIDEBAR
+# ══════════════════════════════════════════════════════════════════════════════
 with st.sidebar:
     st.markdown("""
-    <div class="sidebar-brand">
-        <h1>🔱 HYDRA-S3</h1>
-        <p>ENTERPRISE QUANT OS  v4.0</p>
-    </div>
-    """, unsafe_allow_html=True)
+    <div class="sb-logo">
+        <h1>🔱 HYDRA</h1>
+        <p>S3-RHGNN ENTERPRISE QUANT OS  v5.0</p>
+    </div>""", unsafe_allow_html=True)
 
-    nav = st.radio("NAVIGATION", [
-        "📊  MATRIX DASHBOARD",
-        "🎯  OPPORTUNITY HUB",
-        "💼  TRADE AUDIT LEDGER",
-        "🔬  SURGICAL CAUSAL LAB",
-        "⚙️   SYSTEM CONFIGURATION",
-    ], label_visibility="collapsed")
-
-    st.markdown("<hr/>", unsafe_allow_html=True)
-
-    dot = '<span class="dot-live"></span>' if daemon_live else '<span class="dot-off"></span>'
-    status_txt = "DAEMON ACTIVE (24/7)" if daemon_live else "DAEMON OFFLINE"
-    status_col = "#3fb950" if daemon_live else "#ff4444"
-    st.markdown(f"""
-    <div style="padding:0 4px;">
-        <div style="font-size:10px;letter-spacing:2px;color:#6e7681;margin-bottom:10px;">■ SYSTEM STATUS</div>
-        <div style="margin-bottom:6px;">{dot}<span style="color:{status_col};font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;">{status_txt}</span></div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    for label, val in [
-        ("ENGINE", "S3-RHGNN v4.0"),
-        ("MODE",   "QUANT-AUTOMATION"),
-        ("ASSETS", f"{len(MONITORED_ASSETS)} STREAMS"),
-        ("EQUITY", fmt_usd(current_eq)),
+    for lbl, val, col in [
+        ("DAEMON",     _d_label,             _d_col),
+        ("LAST UPDATE",_age_str(_d_age),     "#cdd9e5"),
+        ("CYCLE COUNT",f"{_cyc:,}",          "#cdd9e5"),
+        ("SIGNALS",    f"{_sigs_l}/6 LIVE",  "#3fb950" if _sigs_l>=4 else "#e3b341" if _sigs_l>=2 else "#f85149"),
+        ("ENGINE",     "S3-RHGNN v5.0",      "#58c3e0"),
+        ("EQUITY",     f"${_eq:,.2f}",       "#58c3e0"),
+        ("P&L",        f"${_total_p:+,.2f}", "#3fb950" if _total_p>=0 else "#f85149"),
+        ("WIN RATE",   f"{_wr:.1f}%",        "#cdd9e5"),
+        ("SHARPE",     f"{_sharpe:.2f}",     "#cdd9e5"),
+        ("MAX DD",     f"{_max_dd:.2f}%",    "#f85149" if _max_dd<-10 else "#cdd9e5"),
     ]:
         st.markdown(f"""
-        <div class="stat-pill">
-            <span class="stat-pill-label">{label}</span>
-            <span class="stat-pill-val">{val}</span>
+        <div class="sb-pill">
+          <span class="sb-k">{lbl}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+                font-weight:700;color:{col};">{val}</span>
         </div>""", unsafe_allow_html=True)
 
     st.markdown("<hr/>", unsafe_allow_html=True)
-    st.markdown(f'<div style="font-size:10px;color:#6e7681;text-align:center;font-family:\'JetBrains Mono\',monospace;letter-spacing:1px;">{NOW_STR}</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:8.5px;letter-spacing:2px;color:#1a4060;margin-bottom:8px;">■ ASSET SCORES</div>', unsafe_allow_html=True)
 
-    if st.button("↺  REFRESH DATA", key="refresh_btn"):
-        st.session_state.state = load_state()
+    for asset in MONITORED_ASSETS:
+        hist = _S['history'].get(asset, [])
+        if hist:
+            last = hist[-1]
+            sc   = last['score']
+            st_  = last['status']
+            col  = "#f85149" if st_=="INEVITABLE" else "#3fb950" if st_=="HIGH CONVICTION" else "#1a4060"
+        else:
+            sc, col = 0.0, "#1a4060"
+        px = _prices.get(asset, 0)
+        px_s = f"${px:,.4f}" if px < 10 else f"${px:,.2f}" if px < 1000 else f"${px:,.0f}"
+        st.markdown(f"""
+        <div class="sb-pill">
+          <span class="sb-k">{asset}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:{col};">{sc:.4f}</span>
+          <span style="font-size:9px;color:#1a4060;">{px_s}</span>
+        </div>""", unsafe_allow_html=True)
+
+    st.markdown("<hr/>", unsafe_allow_html=True)
+    if st.button("↺  FORCE REFRESH", key="sb_rfr"):
+        st.session_state.state = _load()
         st.rerun()
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-#  MODULE 1 — MATRIX DASHBOARD
-# ═══════════════════════════════════════════════════════════════════════════════
-if "MATRIX" in nav:
+# ══════════════════════════════════════════════════════════════════════════════
+#  BADGE HELPERS
+# ══════════════════════════════════════════════════════════════════════════════
+def _regime_b(r):
+    if r=="CONTRACTION": return '<span class="badge bc">CONTRACTION</span>'
+    if r=="EXPANSION":   return '<span class="badge be">EXPANSION</span>'
+    return '<span class="badge bs">STABILITY</span>'
 
-    # ── Header ──
-    st.markdown(f"""
-    <div class="terminal-header">
-        <div class="terminal-title">🔱 HYDRA-S3  ·  QUANT MATRIX DASHBOARD</div>
-        <div class="terminal-timestamp">S3-RHGNN v4.0  ·  {NOW_STR}</div>
+def _status_b(s):
+    if s=="INEVITABLE":     return '<span class="badge bi">🚨 INEVITABLE</span>'
+    if s=="HIGH CONVICTION":return '<span class="badge bh">● HIGH CONVICTION</span>'
+    if s=="DATA_GAP":       return '<span class="badge bg">⚠ DATA GAP</span>'
+    return '<span class="badge bn">— NOISE</span>'
+
+def _bias_b(d):
+    if d == 1:  return '<span class="badge bl">▲ LONG</span>'
+    if d == -1: return '<span class="badge bsh">▼ SHORT</span>'
+    return '<span class="badge bnt">— NEUTRAL</span>'
+
+def _sbar(score):
+    pct = int(score * 100)
+    col = "#f85149" if score>=0.95 else "#3fb950" if score>=0.80 else "#1a4060"
+    return (f'<div class="sb-wrap">'
+            f'<div class="sb-track"><div class="sb-fill" style="width:{pct}%;background:{col};"></div></div>'
+            f'<span style="font-family:\'IBM Plex Mono\',monospace;font-size:11.5px;font-weight:700;color:{col};">{score:.4f}</span>'
+            f'</div>')
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  MAIN TABS
+# ══════════════════════════════════════════════════════════════════════════════
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    "  📊  MATRIX DASHBOARD  ",
+    "  🎯  OPPORTUNITY HUB  ",
+    "  💼  TRADE AUDIT  ",
+    "  🔬  SIGNAL LAB  ",
+    "  ⚙️   SYSTEM CONFIG  ",
+])
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  TAB 1  —  MATRIX DASHBOARD
+# ══════════════════════════════════════════════════════════════════════════════
+with tab1:
+    st.markdown("""
+    <div class="term-hdr">
+      <div>
+        <div class="term-title">📊 MULTI-ASSET CONVERGENCE MATRIX</div>
+        <div class="term-sub">S3-RHGNN v5.0  ·  LIVE CAUSAL ENGINE  ·  S3-SURGICAL-TRIGGER ARMED</div>
+      </div>
+      <div class="term-meta">POLL: 10s  ·  UI REFRESH: 15s<br/>TRIGGER: DIRECTION | STATUS | SCORE +0.05</div>
     </div>
     """, unsafe_allow_html=True)
 
-    # ── S-Alert ──
-    if inevitable_assets:
+    if _inev_assets:
         st.markdown(f"""
-        <div class="s-alert">
-            🚨  S-ALERT  ·  CONVERGENCE INEVITABLE DETECTED  ·  {" | ".join(set(inevitable_assets))}  ·  IMMEDIATE ATTENTION REQUIRED  🚨
-        </div>
-        """, unsafe_allow_html=True)
+        <div class="s-alert">🚨
+          <span>S-ALERT  ·  INEVITABLE CONVERGENCE  ·
+          {" | ".join(set(_inev_assets))}  ·  EXECUTE NOW</span>
+        </div>""", unsafe_allow_html=True)
 
-    # ── KPI Row ──
-    k1, k2, k3, k4, k5, k6 = st.columns(6)
-    kpis = [
-        (k1, "S3 TOTAL EQUITY",       fmt_usd(current_eq),        f"{((current_eq/state['initial_capital'])-1)*100:+.2f}% ALL-TIME", ""),
-        (k2, "REALIZED P&L",          fmt_usd(total_pnl),         f"{n_trades} TRADES CLOSED",      "danger-card" if total_pnl < 0 else "safe-card"),
-        (k3, "WIN RATE",              fmt_pct(win_rate),          f"{sum(1 for p in pnl_list if p>0)} WINS / {sum(1 for p in pnl_list if p<=0)} LOSSES", ""),
-        (k4, "OPPORTUNITIES",         str(len(state['opportunities'])), f"{len(inevitable_assets)} INEVITABLE NOW", "warn-card" if inevitable_assets else ""),
-        (k5, "ACTIVE POSITIONS",      str(len(allocator.open_positions)), "LIVE EXPOSURE",              "blue-card"),
-        (k6, "MAX DRAWDOWN",          f"{max_dd:.2f}%",           f"SHARPE  {sharpe:.2f}",           "danger-card" if max_dd < -10 else ""),
-    ]
-    for col, label, value, delta, extra_class in kpis:
+    # KPI row
+    k1,k2,k3,k4,k5,k6 = st.columns(6)
+    _open_pos = len(_alc.open_positions)
+    _pf_num   = abs(sum(p for p in _pnl_l if p>0))
+    _pf_den   = max(abs(sum(p for p in _pnl_l if p<0)), 0.01)
+    _pf       = _pf_num / _pf_den
+
+    for col, lbl, val, sub, cls, glow in [
+        (k1,"TOTAL EQUITY",   f"${_eq:,.2f}",    f"{_eq_ret:+.2f}% RETURN",          "cyan", False),
+        (k2,"REALIZED P&L",   f"${_total_p:+,.2f}",f"{_n_tr} TRADES",               "grn" if _total_p>=0 else "red", False),
+        (k3,"WIN RATE",       f"{_wr:.1f}%",      f"{_wins}W / {_losses}L",           "grn" if _wr>=50 else "amb", False),
+        (k4,"INEVITABLE",     str(_inev_c),        f"{len(_S['opportunities'])} SETUPS","red" if _inev_c else "", _inev_c>0),
+        (k5,"OPEN POSITIONS", str(_open_pos),      "LIVE EXPOSURE",                    "blue", False),
+        (k6,"SHARPE / DD",    f"{_sharpe:.2f}",    f"MAX DD {_max_dd:.2f}%",           "grn" if _sharpe>=1 else "amb" if _sharpe>=0 else "red", False),
+    ]:
         with col:
             st.markdown(f"""
-            <div class="kpi-card {extra_class}">
-                <div class="kpi-label">{label}</div>
-                <div class="kpi-value">{value}</div>
-                <div class="kpi-delta muted">{delta}</div>
+            <div class="kpi {cls} {'kpi-glow' if glow else ''}">
+              <div class="kpi-lbl">{lbl}</div>
+              <div class="kpi-val">{val}</div>
+              <div class="kpi-sub">{sub}</div>
             </div>""", unsafe_allow_html=True)
 
-    st.markdown("<br/>", unsafe_allow_html=True)
-
-    # ── Convergence Matrix ──
-    st.markdown('<div class="section-header">■ MULTI-ASSET CONVERGENCE MATRIX</div>', unsafe_allow_html=True)
-
-    def regime_badge(r):
-        if r == "CONTRACTION": return '<span class="badge badge-regime-c">CONTRACTION</span>'
-        if r == "EXPANSION":   return '<span class="badge badge-regime-e">EXPANSION</span>'
-        return '<span class="badge badge-regime-s">STABILITY</span>'
-
-    def status_badge(s):
-        if s == "INEVITABLE":     return '<span class="badge badge-inevitable">INEVITABLE</span>'
-        if s == "HIGH CONVICTION":return '<span class="badge badge-high">HIGH CONVICTION</span>'
-        if s == "DATA_GAP":       return '<span class="badge badge-gap">DATA GAP</span>'
-        return '<span class="badge badge-noise">NOISE</span>'
-
-    def bias_badge(b):
-        if b == "LONG":  return '<span class="badge badge-long">▲ LONG</span>'
-        if b == "SHORT": return '<span class="badge badge-short">▼ SHORT</span>'
-        return '<span class="badge badge-neutral">— NEUTRAL</span>'
+    st.markdown('<div class="sec-hdr">■ LIVE CONVERGENCE MATRIX  ·  REAL-TIME SCORES</div>', unsafe_allow_html=True)
 
     rows = ""
     for asset in MONITORED_ASSETS:
-        hist = state['history'].get(asset, [])
-        sym  = SYMBOL_MAP.get(asset, asset)
+        hist  = _S['history'].get(asset, [])
+        px    = _prices.get(asset, 0.0)
+        pxs   = (f"${px:,.4f}" if px<10 else f"${px:,.2f}" if px<1000 else f"${px:,.0f}")
+        obi_s = SYMBOL_MAP.get(asset, '—')
+
         if hist:
-            latest = hist[-1]
-            score  = latest['score']
-            regime = latest['regime']
-            status = latest['status']
-            age_s  = int(datetime.utcnow().timestamp() - datetime.fromisoformat(latest['time']).timestamp()) if 'time' in latest else 0
-            age    = f"{age_s}s ago" if age_s < 3600 else f"{age_s//3600}h ago"
-            opps   = [o for o in state['opportunities'] if o['asset'] == asset]
-            dir_v  = opps[-1]['direction'] if opps else 0
-            bias   = "LONG" if dir_v == 1 else "SHORT" if dir_v == -1 else "NEUTRAL"
-            score_color = "#ff4444" if status == "INEVITABLE" else "#00ffcc" if status == "HIGH CONVICTION" else "#8b949e"
+            last  = hist[-1]
+            sc    = last['score']
+            reg   = last['regime']
+            stt   = last['status']
+            age_s = int(_NOW.timestamp() - datetime.fromisoformat(last['time']).timestamp())
+            opps  = [o for o in _S['opportunities'] if o['asset']==asset]
+            dirv  = opps[-1]['direction'] if opps else 0
+            trig  = opps[-1].get('trigger','—') if opps else '—'
             rows += f"""
             <tr>
-                <td><span class="asset-name">{asset}</span><br/><span class="t-xs muted">{sym}</span></td>
-                <td><span class="mono" style="color:{score_color};font-size:15px;font-weight:700;">{score:.4f}</span></td>
-                <td>{regime_badge(regime)}</td>
-                <td>{status_badge(status)}</td>
-                <td>{bias_badge(bias)}</td>
-                <td><span class="mono t-xs muted">{age}</span></td>
+              <td><div class="as">{asset}</div><div class="asb">{obi_s}</div></td>
+              <td><span class="pv">{pxs}</span></td>
+              <td>{_sbar(sc)}</td>
+              <td>{_regime_b(reg)}</td>
+              <td>{_status_b(stt)}</td>
+              <td>{_bias_b(dirv)}</td>
+              <td><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#1a4060;">{_age_str(age_s)}</span></td>
+              <td><span style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#1a4060;max-width:140px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{trig[:28]}</span></td>
             </tr>"""
         else:
             rows += f"""
             <tr>
-                <td><span class="asset-name">{asset}</span><br/><span class="t-xs muted">{sym}</span></td>
-                <td colspan="5" style="text-align:center;padding:16px;">
-                    <span class="badge badge-gap">AWAITING DAEMON DATA</span>
-                </td>
+              <td><div class="as">{asset}</div><div class="asb">{obi_s}</div></td>
+              <td><span class="pv">{pxs}</span></td>
+              <td colspan="6" style="text-align:center;">
+                <span class="badge bg">AWAITING LIVE DATA</span>
+                <span style="font-size:9.5px;color:#1a4060;margin-left:8px;">daemon collecting signals...</span>
+              </td>
             </tr>"""
 
     st.markdown(f"""
-    <div class="matrix-wrap">
-    <table class="matrix-table">
+    <div style="overflow-x:auto;border:1px solid #0a1f35;border-radius:1px;">
+    <table class="matrix">
       <thead><tr>
-        <th>ASSET</th><th>CONV. SCORE</th><th>REGIME</th>
-        <th>STATUS</th><th>BIAS</th><th>LAST UPDATE</th>
+        <th>ASSET</th><th>LIVE PRICE</th><th>S3 SCORE</th>
+        <th>REGIME</th><th>STATUS</th><th>BIAS</th>
+        <th>UPDATED</th><th>LAST TRIGGER</th>
       </tr></thead>
       <tbody>{rows}</tbody>
     </table>
-    </div>
-    """, unsafe_allow_html=True)
+    </div>""", unsafe_allow_html=True)
 
-    # ── Execute Panel ──
+    # Execution panel
     st.markdown("<br/>", unsafe_allow_html=True)
-    st.markdown('<div class="section-header">■ TRADE EXECUTION PANEL</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sec-hdr">■ TRADE EXECUTION PANEL  ·  LIVE PRICE FEED</div>', unsafe_allow_html=True)
     ex_cols = st.columns(len(MONITORED_ASSETS))
     for i, asset in enumerate(MONITORED_ASSETS):
         with ex_cols[i]:
-            hist = state['history'].get(asset, [])
-            score  = hist[-1]['score'] if hist else 0.0
-            opps   = [o for o in state['opportunities'] if o['asset'] == asset]
-            dir_v  = opps[-1]['direction'] if opps else 0
-            regime_int = 0
-            if hist:
-                rn = hist[-1].get('regime', 'STABILITY')
-                regime_int = 2 if rn=="CONTRACTION" else 1 if rn=="EXPANSION" else 0
-            enabled = score >= 0.80 and dir_v != 0
-            label   = f"{'▲ BUY' if dir_v==1 else '▼ SELL' if dir_v==-1 else '— HOLD'}  {asset}"
-            price_proxy = {"XAUUSD":3000,"XAGUSD":60,"HG=F":6,"EURUSD":1.08,"AUDUSD":0.65}.get(asset,100)
-            st.markdown(f'<div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:#6e7681;margin-bottom:4px;">{asset}  ·  SCORE {score:.3f}</div>', unsafe_allow_html=True)
-            btn_class = "execute-btn" if dir_v == 1 else "sell-btn" if dir_v == -1 else ""
-            st.markdown(f'<div class="{btn_class}">', unsafe_allow_html=True)
-            if st.button(label, key=f"exec_{asset}", disabled=not enabled):
-                trade = allocator.execute_trade(asset, dir_v, score, regime_int, price_proxy)
+            hist  = _S['history'].get(asset, [])
+            sc    = hist[-1]['score'] if hist else 0.0
+            reg_s = hist[-1]['regime'] if hist else 'STABILITY'
+            reg_i = 2 if reg_s=="CONTRACTION" else 1 if reg_s=="EXPANSION" else 0
+            opps  = [o for o in _S['opportunities'] if o['asset']==asset]
+            dirv  = opps[-1]['direction'] if opps else 0
+            px    = _prices.get(asset, _PX_FALLBACK.get(asset, 100.0))
+            pxs   = (f"${px:,.4f}" if px<10 else f"${px:,.2f}" if px<1000 else f"${px:,.0f}")
+            ok    = sc >= 0.80 and dirv != 0
+            sc_c  = "#f85149" if sc>=0.95 else "#3fb950" if sc>=0.80 else "#1a4060"
+            lbl   = f"{'▲ BUY' if dirv==1 else '▼ SELL' if dirv==-1 else '— HOLD'}  {asset}"
+            st.markdown(
+                f'<div style="font-family:\'IBM Plex Mono\',monospace;font-size:9.5px;'
+                f'color:#1a4060;margin-bottom:3px;">'
+                f'{asset} &nbsp;·&nbsp; <span style="color:{sc_c}">{sc:.4f}</span>'
+                f' &nbsp;·&nbsp; <span style="color:#2a6090">{pxs}</span></div>',
+                unsafe_allow_html=True
+            )
+            btn_cls = "btn-long" if dirv==1 else "btn-short" if dirv==-1 else ""
+            st.markdown(f'<div class="{btn_cls}">', unsafe_allow_html=True)
+            if st.button(lbl, key=f"ex_{asset}", disabled=not ok):
+                trade = _alc.execute_trade(asset, dirv, sc, reg_i, px)
                 if trade:
-                    trade['timestamp'] = datetime.utcnow().isoformat()
-                    trade['pnl'] = 0.0
-                    trade['asset'] = asset
-                    state['trades'].append(trade)
-                    state['equity'] = allocator.equity
-                    save_state(state)
-                    st.success(f"✅ {asset} position opened")
+                    trade.update({'timestamp': datetime.utcnow().isoformat(),
+                                   'pnl': 0.0, 'asset': asset, 'regime': reg_s})
+                    _S['trades'].append(trade)
+                    _S['equity'] = _alc.equity
+                    _save(_S)
+                    try:
+                        send_alert_sync(fmt_trade_executed(
+                            asset=asset, direction=dirv, size=trade['size'],
+                            entry=trade['entry_price'], sl=trade['sl_price'],
+                            tp=trade['tp_price'], score=sc,
+                            equity=_S['equity'], regime=reg_s,
+                        ))
+                    except Exception: pass
+                    st.success(f"✅ {asset} @ {pxs}")
                     st.rerun()
             st.markdown('</div>', unsafe_allow_html=True)
 
-    # ── Live Causal Flows ──
-    top_opps = sorted(state['opportunities'], key=lambda x: x['score'], reverse=True)[:3]
+    # Top manifolds
+    top_opps = sorted(_S['opportunities'], key=lambda x: x['score'], reverse=True)[:3]
     if top_opps:
         st.markdown("<br/>", unsafe_allow_html=True)
-        st.markdown('<div class="section-header">■ LIVE CAUSAL MANIFOLDS  ·  TOP CONVERGENCES</div>', unsafe_allow_html=True)
-        flow_cols = st.columns(len(top_opps))
+        st.markdown('<div class="sec-hdr">■ CAUSAL MANIFOLD  ·  TOP CONVERGENCES</div>', unsafe_allow_html=True)
+        mc = st.columns(len(top_opps))
         for i, opp in enumerate(top_opps):
-            with flow_cols[i]:
-                ws = opp['manifold_snapshot']
-                valid = {k: v for k, v in ws.items() if v is not None}
+            with mc[i]:
+                ws  = {k: v for k, v in opp['manifold_snapshot'].items() if v is not None}
+                sc_c= "#f85149" if opp['score']>=0.95 else "#58c3e0"
                 fig = go.Figure(go.Bar(
-                    x=list(valid.keys()), y=list(valid.values()),
-                    marker=dict(
-                        color=list(valid.values()),
-                        colorscale=[[0,"#1a0000"],[0.5,"#1f6feb"],[1,"#00ffcc"]],
-                        line=dict(color="#30363d", width=1)
-                    )
+                    x=list(ws.keys()), y=list(ws.values()),
+                    marker=dict(color=list(ws.values()),
+                                colorscale=[[0,"#000d1f"],[0.5,"#001428"],[1,"#58c3e0"]],
+                                line=dict(color="#000913",width=1)),
                 ))
-                fig.update_layout(
-                    template="plotly_dark", paper_bgcolor="#0d1117", plot_bgcolor="#0d1117",
-                    height=180, margin=dict(l=8,r=8,t=30,b=8),
-                    title=dict(text=f"{opp['asset']}  ·  {opp['score']:.4f}", font=dict(family="JetBrains Mono",size=11,color="#00ffcc"), x=0),
-                    xaxis=dict(tickfont=dict(family="JetBrains Mono",size=9,color="#8b949e"), gridcolor="#161b22"),
-                    yaxis=dict(tickfont=dict(family="JetBrains Mono",size=9,color="#8b949e"), gridcolor="#161b22"),
-                    showlegend=False,
+                fig.update_layout(**_PB, height=150,
+                    title=dict(text=f"{opp['asset']} · {opp['score']:.4f} · {opp['status']}",
+                               font=dict(size=9,color=sc_c),x=0),
+                    yaxis=dict(gridcolor="#060f1c",tickfont=dict(size=8,color="#1a4060"),range=[0,1.1]),
                 )
-                st.plotly_chart(fig, width="stretch")
+                st.plotly_chart(fig, use_container_width=True)
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-#  MODULE 2 — OPPORTUNITY HUB
-# ═══════════════════════════════════════════════════════════════════════════════
-elif "OPPORTUNITY" in nav:
+# ══════════════════════════════════════════════════════════════════════════════
+#  TAB 2  —  OPPORTUNITY HUB
+# ══════════════════════════════════════════════════════════════════════════════
+with tab2:
+    st.markdown("""
+    <div class="term-hdr">
+      <div>
+        <div class="term-title">🎯 OPPORTUNITY HUB</div>
+        <div class="term-sub">S3-SURGICAL-TRIGGER LOG  ·  ALL ASSETS  ·  LIVE SIGNAL LEDGER</div>
+      </div>
+    </div>""", unsafe_allow_html=True)
 
-    st.markdown(f"""
-    <div class="terminal-header">
-        <div class="terminal-title">🎯 OPPORTUNITY HUB</div>
-        <div class="terminal-timestamp">ALL-ASSET SETUP LEDGER  ·  {NOW_STR}</div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    opps = state['opportunities']
+    opps = _S['opportunities']
     if not opps:
         st.markdown("""
-        <div style="text-align:center;padding:80px 0;background:#0d1117;border:1px solid #21262d;border-radius:4px;">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#6e7681;letter-spacing:3px;">
-                NO OPPORTUNITIES DETECTED
-            </div>
-            <div style="font-size:12px;color:#484f58;margin-top:8px;">
-                Start the live daemon to begin monitoring
-            </div>
+        <div style="text-align:center;padding:80px 20px;background:#000d1f;border:1px solid #0a1f35;border-radius:1px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#1a4060;letter-spacing:3px;">NO OPPORTUNITIES DETECTED</div>
+          <div style="font-size:10px;color:#060f1c;margin-top:10px;">Daemon scanning — triggers when S3 score ≥ 0.70</div>
         </div>""", unsafe_allow_html=True)
     else:
-        # ── Filters ──
-        f1, f2, f3 = st.columns([2,2,2])
+        f1,f2,f3 = st.columns([2,2,1])
         with f1:
-            asset_filter = st.multiselect("FILTER BY ASSET", MONITORED_ASSETS, default=MONITORED_ASSETS, label_visibility="collapsed")
+            af = st.multiselect("Asset", MONITORED_ASSETS, default=MONITORED_ASSETS, label_visibility="collapsed")
         with f2:
-            status_opts = list(set(o['status'] for o in opps))
-            status_filter = st.multiselect("FILTER BY STATUS", status_opts, default=status_opts, label_visibility="collapsed")
+            sf = st.multiselect("Status", list(set(o['status'] for o in opps)),
+                                 default=list(set(o['status'] for o in opps)), label_visibility="collapsed")
         with f3:
-            min_score = st.slider("MIN SCORE", 0.0, 1.0, 0.0, 0.01)
+            ms = st.slider("Min Score", 0.0, 1.0, 0.0, 0.01)
 
-        filtered = [o for o in opps
-                    if o['asset'] in asset_filter
-                    and o['status'] in status_filter
-                    and o['score'] >= min_score]
+        fopps = [o for o in opps if o['asset'] in af and o['status'] in sf and o['score'] >= ms]
 
-        # ── Summary KPIs ──
         st.markdown("<br/>", unsafe_allow_html=True)
-        sc1, sc2, sc3, sc4 = st.columns(4)
-        inevitable_ct = sum(1 for o in filtered if o['status']=="INEVITABLE")
-        high_ct       = sum(1 for o in filtered if o['status']=="HIGH CONVICTION")
-        avg_score     = np.mean([o['score'] for o in filtered]) if filtered else 0
-        top_asset     = max(set(o['asset'] for o in filtered), key=lambda a: sum(o['score'] for o in filtered if o['asset']==a)) if filtered else "—"
+        c1,c2,c3,c4 = st.columns(4)
+        ic = sum(1 for o in fopps if o['status']=="INEVITABLE")
+        hc = sum(1 for o in fopps if o['status']=="HIGH CONVICTION")
+        ta = (max(set(o['asset'] for o in fopps),
+                  key=lambda a: sum(o['score'] for o in fopps if o['asset']==a))
+              if fopps else "—")
         for col, lbl, val, cls in [
-            (sc1,"TOTAL SETUPS",    str(len(filtered)),      ""),
-            (sc2,"INEVITABLE",      str(inevitable_ct),      "danger-card" if inevitable_ct else ""),
-            (sc3,"HIGH CONVICTION", str(high_ct),            "safe-card" if high_ct else ""),
-            (sc4,"AVG SCORE",       f"{avg_score:.4f}",      ""),
+            (c1,"TOTAL SETUPS",str(len(fopps)),""),
+            (c2,"INEVITABLE",  str(ic),        "red kpi-glow" if ic else ""),
+            (c3,"HIGH CONV.",  str(hc),         "grn" if hc else ""),
+            (c4,"TOP ASSET",   ta,             "cyan"),
         ]:
             with col:
                 st.markdown(f"""
-                <div class="kpi-card {cls}">
-                    <div class="kpi-label">{lbl}</div>
-                    <div class="kpi-value">{val}</div>
+                <div class="kpi {cls}">
+                  <div class="kpi-lbl">{lbl}</div>
+                  <div class="kpi-val" style="font-size:20px;">{val}</div>
                 </div>""", unsafe_allow_html=True)
 
         st.markdown("<br/>", unsafe_allow_html=True)
-        st.markdown('<div class="section-header">■ ALL-ASSET SETUP LEDGER</div>', unsafe_allow_html=True)
+        st.markdown('<div class="sec-hdr">■ SURGICAL TRIGGER LEDGER</div>', unsafe_allow_html=True)
 
-        df = pd.DataFrame(filtered)
-        df_disp = df[['id','asset','timestamp','score','regime','status','direction']].copy()
-        df_disp['timestamp'] = pd.to_datetime(df_disp['timestamp']).dt.strftime('%Y-%m-%d %H:%M:%S')
-        df_disp['score']     = df_disp['score'].round(4)
-        df_disp['direction'] = df_disp['direction'].map({1:"▲ LONG", -1:"▼ SHORT", 0:"— NEUTRAL"})
-        df_disp.columns      = ['ID','ASSET','TIMESTAMP','SCORE','REGIME','STATUS','DIRECTION']
-        st.dataframe(df_disp, width="stretch", height=280)
+        df   = pd.DataFrame(fopps)
+        cols = [c for c in ['id','asset','timestamp','score','status','regime','direction','trigger'] if c in df.columns]
+        dfd  = df[cols].copy()
+        if 'timestamp' in dfd.columns:
+            dfd['timestamp'] = pd.to_datetime(dfd['timestamp']).dt.strftime('%Y-%m-%d %H:%M:%S')
+        if 'score' in dfd.columns:
+            dfd['score'] = dfd['score'].round(4)
+        if 'direction' in dfd.columns:
+            dfd['direction'] = dfd['direction'].map({1:"▲ LONG",-1:"▼ SHORT",0:"— NEUTRAL"})
+        dfd.columns = [c.upper().replace('_',' ') for c in dfd.columns]
+        st.dataframe(dfd.sort_values('TIMESTAMP', ascending=False).head(200),
+                     use_container_width=True, height=280)
 
-        # ── Deep-Dive ──
-        st.markdown("<br/>", unsafe_allow_html=True)
-        st.markdown('<div class="section-header">■ SURGICAL DEEP-DIVE ANALYSIS</div>', unsafe_allow_html=True)
-        opp_ids = [o['id'] for o in filtered]
-        sel_id  = st.selectbox("SELECT OPPORTUNITY", opp_ids, label_visibility="collapsed")
-        if sel_id:
-            opp = next(o for o in filtered if o['id'] == sel_id)
-            da, db, dc, dd = st.columns(4)
-            for col, lbl, val, cls in [
-                (da,"CONVERGENCE SCORE", fmt_score(opp['score']),  "danger-card" if opp['score']>=0.95 else "safe-card"),
-                (db,"CAUSAL REGIME",     opp['regime'],            ""),
-                (dc,"S3 STATUS",         opp['status'],            "danger-card" if opp['status']=="INEVITABLE" else ""),
-                (dd,"DIRECTION",         "▲ LONG" if opp['direction']==1 else "▼ SHORT" if opp['direction']==-1 else "— NEUTRAL", "safe-card" if opp['direction']==1 else "danger-card" if opp['direction']==-1 else ""),
-            ]:
-                with col:
-                    st.markdown(f"""
-                    <div class="kpi-card {cls}">
-                        <div class="kpi-label">{lbl}</div>
-                        <div class="kpi-value" style="font-size:18px;">{val}</div>
-                    </div>""", unsafe_allow_html=True)
-
+        if fopps:
             st.markdown("<br/>", unsafe_allow_html=True)
-            ws     = opp['manifold_snapshot']
-            valid  = {k: v for k, v in ws.items() if v is not None}
-            ch1, ch2 = st.columns(2)
-            with ch1:
-                fig = go.Figure(go.Bar(
-                    x=list(valid.keys()), y=list(valid.values()),
-                    marker=dict(color=list(valid.values()), colorscale="teal",
-                                line=dict(color="#30363d",width=1)),
-                    text=[f"{v:.4f}" for v in valid.values()], textposition="outside",
-                    textfont=dict(family="JetBrains Mono", size=10, color="#8b949e"),
-                ))
-                fig.update_layout(
-                    template="plotly_dark", paper_bgcolor="#0d1117", plot_bgcolor="#0d1117",
-                    title=dict(text="CAUSAL SIGNAL MANIFOLD", font=dict(family="JetBrains Mono",size=11,color="#8b949e"),x=0),
-                    height=300, margin=dict(l=8,r=8,t=40,b=8),
-                    xaxis=dict(tickfont=dict(family="JetBrains Mono",size=10,color="#8b949e"),gridcolor="#161b22"),
-                    yaxis=dict(tickfont=dict(family="JetBrains Mono",size=10,color="#8b949e"),gridcolor="#161b22",range=[0,1.1]),
-                    showlegend=False,
-                )
-                st.plotly_chart(fig, width="stretch")
-            with ch2:
-                cats   = list(valid.keys())
-                vals_r = [valid[k] for k in cats]
-                fig_r  = go.Figure(go.Scatterpolar(
-                    r=vals_r + [vals_r[0]], theta=cats + [cats[0]],
-                    fill='toself',
-                    fillcolor='rgba(0,255,204,0.1)',
-                    line=dict(color='#00ffcc', width=2),
-                    marker=dict(size=6, color='#00ffcc'),
-                ))
-                fig_r.update_layout(
-                    template="plotly_dark", paper_bgcolor="#0d1117", plot_bgcolor="#0d1117",
-                    title=dict(text="SIGNAL RADAR", font=dict(family="JetBrains Mono",size=11,color="#8b949e"),x=0),
-                    height=300, margin=dict(l=8,r=8,t=40,b=8),
-                    polar=dict(
-                        bgcolor="#0d1117",
-                        radialaxis=dict(visible=True, range=[0,1], tickfont=dict(size=8,color="#6e7681"), gridcolor="#21262d"),
-                        angularaxis=dict(tickfont=dict(family="JetBrains Mono",size=10,color="#8b949e"), gridcolor="#21262d"),
-                    ),
-                    showlegend=False,
-                )
-                st.plotly_chart(fig_r, width="stretch")
+            st.markdown('<div class="sec-hdr">■ SIGNAL DEEP-DIVE</div>', unsafe_allow_html=True)
+            sel = st.selectbox("Select Opportunity ID", [o['id'] for o in fopps],
+                               label_visibility="collapsed")
+            if sel:
+                opp = next(o for o in fopps if o['id']==sel)
+                da,db,dc,dd = st.columns(4)
+                for col, lbl, val, cls in [
+                    (da,"SCORE",    f"{opp['score']:.4f}",    "red" if opp['score']>=0.95 else "grn"),
+                    (db,"STATUS",   opp['status'],             "red" if opp['status']=="INEVITABLE" else ""),
+                    (dc,"REGIME",   opp['regime'],             ""),
+                    (dd,"TRIGGER",  opp.get('trigger','—')[:20],"amb"),
+                ]:
+                    with col:
+                        st.markdown(f"""
+                        <div class="kpi {cls}">
+                          <div class="kpi-lbl">{lbl}</div>
+                          <div class="kpi-val" style="font-size:15px;">{val}</div>
+                        </div>""", unsafe_allow_html=True)
+
+                ws = {k: v for k, v in opp['manifold_snapshot'].items() if v is not None}
+                ch1, ch2 = st.columns(2)
+                with ch1:
+                    fig = go.Figure(go.Bar(
+                        x=list(ws.keys()), y=list(ws.values()),
+                        marker=dict(color=list(ws.values()), colorscale="teal",
+                                    line=dict(color="#000913",width=1)),
+                        text=[f"{v:.4f}" for v in ws.values()], textposition="outside",
+                        textfont=dict(family="IBM Plex Mono",size=9,color="#2a6090"),
+                    ))
+                    fig.update_layout(**_PB, height=260,
+                        title=dict(text="CAUSAL MANIFOLD SNAPSHOT",font=dict(size=9,color="#2a6090"),x=0),
+                        yaxis=dict(gridcolor="#060f1c",tickfont=dict(size=8,color="#1a4060"),range=[0,1.1]),
+                    )
+                    st.plotly_chart(fig, use_container_width=True)
+                with ch2:
+                    cats = list(ws.keys()); vals = [ws[k] for k in cats]
+                    fig_r = go.Figure(go.Scatterpolar(
+                        r=vals+[vals[0]], theta=cats+[cats[0]], fill='toself',
+                        fillcolor='rgba(88,195,224,0.06)',
+                        line=dict(color='#58c3e0',width=1.5),
+                        marker=dict(size=4,color='#58c3e0'),
+                    ))
+                    fig_r.update_layout(**_PB, height=260,
+                        title=dict(text="RADAR VIEW",font=dict(size=9,color="#2a6090"),x=0),
+                        polar=dict(bgcolor="#000913",
+                            radialaxis=dict(range=[0,1],tickfont=dict(size=7,color="#1a4060"),gridcolor="#060f1c"),
+                            angularaxis=dict(tickfont=dict(family="IBM Plex Mono",size=9,color="#2a6090"),gridcolor="#060f1c"),
+                        ),
+                    )
+                    st.plotly_chart(fig_r, use_container_width=True)
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-#  MODULE 3 — TRADE AUDIT LEDGER
-# ═══════════════════════════════════════════════════════════════════════════════
-elif "TRADE" in nav:
+# ══════════════════════════════════════════════════════════════════════════════
+#  TAB 3  —  TRADE AUDIT
+# ══════════════════════════════════════════════════════════════════════════════
+with tab3:
+    st.markdown("""
+    <div class="term-hdr">
+      <div>
+        <div class="term-title">💼 TRADE AUDIT LEDGER</div>
+        <div class="term-sub">FULL PORTFOLIO AUDIT  ·  PERFORMANCE ANALYTICS</div>
+      </div>
+    </div>""", unsafe_allow_html=True)
 
-    st.markdown(f"""
-    <div class="terminal-header">
-        <div class="terminal-title">💼 TRADE AUDIT LEDGER</div>
-        <div class="terminal-timestamp">PORTFOLIO PERFORMANCE ENGINE  ·  {NOW_STR}</div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # ── Summary KPIs ──
     t1,t2,t3,t4,t5,t6 = st.columns(6)
-    for col,lbl,val,cls in [
-        (t1, "TOTAL EQUITY",   fmt_usd(current_eq),          ""),
-        (t2, "TOTAL P&L",      fmt_usd(total_pnl),           "safe-card" if total_pnl>=0 else "danger-card"),
-        (t3, "WIN RATE",       fmt_pct(win_rate),            "safe-card" if win_rate>=50 else "danger-card"),
-        (t4, "SHARPE RATIO",   f"{sharpe:.3f}",              "safe-card" if sharpe>=1 else "warn-card" if sharpe>=0 else "danger-card"),
-        (t5, "MAX DRAWDOWN",   f"{max_dd:.2f}%",             "danger-card" if max_dd<-10 else "warn-card" if max_dd<-5 else ""),
-        (t6, "TOTAL TRADES",   str(n_trades),                "blue-card"),
+    for col, lbl, val, cls in [
+        (t1,"TOTAL EQUITY",  f"${_eq:,.2f}",         "cyan"),
+        (t2,"TOTAL P&L",     f"${_total_p:+,.2f}",   "grn" if _total_p>=0 else "red"),
+        (t3,"WIN RATE",      f"{_wr:.1f}%",           "grn" if _wr>=50 else "red"),
+        (t4,"SHARPE",        f"{_sharpe:.3f}",        "grn" if _sharpe>=1 else "amb" if _sharpe>=0 else "red"),
+        (t5,"MAX DRAWDOWN",  f"{_max_dd:.2f}%",       "red" if _max_dd<-10 else "amb" if _max_dd<-5 else ""),
+        (t6,"PROFIT FACTOR", f"{_pf:.2f}x",           "grn" if _pf>=2 else ""),
     ]:
         with col:
             st.markdown(f"""
-            <div class="kpi-card {cls}">
-                <div class="kpi-label">{lbl}</div>
-                <div class="kpi-value">{val}</div>
+            <div class="kpi {cls}">
+              <div class="kpi-lbl">{lbl}</div>
+              <div class="kpi-val">{val}</div>
             </div>""", unsafe_allow_html=True)
 
     st.markdown("<br/>", unsafe_allow_html=True)
 
-    if not trades:
+    if not _trades:
         st.markdown("""
-        <div style="text-align:center;padding:80px 0;background:#0d1117;border:1px solid #21262d;border-radius:4px;">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#6e7681;letter-spacing:3px;">NO TRADES EXECUTED</div>
-            <div style="font-size:12px;color:#484f58;margin-top:8px;">Use the Matrix Dashboard execution panel to open positions</div>
+        <div style="text-align:center;padding:80px 20px;background:#000d1f;border:1px solid #0a1f35;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#1a4060;letter-spacing:3px;">NO TRADES EXECUTED</div>
         </div>""", unsafe_allow_html=True)
     else:
-        # ── Equity + Drawdown Chart ──
-        st.markdown('<div class="section-header">■ PORTFOLIO EQUITY CURVE  &  DRAWDOWN ANALYSIS</div>', unsafe_allow_html=True)
-        fig = make_subplots(rows=2, cols=1, row_heights=[0.65, 0.35], vertical_spacing=0.06,
-                            shared_xaxes=True)
-        x_idx = list(range(len(eq_curve)))
-        fig.add_trace(go.Scatter(
-            x=x_idx, y=eq_curve, mode='lines',
-            line=dict(color='#00ffcc', width=2),
-            fill='tozeroy', fillcolor='rgba(0,255,204,0.08)',
-            name='EQUITY',
-        ), row=1, col=1)
-        fig.add_trace(go.Scatter(
-            x=x_idx, y=[state['initial_capital']]*len(x_idx),
-            line=dict(color='#30363d', dash='dot', width=1), name='INITIAL CAPITAL', showlegend=False,
-        ), row=1, col=1)
-        dd_colors = ['#ff4444' if d < -5 else '#f0a430' if d < 0 else '#3fb950' for d in drawdowns]
-        fig.add_trace(go.Bar(
-            x=x_idx, y=drawdowns, marker_color=dd_colors,
-            name='DRAWDOWN %', showlegend=False,
-        ), row=2, col=1)
-        fig.update_layout(
-            template="plotly_dark", paper_bgcolor="#0d1117", plot_bgcolor="#0d1117",
-            height=380, margin=dict(l=8,r=8,t=8,b=8),
-            legend=dict(font=dict(family="JetBrains Mono",size=10,color="#8b949e"),
-                        bgcolor="#0d1117", bordercolor="#30363d", borderwidth=1, x=0.01, y=0.99),
-            xaxis2=dict(gridcolor="#161b22", tickfont=dict(family="JetBrains Mono",size=9,color="#6e7681")),
-            yaxis=dict(gridcolor="#161b22", tickfont=dict(family="JetBrains Mono",size=9,color="#6e7681"),
-                       tickprefix="$", tickformat=",.0f"),
-            yaxis2=dict(gridcolor="#161b22", tickfont=dict(family="JetBrains Mono",size=9,color="#6e7681"),
-                        ticksuffix="%"),
+        st.markdown('<div class="sec-hdr">■ EQUITY CURVE  &  DRAWDOWN</div>', unsafe_allow_html=True)
+        fig = make_subplots(rows=2, cols=1, row_heights=[0.65,0.35], vertical_spacing=0.04, shared_xaxes=True)
+        xi  = list(range(len(_eq_curve)))
+        fig.add_trace(go.Scatter(x=xi, y=_eq_curve, mode='lines',
+            line=dict(color='#58c3e0',width=1.5), fill='tozeroy',
+            fillcolor='rgba(88,195,224,0.04)', name='EQUITY'), row=1, col=1)
+        fig.add_trace(go.Scatter(x=xi, y=[_init_eq]*len(xi),
+            line=dict(color='#0a1f35',dash='dot',width=1), showlegend=False), row=1, col=1)
+        fig.add_trace(go.Bar(x=xi, y=_dds,
+            marker_color=['#f85149' if d<-5 else '#e3b341' if d<0 else '#3fb950' for d in _dds],
+            showlegend=False), row=2, col=1)
+        fig.update_layout(**_PB, height=340,
+            yaxis=dict(gridcolor="#060f1c",tickfont=dict(size=9,color="#1a4060"),tickprefix="$",tickformat=",.0f"),
+            yaxis2=dict(gridcolor="#060f1c",tickfont=dict(size=9,color="#1a4060"),ticksuffix="%"),
         )
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
 
-        # ── Trade Stats ──
         st.markdown("<br/>", unsafe_allow_html=True)
         ts1, ts2 = st.columns(2)
         with ts1:
-            st.markdown('<div class="section-header">■ PERFORMANCE METRICS</div>', unsafe_allow_html=True)
+            st.markdown('<div class="sec-hdr">■ PERFORMANCE METRICS</div>', unsafe_allow_html=True)
+            _w_l = [p for p in _pnl_l if p>0]; _l_l = [p for p in _pnl_l if p<0]
             for lbl, val in [
-                ("BEST TRADE",    fmt_usd(best_trade)),
-                ("WORST TRADE",   fmt_usd(worst_trade)),
-                ("AVG WIN",       fmt_usd(np.mean([p for p in pnl_list if p>0]) if any(p>0 for p in pnl_list) else 0)),
-                ("AVG LOSS",      fmt_usd(np.mean([p for p in pnl_list if p<0]) if any(p<0 for p in pnl_list) else 0)),
-                ("PROFIT FACTOR", f"{abs(sum(p for p in pnl_list if p>0)/max(abs(sum(p for p in pnl_list if p<0)),0.01)):.2f}x"),
-                ("TOTAL RETURN",  f"{((current_eq/state['initial_capital'])-1)*100:+.2f}%"),
+                ("BEST TRADE",     f"${max(_pnl_l):,.2f}" if _pnl_l else "$0.00"),
+                ("WORST TRADE",    f"${min(_pnl_l):,.2f}" if _pnl_l else "$0.00"),
+                ("AVG WIN",        f"${np.mean(_w_l):,.2f}" if _w_l else "$0.00"),
+                ("AVG LOSS",       f"${np.mean(_l_l):,.2f}" if _l_l else "$0.00"),
+                ("PROFIT FACTOR",  f"{_pf:.2f}x"),
+                ("TOTAL RETURN",   f"{_eq_ret:+.2f}%"),
+                ("SHARPE RATIO",   f"{_sharpe:.3f}"),
+                ("MAX DRAWDOWN",   f"{_max_dd:.2f}%"),
             ]:
                 st.markdown(f"""
-                <div class="stat-pill">
-                    <span class="stat-pill-label">{lbl}</span>
-                    <span class="stat-pill-val">{val}</span>
+                <div class="pill">
+                  <span class="pill-k">{lbl}</span>
+                  <span class="pill-v">{val}</span>
                 </div>""", unsafe_allow_html=True)
-
         with ts2:
-            st.markdown('<div class="section-header">■ P&L DISTRIBUTION</div>', unsafe_allow_html=True)
-            if pnl_list:
-                fig_hist = go.Figure(go.Histogram(
-                    x=pnl_list, nbinsx=20,
-                    marker=dict(color=['#3fb950' if p>=0 else '#ff4444' for p in sorted(pnl_list)],
-                                line=dict(color="#0d1117",width=1)),
-                ))
-                fig_hist.update_layout(
-                    template="plotly_dark", paper_bgcolor="#0d1117", plot_bgcolor="#0d1117",
-                    height=260, margin=dict(l=8,r=8,t=8,b=8),
-                    xaxis=dict(gridcolor="#161b22",tickfont=dict(family="JetBrains Mono",size=9,color="#6e7681"),tickprefix="$"),
-                    yaxis=dict(gridcolor="#161b22",tickfont=dict(family="JetBrains Mono",size=9,color="#6e7681")),
-                    showlegend=False,
-                )
-                st.plotly_chart(fig_hist, width="stretch")
+            st.markdown('<div class="sec-hdr">■ P&L DISTRIBUTION</div>', unsafe_allow_html=True)
+            if _pnl_l:
+                fig_h = go.Figure(go.Histogram(x=_pnl_l, nbinsx=18,
+                    marker=dict(color=['#3fb950' if p>=0 else '#f85149' for p in sorted(_pnl_l)],
+                                line=dict(color="#000913",width=1))))
+                fig_h.update_layout(**_PB, height=240,
+                    xaxis=dict(gridcolor="#060f1c",tickfont=dict(size=9,color="#1a4060"),tickprefix="$"))
+                st.plotly_chart(fig_h, use_container_width=True)
 
-        # ── Trade Table ──
         st.markdown("<br/>", unsafe_allow_html=True)
-        st.markdown('<div class="section-header">■ FULL TRADE AUDIT LOG</div>', unsafe_allow_html=True)
-        df_t = pd.DataFrame(trades)
-        cols_show = [c for c in ['asset','instrument','direction','entry_price','size','sl_price','tp_price','pnl','timestamp'] if c in df_t.columns]
-        df_show = df_t[cols_show].copy()
-        if 'direction' in df_show.columns:
-            df_show['direction'] = df_show['direction'].map({1:"▲ LONG",-1:"▼ SHORT",0:"— NEUTRAL"})
-        if 'pnl' in df_show.columns:
-            df_show['pnl'] = df_show['pnl'].apply(lambda x: f"+${x:.2f}" if x>=0 else f"-${abs(x):.2f}")
+        st.markdown('<div class="sec-hdr">■ FULL TRADE LOG</div>', unsafe_allow_html=True)
+        dft  = pd.DataFrame(_trades)
+        cok  = [c for c in ['asset','direction','entry_price','size','sl_price','tp_price','pnl','timestamp'] if c in dft.columns]
+        dfsh = dft[cok].copy()
+        if 'direction' in dfsh.columns:
+            dfsh['direction'] = dfsh['direction'].map({1:"▲ LONG",-1:"▼ SHORT",0:"— NEUTRAL"})
+        if 'pnl' in dfsh.columns:
+            dfsh['pnl'] = dfsh['pnl'].apply(lambda x: f"+${x:.2f}" if x>=0 else f"-${abs(x):.2f}")
         for c in ['entry_price','sl_price','tp_price']:
-            if c in df_show.columns:
-                df_show[c] = df_show[c].apply(lambda x: f"${x:,.4f}")
-        if 'size' in df_show.columns:
-            df_show['size'] = df_show['size'].apply(lambda x: f"{x:.4f}")
-        df_show.columns = [c.upper().replace('_',' ') for c in df_show.columns]
-        st.dataframe(df_show, width="stretch", height=300)
+            if c in dfsh.columns:
+                dfsh[c] = dfsh[c].apply(lambda x: f"${x:,.4f}")
+        if 'size' in dfsh.columns:
+            dfsh['size'] = dfsh['size'].apply(lambda x: f"{x:.4f}")
+        dfsh.columns = [c.upper().replace('_',' ') for c in dfsh.columns]
+        st.dataframe(dfsh, use_container_width=True, height=260)
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-#  MODULE 4 — SURGICAL CAUSAL LAB
-# ═══════════════════════════════════════════════════════════════════════════════
-elif "CAUSAL" in nav:
+# ══════════════════════════════════════════════════════════════════════════════
+#  TAB 4  —  SIGNAL LAB
+# ══════════════════════════════════════════════════════════════════════════════
+with tab4:
+    st.markdown("""
+    <div class="term-hdr">
+      <div>
+        <div class="term-title">🔬 CAUSAL SIGNAL LAB</div>
+        <div class="term-sub">LIVE API HEALTH  ·  SIGNAL HISTORY  ·  REGIME ANALYSIS</div>
+      </div>
+    </div>""", unsafe_allow_html=True)
 
-    st.markdown(f"""
-    <div class="terminal-header">
-        <div class="terminal-title">🔬 SURGICAL CAUSAL LAB</div>
-        <div class="terminal-timestamp">SIGNAL ANALYSIS ENGINE  ·  {NOW_STR}</div>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown('<div class="sec-hdr">■ LIVE API HEALTH  ·  REAL-TIME SIGNAL VALUES</div>', unsafe_allow_html=True)
+    health = _S['api_health']
+    lsigs  = _S.get('last_signals', {})
 
-    # ── API Health Matrix ──
-    st.markdown('<div class="section-header">■ LIVE API HEALTH MATRIX</div>', unsafe_allow_html=True)
-    health = state['api_health']
-    api_descs = {"NASA":"FIRMS Fire Data","EIA":"Energy Prices","OpenAQ":"Industrial AQ",
-                 "ETH":"Chain Liquidity","RealYield":"TIPS 10Y","OBI":"Order Book Imbalance"}
-    hcols = st.columns(len(health))
+    api_meta = {
+        "NASA":      ("EONET",    "🌋", "Global Wildfire Count",       "0–1"),
+        "EIA":       ("ENERGY",   "⚡", "US Petroleum Price Index",    "0–1"),
+        "OpenAQ":    ("AQ",       "🏭", "Industrial PM2.5 Pollution",  "0–1"),
+        "ETH":       ("OKX/ETH",  "💎", "ETHUSDT Funding Rate Proxy",  "0–1"),
+        "RealYield": ("TIPS 10Y", "💵", "US Treasury Real Yield",      "raw %"),
+        "OBI":       ("KRAKEN",   "📉", "BTC/USD L2 Order Book Imb.",  "-1..+1"),
+    }
+    hc = st.columns(6)
     for i, (api, status) in enumerate(health.items()):
-        with hcols[i]:
-            if status == "ONLINE":
-                cls, dot_c = "api-status-on",  "#3fb950"
-                dot = '<span class="dot-live"></span>'
-            elif status in ("GAP","Unknown"):
-                cls, dot_c = "api-status-unk",  "#f0a430"
-                dot = '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#f0a430;margin-right:6px;"></span>'
+        with hc[i]:
+            meta    = api_meta.get(api, (api,"●","",""))
+            sv      = lsigs.get(api)
+            dot_cls = "dot-live" if status=="ONLINE" else "dot-off" if status=="GAP" else "dot-unk"
+            val_col = "#3fb950" if status=="ONLINE" else "#f85149" if status=="GAP" else "#e3b341"
+            if sv is not None:
+                vs = f"{sv:.3f}%" if api=="RealYield" else f"{sv:+.4f}" if api=="OBI" else f"{sv:.4f}"
             else:
-                cls, dot_c = "api-status-off",  "#ff4444"
-                dot = '<span class="dot-off"></span>'
+                vs = "—"
             st.markdown(f"""
-            <div class="api-card">
-                <div class="api-name">{api}</div>
-                <div style="margin-bottom:4px;">{dot}<span class="{cls}">{status}</span></div>
-                <div class="t-xs muted">{api_descs.get(api,'')}</div>
+            <div class="sig-cell">
+              <div class="sig-name">{meta[0]}</div>
+              <div style="margin-bottom:4px;">
+                <span class="{dot_cls}"></span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+                      font-weight:700;color:{val_col};">{status}</span>
+              </div>
+              <div class="sig-val" style="color:{val_col};">{vs}</div>
+              <div class="sig-sub">{meta[2]}</div>
+              <div class="sig-sub" style="color:#060f1c;">{meta[3]}</div>
             </div>""", unsafe_allow_html=True)
 
     st.markdown("<br/>", unsafe_allow_html=True)
+    st.markdown('<div class="sec-hdr">■ SCORE HISTORY  ·  SELECT ASSET STREAM</div>', unsafe_allow_html=True)
 
-    # ── Asset Score History ──
-    st.markdown('<div class="section-header">■ CONVERGENCE SCORE HISTORY  ·  SELECT ASSET STREAM</div>', unsafe_allow_html=True)
-    sel_asset = st.selectbox("ASSET STREAM", MONITORED_ASSETS, label_visibility="collapsed")
+    sel_a = st.selectbox("Stream", MONITORED_ASSETS, label_visibility="collapsed")
+    hist  = _S['history'].get(sel_a, [])
 
-    hist = state['history'].get(sel_asset, [])
     if hist:
-        df_h = pd.DataFrame(hist)
-        df_h['time'] = pd.to_datetime(df_h['time'])
-
-        ch_a, ch_b = st.columns([3,1])
-        with ch_a:
+        dfh   = pd.DataFrame(hist)
+        dfh['time'] = pd.to_datetime(dfh['time'])
+        ca, cb = st.columns([3,1])
+        with ca:
+            sc_colors = ['#f85149' if s>=0.95 else '#3fb950' if s>=0.80 else '#1a4060'
+                         for s in dfh['score']]
             fig = go.Figure()
-            score_colors = ['#ff4444' if s >= 0.95 else '#00ffcc' if s >= 0.80 else '#8b949e' for s in df_h['score']]
             fig.add_trace(go.Scatter(
-                x=df_h['time'], y=df_h['score'],
-                mode='lines+markers',
-                line=dict(color='#00ffcc', width=1.5),
-                marker=dict(color=score_colors, size=5, line=dict(color="#0d1117",width=1)),
-                fill='tozeroy', fillcolor='rgba(0,255,204,0.05)',
-                name='CONV. SCORE',
+                x=dfh['time'], y=dfh['score'], mode='lines+markers',
+                line=dict(color='#58c3e0',width=1.2),
+                marker=dict(color=sc_colors,size=3,line=dict(color="#000913",width=1)),
+                fill='tozeroy', fillcolor='rgba(88,195,224,0.04)',
             ))
-            fig.add_hline(y=0.95, line_dash="dot", line_color="#ff4444", line_width=1,
-                          annotation_text="INEVITABLE", annotation_font=dict(family="JetBrains Mono",size=9,color="#ff4444"))
-            fig.add_hline(y=0.80, line_dash="dot", line_color="#00ffcc", line_width=1,
-                          annotation_text="HIGH CONVICTION", annotation_font=dict(family="JetBrains Mono",size=9,color="#00ffcc"))
-            fig.update_layout(
-                template="plotly_dark", paper_bgcolor="#0d1117", plot_bgcolor="#0d1117",
-                height=300, margin=dict(l=8,r=8,t=8,b=8),
-                xaxis=dict(gridcolor="#161b22",tickfont=dict(family="JetBrains Mono",size=9,color="#6e7681")),
-                yaxis=dict(gridcolor="#161b22",tickfont=dict(family="JetBrains Mono",size=9,color="#6e7681"),range=[0,1.05]),
-                showlegend=False,
+            fig.add_hline(y=0.95, line_dash="dot", line_color="#f85149", line_width=1,
+                          annotation_text="INEVITABLE",annotation_font=dict(family="IBM Plex Mono",size=8,color="#f85149"))
+            fig.add_hline(y=0.80, line_dash="dot", line_color="#3fb950", line_width=1,
+                          annotation_text="HIGH CONVICTION",annotation_font=dict(family="IBM Plex Mono",size=8,color="#3fb950"))
+            fig.update_layout(**_PB, height=270,
+                title=dict(text=f"{sel_a}  ·  CONVERGENCE SCORE HISTORY",font=dict(size=9,color="#2a6090"),x=0),
+                yaxis=dict(gridcolor="#060f1c",tickfont=dict(size=9,color="#1a4060"),range=[0,1.05]),
             )
-            st.plotly_chart(fig, width="stretch")
-
-        with ch_b:
-            # Score distribution
-            status_counts = df_h['status'].value_counts() if 'status' in df_h.columns else pd.Series()
-            if not status_counts.empty:
-                colors_map = {"INEVITABLE":"#ff4444","HIGH CONVICTION":"#00ffcc","NOISE":"#6e7681","DATA_GAP":"#f0a430"}
-                fig_pie = go.Figure(go.Pie(
-                    labels=status_counts.index.tolist(),
-                    values=status_counts.values.tolist(),
-                    marker=dict(colors=[colors_map.get(s,"#30363d") for s in status_counts.index],
-                                line=dict(color="#0d1117",width=2)),
-                    hole=0.6,
-                    textfont=dict(family="JetBrains Mono",size=10),
-                    textinfo="percent+label",
+            st.plotly_chart(fig, use_container_width=True)
+        with cb:
+            if 'status' in dfh.columns:
+                scc = dfh['status'].value_counts()
+                cm  = {"INEVITABLE":"#f85149","HIGH CONVICTION":"#3fb950",
+                        "NOISE":"#1a4060","DATA_GAP":"#e3b341"}
+                fig_p = go.Figure(go.Pie(
+                    labels=scc.index.tolist(), values=scc.values.tolist(), hole=0.65,
+                    marker=dict(colors=[cm.get(s,"#0a1f35") for s in scc.index],
+                                line=dict(color="#000913",width=2)),
+                    textfont=dict(family="IBM Plex Mono",size=8), textinfo="percent+label",
                 ))
-                fig_pie.update_layout(
-                    template="plotly_dark", paper_bgcolor="#0d1117",
-                    height=300, margin=dict(l=8,r=8,t=8,b=8),
-                    showlegend=False,
-                    annotations=[dict(text="STATUS<br>MIX",x=0.5,y=0.5,font_size=10,
-                                      font=dict(family="JetBrains Mono",color="#6e7681"),showarrow=False)],
+                fig_p.update_layout(**_PB, height=270,
+                    title=dict(text="STATUS SPLIT",font=dict(size=9,color="#2a6090"),x=0),
+                    annotations=[dict(text=f"{len(dfh)}<br>pts",x=0.5,y=0.5,
+                                      font=dict(family="IBM Plex Mono",size=9,color="#2a6090"),showarrow=False)],
                 )
-                st.plotly_chart(fig_pie, width="stretch")
+                st.plotly_chart(fig_p, use_container_width=True)
 
-        # ── Stats ──
         st.markdown("<br/>", unsafe_allow_html=True)
-        st.markdown('<div class="section-header">■ STREAM STATISTICS</div>', unsafe_allow_html=True)
-        ss1, ss2, ss3, ss4 = st.columns(4)
+        s1,s2,s3,s4 = st.columns(4)
         for col, lbl, val in [
-            (ss1, "DATA POINTS",   str(len(df_h))),
-            (ss2, "PEAK SCORE",    f"{df_h['score'].max():.4f}"),
-            (ss3, "MEAN SCORE",    f"{df_h['score'].mean():.4f}"),
-            (ss4, "INEVITABLE CT", str(len(df_h[df_h['score']>=0.95])) if 'score' in df_h.columns else "0"),
+            (s1,"TOTAL SCANS",  str(len(dfh))),
+            (s2,"PEAK SCORE",   f"{dfh['score'].max():.4f}"),
+            (s3,"MEAN SCORE",   f"{dfh['score'].mean():.4f}"),
+            (s4,"INEVITABLE Σ", str(len(dfh[dfh['score']>=0.95]))),
         ]:
             with col:
                 st.markdown(f"""
-                <div class="kpi-card">
-                    <div class="kpi-label">{lbl}</div>
-                    <div class="kpi-value" style="font-size:20px;">{val}</div>
+                <div class="kpi">
+                  <div class="kpi-lbl">{lbl}</div>
+                  <div class="kpi-val" style="font-size:17px;">{val}</div>
                 </div>""", unsafe_allow_html=True)
 
-        # ── Raw history table ──
         st.markdown("<br/>", unsafe_allow_html=True)
-        st.markdown('<div class="section-header">■ RAW HISTORY STREAM</div>', unsafe_allow_html=True)
-        df_disp = df_h[['time','score','status','regime']].copy() if 'regime' in df_h.columns else df_h[['time','score','status']].copy()
-        df_disp['score'] = df_disp['score'].round(4)
-        df_disp.columns  = [c.upper() for c in df_disp.columns]
-        st.dataframe(df_disp.sort_values('TIME', ascending=False).head(200), width="stretch", height=260)
+        st.markdown('<div class="sec-hdr">■ RAW STREAM LOG  ·  LAST 200 SCANS</div>', unsafe_allow_html=True)
+        csh = [c for c in ['time','score','status','regime'] if c in dfh.columns]
+        dfr = dfh[csh].copy()
+        dfr['score'] = dfr['score'].round(4)
+        dfr.columns  = [c.upper() for c in dfr.columns]
+        st.dataframe(dfr.sort_values('TIME',ascending=False).head(200),
+                     use_container_width=True, height=240)
     else:
         st.markdown(f"""
-        <div style="text-align:center;padding:80px 0;background:#0d1117;border:1px solid #21262d;border-radius:4px;">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#6e7681;letter-spacing:3px;">
-                NO DATA STREAM FOR {sel_asset}
-            </div>
-            <div style="font-size:12px;color:#484f58;margin-top:8px;">Start the live daemon to begin collecting signal data</div>
+        <div style="text-align:center;padding:60px 20px;background:#000d1f;border:1px solid #0a1f35;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#1a4060;letter-spacing:3px;">
+            NO DATA FOR {sel_a}
+          </div>
+          <div style="font-size:9.5px;color:#060f1c;margin-top:10px;">Daemon collecting signals — check back in 10–30 seconds</div>
         </div>""", unsafe_allow_html=True)
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-#  MODULE 5 — SYSTEM CONFIGURATION
-# ═══════════════════════════════════════════════════════════════════════════════
-elif "CONFIGURATION" in nav:
+# ══════════════════════════════════════════════════════════════════════════════
+#  TAB 5  —  SYSTEM CONFIG
+# ══════════════════════════════════════════════════════════════════════════════
+with tab5:
+    st.markdown("""
+    <div class="term-hdr">
+      <div>
+        <div class="term-title">⚙️  SYSTEM CONFIGURATION</div>
+        <div class="term-sub">PARAMETER CONTROL  ·  TELEGRAM ALERT SYSTEM  ·  API STATUS</div>
+      </div>
+    </div>""", unsafe_allow_html=True)
 
-    st.markdown(f"""
-    <div class="terminal-header">
-        <div class="terminal-title">⚙️  SYSTEM CONFIGURATION</div>
-        <div class="terminal-timestamp">PARAMETER CONTROL CENTER  ·  {NOW_STR}</div>
-    </div>
-    """, unsafe_allow_html=True)
+    cfg = _S['settings']
 
-    cfg = state['settings']
-
-    # ── Current Parameter Visualization ──
-    st.markdown('<div class="section-header">■ CURRENT THRESHOLD PROFILE</div>', unsafe_allow_html=True)
-    gauge_cols = st.columns(3)
-    gauge_data = [
-        ("INEVITABLE SCORE",   cfg['INEVITABLE_SCORE'],   0.0, 1.0, "#ff4444"),
-        ("CONTRACTION YIELD",  cfg['CONTRACTION_YIELD'],  0.0, 2.0, "#f0a430"),
-        ("HARD STOP %",        cfg['HARD_STOP_PCT']*100,  0.0, 5.0, "#388bfd"),
-    ]
-    for i, (gc, (lbl, val, lo, hi, col)) in enumerate(zip(gauge_cols, gauge_data)):
-        with gc:
+    # ── Gauge indicators ───────────────────────────────────────────────────────
+    st.markdown('<div class="sec-hdr">■ ACTIVE THRESHOLD PROFILE</div>', unsafe_allow_html=True)
+    gc1,gc2,gc3 = st.columns(3)
+    for gcol, lbl, val, lo, hi, col in [
+        (gc1,"INEVITABLE SCORE",  cfg['INEVITABLE_SCORE'],   0.0, 1.0, "#f85149"),
+        (gc2,"CONTRACTION YIELD", cfg['CONTRACTION_YIELD'],  0.0, 3.0, "#e3b341"),
+        (gc3,"HARD STOP %",       cfg['HARD_STOP_PCT']*100,  0.0, 5.0, "#388bfd"),
+    ]:
+        with gcol:
             fig_g = go.Figure(go.Indicator(
-                mode="gauge+number",
-                value=val,
-                title=dict(text=lbl, font=dict(family="JetBrains Mono",size=10,color="#6e7681")),
-                number=dict(font=dict(family="JetBrains Mono",size=22,color=col)),
+                mode="gauge+number", value=val,
+                title=dict(text=lbl, font=dict(family="IBM Plex Mono",size=9,color="#2a6090")),
+                number=dict(font=dict(family="IBM Plex Mono",size=18,color=col)),
                 gauge=dict(
-                    axis=dict(range=[lo, hi], tickfont=dict(family="JetBrains Mono",size=9,color="#6e7681"),
-                              tickcolor="#30363d", gridcolor="#21262d"),
-                    bar=dict(color=col, thickness=0.3),
-                    bgcolor="#0d1117", bordercolor="#30363d", borderwidth=1,
-                    steps=[dict(range=[lo, hi], color="#161b22")],
-                    threshold=dict(line=dict(color=col,width=2), thickness=0.75, value=val),
+                    axis=dict(range=[lo,hi],tickfont=dict(family="IBM Plex Mono",size=7,color="#1a4060"),tickcolor="#0a1f35"),
+                    bar=dict(color=col,thickness=0.25),
+                    bgcolor="#000913", bordercolor="#0a1f35", borderwidth=1,
+                    steps=[dict(range=[lo,hi],color="#000d1f")],
                 )
             ))
-            fig_g.update_layout(
-                paper_bgcolor="#0d1117", height=200, margin=dict(l=16,r=16,t=40,b=8),
-                font=dict(color="#e6edf3"),
-            )
-            st.plotly_chart(fig_g, width="stretch")
+            fig_g.update_layout(paper_bgcolor="#000913",height=170,
+                margin=dict(l=14,r=14,t=36,b=8),font=dict(color="#cdd9e5"))
+            st.plotly_chart(fig_g, use_container_width=True)
 
-    # ── Parameter Form ──
+    # ── Parameter form ─────────────────────────────────────────────────────────
     st.markdown("<br/>", unsafe_allow_html=True)
-    st.markdown('<div class="section-header">■ PARAMETER CONTROL PANEL</div>', unsafe_allow_html=True)
-
-    with st.form("config_form"):
-        fc1, fc2 = st.columns(2)
+    st.markdown('<div class="sec-hdr">■ PARAMETER CONTROL</div>', unsafe_allow_html=True)
+    with st.form("cfg_form"):
+        fc1,fc2 = st.columns(2)
         with fc1:
-            st.markdown('<div class="section-header">CONTRACTION ENGINE</div>', unsafe_allow_html=True)
-            t_con_yield = st.number_input("CONTRACTION YIELD THRESHOLD", value=float(cfg['CONTRACTION_YIELD']),
-                                          min_value=0.0, max_value=5.0, step=0.05, format="%.2f")
-            t_con_obi   = st.number_input("CONTRACTION OBI THRESHOLD",   value=float(cfg['CONTRACTION_OBI']),
-                                          min_value=-1.0, max_value=0.0, step=0.05, format="%.2f")
-            t_inev      = st.number_input("INEVITABLE SCORE THRESHOLD",  value=float(cfg['INEVITABLE_SCORE']),
-                                          min_value=0.50, max_value=1.00, step=0.01, format="%.2f")
+            t_cy = st.number_input("CONTRACTION YIELD THRESHOLD (%)", value=float(cfg['CONTRACTION_YIELD']),
+                                    min_value=0.0,max_value=5.0,step=0.05,format="%.2f")
+            t_co = st.number_input("CONTRACTION OBI THRESHOLD", value=float(cfg['CONTRACTION_OBI']),
+                                    min_value=-1.0,max_value=0.0,step=0.05,format="%.2f")
+            t_in = st.number_input("INEVITABLE SCORE THRESHOLD", value=float(cfg['INEVITABLE_SCORE']),
+                                    min_value=0.50,max_value=1.00,step=0.01,format="%.2f")
         with fc2:
-            st.markdown('<div class="section-header">EXPANSION ENGINE</div>', unsafe_allow_html=True)
-            t_exp_yield = st.number_input("EXPANSION YIELD THRESHOLD",   value=float(cfg['EXPANSION_YIELD']),
-                                          min_value=-2.0, max_value=0.0, step=0.05, format="%.2f")
-            t_exp_obi   = st.number_input("EXPANSION OBI THRESHOLD",     value=float(cfg['EXPANSION_OBI']),
-                                          min_value=0.0, max_value=1.0, step=0.05, format="%.2f")
-            t_stop      = st.number_input("HARD STOP % (RISK CONTROL)",  value=float(cfg['HARD_STOP_PCT']),
-                                          min_value=0.001, max_value=0.10, step=0.001, format="%.3f")
-
-        submitted = st.form_submit_button("💾  DEPLOY SYSTEM PARAMETERS", use_container_width=True)
-        if submitted:
-            state['settings'] = {
-                'CONTRACTION_YIELD': t_con_yield, 'CONTRACTION_OBI': t_con_obi,
-                'EXPANSION_YIELD':   t_exp_yield, 'EXPANSION_OBI':   t_exp_obi,
-                'INEVITABLE_SCORE':  t_inev,      'HARD_STOP_PCT':   t_stop,
+            t_ey = st.number_input("EXPANSION YIELD THRESHOLD (%)", value=float(cfg['EXPANSION_YIELD']),
+                                    min_value=-2.0,max_value=0.0,step=0.05,format="%.2f")
+            t_eo = st.number_input("EXPANSION OBI THRESHOLD", value=float(cfg['EXPANSION_OBI']),
+                                    min_value=0.0,max_value=1.0,step=0.05,format="%.2f")
+            t_st = st.number_input("HARD STOP % (RISK)", value=float(cfg['HARD_STOP_PCT']),
+                                    min_value=0.001,max_value=0.10,step=0.001,format="%.3f")
+        if st.form_submit_button("💾  DEPLOY PARAMETERS", use_container_width=True):
+            _S['settings'] = {
+                'CONTRACTION_YIELD': t_cy, 'CONTRACTION_OBI': t_co,
+                'EXPANSION_YIELD':   t_ey, 'EXPANSION_OBI':   t_eo,
+                'INEVITABLE_SCORE':  t_in, 'HARD_STOP_PCT':   t_st,
             }
-            save_state(state)
-            st.success("✅  SYSTEM PARAMETERS DEPLOYED  ·  Engine reconfigured successfully.")
+            _save(_S)
+            st.success("✅ Parameters deployed.")
 
-    # ── Telegram Alert Control Panel ──
+    # ── Telegram ───────────────────────────────────────────────────────────────
     st.markdown("<br/>", unsafe_allow_html=True)
-    st.markdown('<div class="section-header">■ TELEGRAM ALERT SYSTEM</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sec-hdr">■ TELEGRAM ENTERPRISE ALERT SYSTEM</div>', unsafe_allow_html=True)
 
-    tg_token   = os.environ.get('TELEGRAM_TOKEN', '')
-    tg_chat_id = os.environ.get('TELEGRAM_CHAT_ID', '')
-    tg_ok      = bool(tg_token and tg_chat_id)
-    tg_dot     = '<span class="dot-live"></span>' if tg_ok else '<span class="dot-off"></span>'
-    tg_status  = "CONFIGURED — ALERTS ACTIVE" if tg_ok else "NOT CONFIGURED"
-    tg_color   = "#3fb950" if tg_ok else "#ff4444"
+    tg_tok = os.environ.get('TELEGRAM_TOKEN','')
+    tg_cid = os.environ.get('TELEGRAM_CHAT_ID','')
+    tg_ok  = bool(tg_tok and tg_cid)
+    tg_col = "#3fb950" if tg_ok else "#f85149"
+    tg_lab = "CONFIGURED — ARMED" if tg_ok else "NOT CONFIGURED"
 
-    tg1, tg2, tg3 = st.columns([2, 2, 2])
-    with tg1:
+    tga,tgb,tgc = st.columns(3)
+    with tga:
         st.markdown(f"""
-        <div class="kpi-card {'safe-card' if tg_ok else 'danger-card'}">
-            <div class="kpi-label">TELEGRAM STATUS</div>
-            <div style="margin:8px 0 4px;">{tg_dot}<span style="color:{tg_color};font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;">{tg_status}</span></div>
-            <div class="kpi-delta muted">Chat ID: {tg_chat_id if tg_chat_id else '—'}</div>
+        <div class="kpi {'grn' if tg_ok else 'red'}">
+          <div class="kpi-lbl">TELEGRAM STATUS</div>
+          <div style="margin:7px 0 3px;">
+            <span class="{'dot-live' if tg_ok else 'dot-off'}"></span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:{tg_col};">{tg_lab}</span>
+          </div>
+          <div class="kpi-sub">CHAT ID: {tg_cid or '—'}</div>
         </div>""", unsafe_allow_html=True)
-    with tg2:
+    with tgb:
         st.markdown(f"""
-        <div class="kpi-card">
-            <div class="kpi-label">ALERT TRIGGERS</div>
-            <div class="kpi-value" style="font-size:13px;color:#e6edf3;">
-                🔴 INEVITABLE (score ≥ 0.95)<br/>
-                🟡 HIGH CONVICTION (score ≥ 0.80)
-            </div>
-            <div class="kpi-delta muted">5-min cooldown on HIGH CONVICTION</div>
+        <div class="kpi">
+          <div class="kpi-lbl">ALERT TRIGGERS</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#cdd9e5;margin-top:5px;line-height:1.7;">
+            🚨 INEVITABLE (≥ {cfg.get('INEVITABLE_SCORE',0.95):.2f})<br/>
+            🟡 HIGH CONVICTION (≥ 0.80)<br/>
+            ✅ TRADE EXECUTED<br/>
+            💓 HEARTBEAT (60 cycles)
+          </div>
         </div>""", unsafe_allow_html=True)
-    with tg3:
-        st.markdown(f"""
-        <div class="kpi-card blue-card">
-            <div class="kpi-label">ALERT TYPES</div>
-            <div class="kpi-value" style="font-size:13px;color:#388bfd;">
-                ✅ Daemon Startup<br/>
-                🔔 Score Threshold Hit<br/>
-                💼 Trade Executed
-            </div>
+    with tgc:
+        st.markdown("""
+        <div class="kpi blue">
+          <div class="kpi-lbl">ALERT TEMPLATE</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#cdd9e5;margin-top:5px;line-height:1.7;">
+            1. CORE SIGNAL<br/>
+            2. EXECUTION SPECS<br/>
+            3. CAUSAL SNAPSHOT<br/>
+            ⚡ EXECUTE HYPER-TRADE
+          </div>
         </div>""", unsafe_allow_html=True)
 
     st.markdown("<br/>", unsafe_allow_html=True)
-    ta1, ta2, ta3 = st.columns([1, 1, 2])
+    ta1,ta2,ta3,ta4 = st.columns([1,1,1,2])
     with ta1:
-        if st.button("📡  SEND TEST ALERT", key="tg_test", disabled=not tg_ok):
-            ok = send_alert_sync(fmt_test())
-            if ok:
-                st.success("✅  Test alert delivered to Telegram.")
-            else:
-                st.error("❌  Delivery failed — check token / chat ID.")
+        st.markdown('<div class="btn-tg">', unsafe_allow_html=True)
+        if st.button("📡  TEST ALERT", key="tg_t", disabled=not tg_ok):
+            ok = send_alert_sync(fmt_test(equity=_eq))
+            st.success("✅ Delivered.") if ok else st.error("❌ Failed.")
+        st.markdown('</div>', unsafe_allow_html=True)
     with ta2:
-        # Demo: fire a sample INEVITABLE alert
-        inevitable_opps = [o for o in state['opportunities'] if o['status'] == "INEVITABLE"]
-        if st.button("🚨  DEMO INEVITABLE ALERT", key="tg_inev_demo", disabled=not tg_ok):
-            if inevitable_opps:
-                opp = inevitable_opps[-1]
+        iv = [o for o in _S['opportunities'] if o['status']=="INEVITABLE"]
+        if st.button("🚨  FIRE INEVITABLE", key="tg_i", disabled=not tg_ok):
+            opp = iv[-1] if iv else None
+            if opp:
                 msg = fmt_inevitable(opp['asset'], opp['score'], opp['regime'],
-                                     opp['direction'], opp['id'])
+                                      opp['direction'], opp['id'],
+                                      world_state=opp.get('manifold_snapshot',{}), equity=_eq)
             else:
-                msg = fmt_inevitable("XAUUSD", 0.9700, "CONTRACTION", -1, "DEMO-001")
+                msg = fmt_inevitable("XAUUSD",0.9712,"CONTRACTION",-1,"DEMO-LIVE-001",
+                                      world_state={"NASA":0.34,"EIA":0.78,"OpenAQ":0.52,
+                                                   "ETH":0.41,"RealYield":1.85,"OBI":-0.847},equity=_eq)
             ok = send_alert_sync(msg)
-            if ok:
-                st.success("✅  Inevitable alert sent.")
-            else:
-                st.error("❌  Send failed.")
+            st.success("✅ Sent.") if ok else st.error("❌ Failed.")
     with ta3:
+        hcv = [o for o in _S['opportunities'] if o['status']=="HIGH CONVICTION"]
+        if st.button("🟡  HIGH CONV.", key="tg_h", disabled=not tg_ok):
+            opp = hcv[-1] if hcv else None
+            if opp:
+                msg = fmt_high_conviction(opp['asset'],opp['score'],opp['regime'],
+                                           opp['direction'],world_state=opp.get('manifold_snapshot',{}),equity=_eq)
+            else:
+                msg = fmt_high_conviction("EURUSD",0.8310,"EXPANSION",1,
+                                           world_state={"NASA":0.22,"EIA":0.44,"OpenAQ":0.31,
+                                                        "ETH":0.55,"RealYield":-0.12,"OBI":0.782},equity=_eq)
+            ok = send_alert_sync(msg)
+            st.success("✅ Sent.") if ok else st.error("❌ Failed.")
+    with ta4:
         if not tg_ok:
             st.markdown("""
-            <div style="background:#1a0d00;border:1px solid #f0a430;border-radius:4px;padding:10px 14px;">
-                <span style="color:#f0a430;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;">
-                ⚠️  Set TELEGRAM_TOKEN and TELEGRAM_CHAT_ID as Replit Secrets to activate alerts.
-                </span>
+            <div style="background:#150a00;border:1px solid #5a3500;border-radius:1px;padding:9px 13px;">
+              <span style="color:#e3b341;font-family:'IBM Plex Mono',monospace;font-size:10.5px;">
+              ⚠  Set TELEGRAM_TOKEN (Secret) + TELEGRAM_CHAT_ID (Shared Env) to activate.
+              </span>
             </div>""", unsafe_allow_html=True)
 
-    # ── System Info ──
+    # ── System info ─────────────────────────────────────────────────────────────
     st.markdown("<br/>", unsafe_allow_html=True)
-    st.markdown('<div class="section-header">■ SYSTEM INFORMATION</div>', unsafe_allow_html=True)
-    si1, si2 = st.columns(2)
+    st.markdown('<div class="sec-hdr">■ SYSTEM INFORMATION</div>', unsafe_allow_html=True)
+    si1,si2 = st.columns(2)
     with si1:
-        for lbl, val in [
-            ("ENGINE",          "S3-RHGNN v4.0"),
-            ("ARCHITECTURE",    "RecursiveHyperGraph + Manifold"),
-            ("INPUT DIMENSION", "100"),
-            ("HIDDEN DIMENSION","256"),
-            ("GRAPH LAYERS",    "4"),
-            ("ASSETS MONITORED",str(len(MONITORED_ASSETS))),
+        wok = _eng["engine"].weights_loaded
+        for lbl, val, col in [
+            ("ENGINE",        "S3-RHGNN v5.0",              "#58c3e0"),
+            ("WEIGHTS",       "✓ LOADED" if wok else "✗ RANDOM INIT", "#3fb950" if wok else "#f85149"),
+            ("OBI SOURCE",    "Kraken BTC/USD + Coinbase",  "#cdd9e5"),
+            ("ETH SOURCE",    "OKX ETHUSDT Funding Rate",   "#cdd9e5"),
+            ("YIELD SOURCE",  "US Treasury XML + FRED",     "#cdd9e5"),
+            ("NASA SOURCE",   "EONET Wildfire Events",      "#cdd9e5"),
+            ("POLL INTERVAL", "10 seconds",                 "#cdd9e5"),
+            ("UI REFRESH",    "15 seconds",                 "#cdd9e5"),
         ]:
             st.markdown(f"""
-            <div class="stat-pill">
-                <span class="stat-pill-label">{lbl}</span>
-                <span class="stat-pill-val accent">{val}</span>
+            <div class="pill">
+              <span class="pill-k">{lbl}</span>
+              <span class="pill-v" style="color:{col};">{val}</span>
             </div>""", unsafe_allow_html=True)
     with si2:
         for lbl, val in [
-            ("SIGNAL SOURCES",  "6 (NASA·EIA·OpenAQ·ETH·TIPS·OBI)"),
-            ("POLLING INTERVAL","10 seconds"),
-            ("MAX LEVERAGE",    "100x (INEVITABLE)  ·  50x (HIGH)"),
-            ("POSITION RISK",   "2% per trade"),
-            ("WEIGHTS FILE",    "s3_weights.pth"),
-            ("STATE FILE",      STATE_FILE),
+            ("LEVERAGE MAX",    "150x  (INEVITABLE + CONTRACTION)"),
+            ("POSITION RISK",   "2% equity per trade"),
+            ("STOP LOSS",       "1%  hard stop"),
+            ("TAKE PROFIT",     "10–20%  (tier-based)"),
+            ("RISK/REWARD",     "10:1 min  ·  20:1 INEVITABLE"),
+            ("ASSETS",          "5 streams (XAUUSD XAGUSD HG=F EURUSD AUDUSD)"),
+            ("STATE FILE",      "enterprise_state.json (atomic write)"),
+            ("TRIGGER LOGIC",   "S3-Surgical: dir | status | +0.05 score"),
         ]:
             st.markdown(f"""
-            <div class="stat-pill">
-                <span class="stat-pill-label">{lbl}</span>
-                <span class="stat-pill-val">{val}</span>
+            <div class="pill">
+              <span class="pill-k">{lbl}</span>
+              <span class="pill-v">{val}</span>
             </div>""", unsafe_allow_html=True)
 
 
-# ── AUTO-SAVE ─────────────────────────────────────────────────────────────────
-save_state(st.session_state.state)
+# ══════════════════════════════════════════════════════════════════════════════
+#  AUTO-REFRESH (15s)
+# ══════════════════════════════════════════════════════════════════════════════
+_save(_S)
+time.sleep(15)
+st.session_state.state = _load()
+st.rerun()

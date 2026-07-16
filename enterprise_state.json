@@ -1,45 +1,44 @@
 {
   "equity": 100000.0,
   "initial_capital": 100000.0,
-  "trades": [
-    {
-      "instrument": "XAUUSD",
-      "direction": -1,
-      "entry_price": 3000.0,
-      "size": 10.0,
-      "sl_price": 3030.0,
-      "tp_price": 2400.0,
-      "pnl": 1000.0,
-      "timestamp": "2026-07-13T14:08:32.711163"
-    },
-    {
-      "instrument": "XAUUSD",
-      "direction": -1,
-      "entry_price": 3000,
-      "size": 100.0,
-      "sl_price": 3030.0,
-      "tp_price": 2400.0,
-      "timestamp": "2026-07-13T14:34:59.152348",
-      "pnl": 0.0,
-      "asset": "XAUUSD"
-    }
-  ],
+  "trades": [],
   "opportunities": [
     {
-      "id": "XAUUSD-20260713120000",
-      "asset": "XAUUSD",
-      "timestamp": "2026-07-13T14:08:32.711147",
-      "score": 0.97,
+      "id": "HG=F-20260716133142710-INI",
+      "asset": "HG=F",
+      "timestamp": "2026-07-16T13:31:42.710560",
+      "score": 0.9906233026429091,
       "status": "INEVITABLE",
       "regime": "CONTRACTION",
-      "direction": -1,
+      "direction": 0,
+      "trigger": "INITIAL_SIGNAL",
       "manifold_snapshot": {
-        "NASA": 0.2,
-        "EIA": 0.5,
-        "OpenAQ": 0.3,
-        "ETH": 0.4,
-        "RealYield": 1.89,
-        "OBI": -0.8
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5203295604769,
+        "RealYield": 2.32,
+        "OBI": 0.7655825660727296
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260716133147371-INI",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-16T13:31:47.371496",
+      "score": 0.7066990881458967,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5203295604769,
+        "RealYield": 2.32,
+        "OBI": -0.6889969604863223
       },
       "executed": false,
       "trade_id": null
@@ -48,41 +47,6761 @@
   "history": {
     "XAUUSD": [
       {
-        "time": "2026-07-13T14:08:32.711156",
-        "score": 0.97,
-        "status": "INEVITABLE",
+        "time": "2026-07-14T12:55:51.680361",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T12:58:27.816777",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:00:12.910075",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:02:00.877466",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:03:45.819737",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:05:30.827746",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:07:15.808142",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:09:00.819814",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:10:45.811774",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:12:30.808351",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:14:15.811685",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:16:00.806589",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:17:45.816955",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:19:30.809986",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:21:15.813406",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:23:00.827465",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:24:45.818119",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:26:30.814592",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:28:15.822721",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:30:00.816808",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:31:45.812154",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:33:30.850036",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:35:15.824099",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:37:00.823971",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:38:45.809065",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:40:30.819377",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:42:15.807227",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:44:00.824416",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:45:45.871246",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:47:30.818185",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:49:15.807804",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:51:00.810146",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:52:45.826056",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:54:30.902340",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:56:15.810487",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:58:00.809091",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:59:45.814806",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:01:30.904890",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:03:15.825307",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:05:00.808214",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:06:45.812060",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:08:30.808116",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:10:15.827362",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:12:00.808897",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:13:45.808790",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:15:30.808466",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:17:15.809122",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:19:00.819872",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:20:45.830725",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:22:30.870122",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:24:15.859272",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:26:00.877573",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:27:45.806359",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:29:30.876114",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:31:15.805265",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:33:00.824933",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:34:45.818085",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:36:30.819815",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:38:15.807813",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:40:00.806952",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:41:45.821902",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:43:30.822187",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:45:15.808951",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:47:00.812449",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:48:45.871513",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:50:30.824112",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:52:15.838890",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:54:00.809448",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:55:45.816779",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:57:30.825316",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:59:15.815017",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:01:00.813568",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:02:45.811603",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:04:30.816966",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:06:15.810710",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:08:00.877595",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:09:45.826987",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:11:30.874984",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:13:15.814245",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:15:00.819063",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:16:45.820186",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:18:30.810661",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:20:15.814948",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:22:00.866582",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:23:45.812984",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:25:30.807609",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:27:15.821724",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:29:00.827687",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:30:45.814941",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:32:30.983201",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:34:15.819725",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:36:00.848673",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:37:45.813063",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:39:30.827389",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:41:15.810315",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:43:00.809050",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:44:45.811574",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:46:30.811972",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:48:15.808066",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:50:00.827282",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:51:45.816156",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:53:30.808491",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:55:15.871270",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:57:00.825451",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:58:45.806792",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:00:30.821240",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:02:15.820460",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:04:00.805791",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:05:45.826760",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:07:30.813739",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:09:15.836420",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:11:01.820247",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:12:46.876018",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:14:31.813964",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:16:16.818687",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:18:01.809400",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:19:46.807929",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:21:31.809401",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:23:16.830279",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:25:01.826284",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:26:46.812105",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:28:31.808625",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:30:16.814461",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:32:01.806701",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:33:46.812593",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:35:31.816921",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:37:16.811300",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:39:01.808836",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:40:46.814488",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:42:31.859023",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:44:16.829329",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:46:01.814363",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:47:46.808277",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:49:31.825487",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:51:16.809118",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:53:01.819777",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:54:46.868810",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:56:31.807615",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:58:16.822178",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:00:01.817537",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:01:46.808514",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:03:31.820345",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:05:16.865668",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:07:01.882499",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:08:46.820292",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:10:31.874313",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:12:16.810557",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:14:01.816025",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:15:46.886207",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:17:31.847044",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:19:16.834085",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:21:01.811033",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:22:46.881157",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:24:31.818496",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:26:16.811966",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:28:01.825614",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:29:46.809420",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:31:31.843445",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:33:16.809206",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:35:01.827421",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:36:46.822479",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:38:31.818866",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:40:16.808861",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:42:01.822196",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:43:46.811819",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:45:31.832504",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:47:16.814807",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:49:01.808660",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:50:46.810070",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:52:31.806392",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:54:16.835812",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:56:01.905420",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:57:46.809911",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:59:31.811011",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:01:16.822729",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:03:01.818857",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:04:46.876476",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:06:31.877628",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:08:16.808457",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:10:01.808992",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:11:46.812494",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:13:32.124468",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:15:16.811835",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:17:01.822342",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:18:46.804938",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:20:31.806099",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:22:16.820645",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:37:34.478282",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:39:19.465840",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:41:04.468359",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:42:49.475814",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:44:34.466555",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:46:19.480458",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:48:04.477624",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:49:49.462047",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:51:34.486664",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:53:19.523571",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:55:04.467321",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:56:49.466934",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:58:34.465768",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:00:19.488088",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:02:04.481889",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:03:49.480575",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:05:34.471103",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:07:19.464720",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:09:04.519760",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:10:49.465149",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:12:34.479229",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:14:19.510668",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:16:04.465744",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:17:49.479289",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:11:23.598663",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:13:08.601194",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:14:53.606163",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:16:38.587197",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:18:23.606258",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:20:08.623939",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:21:53.585080",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:23:38.604113",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:25:23.597759",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:29:23.488202",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:31:36.901621",
+        "score": 0.697834,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:31:51.347526",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:03.760569",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:14.200213",
+        "score": 0.5,
+        "status": "NOISE",
         "regime": "CONTRACTION"
       }
     ],
     "XAGUSD": [
       {
-        "time": "2026-07-13T14:08:32.711158",
-        "score": 0.97,
-        "status": "INEVITABLE",
+        "time": "2026-07-14T12:56:12.682619",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T12:58:48.824659",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:00:33.816255",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:02:21.852422",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:04:06.827029",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:05:51.872398",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:07:36.822918",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:09:21.804392",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:11:06.810258",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:12:51.814406",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:14:36.828612",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:16:21.816763",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:18:06.815177",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:19:51.871131",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:21:36.836537",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:23:21.817746",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:25:06.812748",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:26:51.806558",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:28:36.878310",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:30:21.825256",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:32:06.812995",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:33:51.814025",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:35:36.805479",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:37:21.826475",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:39:06.837252",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:40:51.809284",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:42:36.877552",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:44:21.829048",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:46:06.824624",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:47:51.812205",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:49:36.818195",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:51:21.809922",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:53:06.815349",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:54:51.807352",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:56:36.826620",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:58:21.807066",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:00:06.817672",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:01:51.821476",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:03:36.822050",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:05:21.829280",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:07:06.816079",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:08:51.878772",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:10:36.822871",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:12:21.812855",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:14:06.810216",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:15:51.865855",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:17:36.806058",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:19:21.866042",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:21:06.879217",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:22:51.808161",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:24:36.846236",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:26:21.878024",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:28:06.823310",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:29:51.882602",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:31:36.933574",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:33:21.803789",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:35:06.807782",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:36:51.812205",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:38:36.813049",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:40:21.827715",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:42:06.831808",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:43:51.811315",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:45:36.822164",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:47:21.812054",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:49:06.815393",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:50:51.818116",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:52:36.819690",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:54:21.814609",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:56:06.821322",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:57:51.809801",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:59:36.811477",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:01:21.804947",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:03:06.816606",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:04:51.816324",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:06:36.824551",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:08:21.812541",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:10:06.822024",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:11:51.813329",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:13:36.811512",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:15:21.876305",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:17:06.815936",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:18:51.816166",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:20:36.816316",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:22:21.811305",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:24:06.826189",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:25:51.901453",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:27:36.815318",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:29:21.819725",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:31:06.815284",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:32:51.878201",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:34:36.817203",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:36:21.815229",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:38:06.819497",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:39:51.815593",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:41:36.817366",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:43:21.815833",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:45:06.819622",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:46:51.843938",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:48:36.809600",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:50:21.817372",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:52:06.848251",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:53:51.814867",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:55:36.813283",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:57:21.874084",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:59:06.810535",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:00:51.808951",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:02:36.823421",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:04:21.819317",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:06:06.812484",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:07:51.888789",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:09:37.688587",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:11:22.828437",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:13:07.817007",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:14:52.901997",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:16:37.824674",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:18:22.818890",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:20:07.889346",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:21:52.818167",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:23:37.827144",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:25:22.841109",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:27:07.812644",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:28:52.818362",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:30:37.816858",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:32:22.815070",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:34:07.816291",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:35:52.814336",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:37:37.814755",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:39:22.818530",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:41:07.816622",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:42:52.873914",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:44:37.812222",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:46:22.827946",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:48:07.878594",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:49:52.811886",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:51:37.870814",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:53:22.832527",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:55:07.814438",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:56:52.822420",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:58:37.818725",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:00:22.888121",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:02:07.827828",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:03:52.818328",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:05:37.832484",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:07:22.828487",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:09:07.850494",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:10:52.814098",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:12:37.818376",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:14:22.815805",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:16:07.821110",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:17:52.812002",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:19:37.806233",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:21:22.814670",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:23:07.828702",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:24:52.814120",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:26:37.881994",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:28:22.853638",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:30:07.819144",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:31:52.817359",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:33:37.814834",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:35:22.819302",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:37:07.816114",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:38:52.815663",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:40:38.142234",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:42:22.812071",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:44:07.825673",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:45:52.876324",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:47:37.822116",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:49:22.822960",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:51:07.812300",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:52:52.812183",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:54:37.811598",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:56:22.816933",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:58:07.821167",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:59:52.814195",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:01:37.872228",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:03:22.819624",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:05:08.162426",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:06:52.834933",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:08:37.817087",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:10:22.805460",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:12:07.816523",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:13:52.813701",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:15:37.816267",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:17:22.868937",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:19:07.808520",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:20:52.814695",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:22:37.828300",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:37:55.474604",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:39:40.482749",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:41:25.479597",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:43:10.527197",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:44:55.485124",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:46:40.488986",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:48:25.471462",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:50:10.472178",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:51:55.483201",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:53:40.484212",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:55:25.480621",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:57:10.482803",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:58:55.467137",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:00:40.478414",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:02:25.469378",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:04:10.477310",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:05:55.499492",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:07:40.483434",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:09:25.489451",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:11:10.468788",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:12:55.471955",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:14:40.470472",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:16:25.483172",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:18:10.477877",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:11:44.596872",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:13:29.606472",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:15:14.604897",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:16:59.598261",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:18:44.613218",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:20:29.628736",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:22:14.603351",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:23:59.596824",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:25:44.605190",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:29:42.496750",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:31:40.000934",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:31:55.424488",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:05.420866",
+        "score": 0.652128,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:16.260583",
+        "score": 0.5,
+        "status": "NOISE",
         "regime": "CONTRACTION"
       }
     ],
     "HG=F": [
       {
-        "time": "2026-07-13T14:08:32.711159",
-        "score": 0.97,
+        "time": "2026-07-14T12:56:33.690740",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T12:59:09.815599",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:00:54.821090",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:02:42.819058",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:04:27.830420",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:06:12.818709",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:07:57.876645",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:09:42.806477",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:11:27.884515",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:13:12.822086",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:14:57.812356",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:16:42.825745",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:18:27.876835",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:20:12.827861",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:21:57.813546",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:23:42.849081",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:25:27.812289",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:27:12.812110",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:28:57.823702",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:30:42.817669",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:32:27.822535",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:34:12.864331",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:35:57.821682",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:37:42.820825",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:39:27.822181",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:41:12.811352",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:42:58.003780",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:44:42.890247",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:46:27.818503",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:48:12.816656",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:49:57.818813",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:51:42.816606",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:53:27.820042",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:55:12.817739",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:56:57.814301",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:58:42.813072",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:00:27.819160",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:02:12.815174",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:03:57.862576",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:05:42.818876",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:07:27.829429",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:09:12.826000",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:10:57.816954",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:12:42.825840",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:14:27.808063",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:16:12.822461",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:17:57.828219",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:19:42.815647",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:21:27.822966",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:23:12.819449",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:24:57.823579",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:26:42.827449",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:28:27.820419",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:30:12.821506",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:31:57.819672",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:33:42.819011",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:35:27.876902",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:37:12.822970",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:38:57.820402",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:40:42.816053",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:42:27.823263",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:44:12.821799",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:45:57.817225",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:47:42.818129",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:49:27.816994",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:51:12.817096",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:52:57.807461",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:54:42.820505",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:56:27.877514",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:58:12.806315",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:59:57.868398",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:01:42.848937",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:03:27.818530",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:05:12.875442",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:06:57.864333",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:08:42.833410",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:10:27.818627",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:12:12.818934",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:13:57.814086",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:15:42.849460",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:17:27.810069",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:19:12.824602",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:20:57.831704",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:22:42.817519",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:24:27.821111",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:26:12.820041",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:27:57.816500",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:29:42.823189",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:31:27.882379",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:33:12.835891",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:34:57.816917",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:36:42.827662",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:38:27.822585",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:40:12.829407",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:41:57.804841",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:43:42.813730",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:45:27.807958",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:47:12.814111",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:48:57.814375",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:50:42.814185",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:52:27.816592",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:54:12.815735",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:55:57.825397",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:57:42.814738",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:59:27.815134",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:01:12.823838",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:02:57.815680",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:04:42.814788",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:06:27.822522",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:08:12.814512",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:09:58.832850",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:11:43.814455",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:13:28.815886",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:15:13.814354",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:16:58.821050",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:18:43.886007",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:20:28.874283",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:22:13.819979",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:23:58.815154",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:25:44.064632",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:27:28.827769",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:29:13.823278",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:30:58.818430",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:32:43.822470",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:34:28.817982",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:36:13.814051",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:37:58.831836",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:39:43.812741",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:41:28.826219",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:43:13.820059",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:44:58.821090",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:46:43.818562",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:48:28.931791",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:50:13.820872",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:51:58.817262",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:53:43.820907",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:55:28.829472",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:57:13.821712",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:58:58.815982",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:00:43.811136",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:02:28.816851",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:04:13.811437",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:05:58.884988",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:07:43.815482",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:09:28.822219",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:11:13.823953",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:12:58.821494",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:14:43.823544",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:16:28.812710",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:18:13.818621",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:19:58.818311",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:21:43.834906",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:23:28.817160",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:25:13.822140",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:26:58.824004",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:28:43.821400",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:30:28.818091",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:32:13.834811",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:33:58.814984",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:35:43.824007",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:37:28.820487",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:39:13.835522",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:40:58.841655",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:42:43.824733",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:44:28.809354",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:46:13.822049",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:47:58.814952",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:49:43.879179",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:51:28.822096",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:53:13.816647",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:54:58.867987",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:56:43.822878",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:58:28.824955",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:00:13.822359",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:01:58.815268",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:03:43.831791",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:05:28.819637",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:07:13.817649",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:08:58.803917",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:10:43.818490",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:12:28.821501",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:14:13.814406",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:15:58.816682",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:17:43.834307",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:19:28.871221",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:21:13.878196",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:22:58.822056",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:38:16.473595",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:40:01.481825",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:41:46.470068",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:43:31.485052",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:45:16.475084",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:47:01.477710",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:48:46.466746",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:50:31.486429",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:52:16.493322",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:54:01.545736",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:55:46.470106",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:57:31.471971",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:59:16.485848",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:01:01.485737",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:02:46.485779",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:04:31.474714",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:06:16.469219",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:08:01.468359",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:09:46.483646",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:11:31.481257",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:13:16.488285",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:15:01.475842",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:16:46.487523",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:18:31.469431",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:12:05.601440",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:13:50.624959",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:15:35.601923",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:17:20.667140",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:19:05.601043",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:20:50.601518",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:22:35.602353",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:24:20.617828",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:26:05.598540",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:30:01.465142",
+        "score": 0.687098,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:31:42.710202",
+        "score": 0.990623,
         "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:31:57.731491",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:07.208548",
+        "score": 0.652128,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:18.358499",
+        "score": 0.5,
+        "status": "NOISE",
         "regime": "CONTRACTION"
       }
     ],
     "EURUSD": [
       {
-        "time": "2026-07-13T14:08:32.711161",
-        "score": 0.97,
-        "status": "INEVITABLE",
+        "time": "2026-07-14T12:56:54.679616",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T12:59:30.835005",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:01:15.827844",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:03:03.843346",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:04:48.814058",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:06:33.810342",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:08:18.828398",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:10:03.820924",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:11:48.808132",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:13:33.813636",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:15:18.941922",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:17:03.807539",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:18:48.815608",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:20:33.812279",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:22:18.818053",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:24:03.866145",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:25:48.836943",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:27:33.822194",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:29:18.802356",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:31:03.823280",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:32:48.823976",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:34:33.818007",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:36:18.813685",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:38:03.818764",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:39:48.828626",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:41:33.815301",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:43:18.805364",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:45:03.807838",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:46:48.820130",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:48:33.831270",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:50:18.822158",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:52:03.806037",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:53:48.808187",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:55:33.957955",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:57:18.808162",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:59:03.849352",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:00:48.810573",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:02:33.807778",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:04:18.878765",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:06:03.814355",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:07:48.820570",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:09:33.816115",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:11:18.807771",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:13:03.812928",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:14:48.809098",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:16:33.806930",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:18:18.808256",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:20:03.820621",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:21:48.808093",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:23:33.868691",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:25:18.867919",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:27:03.809400",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:28:48.807754",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:30:33.874675",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:32:18.806033",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:34:03.808700",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:35:48.820460",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:37:33.822448",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:39:18.815096",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:41:03.816630",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:42:48.809639",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:44:33.812954",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:46:18.809144",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:48:03.809970",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:49:48.807784",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:51:33.813347",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:53:18.810588",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:55:03.809127",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:56:48.811244",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:58:33.812940",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:00:18.808866",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:02:03.871247",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:03:48.813875",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:05:33.828986",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:07:18.834952",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:09:03.810547",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:10:48.814987",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:12:33.818169",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:14:18.816936",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:16:03.834297",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:17:48.820782",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:19:33.811886",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:21:18.814870",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:23:03.813005",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:24:48.811644",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:26:33.821134",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:28:18.805932",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:30:03.809122",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:31:48.804716",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:33:33.891324",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:35:18.811170",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:37:03.816223",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:38:48.846039",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:40:33.809902",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:42:18.804159",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:44:03.810670",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:45:48.811445",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:47:33.821996",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:49:18.865502",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:51:03.863222",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:52:48.885920",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:54:33.807811",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:56:18.810727",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:58:03.814749",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:59:48.806842",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:01:33.812836",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:03:18.812329",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:05:03.812296",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:06:48.810380",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:08:33.813730",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:10:19.815269",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:12:04.809748",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:13:49.808900",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:15:34.818707",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:17:19.806327",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:19:04.810638",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:20:49.813501",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:22:34.808139",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:24:19.828451",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:26:04.809780",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:27:49.809191",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:29:34.920994",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:31:19.812917",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:33:04.820152",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:34:49.813989",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:36:34.812531",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:38:19.814229",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:40:04.810764",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:41:49.810697",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:43:34.811575",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:45:19.810066",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:47:04.816058",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:48:49.813101",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:50:34.826088",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:52:19.807790",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:54:04.820497",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:55:49.868077",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:57:34.809675",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:59:19.805400",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:01:04.807915",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:02:49.829607",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:04:34.809911",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:06:19.813903",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:08:04.830800",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:09:49.869160",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:11:34.808235",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:13:19.816635",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:15:04.818760",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:16:49.808906",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:18:34.820088",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:20:19.809481",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:22:04.806714",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:23:49.812411",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:25:34.816517",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:27:19.810863",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:29:04.810253",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:30:49.805514",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:32:34.876319",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:34:19.876218",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:36:04.821593",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:37:49.838262",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:39:34.805462",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:41:19.826006",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:43:04.805335",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:44:49.808503",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:46:34.811469",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:48:19.813700",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:50:04.809728",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:51:49.818478",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:53:34.877793",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:55:19.805650",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:57:04.804590",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:58:49.820543",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:00:34.829466",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:02:19.807763",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:04:04.811024",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:05:49.817827",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:07:34.809704",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:09:19.820932",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:11:04.806515",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:12:49.819272",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:14:34.819468",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:16:19.819527",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:18:04.814092",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:19:49.805938",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:21:34.865246",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:23:19.831427",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:38:37.486336",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:40:22.467626",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:42:07.474507",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:43:52.478348",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:45:37.534927",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:47:22.468447",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:49:07.480376",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:50:52.479606",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:52:37.533372",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:54:22.478516",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:56:07.527551",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:57:52.467795",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:59:37.465077",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:01:22.471771",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:03:07.539172",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:04:52.477169",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:06:37.485187",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:08:22.464380",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:10:07.467071",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:11:52.463291",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:13:37.463562",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:15:22.481714",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:17:07.475692",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:18:52.477576",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:12:26.636336",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:14:11.606851",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:15:56.616326",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:17:41.600837",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:19:26.597274",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:21:11.659202",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:22:56.588080",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:24:41.610860",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:26:26.615937",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:30:20.474594",
+        "score": 0.678772,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:31:45.348260",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:31:59.340979",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:08.739968",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:20.097816",
+        "score": 0.5,
+        "status": "NOISE",
         "regime": "CONTRACTION"
       }
     ],
     "AUDUSD": [
       {
-        "time": "2026-07-13T14:08:32.711162",
-        "score": 0.97,
-        "status": "INEVITABLE",
+        "time": "2026-07-14T12:57:15.686389",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T12:59:51.828656",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:01:36.882333",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:03:24.825854",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:05:09.821671",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:06:54.807363",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:08:39.809882",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:10:24.814563",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:12:09.889500",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:13:54.808343",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:15:39.819183",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:17:24.838609",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:19:09.826664",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:20:54.826848",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:22:39.924307",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:24:24.820816",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:26:09.872026",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:27:54.807399",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:29:39.814002",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:31:24.826176",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:33:09.867205",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:34:54.816531",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:36:39.811396",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:38:24.811083",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:40:09.819894",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:41:54.819041",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:43:39.810125",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:45:24.818074",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:47:09.829533",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:48:54.819830",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:50:39.829349",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:52:24.811006",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:54:09.812156",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:55:54.869595",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:57:39.819780",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T13:59:24.878425",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:01:09.830311",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:02:54.818686",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:04:39.821554",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:06:24.815180",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:08:09.816265",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:09:54.815202",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:11:39.818774",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:13:24.812147",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:15:09.816438",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:16:54.812997",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:18:39.814147",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:20:24.817790",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:22:09.814410",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:23:54.876897",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:25:39.882211",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:27:24.812704",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:29:09.806500",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:30:54.821352",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:32:39.890798",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:34:24.818990",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:36:09.876472",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:37:54.810081",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:39:39.829695",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:41:24.827252",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:43:09.814200",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:44:54.810531",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:46:39.825020",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:48:24.814193",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:50:09.811748",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:51:54.808286",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:53:39.809480",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:55:24.814542",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:57:09.812838",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T14:58:54.816019",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:00:39.809467",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:02:24.819979",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:04:09.813185",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:05:54.812228",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:07:39.878706",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:09:24.812596",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:11:09.821305",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:12:54.810116",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:14:39.808513",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:16:24.811764",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:18:09.821372",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:19:54.815157",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:21:39.814182",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:23:24.812219",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:25:09.896377",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:26:54.817685",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:28:39.820672",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:30:24.831838",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:32:09.808609",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:33:54.823040",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:35:39.873505",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:37:24.813496",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:39:09.872047",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:40:54.813373",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:42:39.937604",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:44:24.822190",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:46:09.810472",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:47:54.808734",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:49:39.824010",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:51:24.863383",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:53:09.812351",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:54:54.866946",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:56:39.811699",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T15:58:24.823279",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:00:09.813692",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:01:54.817420",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:03:39.828932",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:05:24.814556",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:07:09.818099",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:08:54.824084",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:10:40.812844",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:12:25.845181",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:14:10.810994",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:15:55.814020",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:17:40.812112",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:19:25.823327",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:21:10.813079",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:22:55.816169",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:24:40.870731",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:26:25.811190",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:28:10.815385",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:29:55.815870",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:31:40.840837",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:33:25.822660",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:35:10.822400",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:36:55.807743",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:38:40.895498",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:40:25.820229",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:42:10.818635",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:43:55.823971",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:45:40.811563",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:47:25.813066",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:49:10.810752",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:50:56.026779",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:52:40.823795",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:54:25.810965",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:56:10.825416",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:57:55.816991",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T16:59:40.809585",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:01:25.816787",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:03:10.812706",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:04:55.818801",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:06:40.815292",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:08:25.818554",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:10:10.821036",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:11:55.812586",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:13:40.811594",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:15:25.811680",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:17:10.815865",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:18:55.806566",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:20:40.886486",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:22:25.843780",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:24:10.818507",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:25:55.809142",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:27:40.810753",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:29:25.809203",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:31:10.811742",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:32:55.822894",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:34:40.809393",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:36:25.808806",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:38:10.812010",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:39:55.814272",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:41:40.808393",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:43:25.817552",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:45:10.806562",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:46:55.820662",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:48:40.891806",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:50:25.814632",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:52:10.904017",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:53:55.872787",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:55:40.812495",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:57:25.809727",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T17:59:10.878880",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:00:55.818608",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:02:40.811640",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:04:25.825366",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:06:10.811831",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:07:55.837007",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:09:40.809956",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:11:25.810420",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:13:10.812053",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:14:55.871537",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:16:40.815744",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:18:25.814555",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:20:10.826161",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:21:55.823013",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-14T18:23:40.808588",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:38:58.468354",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:40:43.478597",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:42:28.483111",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:44:13.483174",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:45:58.470356",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:47:43.466928",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:49:28.483958",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:51:13.477958",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:52:58.482388",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:54:43.473109",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:56:28.479490",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:58:13.479941",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T02:59:58.467311",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:01:43.484464",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:03:28.479983",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:05:13.529345",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:06:58.531853",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:08:43.481186",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:10:28.479568",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:12:13.534780",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:13:58.476819",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:15:43.471464",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:17:28.471553",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-15T03:19:13.467260",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:12:47.599534",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:14:32.606837",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:16:17.609726",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:18:02.662492",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:19:47.601438",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:21:32.613385",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:23:17.605311",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:25:02.589256",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:26:47.606387",
+        "score": 0.0,
+        "status": "DATA_GAP",
+        "regime": "STABILITY"
+      },
+      {
+        "time": "2026-07-16T13:30:39.475750",
+        "score": 0.681876,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:31:47.368927",
+        "score": 0.706699,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:01.047444",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:10.868261",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:22.496571",
+        "score": 0.665017,
+        "status": "NOISE",
         "regime": "CONTRACTION"
       }
     ]
@@ -102,5 +6821,15 @@
     "ETH": "ONLINE",
     "RealYield": "ONLINE",
     "OBI": "ONLINE"
-  }
+  },
+  "last_signals": {
+    "NASA": 1.0,
+    "EIA": 0.6990000000000001,
+    "OpenAQ": 0.14,
+    "ETH": 0.5203295604769,
+    "RealYield": 2.32,
+    "OBI": 0.5500569754191763
+  },
+  "last_cycle_utc": "2026-07-16T13:32:23.027639+00:00",
+  "cycle_count": 7
 }

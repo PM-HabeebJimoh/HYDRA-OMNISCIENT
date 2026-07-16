@@ -1,16 +1,16 @@
-#!/usr/bin/env bash
-set -euo pipefail
+#!/bin/bash
+set -e
+echo "╔══════════════════════════════════════╗"
+echo "║  HYDRA-S3 ENTERPRISE BUILD PIPELINE  ║"
+echo "╚══════════════════════════════════════╝"
 
-echo "=== HYDRA-S3 Production Build ==="
+echo "[1/3] Installing PyTorch CPU (numpy-2.x compatible)..."
+pip install --quiet torch==2.4.1+cpu --index-url https://download.pytorch.org/whl/cpu
 
-# Install CPU-only PyTorch first (~200 MB vs 1.2 GB for CUDA build)
-echo "[1/2] Installing PyTorch (CPU-only)..."
-pip install --quiet \
-    --index-url https://download.pytorch.org/whl/cpu \
-    torch==2.1.2+cpu
-
-# Install remaining dependencies
-echo "[2/2] Installing application dependencies..."
+echo "[2/3] Installing core dependencies..."
 pip install --quiet -r requirements.txt
 
-echo "=== Build complete ==="
+echo "[3/3] Verifying critical imports..."
+python3 -c "import torch, numpy; print(f'  torch {torch.__version__}  numpy {numpy.__version__}  OK')"
+
+echo "Build complete ✓"

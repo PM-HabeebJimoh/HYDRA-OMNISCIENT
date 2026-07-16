@@ -1,6 +1,6 @@
 streamlit==1.59.2
 pandas
-numpy
+numpy<2
 aiohttp
 plotly
 requests
