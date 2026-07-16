@@ -426,9 +426,10 @@ _PB = dict(
     font=dict(family="IBM Plex Mono", color="#2a6090"),
     margin=dict(l=8, r=8, t=28, b=8),
     xaxis=dict(gridcolor="#060f1c", tickfont=dict(size=9, color="#1a4060")),
-    yaxis=dict(gridcolor="#060f1c", tickfont=dict(size=9, color="#1a4060")),
     showlegend=False,
 )
+# Default y-axis style reused across charts (NOT in _PB to avoid duplicate-kwarg crash)
+_YAX = dict(gridcolor="#060f1c", tickfont=dict(size=9, color="#1a4060"))
 
 # ══════════════════════════════════════════════════════════════════════════════
 #  CHROME  ——  Status bar + refresh bar
@@ -726,10 +727,12 @@ with tab1:
                                 colorscale=[[0,"#000d1f"],[0.5,"#001428"],[1,"#58c3e0"]],
                                 line=dict(color="#000913",width=1)),
                 ))
+                _y_max = max((abs(v) for v in ws.values()), default=1.0) * 1.15
                 fig.update_layout(**_PB, height=150,
                     title=dict(text=f"{opp['asset']} · {opp['score']:.4f} · {opp['status']}",
                                font=dict(size=9,color=sc_c),x=0),
-                    yaxis=dict(gridcolor="#060f1c",tickfont=dict(size=8,color="#1a4060"),range=[0,1.1]),
+                    yaxis=dict(gridcolor="#060f1c",tickfont=dict(size=8,color="#1a4060"),
+                               range=[-_y_max*0.1, _y_max]),
                 )
                 st.plotly_chart(fig, use_container_width=True)
 
@@ -832,9 +835,11 @@ with tab2:
                         text=[f"{v:.4f}" for v in ws.values()], textposition="outside",
                         textfont=dict(family="IBM Plex Mono",size=9,color="#2a6090"),
                     ))
+                    _ym2 = max((abs(v) for v in ws.values()), default=1.0) * 1.15
                     fig.update_layout(**_PB, height=260,
                         title=dict(text="CAUSAL MANIFOLD SNAPSHOT",font=dict(size=9,color="#2a6090"),x=0),
-                        yaxis=dict(gridcolor="#060f1c",tickfont=dict(size=8,color="#1a4060"),range=[0,1.1]),
+                        yaxis=dict(gridcolor="#060f1c",tickfont=dict(size=8,color="#1a4060"),
+                                   range=[-_ym2*0.1, _ym2]),
                     )
                     st.plotly_chart(fig, use_container_width=True)
                 with ch2:
@@ -903,8 +908,8 @@ with tab3:
             marker_color=['#f85149' if d<-5 else '#e3b341' if d<0 else '#3fb950' for d in _dds],
             showlegend=False), row=2, col=1)
         fig.update_layout(**_PB, height=340,
-            yaxis=dict(gridcolor="#060f1c",tickfont=dict(size=9,color="#1a4060"),tickprefix="$",tickformat=",.0f"),
-            yaxis2=dict(gridcolor="#060f1c",tickfont=dict(size=9,color="#1a4060"),ticksuffix="%"),
+            yaxis =dict(**_YAX, tickprefix="$", tickformat=",.0f"),
+            yaxis2=dict(**_YAX, ticksuffix="%"),
         )
         st.plotly_chart(fig, use_container_width=True)
 
@@ -935,7 +940,8 @@ with tab3:
                     marker=dict(color=['#3fb950' if p>=0 else '#f85149' for p in sorted(_pnl_l)],
                                 line=dict(color="#000913",width=1))))
                 fig_h.update_layout(**_PB, height=240,
-                    xaxis=dict(gridcolor="#060f1c",tickfont=dict(size=9,color="#1a4060"),tickprefix="$"))
+                    xaxis=dict(**_YAX, tickprefix="$"),
+                    yaxis=_YAX)
                 st.plotly_chart(fig_h, use_container_width=True)
 
         st.markdown("<br/>", unsafe_allow_html=True)
@@ -1030,7 +1036,7 @@ with tab4:
                           annotation_text="HIGH CONVICTION",annotation_font=dict(family="IBM Plex Mono",size=8,color="#3fb950"))
             fig.update_layout(**_PB, height=270,
                 title=dict(text=f"{sel_a}  ·  CONVERGENCE SCORE HISTORY",font=dict(size=9,color="#2a6090"),x=0),
-                yaxis=dict(gridcolor="#060f1c",tickfont=dict(size=9,color="#1a4060"),range=[0,1.05]),
+                yaxis=dict(**_YAX, range=[0, 1.05]),
             )
             st.plotly_chart(fig, use_container_width=True)
         with cb:
@@ -1046,6 +1052,7 @@ with tab4:
                 ))
                 fig_p.update_layout(**_PB, height=270,
                     title=dict(text="STATUS SPLIT",font=dict(size=9,color="#2a6090"),x=0),
+                    yaxis=_YAX,
                     annotations=[dict(text=f"{len(dfh)}<br>pts",x=0.5,y=0.5,
                                       font=dict(family="IBM Plex Mono",size=9,color="#2a6090"),showarrow=False)],
                 )

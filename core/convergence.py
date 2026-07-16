@@ -84,11 +84,16 @@ class S3ConvergenceEngine:
         direction = 0
 
         if yield_val > THRESHOLDS['CONTRACTION_YIELD']:
-            regime    = 2   # CONTRACTION
-            direction = -1 if obi_val <= THRESHOLDS['CONTRACTION_OBI'] else 0
+            regime = 2   # CONTRACTION
         elif yield_val <= THRESHOLDS['EXPANSION_YIELD']:
-            regime    = 1   # EXPANSION
-            direction = 1  if obi_val >= THRESHOLDS['EXPANSION_OBI'] else 0
+            regime = 1   # EXPANSION
+
+        # Direction: based on OBI magnitude so it aligns with the score display.
+        # Score rises when |OBI| >= 0.5 — direction must match so BIAS is never
+        # NEUTRAL while the score shows a live signal.
+        OBI_STRONG = 0.5   # matches score's lower-tier threshold
+        if abs(obi_val) >= OBI_STRONG:
+            direction = 1 if obi_val > 0 else -1
 
         # ── Score synthesis ────────────────────────────────────────────────
         # Score rises when: regime ≠ STABILITY AND OBI confirms direction

@@ -265,8 +265,9 @@ async def live_daemon():
                         logger.error(f"Eval error for {asset}: {eval_err}", exc_info=True)
 
             # ── End-of-cycle state updates ────────────────────────────────────
-            state['opportunities'] = state['opportunities'][-2000:]
-            state['last_signals']  = last_world_state
+            state['opportunities']  = state['opportunities'][-2000:]
+            state['last_signals']   = last_world_state
+            state['signals_live']   = sum(1 for v in last_world_state.values() if v is not None)
 
         except asyncio.CancelledError:
             logger.info("Daemon cancelled — saving state and exiting.")

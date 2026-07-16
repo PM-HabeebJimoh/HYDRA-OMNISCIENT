@@ -42,6 +42,566 @@
       },
       "executed": false,
       "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260716133257885-INI",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-16T13:32:57.885097",
+      "score": 0.7006640926640926,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52003341855985,
+        "RealYield": 2.32,
+        "OBI": 0.6688803088803088
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260716133306746-INI",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-16T13:33:06.747005",
+      "score": 0.9880929095354523,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52003341855985,
+        "RealYield": 2.32,
+        "OBI": 0.7023227383863081
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260716133411183-INI",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-16T13:34:11.183544",
+      "score": 0.9886319725771268,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52021282909635,
+        "RealYield": 2.32,
+        "OBI": -0.7157993144281707
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260716133436092-INI",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-16T13:34:36.092740",
+      "score": 0.9888016291115144,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5201495790678999,
+        "RealYield": 2.32,
+        "OBI": -0.7200407277878613
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260716133438179-INI",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-16T13:34:38.179744",
+      "score": 0.7037179617060075,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5201495790678999,
+        "RealYield": 2.32,
+        "OBI": -0.6790598723533584
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260716133449351-INI",
+      "asset": "HG=F",
+      "timestamp": "2026-07-16T13:34:49.351650",
+      "score": 0.70895167567795,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5201495790678999,
+        "RealYield": 2.32,
+        "OBI": -0.6965055855931668
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260716133505918-INI",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-16T13:35:05.918809",
+      "score": 0.9900229533282325,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5201495790678999,
+        "RealYield": 2.32,
+        "OBI": -0.7505738332058148
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260716133512832-INI",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-16T13:35:12.832248",
+      "score": 0.988025468489979,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5201495790678999,
+        "RealYield": 2.32,
+        "OBI": -0.7006367122494754
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260716133515872-STA",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-16T13:35:15.872694",
+      "score": 0.7017640360112589,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "STATUS_CHANGE [INEVITABLE\u2192NOISE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5201514006197999,
+        "RealYield": 2.32,
+        "OBI": -0.6725467867041963
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260716133532027-INI",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-16T13:35:32.027295",
+      "score": 0.7017455878098178,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5201514006197999,
+        "RealYield": 2.32,
+        "OBI": -0.6724852926993925
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260716133621280-INI",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-16T13:36:21.280562",
+      "score": 0.9880474740048314,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5200110568142501,
+        "RealYield": 2.32,
+        "OBI": 0.7011868501207857
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260716133623297-INI",
+      "asset": "HG=F",
+      "timestamp": "2026-07-16T13:36:23.297332",
+      "score": 0.9901775491359979,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5200110568142501,
+        "RealYield": 2.32,
+        "OBI": 0.7544387283999472
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260716133625339-INI",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-16T13:36:25.339612",
+      "score": 0.9937887927901736,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5200110568142501,
+        "RealYield": 2.32,
+        "OBI": 0.8447198197543427
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260716133630201-INI",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-16T13:36:30.201305",
+      "score": 0.7070232883264045,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5200110568142501,
+        "RealYield": 2.32,
+        "OBI": 0.6900776277546815
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260716133631850-STA",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-16T13:36:31.850239",
+      "score": 0.7042001361470388,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "STATUS_CHANGE [INEVITABLE\u2192NOISE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5200110568142501,
+        "RealYield": 2.32,
+        "OBI": 0.6806671204901293
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260716133633690-STA",
+      "asset": "HG=F",
+      "timestamp": "2026-07-16T13:36:33.690639",
+      "score": 0.7042001361470388,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "STATUS_CHANGE [INEVITABLE\u2192NOISE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5200110568142501,
+        "RealYield": 2.32,
+        "OBI": 0.6806671204901293
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260716133658804-INI",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-16T13:36:58.804403",
+      "score": 0.9894109213577904,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5200110568142501,
+        "RealYield": 2.32,
+        "OBI": 0.7352730339447607
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260716133705548-INI",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-16T13:37:05.548947",
+      "score": 0.7074656412989684,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5200110568142501,
+        "RealYield": 2.32,
+        "OBI": 0.6915521376632278
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260716133800622-INI",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-16T13:38:00.622244",
+      "score": 0.9902372617658498,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5200054636616,
+        "RealYield": 2.32,
+        "OBI": -0.7559315441462466
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260716133953758-INI",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-16T13:39:53.758788",
+      "score": 0.9892241560705805,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5198885920184501,
+        "RealYield": 2.32,
+        "OBI": -0.7306039017645113
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260716133957068-INI",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-16T13:39:57.068941",
+      "score": 0.9892241560705805,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5198885920184501,
+        "RealYield": 2.32,
+        "OBI": -0.7306039017645113
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260716134052204-INI",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-16T13:40:52.204171",
+      "score": 0.7019991197387013,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.51978112447735,
+        "RealYield": 2.32,
+        "OBI": -0.6733303991290045
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260716134053812-INI",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-16T13:40:53.812880",
+      "score": 0.9905926388022458,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.51978112447735,
+        "RealYield": 2.32,
+        "OBI": -0.7648159700561449
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260716134056150-INI",
+      "asset": "HG=F",
+      "timestamp": "2026-07-16T13:40:56.150028",
+      "score": 0.9883160932585362,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.51978112447735,
+        "RealYield": 2.32,
+        "OBI": -0.7079023314634066
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260716134157740-INI",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-16T13:41:57.740996",
+      "score": 0.7076877819180232,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": 0,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5197177557442499,
+        "RealYield": 2.32,
+        "OBI": -0.6922926063934104
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260716134352185-INI",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-16T13:43:52.185408",
+      "score": 0.9896411528200503,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": 1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5188028589763499,
+        "RealYield": 2.32,
+        "OBI": 0.7410288205012586
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260716134356742-INI",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-16T13:43:56.742397",
+      "score": 0.9897837908382998,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": 1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5188028589763499,
+        "RealYield": 2.32,
+        "OBI": 0.7445947709574976
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260716134358740-INI",
+      "asset": "HG=F",
+      "timestamp": "2026-07-16T13:43:58.740979",
+      "score": 0.9897837908382998,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": 1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5188028589763499,
+        "RealYield": 2.32,
+        "OBI": 0.7445947709574976
+      },
+      "executed": false,
+      "trade_id": null
     }
   ],
   "history": {
@@ -1392,6 +1952,402 @@
       },
       {
         "time": "2026-07-16T13:32:14.200213",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:26.145007",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:36.477480",
+        "score": 0.693882,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:46.989805",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:57.884995",
+        "score": 0.700664,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:13.602096",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:27.616429",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:40.424288",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:54.746924",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:06.470603",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:15.967473",
+        "score": 0.65062,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:26.413213",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:36.092561",
+        "score": 0.988802,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:46.080443",
+        "score": 0.657994,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:56.050833",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:05.918646",
+        "score": 0.990023,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:15.872579",
+        "score": 0.701764,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:26.624831",
+        "score": 0.661089,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:36.349196",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:46.123547",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:56.845409",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:08.712376",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:19.667402",
+        "score": 0.682638,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:30.201120",
+        "score": 0.707023,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:40.755454",
+        "score": 0.680688,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:50.636469",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:05.548849",
+        "score": 0.707466,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:15.628217",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:25.588630",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:35.556899",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:45.711260",
+        "score": 0.667925,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:55.614567",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:05.693928",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:15.694743",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:25.587038",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:35.777067",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:47.255120",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:56.555570",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:06.777413",
+        "score": 0.697491,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:16.733249",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:26.828776",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:36.916648",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:46.907510",
+        "score": 0.693146,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:57.068739",
+        "score": 0.989224,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:09.542857",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:19.478548",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:32.512242",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:42.341560",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:52.203205",
+        "score": 0.701999,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:02.408638",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:12.572613",
+        "score": 0.680004,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:22.166695",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:32.226760",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:42.339987",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:52.833112",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:02.734581",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:12.997072",
+        "score": 0.650627,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:23.023647",
+        "score": 0.695234,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:32.838730",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:54.334322",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:04.452069",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:14.502934",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:24.656776",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:34.344900",
+        "score": 0.667417,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:45.205571",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:55.135103",
+        "score": 0.656797,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:44:06.323479",
         "score": 0.5,
         "status": "NOISE",
         "regime": "CONTRACTION"
@@ -2747,6 +3703,402 @@
         "score": 0.5,
         "status": "NOISE",
         "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:28.311685",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:38.640230",
+        "score": 0.681117,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:48.872470",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:01.316883",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:16.517030",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:29.584876",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:42.792674",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:56.857309",
+        "score": 0.650026,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:07.986898",
+        "score": 0.698738,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:17.549231",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:28.336587",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:38.177149",
+        "score": 0.703718,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:47.752809",
+        "score": 0.657994,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:57.845174",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:07.983229",
+        "score": 0.655411,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:17.436557",
+        "score": 0.692901,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:28.503548",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:38.064268",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:47.699839",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:58.894907",
+        "score": 0.678524,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:11.539066",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:21.280373",
+        "score": 0.988047,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:31.850076",
+        "score": 0.7042,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:42.419297",
+        "score": 0.697315,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:52.508015",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:08.020249",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:18.288891",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:27.194011",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:37.283088",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:47.842735",
+        "score": 0.667925,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:57.353580",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:07.262747",
+        "score": 0.679567,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:17.206884",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:27.270452",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:37.645167",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:48.855533",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:58.174815",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:08.327226",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:18.365496",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:28.939510",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:38.722134",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:48.588497",
+        "score": 0.699797,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:59.232343",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:11.230425",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:21.928450",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:34.701898",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:44.228407",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:53.812656",
+        "score": 0.990593,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:03.929719",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:14.316683",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:23.875726",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:33.886870",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:44.035564",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:54.594726",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:04.253207",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:14.577936",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:24.595282",
+        "score": 0.681696,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:34.663469",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:56.025613",
+        "score": 0.667969,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:05.994642",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:16.196379",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:26.376128",
+        "score": 0.655131,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:36.251617",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:46.936637",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:56.741533",
+        "score": 0.989784,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:44:07.993399",
+        "score": 0.663853,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
       }
     ],
     "HG=F": [
@@ -4099,6 +5451,402 @@
         "score": 0.5,
         "status": "NOISE",
         "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:30.472158",
+        "score": 0.665945,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:40.867510",
+        "score": 0.699566,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:51.187435",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:03.733462",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:19.257572",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:31.185173",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:45.981526",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:58.805571",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:09.529305",
+        "score": 0.698738,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:19.740208",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:29.947084",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:39.784922",
+        "score": 0.681015,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:49.351452",
+        "score": 0.708952,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:59.482407",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:09.603499",
+        "score": 0.655411,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:19.100563",
+        "score": 0.657307,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:30.415289",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:39.774700",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:49.762768",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:00.656378",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:13.986503",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:23.297175",
+        "score": 0.990178,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:33.685806",
+        "score": 0.7042,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:44.032206",
+        "score": 0.697315,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:55.487479",
+        "score": 0.695584,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:09.737096",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:20.099752",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:28.817217",
+        "score": 0.680461,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:38.821026",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:49.543515",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:58.924733",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:08.870776",
+        "score": 0.65844,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:18.906539",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:29.234458",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:39.280806",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:50.500434",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:59.924689",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:09.863490",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:19.864678",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:30.593198",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:40.358152",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:50.199573",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:01.112891",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:12.827985",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:24.847574",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:36.749869",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:45.909375",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:56.149888",
+        "score": 0.988316,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:06.104183",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:16.025759",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:25.610179",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:35.681463",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:46.052419",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:56.132192",
+        "score": 0.669246,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:05.754616",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:16.184324",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:26.247077",
+        "score": 0.66236,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:36.551796",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:57.620398",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:07.688504",
+        "score": 0.686624,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:17.727004",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:27.976587",
+        "score": 0.655131,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:37.867431",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:48.831576",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:58.740356",
+        "score": 0.989784,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:44:09.608531",
+        "score": 0.663853,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
       }
     ],
     "EURUSD": [
@@ -5448,6 +7196,402 @@
       },
       {
         "time": "2026-07-16T13:32:20.097816",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:32.201168",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:42.710804",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:53.204911",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:06.746694",
+        "score": 0.988093,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:21.212739",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:34.721298",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:48.853041",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:01.749618",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:11.183230",
+        "score": 0.988632,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:21.562574",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:31.515746",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:41.477014",
+        "score": 0.681015,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:51.085544",
+        "score": 0.674731,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:01.169765",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:11.236357",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:20.753641",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:32.027092",
+        "score": 0.701746,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:41.476150",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:51.951170",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:03.440678",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:15.875123",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:25.339278",
+        "score": 0.993789,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:36.053867",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:45.778516",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:58.802715",
+        "score": 0.989411,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:11.324513",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:21.675321",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:30.667775",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:40.421918",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:51.147797",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:00.620572",
+        "score": 0.990237,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:10.792534",
+        "score": 0.65844,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:20.541118",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:30.974941",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:41.200735",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:52.213457",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:01.691236",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:11.479572",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:21.540472",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:32.196388",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:42.934565",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:52.127216",
+        "score": 0.685389,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:03.583510",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:14.568622",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:27.764154",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:38.244314",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:47.526040",
+        "score": 0.69188,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:58.192859",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:07.906564",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:17.855706",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:27.177830",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:37.682572",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:48.472526",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:57.740897",
+        "score": 0.707688,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:07.514786",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:17.720901",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:27.835437",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:38.073364",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:59.220953",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:09.827614",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:19.410280",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:29.718696",
+        "score": 0.686576,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:39.490187",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:50.623571",
+        "score": 0.673911,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:44:00.767724",
+        "score": 0.666449,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:44:11.363325",
         "score": 0.5,
         "status": "NOISE",
         "regime": "CONTRACTION"
@@ -6803,6 +8947,402 @@
         "score": 0.665017,
         "status": "NOISE",
         "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:33.764656",
+        "score": 0.664484,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:44.444374",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:32:55.436343",
+        "score": 0.671587,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:10.323439",
+        "score": 0.661623,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:24.436762",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:37.104132",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:33:51.578696",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:03.526001",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:13.112464",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:23.155170",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:33.267829",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:43.166586",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:34:52.708380",
+        "score": 0.674731,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:03.115433",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:12.832077",
+        "score": 0.988025,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:22.430806",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:33.612293",
+        "score": 0.680602,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:43.068578",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:35:53.821157",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:05.608974",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:17.372886",
+        "score": 0.669307,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:27.680485",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:37.788218",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:36:47.916127",
+        "score": 0.670674,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:02.421249",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:12.904813",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:23.218216",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:32.372141",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:41.996708",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:37:52.934727",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:02.685876",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:12.432341",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:22.499852",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:32.751429",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:43.604402",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:38:54.031174",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:04.397429",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:13.514458",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:23.356845",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:34.388396",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:44.526593",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:39:53.758685",
+        "score": 0.989224,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:06.886946",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:16.181248",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:29.644268",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:39.818095",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:49.152275",
+        "score": 0.68749,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:40:59.750829",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:09.623661",
+        "score": 0.656667,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:19.572586",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:29.101940",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:39.601978",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:50.462618",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:41:59.357537",
+        "score": 0.650201,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:09.155137",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:19.462127",
+        "score": 0.675604,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:29.500690",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:42:39.708285",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:00.967256",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:11.644825",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:21.216541",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:31.312665",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:41.240668",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:43:52.184966",
+        "score": 0.989641,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:44:03.688037",
+        "score": 0.666449,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
+      },
+      {
+        "time": "2026-07-16T13:44:13.108095",
+        "score": 0.5,
+        "status": "NOISE",
+        "regime": "CONTRACTION"
       }
     ]
   },
@@ -6826,10 +9366,11 @@
     "NASA": 1.0,
     "EIA": 0.6990000000000001,
     "OpenAQ": 0.14,
-    "ETH": 0.5203295604769,
+    "ETH": 0.51873872158315,
     "RealYield": 2.32,
-    "OBI": 0.5500569754191763
+    "OBI": 0.037022876441725694
   },
-  "last_cycle_utc": "2026-07-16T13:32:23.027639+00:00",
-  "cycle_count": 7
+  "last_cycle_utc": "2026-07-16T13:44:14.206746+00:00",
+  "cycle_count": 74,
+  "signals_live": 6
 }
