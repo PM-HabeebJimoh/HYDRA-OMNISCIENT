@@ -1,14 +1,15 @@
 import os
 
-# ── Asset → Binance symbol mapping for OBI signal ─────────────────────────────
-# Uses Binance Futures (fapi) symbols where available (deeper liquidity).
-# collector.py tries fapi first, then spot.
+# ── Asset → OBI display label ─────────────────────────────────────────────────
+# OBI is collected from Kraken BTC/USD (XBT/USD) L2 order book — a universal
+# risk-sentiment proxy shared across all assets in each cycle.
+# Binance (451) and Bybit (403) are geo-blocked from Replit servers.
 SYMBOL_MAP = {
-    'XAUUSD': 'XAUUSDT',   # Gold/USDT perpetual futures (fapi)
-    'XAGUSD': 'ETHUSDT',   # Silver proxy via ETH (best available liquid proxy)
-    'HG=F':   'ETHUSDT',   # Copper proxy via ETH
-    'EURUSD': 'EURUSDT',   # EUR/USDT spot (Binance)
-    'AUDUSD': 'AUDUSDT',   # AUD/USDT spot (Binance)
+    'XAUUSD': 'XBTUSD',   # Kraken BTC/USD OBI proxy
+    'XAGUSD': 'XBTUSD',   # Kraken BTC/USD OBI proxy
+    'HG=F':   'XBTUSD',   # Kraken BTC/USD OBI proxy
+    'EURUSD': 'XBTUSD',   # Kraken BTC/USD OBI proxy
+    'AUDUSD': 'XBTUSD',   # Kraken BTC/USD OBI proxy
 }
 
 # ── API keys — sourced from environment only, never hardcoded ─────────────────

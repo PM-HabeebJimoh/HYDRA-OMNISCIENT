@@ -413,10 +413,12 @@ _NOW    = datetime.now(timezone.utc)
 _NOW_S  = _NOW.strftime("%Y-%m-%d  %H:%M:%S  UTC")
 _prices = _prices()
 
+# S-ALERT fires only if the CURRENT history status (last entry) is INEVITABLE.
+# Opportunities are used only for the ledger / deep-dive, not for live banner.
 _inev_assets = [
-    o['asset'] for o in _S['opportunities']
-    if o['status'] == "INEVITABLE"
-    and (_NOW.timestamp() - datetime.fromisoformat(o['timestamp']).timestamp()) < 3600
+    asset for asset in MONITORED_ASSETS
+    if _S['history'].get(asset)
+    and _S['history'][asset][-1]['status'] == "INEVITABLE"
 ]
 
 # Plotly base
@@ -628,8 +630,13 @@ with tab1:
             reg   = last['regime']
             stt   = last['status']
             age_s = int(_NOW.timestamp() - datetime.fromisoformat(last['time']).timestamp())
+            # Direction: read from current history entry (daemon stores it every cycle)
+            # Fall back to most recent opportunity only if history predates the field
+            dirv  = last.get('direction', None)
+            if dirv is None:
+                opps = [o for o in _S['opportunities'] if o['asset']==asset]
+                dirv = opps[-1]['direction'] if opps else 0
             opps  = [o for o in _S['opportunities'] if o['asset']==asset]
-            dirv  = opps[-1]['direction'] if opps else 0
             trig  = opps[-1].get('trigger','—') if opps else '—'
             rows += f"""
             <tr>
@@ -675,8 +682,14 @@ with tab1:
             sc    = hist[-1]['score'] if hist else 0.0
             reg_s = hist[-1]['regime'] if hist else 'STABILITY'
             reg_i = 2 if reg_s=="CONTRACTION" else 1 if reg_s=="EXPANSION" else 0
-            opps  = [o for o in _S['opportunities'] if o['asset']==asset]
-            dirv  = opps[-1]['direction'] if opps else 0
+            # Direction from current history entry (live), fall back to last opportunity
+            if hist:
+                dirv = hist[-1].get('direction', None)
+                if dirv is None:
+                    opps = [o for o in _S['opportunities'] if o['asset']==asset]
+                    dirv = opps[-1]['direction'] if opps else 0
+            else:
+                dirv = 0
             px    = _prices.get(asset, _PX_FALLBACK.get(asset, 100.0))
             pxs   = (f"${px:,.4f}" if px<10 else f"${px:,.2f}" if px<1000 else f"${px:,.0f}")
             ok    = sc >= 0.80 and dirv != 0

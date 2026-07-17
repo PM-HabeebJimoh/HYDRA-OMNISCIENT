@@ -1,10 +1,11 @@
 """
-HYDRA-S3  |  24/7 Live Engine Daemon  v5.0
-Polls all 6 causal signals every 10 seconds.
+HYDRA-S3  |  24/7 Live Engine Daemon  v5.1
+Polls all 6 causal signals ONCE per cycle (shared across all assets).
 Implements S3-Surgical-Trigger: new Opportunity ID generated on:
   - Direction change (e.g., LONG → SHORT)
-  - Status escalation (e.g., HIGH CONVICTION → INEVITABLE)
+  - Status escalation (e.g., NOISE → HIGH CONVICTION → INEVITABLE)
   - Score surge > 0.05 while in active signal (score ≥ 0.70)
+Per-asset INITIAL_SIGNAL has a 10-minute cooldown to prevent alert spam.
 Auto-restarts on crash with 30-second delay.
 State file written atomically every cycle for freshness monitoring.
 """
@@ -52,6 +53,7 @@ def _blank_state() -> dict:
         "settings":        THRESHOLDS,
         "api_health":      {k: "Unknown" for k in ["NASA","EIA","OpenAQ","ETH","RealYield","OBI"]},
         "last_signals":    {},
+        "signals_live":    0,
         "last_cycle_utc":  "",
         "cycle_count":     0,
     }
@@ -61,7 +63,6 @@ def load_state() -> dict:
         try:
             with open(STATE_FILE, 'r') as f:
                 s = json.load(f)
-            # Ensure all keys present
             blank = _blank_state()
             for k, v in blank.items():
                 if k not in s:
@@ -88,44 +89,63 @@ def save_state(state: dict):
 #  S3-SURGICAL-TRIGGER  —  Smart Opportunity ID generation
 # ══════════════════════════════════════════════════════════════════════════════
 
-_asset_prev: dict = {}   # asset → {status, direction, score}
+_asset_prev:          dict = {}   # asset → {status, direction, score}
+_initial_signal_last: dict = {}   # asset → epoch seconds of last INITIAL_SIGNAL alert
+
+# Cooldown constants
+_INITIAL_COOLDOWN_S  = 600   # 10 min between INITIAL_SIGNAL per asset
+_HC_COOLDOWN_S       = 300   # 5 min between any HIGH CONVICTION alert (in dispatcher)
 
 def _surgical_trigger(asset: str, score: float, status: str,
                        direction: int) -> tuple[bool, str]:
     """
     Returns (should_trigger: bool, reason: str).
     A new Opportunity ID is generated when:
-      1. Direction changes (and new direction is not 0)
-      2. Status changes (escalation or downgrade when score >= 0.70)
-      3. Score increases by > 0.05 while active (score >= 0.70)
+      1. Status ESCALATES to a higher tier (NOISE→HC, HC→INEVITABLE, or NOISE→INEVITABLE)
+      2. Direction changes (and new direction is not 0)
+      3. Score surges > 0.05 while already active (score >= 0.70)
+      4. Score first crosses 0.70 for this asset (INITIAL_SIGNAL, with 10-min cooldown)
     """
     prev = _asset_prev.get(asset)
 
-    # Below threshold — update state, no trigger
+    # ── Below active threshold — update state only, no trigger ────────────────
     if score < 0.70:
         _asset_prev[asset] = {'status': status, 'direction': direction, 'score': score}
         return False, ""
 
-    # First time above threshold for this asset
+    # ── First time crossing 0.70 for this asset ───────────────────────────────
     if prev is None or prev.get('score', 0) < 0.70:
+        now = time.time()
+        last_init = _initial_signal_last.get(asset, 0)
+        if now - last_init < _INITIAL_COOLDOWN_S:
+            # Still in cooldown — update state but suppress alert
+            _asset_prev[asset] = {'status': status, 'direction': direction, 'score': score}
+            remaining = int(_INITIAL_COOLDOWN_S - (now - last_init))
+            logger.debug(f"[{asset}] INITIAL_SIGNAL suppressed — cooldown {remaining}s remaining")
+            return False, ""
+        _initial_signal_last[asset] = now
         _asset_prev[asset] = {'status': status, 'direction': direction, 'score': score}
         return True, "INITIAL_SIGNAL"
 
+    # ── Already above threshold — check for changes ───────────────────────────
     reason = ""
 
-    # Condition 1: Direction changed (and meaningful direction)
-    if direction != prev['direction'] and direction != 0:
-        reason = f"DIRECTION_CHANGE [{prev['direction']}→{direction}]"
+    # Condition 1: Status escalated to a higher tier
+    STATUS_RANK = {'NOISE': 0, 'HIGH CONVICTION': 1, 'INEVITABLE': 2, 'DATA_GAP': -1}
+    prev_rank = STATUS_RANK.get(prev['status'], 0)
+    curr_rank = STATUS_RANK.get(status, 0)
+    if curr_rank > prev_rank:
+        reason = f"STATUS_ESCALATION [{prev['status']}→{status}]"
 
-    # Condition 2: Status changed
-    elif status != prev['status']:
-        reason = f"STATUS_CHANGE [{prev['status']}→{status}]"
+    # Condition 2: Direction changed (meaningful direction only)
+    elif direction != prev['direction'] and direction != 0 and prev['direction'] != 0:
+        reason = f"DIRECTION_CHANGE [{prev['direction']}→{direction}]"
 
     # Condition 3: Score surged > 0.05
     elif score > prev['score'] + 0.05:
         reason = f"SCORE_SURGE [{prev['score']:.4f}→{score:.4f}]"
 
-    # Update prev state
+    # Update tracked state
     _asset_prev[asset] = {'status': status, 'direction': direction, 'score': score}
 
     if reason:
@@ -138,17 +158,18 @@ def _surgical_trigger(asset: str, score: float, status: str,
 # ══════════════════════════════════════════════════════════════════════════════
 
 async def live_daemon():
+    logger.info("Starting daemon event loop...")
     logger.info("╔══════════════════════════════════════════════════════════╗")
-    logger.info("║   HYDRA-S3 ENTERPRISE DAEMON v5.0  —  24/7 ACTIVATED    ║")
+    logger.info("║   HYDRA-S3 ENTERPRISE DAEMON v5.1  —  24/7 ACTIVATED    ║")
     logger.info("╠══════════════════════════════════════════════════════════╣")
     logger.info("║   S3-SURGICAL-TRIGGER ARMED                              ║")
-    logger.info("║   Triggers: direction change | status change | +0.05     ║")
+    logger.info("║   Signals fetched ONCE per cycle — 5 assets share state  ║")
+    logger.info("║   INITIAL_SIGNAL cooldown: 10 min per asset              ║")
     logger.info("╚══════════════════════════════════════════════════════════╝")
 
     engine = S3ConvergenceEngine()
     state  = load_state()
 
-    # Startup Telegram
     try:
         await send_alert_async(fmt_startup(len(MONITORED_ASSETS)))
     except Exception as e:
@@ -163,30 +184,34 @@ async def live_daemon():
         cycle_start = time.monotonic()
         cycle += 1
 
-        # ── Heartbeat signal write (proves daemon is alive) ───────────────────
+        # ── Heartbeat write (proves daemon is alive to UI freshness check) ────
         state['cycle_count']    = cycle
         state['last_cycle_utc'] = datetime.now(timezone.utc).isoformat()
-        save_state(state)   # early write so UI shows daemon is live immediately
+        save_state(state)
 
-        last_world_state = {}
+        world_state = {}
 
         try:
             async with S3CausalCollector() as collector:
 
+                # ── Fetch all 6 signals ONCE per cycle (shared across assets) ──
+                try:
+                    world_state = await collector.collect_all_parallel(
+                        obi_symbol='XBTUSD'  # Kraken BTC/USD — universal OBI proxy
+                    )
+                except Exception as collect_err:
+                    logger.error(f"Collector error: {collect_err}")
+                    world_state = {k: None for k in
+                                   ['NASA', 'EIA', 'OpenAQ', 'ETH', 'RealYield', 'OBI']}
+
+                # ── Update API health map ─────────────────────────────────────
+                for sig, val in world_state.items():
+                    state['api_health'][sig] = "ONLINE" if val is not None else "GAP"
+
+                live_ct = sum(1 for v in world_state.values() if v is not None)
+
+                # ── Per-asset evaluation (all share the same world state) ──────
                 for asset in MONITORED_ASSETS:
-                    obi_sym = SYMBOL_MAP.get(asset, 'XAUUSDT')
-
-                    try:
-                        world_state = await collector.collect_all_parallel(
-                            obi_symbol=obi_sym
-                        )
-                    except Exception as collect_err:
-                        logger.error(f"Collector error for {asset}: {collect_err}")
-                        world_state = {k: None for k in
-                                       ['NASA','EIA','OpenAQ','ETH','RealYield','OBI']}
-
-                    last_world_state = world_state
-
                     try:
                         report    = engine.evaluate(world_state)
                         score     = report['score']
@@ -195,37 +220,33 @@ async def live_daemon():
                         direction = report['direction']
                         lat_sum   = report.get('latent_sum', 0.0)
 
-                        # ── History ─────────────────────────────────────────────
+                        # ── History entry (includes direction for UI rendering) ─
                         state['history'][asset].append({
-                            "time":   datetime.utcnow().isoformat(),
-                            "score":  round(score, 6),
-                            "status": status,
-                            "regime": regime,
+                            "time":      datetime.utcnow().isoformat(),
+                            "score":     round(score, 6),
+                            "status":    status,
+                            "regime":    regime,
+                            "direction": direction,
                         })
                         if len(state['history'][asset]) > 10_000:
                             state['history'][asset] = state['history'][asset][-10_000:]
 
-                        # ── API health map ───────────────────────────────────────
-                        for sig, val in world_state.items():
-                            state['api_health'][sig] = "ONLINE" if val is not None else "GAP"
-
-                        # ── Logging ──────────────────────────────────────────────
-                        live_ct = sum(1 for v in world_state.values() if v is not None)
                         logger.info(
                             f"[{asset:7s}] score={score:.4f} | {status:16s} | "
                             f"{regime:11s} | signals={live_ct}/6 | "
-                            f"OBI={world_state.get('OBI')} "
-                            f"RY={world_state.get('RealYield')}"
+                            f"OBI={world_state.get('OBI', 'n/a')!r:.6} "
+                            f"RY={world_state.get('RealYield', 'n/a')!r}"
                         )
 
-                        # ── S3-Surgical-Trigger ──────────────────────────────────
+                        # ── S3-Surgical-Trigger ──────────────────────────────
                         should_fire, trigger_reason = _surgical_trigger(
                             asset, score, status, direction
                         )
 
                         if should_fire and score >= 0.70:
                             ts_str = datetime.utcnow().strftime('%Y%m%d%H%M%S%f')[:17]
-                            opp_id = f"{asset}-{ts_str}-{trigger_reason[:3].replace('[','').replace(']','')}"
+                            trigger_code = trigger_reason[:3].replace('[','').replace(']','')
+                            opp_id = f"{asset}-{ts_str}-{trigger_code}"
 
                             opp = {
                                 "id":                opp_id,
@@ -247,7 +268,7 @@ async def live_daemon():
 
                             logger.warning(
                                 f"🔥 SURGICAL TRIGGER [{asset}] | {trigger_reason} | "
-                                f"score={score:.4f} | {status} | ID={opp_id}"
+                                f"score={score:.4f} | {status} | dir={direction} | ID={opp_id}"
                             )
 
                             try:
@@ -265,9 +286,9 @@ async def live_daemon():
                         logger.error(f"Eval error for {asset}: {eval_err}", exc_info=True)
 
             # ── End-of-cycle state updates ────────────────────────────────────
-            state['opportunities']  = state['opportunities'][-2000:]
-            state['last_signals']   = last_world_state
-            state['signals_live']   = sum(1 for v in last_world_state.values() if v is not None)
+            state['opportunities'] = state['opportunities'][-2000:]
+            state['last_signals']  = world_state
+            state['signals_live']  = sum(1 for v in world_state.values() if v is not None)
 
         except asyncio.CancelledError:
             logger.info("Daemon cancelled — saving state and exiting.")
@@ -282,7 +303,7 @@ async def live_daemon():
 
         # ── Heartbeat Telegram ────────────────────────────────────────────────
         if cycle % HEARTBEAT_N == 0:
-            live_sigs = sum(1 for v in last_world_state.values() if v is not None)
+            live_sigs = sum(1 for v in world_state.values() if v is not None)
             logger.info(f"♥ Heartbeat cycle={cycle} signals_live={live_sigs}/6")
             try:
                 await send_alert_async(fmt_heartbeat(
@@ -309,7 +330,6 @@ if __name__ == "__main__":
 
     while True:
         try:
-            logger.info("Starting daemon event loop...")
             asyncio.run(live_daemon())
             logger.warning("Daemon exited normally — restarting in 5s.")
             time.sleep(5)

@@ -2,6 +2,11 @@
 HYDRA-S3  |  S3-RHGNN Convergence Engine
 Evaluates world state through the Recursive HyperGraph Neural Network.
 Resilient to partial data — requires only RealYield + OBI for regime detection.
+
+Score formula: smooth piecewise-linear across all three status zones.
+  NOISE          → score 0.50 – 0.79   (|OBI| < 0.55)
+  HIGH CONVICTION → score 0.80 – 0.94   (|OBI| 0.55 – 0.75)
+  INEVITABLE     → score 0.95 – 0.999  (|OBI| > 0.75)
 """
 import torch
 import numpy as np
@@ -11,6 +16,27 @@ from core.rhgnn_s3 import RecursiveHyperGraphS3, UniversalSignalManifoldS3
 from config import THRESHOLDS, REGIMES
 
 logger = logging.getLogger('HYDRA.S3Convergence')
+
+# Piecewise linear score breakpoints: (|OBI|, score)
+# Applies only when regime != STABILITY
+_SCORE_BREAKS = [
+    (0.00, 0.50),   # floor — no signal
+    (0.30, 0.65),   # NOISE active
+    (0.55, 0.80),   # HIGH CONVICTION entry
+    (0.75, 0.95),   # INEVITABLE entry
+    (0.95, 0.999),  # INEVITABLE peak
+]
+
+
+def _piecewise_score(obi_abs: float) -> float:
+    """Map |OBI| → convergence score via smooth piecewise linear interpolation."""
+    for i in range(len(_SCORE_BREAKS) - 1):
+        x0, y0 = _SCORE_BREAKS[i]
+        x1, y1 = _SCORE_BREAKS[i + 1]
+        if obi_abs <= x1:
+            t = (obi_abs - x0) / (x1 - x0) if x1 > x0 else 1.0
+            return y0 + t * (y1 - y0)
+    return _SCORE_BREAKS[-1][1]
 
 
 class S3ConvergenceEngine:
@@ -59,7 +85,6 @@ class S3ConvergenceEngine:
         # ── Neural inference (uses all available signals) ────────────────────
         latent_sum = 0.0
         try:
-            # Build inference dict substituting None → 0.0 for the model
             infer_state = {k: (v if v is not None else 0.0)
                            for k, v in world_state.items()}
 
@@ -87,25 +112,21 @@ class S3ConvergenceEngine:
             regime = 2   # CONTRACTION
         elif yield_val <= THRESHOLDS['EXPANSION_YIELD']:
             regime = 1   # EXPANSION
+        # else regime = 0  (STABILITY)
 
-        # Direction: based on OBI magnitude so it aligns with the score display.
-        # Score rises when |OBI| >= 0.5 — direction must match so BIAS is never
-        # NEUTRAL while the score shows a live signal.
-        OBI_STRONG = 0.5   # matches score's lower-tier threshold
-        if abs(obi_val) >= OBI_STRONG:
+        # Direction aligns with OBI sign when signal is meaningful (|OBI| >= 0.30)
+        if abs(obi_val) >= 0.30:
             direction = 1 if obi_val > 0 else -1
 
-        # ── Score synthesis ────────────────────────────────────────────────
-        # Score rises when: regime ≠ STABILITY AND OBI confirms direction
-        # Latent energy from the RHGNN amplifies marginally
-        score = 0.5
-        if regime != 0 and abs(obi_val) >= 0.7:
-            base  = 0.96
-            obi_c = abs(obi_val) * 0.04      # 0.028..0.04 for |OBI| 0.7..1
-            lat_c = min(abs(latent_sum) * 0.0005, 0.02)  # capped contribution
-            score = min(0.999, base + obi_c + lat_c)
-        elif regime != 0 and abs(obi_val) >= 0.5:
-            score = 0.5 + abs(obi_val) * 0.3   # 0.65..0.80 range
+        # ── Score synthesis — smooth piecewise linear ──────────────────────
+        # Score is regime-gated: STABILITY always returns 0.50 (NOISE)
+        if regime != 0:
+            score = _piecewise_score(abs(obi_val))
+            # RHGNN latent energy micro-amplifier (capped at +2% to avoid inflation)
+            lat_boost = min(abs(latent_sum) * 0.0002, 0.02)
+            score = min(0.999, score + lat_boost)
+        else:
+            score = 0.50
 
         if not math.isfinite(score):
             score = 0.0
@@ -118,6 +139,11 @@ class S3ConvergenceEngine:
             status = "HIGH CONVICTION"
         else:
             status = "NOISE"
+
+        logger.debug(
+            f"score={score:.4f} status={status} regime={REGIMES[regime]} "
+            f"OBI={obi_val:+.4f} yield={yield_val:.3f}%"
+        )
 
         return {
             'score':          score,
