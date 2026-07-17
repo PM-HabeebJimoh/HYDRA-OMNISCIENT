@@ -36738,6 +36738,150 @@
         "direction": 0,
         "obi_raw": 0.1046,
         "obi_ema": 0.0458
+      },
+      {
+        "time": "2026-07-17T03:06:21.889599",
+        "score": 0.524065,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0576,
+        "obi_ema": 0.0481
+      },
+      {
+        "time": "2026-07-17T03:06:29.006003",
+        "score": 0.519545,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0391,
+        "obi_ema": 0.0391
+      },
+      {
+        "time": "2026-07-17T03:07:00.472607",
+        "score": 0.523478,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0784,
+        "obi_ema": 0.047
+      },
+      {
+        "time": "2026-07-17T03:07:29.299390",
+        "score": 0.528107,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0932,
+        "obi_ema": 0.0562
+      },
+      {
+        "time": "2026-07-17T03:07:59.398893",
+        "score": 0.530725,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0824,
+        "obi_ema": 0.0614
+      },
+      {
+        "time": "2026-07-17T03:08:30.850620",
+        "score": 0.527251,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0267,
+        "obi_ema": 0.0545
+      },
+      {
+        "time": "2026-07-17T03:08:59.085283",
+        "score": 0.520834,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": -0.0097,
+        "obi_ema": 0.0417
+      },
+      {
+        "time": "2026-07-17T03:09:28.918793",
+        "score": 0.517808,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0114,
+        "obi_ema": 0.0356
+      },
+      {
+        "time": "2026-07-17T03:09:59.172803",
+        "score": 0.514685,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0044,
+        "obi_ema": 0.0294
+      },
+      {
+        "time": "2026-07-17T03:10:29.683469",
+        "score": 0.51272,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0097,
+        "obi_ema": 0.0254
+      },
+      {
+        "time": "2026-07-17T03:10:58.880260",
+        "score": 0.515566,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0539,
+        "obi_ema": 0.0311
+      },
+      {
+        "time": "2026-07-17T03:11:29.789946",
+        "score": 0.515914,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0346,
+        "obi_ema": 0.0318
+      },
+      {
+        "time": "2026-07-17T03:11:58.984833",
+        "score": 0.516647,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0392,
+        "obi_ema": 0.0333
+      },
+      {
+        "time": "2026-07-17T03:12:29.234852",
+        "score": 0.510944,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": -0.0237,
+        "obi_ema": 0.0219
+      },
+      {
+        "time": "2026-07-17T03:12:59.409425",
+        "score": 0.513643,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0489,
+        "obi_ema": 0.0273
+      },
+      {
+        "time": "2026-07-17T03:13:29.117495",
+        "score": 0.516341,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0543,
+        "obi_ema": 0.0327
       }
     ],
     "XAGUSD": [
@@ -52675,6 +52819,150 @@
         "direction": 0,
         "obi_raw": 0.1046,
         "obi_ema": 0.0458
+      },
+      {
+        "time": "2026-07-17T03:06:21.915248",
+        "score": 0.524065,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0576,
+        "obi_ema": 0.0481
+      },
+      {
+        "time": "2026-07-17T03:06:29.048996",
+        "score": 0.519545,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0391,
+        "obi_ema": 0.0391
+      },
+      {
+        "time": "2026-07-17T03:07:00.494196",
+        "score": 0.523478,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0784,
+        "obi_ema": 0.047
+      },
+      {
+        "time": "2026-07-17T03:07:29.302692",
+        "score": 0.528107,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0932,
+        "obi_ema": 0.0562
+      },
+      {
+        "time": "2026-07-17T03:07:59.402842",
+        "score": 0.530725,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0824,
+        "obi_ema": 0.0614
+      },
+      {
+        "time": "2026-07-17T03:08:30.854873",
+        "score": 0.527251,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0267,
+        "obi_ema": 0.0545
+      },
+      {
+        "time": "2026-07-17T03:08:59.093495",
+        "score": 0.520834,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": -0.0097,
+        "obi_ema": 0.0417
+      },
+      {
+        "time": "2026-07-17T03:09:28.920302",
+        "score": 0.517808,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0114,
+        "obi_ema": 0.0356
+      },
+      {
+        "time": "2026-07-17T03:09:59.185053",
+        "score": 0.514685,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0044,
+        "obi_ema": 0.0294
+      },
+      {
+        "time": "2026-07-17T03:10:29.687000",
+        "score": 0.51272,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0097,
+        "obi_ema": 0.0254
+      },
+      {
+        "time": "2026-07-17T03:10:58.880970",
+        "score": 0.515566,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0539,
+        "obi_ema": 0.0311
+      },
+      {
+        "time": "2026-07-17T03:11:29.795500",
+        "score": 0.515914,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0346,
+        "obi_ema": 0.0318
+      },
+      {
+        "time": "2026-07-17T03:11:58.986639",
+        "score": 0.516647,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0392,
+        "obi_ema": 0.0333
+      },
+      {
+        "time": "2026-07-17T03:12:29.235899",
+        "score": 0.510944,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": -0.0237,
+        "obi_ema": 0.0219
+      },
+      {
+        "time": "2026-07-17T03:12:59.410950",
+        "score": 0.513643,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0489,
+        "obi_ema": 0.0273
+      },
+      {
+        "time": "2026-07-17T03:13:29.122046",
+        "score": 0.516341,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0543,
+        "obi_ema": 0.0327
       }
     ],
     "HG=F": [
@@ -68612,6 +68900,150 @@
         "direction": 0,
         "obi_raw": 0.1046,
         "obi_ema": 0.0458
+      },
+      {
+        "time": "2026-07-17T03:06:21.945786",
+        "score": 0.524065,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0576,
+        "obi_ema": 0.0481
+      },
+      {
+        "time": "2026-07-17T03:06:29.078117",
+        "score": 0.519545,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0391,
+        "obi_ema": 0.0391
+      },
+      {
+        "time": "2026-07-17T03:07:00.515254",
+        "score": 0.523478,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0784,
+        "obi_ema": 0.047
+      },
+      {
+        "time": "2026-07-17T03:07:29.304766",
+        "score": 0.528107,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0932,
+        "obi_ema": 0.0562
+      },
+      {
+        "time": "2026-07-17T03:07:59.403757",
+        "score": 0.530725,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0824,
+        "obi_ema": 0.0614
+      },
+      {
+        "time": "2026-07-17T03:08:30.886554",
+        "score": 0.527251,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0267,
+        "obi_ema": 0.0545
+      },
+      {
+        "time": "2026-07-17T03:08:59.095207",
+        "score": 0.520834,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": -0.0097,
+        "obi_ema": 0.0417
+      },
+      {
+        "time": "2026-07-17T03:09:28.955326",
+        "score": 0.517808,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0114,
+        "obi_ema": 0.0356
+      },
+      {
+        "time": "2026-07-17T03:09:59.217982",
+        "score": 0.514685,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0044,
+        "obi_ema": 0.0294
+      },
+      {
+        "time": "2026-07-17T03:10:29.687982",
+        "score": 0.51272,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0097,
+        "obi_ema": 0.0254
+      },
+      {
+        "time": "2026-07-17T03:10:58.881596",
+        "score": 0.515566,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0539,
+        "obi_ema": 0.0311
+      },
+      {
+        "time": "2026-07-17T03:11:29.796682",
+        "score": 0.515914,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0346,
+        "obi_ema": 0.0318
+      },
+      {
+        "time": "2026-07-17T03:11:59.006179",
+        "score": 0.516647,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0392,
+        "obi_ema": 0.0333
+      },
+      {
+        "time": "2026-07-17T03:12:29.236829",
+        "score": 0.510944,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": -0.0237,
+        "obi_ema": 0.0219
+      },
+      {
+        "time": "2026-07-17T03:12:59.414689",
+        "score": 0.513643,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0489,
+        "obi_ema": 0.0273
+      },
+      {
+        "time": "2026-07-17T03:13:29.123020",
+        "score": 0.516341,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0543,
+        "obi_ema": 0.0327
       }
     ],
     "EURUSD": [
@@ -84549,6 +84981,150 @@
         "direction": 0,
         "obi_raw": 0.1046,
         "obi_ema": 0.0458
+      },
+      {
+        "time": "2026-07-17T03:06:21.957841",
+        "score": 0.524065,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0576,
+        "obi_ema": 0.0481
+      },
+      {
+        "time": "2026-07-17T03:06:29.079142",
+        "score": 0.519545,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0391,
+        "obi_ema": 0.0391
+      },
+      {
+        "time": "2026-07-17T03:07:00.550813",
+        "score": 0.523478,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0784,
+        "obi_ema": 0.047
+      },
+      {
+        "time": "2026-07-17T03:07:29.329211",
+        "score": 0.528107,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0932,
+        "obi_ema": 0.0562
+      },
+      {
+        "time": "2026-07-17T03:07:59.409979",
+        "score": 0.530725,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0824,
+        "obi_ema": 0.0614
+      },
+      {
+        "time": "2026-07-17T03:08:30.889298",
+        "score": 0.527251,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0267,
+        "obi_ema": 0.0545
+      },
+      {
+        "time": "2026-07-17T03:08:59.103240",
+        "score": 0.520834,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": -0.0097,
+        "obi_ema": 0.0417
+      },
+      {
+        "time": "2026-07-17T03:09:28.969348",
+        "score": 0.517808,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0114,
+        "obi_ema": 0.0356
+      },
+      {
+        "time": "2026-07-17T03:09:59.249397",
+        "score": 0.514685,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0044,
+        "obi_ema": 0.0294
+      },
+      {
+        "time": "2026-07-17T03:10:29.688852",
+        "score": 0.51272,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0097,
+        "obi_ema": 0.0254
+      },
+      {
+        "time": "2026-07-17T03:10:58.890257",
+        "score": 0.515566,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0539,
+        "obi_ema": 0.0311
+      },
+      {
+        "time": "2026-07-17T03:11:29.797779",
+        "score": 0.515914,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0346,
+        "obi_ema": 0.0318
+      },
+      {
+        "time": "2026-07-17T03:11:59.035858",
+        "score": 0.516647,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0392,
+        "obi_ema": 0.0333
+      },
+      {
+        "time": "2026-07-17T03:12:29.237731",
+        "score": 0.510944,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": -0.0237,
+        "obi_ema": 0.0219
+      },
+      {
+        "time": "2026-07-17T03:12:59.415753",
+        "score": 0.513643,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0489,
+        "obi_ema": 0.0273
+      },
+      {
+        "time": "2026-07-17T03:13:29.123877",
+        "score": 0.516341,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0543,
+        "obi_ema": 0.0327
       }
     ],
     "AUDUSD": [
@@ -100486,6 +101062,150 @@
         "direction": 0,
         "obi_raw": 0.1046,
         "obi_ema": 0.0458
+      },
+      {
+        "time": "2026-07-17T03:06:21.974740",
+        "score": 0.524065,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0576,
+        "obi_ema": 0.0481
+      },
+      {
+        "time": "2026-07-17T03:06:29.114664",
+        "score": 0.519545,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0391,
+        "obi_ema": 0.0391
+      },
+      {
+        "time": "2026-07-17T03:07:00.591864",
+        "score": 0.523478,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0784,
+        "obi_ema": 0.047
+      },
+      {
+        "time": "2026-07-17T03:07:29.332185",
+        "score": 0.528107,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0932,
+        "obi_ema": 0.0562
+      },
+      {
+        "time": "2026-07-17T03:07:59.411215",
+        "score": 0.530725,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0824,
+        "obi_ema": 0.0614
+      },
+      {
+        "time": "2026-07-17T03:08:30.890668",
+        "score": 0.527251,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0267,
+        "obi_ema": 0.0545
+      },
+      {
+        "time": "2026-07-17T03:08:59.104175",
+        "score": 0.520834,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": -0.0097,
+        "obi_ema": 0.0417
+      },
+      {
+        "time": "2026-07-17T03:09:28.995790",
+        "score": 0.517808,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0114,
+        "obi_ema": 0.0356
+      },
+      {
+        "time": "2026-07-17T03:09:59.267228",
+        "score": 0.514685,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0044,
+        "obi_ema": 0.0294
+      },
+      {
+        "time": "2026-07-17T03:10:29.689661",
+        "score": 0.51272,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0097,
+        "obi_ema": 0.0254
+      },
+      {
+        "time": "2026-07-17T03:10:58.891696",
+        "score": 0.515566,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0539,
+        "obi_ema": 0.0311
+      },
+      {
+        "time": "2026-07-17T03:11:29.798861",
+        "score": 0.515914,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0346,
+        "obi_ema": 0.0318
+      },
+      {
+        "time": "2026-07-17T03:11:59.056203",
+        "score": 0.516647,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0392,
+        "obi_ema": 0.0333
+      },
+      {
+        "time": "2026-07-17T03:12:29.253808",
+        "score": 0.510944,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": -0.0237,
+        "obi_ema": 0.0219
+      },
+      {
+        "time": "2026-07-17T03:12:59.416888",
+        "score": 0.513643,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0489,
+        "obi_ema": 0.0273
+      },
+      {
+        "time": "2026-07-17T03:13:29.125525",
+        "score": 0.516341,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0543,
+        "obi_ema": 0.0327
       }
     ]
   },
@@ -100509,12 +101229,12 @@
     "NASA": 1.0,
     "EIA": 0.6990000000000001,
     "OpenAQ": 0.14,
-    "ETH": 0.5321618915186,
+    "ETH": 0.53189214559185,
     "RealYield": 2.35,
-    "OBI": 0.10457985499651057
+    "OBI": 0.05426467497976907
   },
-  "last_cycle_utc": "2026-07-17T03:05:51.994572+00:00",
-  "cycle_count": 2114,
+  "last_cycle_utc": "2026-07-17T03:13:29.126858+00:00",
+  "cycle_count": 2130,
   "signals_live": 6,
-  "obi_ema": 0.0458
+  "obi_ema": 0.0327
 }
