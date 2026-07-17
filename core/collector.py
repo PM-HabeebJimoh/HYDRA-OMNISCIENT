@@ -274,8 +274,8 @@ class S3CausalCollector:
         The imbalance of the most liquid market correlates with directional
         pressure across commodities and FX in the same session.
         """
-        # Primary: Kraken BTC/USD
-        url_kraken = "https://api.kraken.com/0/public/Depth?pair=XBTUSD&count=25"
+        # Primary: Kraken BTC/USD — count=200 for deep-book stability (shallow books are noisy)
+        url_kraken = "https://api.kraken.com/0/public/Depth?pair=XBTUSD&count=200"
         try:
             async with self.session.get(url_kraken) as resp:
                 if resp.status == 200:

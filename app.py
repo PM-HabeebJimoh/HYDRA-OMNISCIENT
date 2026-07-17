@@ -581,7 +581,7 @@ with tab1:
         <div class="term-title">📊 MULTI-ASSET CONVERGENCE MATRIX</div>
         <div class="term-sub">S3-RHGNN v5.0  ·  LIVE CAUSAL ENGINE  ·  S3-SURGICAL-TRIGGER ARMED</div>
       </div>
-      <div class="term-meta">POLL: 10s  ·  UI REFRESH: 15s<br/>TRIGGER: DIRECTION | STATUS | SCORE +0.05</div>
+      <div class="term-meta">POLL: 30s  ·  UI REFRESH: 15s<br/>TRIGGER: DIRECTION | STATUS | SCORE +0.08</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1271,7 +1271,7 @@ with tab5:
             ("ETH SOURCE",    "OKX ETHUSDT Funding Rate",   "#cdd9e5"),
             ("YIELD SOURCE",  "US Treasury XML + FRED",     "#cdd9e5"),
             ("NASA SOURCE",   "EONET Wildfire Events",      "#cdd9e5"),
-            ("POLL INTERVAL", "10 seconds",                 "#cdd9e5"),
+            ("POLL INTERVAL", "30 seconds (EMA-smoothed OBI)", "#cdd9e5"),
             ("UI REFRESH",    "15 seconds",                 "#cdd9e5"),
         ]:
             st.markdown(f"""

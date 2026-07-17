@@ -19300,6 +19300,1506 @@
       },
       "executed": false,
       "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260717024312159-STA",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-17T02:43:12.159928",
+      "score": 0.9532911164858151,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5290868551554501,
+        "RealYield": 2.35,
+        "OBI": -0.7634331285135312
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260717024312524-STA",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-17T02:43:12.524300",
+      "score": 0.9532911164858151,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5290868551554501,
+        "RealYield": 2.35,
+        "OBI": -0.7634331285135312
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260717024312885-STA",
+      "asset": "HG=F",
+      "timestamp": "2026-07-17T02:43:12.885719",
+      "score": 0.9532911164858151,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5290868551554501,
+        "RealYield": 2.35,
+        "OBI": -0.7634331285135312
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260717024313243-STA",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-17T02:43:13.243531",
+      "score": 0.9532911164858151,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5290868551554501,
+        "RealYield": 2.35,
+        "OBI": -0.7634331285135312
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260717024313589-STA",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-17T02:43:13.589816",
+      "score": 0.9532911164858151,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5290868551554501,
+        "RealYield": 2.35,
+        "OBI": -0.7634331285135312
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260717024522371-SCO",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-17T02:45:22.371070",
+      "score": 0.795809904783368,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "SCORE_SURGE [0.7454\u21920.7958]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5290910567947,
+        "RealYield": 2.35,
+        "OBI": -0.5430165079722801
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260717024522372-SCO",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-17T02:45:22.372394",
+      "score": 0.795809904783368,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "SCORE_SURGE [0.7454\u21920.7958]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5290910567947,
+        "RealYield": 2.35,
+        "OBI": -0.5430165079722801
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260717024522373-SCO",
+      "asset": "HG=F",
+      "timestamp": "2026-07-17T02:45:22.373722",
+      "score": 0.795809904783368,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "SCORE_SURGE [0.7454\u21920.7958]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5290910567947,
+        "RealYield": 2.35,
+        "OBI": -0.5430165079722801
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260717024522380-SCO",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-17T02:45:22.380195",
+      "score": 0.795809904783368,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "SCORE_SURGE [0.7454\u21920.7958]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5290910567947,
+        "RealYield": 2.35,
+        "OBI": -0.5430165079722801
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260717024522388-SCO",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-17T02:45:22.388660",
+      "score": 0.795809904783368,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "SCORE_SURGE [0.7454\u21920.7958]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5290910567947,
+        "RealYield": 2.35,
+        "OBI": -0.5430165079722801
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260717024642607-STA",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-17T02:46:42.607841",
+      "score": 0.8391627687181623,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5290265102622,
+        "RealYield": 2.35,
+        "OBI": -0.6022170249575498
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260717024642629-STA",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-17T02:46:42.629566",
+      "score": 0.8391627687181623,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5290265102622,
+        "RealYield": 2.35,
+        "OBI": -0.6022170249575498
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260717024642642-STA",
+      "asset": "HG=F",
+      "timestamp": "2026-07-17T02:46:42.642263",
+      "score": 0.8391627687181623,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5290265102622,
+        "RealYield": 2.35,
+        "OBI": -0.6022170249575498
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260717024642654-STA",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-17T02:46:42.654352",
+      "score": 0.8391627687181623,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5290265102622,
+        "RealYield": 2.35,
+        "OBI": -0.6022170249575498
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260717024642661-STA",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-17T02:46:42.661735",
+      "score": 0.8391627687181623,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5290265102622,
+        "RealYield": 2.35,
+        "OBI": -0.6022170249575498
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260717024822446-STA",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-17T02:48:22.446180",
+      "score": 0.879450148926164,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5291080662048,
+        "RealYield": 2.35,
+        "OBI": -0.655933531901552
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260717024822894-STA",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-17T02:48:22.894314",
+      "score": 0.879450148926164,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5291080662048,
+        "RealYield": 2.35,
+        "OBI": -0.655933531901552
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260717024823351-STA",
+      "asset": "HG=F",
+      "timestamp": "2026-07-17T02:48:23.351305",
+      "score": 0.879450148926164,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5291080662048,
+        "RealYield": 2.35,
+        "OBI": -0.655933531901552
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260717024823715-STA",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-17T02:48:23.715093",
+      "score": 0.879450148926164,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5291080662048,
+        "RealYield": 2.35,
+        "OBI": -0.655933531901552
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260717024824153-STA",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-17T02:48:24.153168",
+      "score": 0.879450148926164,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5291080662048,
+        "RealYield": 2.35,
+        "OBI": -0.655933531901552
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260717024842660-STA",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-17T02:48:42.660578",
+      "score": 0.8997484045164458,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52941501685875,
+        "RealYield": 2.35,
+        "OBI": -0.6829978726885944
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260717024842676-STA",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-17T02:48:42.676081",
+      "score": 0.8997484045164458,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52941501685875,
+        "RealYield": 2.35,
+        "OBI": -0.6829978726885944
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260717024842690-STA",
+      "asset": "HG=F",
+      "timestamp": "2026-07-17T02:48:42.690544",
+      "score": 0.8997484045164458,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52941501685875,
+        "RealYield": 2.35,
+        "OBI": -0.6829978726885944
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260717024842703-STA",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-17T02:48:42.703502",
+      "score": 0.8997484045164458,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52941501685875,
+        "RealYield": 2.35,
+        "OBI": -0.6829978726885944
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260717024842719-STA",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-17T02:48:42.719040",
+      "score": 0.8997484045164458,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52941501685875,
+        "RealYield": 2.35,
+        "OBI": -0.6829978726885944
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260717024852450-STA",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-17T02:48:52.450248",
+      "score": 0.999,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52941501685875,
+        "RealYield": 2.35,
+        "OBI": -0.955264483627204
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260717024852829-STA",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-17T02:48:52.829771",
+      "score": 0.999,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52941501685875,
+        "RealYield": 2.35,
+        "OBI": -0.955264483627204
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260717024853190-STA",
+      "asset": "HG=F",
+      "timestamp": "2026-07-17T02:48:53.190923",
+      "score": 0.999,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52941501685875,
+        "RealYield": 2.35,
+        "OBI": -0.955264483627204
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260717024853537-STA",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-17T02:48:53.537133",
+      "score": 0.999,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52941501685875,
+        "RealYield": 2.35,
+        "OBI": -0.955264483627204
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260717024853900-STA",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-17T02:48:53.900199",
+      "score": 0.999,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52941501685875,
+        "RealYield": 2.35,
+        "OBI": -0.955264483627204
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260717025052615-INI",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-17T02:50:52.615083",
+      "score": 0.7732548138011925,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52961047501585,
+        "RealYield": 2.35,
+        "OBI": -0.5054246896686542
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260717025052618-INI",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-17T02:50:52.619006",
+      "score": 0.7732548138011925,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52961047501585,
+        "RealYield": 2.35,
+        "OBI": -0.5054246896686542
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260717025052620-INI",
+      "asset": "HG=F",
+      "timestamp": "2026-07-17T02:50:52.620079",
+      "score": 0.7732548138011925,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52961047501585,
+        "RealYield": 2.35,
+        "OBI": -0.5054246896686542
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260717025052622-INI",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-17T02:50:52.622665",
+      "score": 0.7732548138011925,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52961047501585,
+        "RealYield": 2.35,
+        "OBI": -0.5054246896686542
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260717025052626-INI",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-17T02:50:52.626463",
+      "score": 0.7732548138011925,
+      "status": "NOISE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52961047501585,
+        "RealYield": 2.35,
+        "OBI": -0.5054246896686542
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260717025202758-STA",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-17T02:52:02.758051",
+      "score": 0.9172306664026141,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5294550058812499,
+        "RealYield": 2.35,
+        "OBI": -0.7063075552034855
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260717025202762-STA",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-17T02:52:02.762229",
+      "score": 0.9172306664026141,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5294550058812499,
+        "RealYield": 2.35,
+        "OBI": -0.7063075552034855
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260717025202763-STA",
+      "asset": "HG=F",
+      "timestamp": "2026-07-17T02:52:02.763365",
+      "score": 0.9172306664026141,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5294550058812499,
+        "RealYield": 2.35,
+        "OBI": -0.7063075552034855
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260717025202777-STA",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-17T02:52:02.777269",
+      "score": 0.9172306664026141,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5294550058812499,
+        "RealYield": 2.35,
+        "OBI": -0.7063075552034855
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260717025202794-STA",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-17T02:52:02.794228",
+      "score": 0.9172306664026141,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5294550058812499,
+        "RealYield": 2.35,
+        "OBI": -0.7063075552034855
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260717025212629-STA",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-17T02:52:12.629705",
+      "score": 0.9664448700866088,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5294550058812499,
+        "RealYield": 2.35,
+        "OBI": -0.8171219187208526
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260717025212988-STA",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-17T02:52:12.989018",
+      "score": 0.9664448700866088,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5294550058812499,
+        "RealYield": 2.35,
+        "OBI": -0.8171219187208526
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260717025213359-STA",
+      "asset": "HG=F",
+      "timestamp": "2026-07-17T02:52:13.359201",
+      "score": 0.9664448700866088,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5294550058812499,
+        "RealYield": 2.35,
+        "OBI": -0.8171219187208526
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260717025213993-STA",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-17T02:52:13.993259",
+      "score": 0.9664448700866088,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5294550058812499,
+        "RealYield": 2.35,
+        "OBI": -0.8171219187208526
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260717025214360-STA",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-17T02:52:14.360326",
+      "score": 0.9664448700866088,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5294550058812499,
+        "RealYield": 2.35,
+        "OBI": -0.8171219187208526
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260717025242772-STA",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-17T02:52:42.772502",
+      "score": 0.9824237690577355,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52959275647255,
+        "RealYield": 2.35,
+        "OBI": -0.8823419145213697
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260717025243147-STA",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-17T02:52:43.147942",
+      "score": 0.9824237690577355,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52959275647255,
+        "RealYield": 2.35,
+        "OBI": -0.8823419145213697
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260717025243513-STA",
+      "asset": "HG=F",
+      "timestamp": "2026-07-17T02:52:43.514090",
+      "score": 0.9824237690577355,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52959275647255,
+        "RealYield": 2.35,
+        "OBI": -0.8823419145213697
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260717025243863-STA",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-17T02:52:43.863673",
+      "score": 0.9824237690577355,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52959275647255,
+        "RealYield": 2.35,
+        "OBI": -0.8823419145213697
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260717025244231-STA",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-17T02:52:44.231925",
+      "score": 0.9824237690577355,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.52959275647255,
+        "RealYield": 2.35,
+        "OBI": -0.8823419145213697
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260717025452643-STA",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-17T02:54:52.643716",
+      "score": 0.9633805715783954,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5297582520454001,
+        "RealYield": 2.35,
+        "OBI": -0.8046145778710017
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260717025453009-STA",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-17T02:54:53.009498",
+      "score": 0.9633805715783954,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5297582520454001,
+        "RealYield": 2.35,
+        "OBI": -0.8046145778710017
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260717025453359-STA",
+      "asset": "HG=F",
+      "timestamp": "2026-07-17T02:54:53.359800",
+      "score": 0.9633805715783954,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5297582520454001,
+        "RealYield": 2.35,
+        "OBI": -0.8046145778710017
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260717025453715-STA",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-17T02:54:53.715318",
+      "score": 0.9633805715783954,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5297582520454001,
+        "RealYield": 2.35,
+        "OBI": -0.8046145778710017
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260717025454087-STA",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-17T02:54:54.087069",
+      "score": 0.9633805715783954,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5297582520454001,
+        "RealYield": 2.35,
+        "OBI": -0.8046145778710017
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260717025542707-STA",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-17T02:55:42.707040",
+      "score": 0.9311859235150528,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5299310471088,
+        "RealYield": 2.35,
+        "OBI": -0.7249145646867372
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260717025543104-STA",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-17T02:55:43.104217",
+      "score": 0.9311859235150528,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5299310471088,
+        "RealYield": 2.35,
+        "OBI": -0.7249145646867372
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260717025543478-STA",
+      "asset": "HG=F",
+      "timestamp": "2026-07-17T02:55:43.478176",
+      "score": 0.9311859235150528,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5299310471088,
+        "RealYield": 2.35,
+        "OBI": -0.7249145646867372
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260717025543831-STA",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-17T02:55:43.831575",
+      "score": 0.9311859235150528,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5299310471088,
+        "RealYield": 2.35,
+        "OBI": -0.7249145646867372
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260717025544182-STA",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-17T02:55:44.182950",
+      "score": 0.9311859235150528,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5299310471088,
+        "RealYield": 2.35,
+        "OBI": -0.7249145646867372
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260717025712856-STA",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-17T02:57:12.856722",
+      "score": 0.9546062754495334,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": 1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.530306283427,
+        "RealYield": 2.35,
+        "OBI": 0.7688011242838098
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260717025713248-STA",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-17T02:57:13.249154",
+      "score": 0.9546062754495334,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": 1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.530306283427,
+        "RealYield": 2.35,
+        "OBI": 0.7688011242838098
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260717025713607-STA",
+      "asset": "HG=F",
+      "timestamp": "2026-07-17T02:57:13.607075",
+      "score": 0.9546062754495334,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": 1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.530306283427,
+        "RealYield": 2.35,
+        "OBI": 0.7688011242838098
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260717025713981-STA",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-17T02:57:13.981825",
+      "score": 0.9546062754495334,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": 1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.530306283427,
+        "RealYield": 2.35,
+        "OBI": 0.7688011242838098
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260717025714334-STA",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-17T02:57:14.334939",
+      "score": 0.9546062754495334,
+      "status": "INEVITABLE",
+      "regime": "CONTRACTION",
+      "direction": 1,
+      "trigger": "STATUS_ESCALATION [HIGH CONVICTION\u2192INEVITABLE]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.530306283427,
+        "RealYield": 2.35,
+        "OBI": 0.7688011242838098
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260717030020246-STA",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-17T03:00:20.246852",
+      "score": 0.8358777665995978,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5310804024159,
+        "RealYield": 2.35,
+        "OBI": -0.597837022132797
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260717030020247-STA",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-17T03:00:20.247919",
+      "score": 0.8358777665995978,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5310804024159,
+        "RealYield": 2.35,
+        "OBI": -0.597837022132797
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260717030020248-STA",
+      "asset": "HG=F",
+      "timestamp": "2026-07-17T03:00:20.248864",
+      "score": 0.8358777665995978,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5310804024159,
+        "RealYield": 2.35,
+        "OBI": -0.597837022132797
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260717030020249-STA",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-17T03:00:20.249796",
+      "score": 0.8358777665995978,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5310804024159,
+        "RealYield": 2.35,
+        "OBI": -0.597837022132797
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260717030020277-STA",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-17T03:00:20.277177",
+      "score": 0.8358777665995978,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "STATUS_ESCALATION [NOISE\u2192HIGH CONVICTION]",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5310804024159,
+        "RealYield": 2.35,
+        "OBI": -0.597837022132797
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAUUSD-20260717030156284-INI",
+      "asset": "XAUUSD",
+      "timestamp": "2026-07-17T03:01:56.284839",
+      "score": 0.8691490795655857,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5312097843947501,
+        "RealYield": 2.35,
+        "OBI": -0.6421987727541143
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "XAGUSD-20260717030156658-INI",
+      "asset": "XAGUSD",
+      "timestamp": "2026-07-17T03:01:56.658596",
+      "score": 0.8691490795655857,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5312097843947501,
+        "RealYield": 2.35,
+        "OBI": -0.6421987727541143
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "HG=F-20260717030157015-INI",
+      "asset": "HG=F",
+      "timestamp": "2026-07-17T03:01:57.015810",
+      "score": 0.8691490795655857,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5312097843947501,
+        "RealYield": 2.35,
+        "OBI": -0.6421987727541143
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "EURUSD-20260717030157366-INI",
+      "asset": "EURUSD",
+      "timestamp": "2026-07-17T03:01:57.366071",
+      "score": 0.8691490795655857,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5312097843947501,
+        "RealYield": 2.35,
+        "OBI": -0.6421987727541143
+      },
+      "executed": false,
+      "trade_id": null
+    },
+    {
+      "id": "AUDUSD-20260717030157736-INI",
+      "asset": "AUDUSD",
+      "timestamp": "2026-07-17T03:01:57.736404",
+      "score": 0.8691490795655857,
+      "status": "HIGH CONVICTION",
+      "regime": "CONTRACTION",
+      "direction": -1,
+      "trigger": "INITIAL_SIGNAL",
+      "manifold_snapshot": {
+        "NASA": 1.0,
+        "EIA": 0.6990000000000001,
+        "OpenAQ": 0.14,
+        "ETH": 0.5312097843947501,
+        "RealYield": 2.35,
+        "OBI": -0.6421987727541143
+      },
+      "executed": false,
+      "trade_id": null
     }
   ],
   "history": {
@@ -34358,6 +35858,886 @@
         "status": "HIGH CONVICTION",
         "regime": "CONTRACTION",
         "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:43:12.158801",
+        "score": 0.953291,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:43:22.459775",
+        "score": 0.502762,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:43:32.455618",
+        "score": 0.634862,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:43:42.213422",
+        "score": 0.81757,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:43:52.259976",
+        "score": 0.550315,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:02.198214",
+        "score": 0.561047,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:12.334148",
+        "score": 0.634772,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:22.359332",
+        "score": 0.601728,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:32.222892",
+        "score": 0.587364,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:42.704768",
+        "score": 0.546119,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:52.371390",
+        "score": 0.518576,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:45:02.740869",
+        "score": 0.506326,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:45:13.374658",
+        "score": 0.745392,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:22.370883",
+        "score": 0.79581,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:33.044948",
+        "score": 0.758282,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:42.693131",
+        "score": 0.755254,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:52.335176",
+        "score": 0.515054,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:46:02.543805",
+        "score": 0.57863,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:46:12.582242",
+        "score": 0.60777,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:46:22.678599",
+        "score": 0.954533,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:46:32.574141",
+        "score": 0.769004,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:46:42.607645",
+        "score": 0.839163,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:46:52.627449",
+        "score": 0.796554,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:47:02.591268",
+        "score": 0.510228,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:47:12.748314",
+        "score": 0.600376,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:47:22.779237",
+        "score": 0.789559,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:47:32.488330",
+        "score": 0.52368,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:47:42.332389",
+        "score": 0.701634,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:47:52.387082",
+        "score": 0.602625,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:48:02.604372",
+        "score": 0.778513,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:12.544345",
+        "score": 0.795769,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:22.445938",
+        "score": 0.87945,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:32.532791",
+        "score": 0.79848,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:42.656849",
+        "score": 0.899748,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:52.449567",
+        "score": 0.999,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:02.586075",
+        "score": 0.980459,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:12.421206",
+        "score": 0.744931,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:22.571428",
+        "score": 0.743514,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:32.779496",
+        "score": 0.603761,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:49:42.517745",
+        "score": 0.538454,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:49:52.602285",
+        "score": 0.62509,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:50:03.163208",
+        "score": 0.699801,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:50:12.939308",
+        "score": 0.942089,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:50:22.535118",
+        "score": 0.542534,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:50:32.667151",
+        "score": 0.788314,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:50:43.111115",
+        "score": 0.574008,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:50:52.614790",
+        "score": 0.773255,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:03.073596",
+        "score": 0.73495,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:13.151992",
+        "score": 0.702866,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:22.743286",
+        "score": 0.727193,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:32.631124",
+        "score": 0.604085,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:51:42.581712",
+        "score": 0.825766,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:52.662483",
+        "score": 0.7004,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:02.757624",
+        "score": 0.917231,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:12.629525",
+        "score": 0.966445,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:22.674268",
+        "score": 0.965058,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:32.661583",
+        "score": 0.728852,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:42.772314",
+        "score": 0.982424,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:52.799034",
+        "score": 0.961436,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:53:03.022720",
+        "score": 0.569661,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:12.697567",
+        "score": 0.635439,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:22.706263",
+        "score": 0.580192,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:33.224729",
+        "score": 0.524421,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:42.626084",
+        "score": 0.582318,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:52.651690",
+        "score": 0.633304,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:54:02.614002",
+        "score": 0.599124,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:54:12.733461",
+        "score": 0.87456,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:54:23.219066",
+        "score": 0.732859,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:54:32.888055",
+        "score": 0.575811,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:54:43.059323",
+        "score": 0.915231,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:54:52.643598",
+        "score": 0.963381,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:02.940736",
+        "score": 0.97626,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:13.240826",
+        "score": 0.956042,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:22.830406",
+        "score": 0.753644,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:32.714888",
+        "score": 0.773492,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:42.706888",
+        "score": 0.931186,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:52.778423",
+        "score": 0.921264,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:56:02.868659",
+        "score": 0.630592,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:12.903185",
+        "score": 0.563021,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:22.754111",
+        "score": 0.607601,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:32.682840",
+        "score": 0.552679,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:42.700876",
+        "score": 0.567313,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:52.829983",
+        "score": 0.584395,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:02.786880",
+        "score": 0.888459,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:57:12.856552",
+        "score": 0.954606,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:57:23.456151",
+        "score": 0.554229,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:33.179561",
+        "score": 0.540255,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:42.906725",
+        "score": 0.527063,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:53.221936",
+        "score": 0.535794,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:03.039471",
+        "score": 0.662685,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:58:12.932401",
+        "score": 0.628596,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:22.877396",
+        "score": 0.588607,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:32.857901",
+        "score": 0.656581,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:58:42.890140",
+        "score": 0.573509,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:53.185912",
+        "score": 0.532319,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:03.227800",
+        "score": 0.634348,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:12.951155",
+        "score": 0.658029,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:59:23.063093",
+        "score": 0.594201,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:33.027259",
+        "score": 0.679755,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:59:43.427633",
+        "score": 0.64172,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:53.612999",
+        "score": 0.502035,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:00:04.265669",
+        "score": 0.78345,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T03:00:20.246727",
+        "score": 0.835878,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:00:28.479219",
+        "score": 0.558033,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:00:43.196987",
+        "score": 0.582773,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:00:55.423199",
+        "score": 0.636995,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:07.417249",
+        "score": 0.632988,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:26.522621",
+        "score": 0.636209,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:29.483839",
+        "score": 0.538265,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:44.379672",
+        "score": 0.531092,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:56.284752",
+        "score": 0.869149,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:06.050974",
+        "score": 0.850737,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:15.391216",
+        "score": 0.608058,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:02:22.913289",
+        "score": 0.534277,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:02:32.001662",
+        "score": 0.743891,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:41.307096",
+        "score": 0.746066,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:51.099098",
+        "score": 0.78183,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:03:00.973169",
+        "score": 0.512072,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:03:21.713455",
+        "score": 0.516747,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0335,
+        "obi_ema": 0.0335
+      },
+      {
+        "time": "2026-07-17T03:03:51.661443",
+        "score": 0.513832,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0043,
+        "obi_ema": 0.0277
+      },
+      {
+        "time": "2026-07-17T03:04:22.007266",
+        "score": 0.51153,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0046,
+        "obi_ema": 0.0231
+      },
+      {
+        "time": "2026-07-17T03:04:52.591840",
+        "score": 0.515178,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0595,
+        "obi_ema": 0.0304
+      },
+      {
+        "time": "2026-07-17T03:05:23.432686",
+        "score": 0.515536,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0339,
+        "obi_ema": 0.0311
+      },
+      {
+        "time": "2026-07-17T03:05:51.943178",
+        "score": 0.522887,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.1046,
+        "obi_ema": 0.0458
       }
     ],
     "XAGUSD": [
@@ -49415,6 +51795,886 @@
         "status": "HIGH CONVICTION",
         "regime": "CONTRACTION",
         "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:43:12.521551",
+        "score": 0.953291,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:43:22.467004",
+        "score": 0.502762,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:43:32.470852",
+        "score": 0.634862,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:43:42.220310",
+        "score": 0.81757,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:43:52.266029",
+        "score": 0.550315,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:02.215342",
+        "score": 0.561047,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:12.350826",
+        "score": 0.634772,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:22.360777",
+        "score": 0.601728,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:32.223664",
+        "score": 0.587364,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:42.706618",
+        "score": 0.546119,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:52.376648",
+        "score": 0.518576,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:45:02.742622",
+        "score": 0.506326,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:45:13.375493",
+        "score": 0.745392,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:22.372236",
+        "score": 0.79581,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:33.047242",
+        "score": 0.758282,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:42.694449",
+        "score": 0.755254,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:52.336364",
+        "score": 0.515054,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:46:02.545057",
+        "score": 0.57863,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:46:12.599077",
+        "score": 0.60777,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:46:22.694919",
+        "score": 0.954533,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:46:32.576119",
+        "score": 0.769004,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:46:42.629282",
+        "score": 0.839163,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:46:52.637663",
+        "score": 0.796554,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:47:02.592625",
+        "score": 0.510228,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:47:12.755436",
+        "score": 0.600376,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:47:22.816828",
+        "score": 0.789559,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:47:32.492174",
+        "score": 0.52368,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:47:42.337209",
+        "score": 0.701634,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:47:52.398134",
+        "score": 0.602625,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:48:02.627062",
+        "score": 0.778513,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:12.556208",
+        "score": 0.795769,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:22.894131",
+        "score": 0.87945,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:32.547499",
+        "score": 0.79848,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:42.674007",
+        "score": 0.899748,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:52.829577",
+        "score": 0.999,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:02.586972",
+        "score": 0.980459,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:12.427556",
+        "score": 0.744931,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:22.572194",
+        "score": 0.743514,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:32.790475",
+        "score": 0.603761,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:49:42.524623",
+        "score": 0.538454,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:49:52.604467",
+        "score": 0.62509,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:50:03.182034",
+        "score": 0.699801,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:50:12.940236",
+        "score": 0.942089,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:50:22.538691",
+        "score": 0.542534,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:50:32.679213",
+        "score": 0.788314,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:50:43.134872",
+        "score": 0.574008,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:50:52.618820",
+        "score": 0.773255,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:03.092073",
+        "score": 0.73495,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:13.153710",
+        "score": 0.702866,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:22.770907",
+        "score": 0.727193,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:32.653316",
+        "score": 0.604085,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:51:42.587166",
+        "score": 0.825766,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:52.694611",
+        "score": 0.7004,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:02.762071",
+        "score": 0.917231,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:12.988706",
+        "score": 0.966445,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:22.675916",
+        "score": 0.965058,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:32.687135",
+        "score": 0.728852,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:43.139633",
+        "score": 0.982424,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:52.822536",
+        "score": 0.961436,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:53:03.024527",
+        "score": 0.569661,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:12.710581",
+        "score": 0.635439,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:22.722763",
+        "score": 0.580192,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:33.230884",
+        "score": 0.524421,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:42.654614",
+        "score": 0.582318,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:52.658047",
+        "score": 0.633304,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:54:02.615485",
+        "score": 0.599124,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:54:12.738852",
+        "score": 0.87456,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:54:23.222420",
+        "score": 0.732859,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:54:32.893977",
+        "score": 0.575811,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:54:43.086673",
+        "score": 0.915231,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:54:53.007649",
+        "score": 0.963381,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:02.955187",
+        "score": 0.97626,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:13.244334",
+        "score": 0.956042,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:22.831707",
+        "score": 0.753644,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:32.747799",
+        "score": 0.773492,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:43.103694",
+        "score": 0.931186,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:52.780091",
+        "score": 0.921264,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:56:02.871883",
+        "score": 0.630592,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:12.904022",
+        "score": 0.563021,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:22.768145",
+        "score": 0.607601,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:32.684112",
+        "score": 0.552679,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:42.715136",
+        "score": 0.567313,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:52.831768",
+        "score": 0.584395,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:02.787914",
+        "score": 0.888459,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:57:13.234990",
+        "score": 0.954606,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:57:23.458298",
+        "score": 0.554229,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:33.202825",
+        "score": 0.540255,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:42.913934",
+        "score": 0.527063,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:53.222896",
+        "score": 0.535794,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:03.041833",
+        "score": 0.662685,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:58:12.947342",
+        "score": 0.628596,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:22.879519",
+        "score": 0.588607,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:32.859432",
+        "score": 0.656581,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:58:42.891856",
+        "score": 0.573509,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:53.191270",
+        "score": 0.532319,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:03.230731",
+        "score": 0.634348,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:12.955531",
+        "score": 0.658029,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:59:23.077923",
+        "score": 0.594201,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:33.033554",
+        "score": 0.679755,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:59:43.460665",
+        "score": 0.64172,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:53.614565",
+        "score": 0.502035,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:00:04.286172",
+        "score": 0.78345,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T03:00:20.247806",
+        "score": 0.835878,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:00:28.480194",
+        "score": 0.558033,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:00:43.198577",
+        "score": 0.582773,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:00:55.428824",
+        "score": 0.636995,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:07.445884",
+        "score": 0.632988,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:26.555726",
+        "score": 0.636209,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:29.510591",
+        "score": 0.538265,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:44.380493",
+        "score": 0.531092,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:56.649222",
+        "score": 0.869149,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:06.076448",
+        "score": 0.850737,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:15.395330",
+        "score": 0.608058,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:02:22.932960",
+        "score": 0.534277,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:02:32.004677",
+        "score": 0.743891,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:41.329951",
+        "score": 0.746066,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:51.101612",
+        "score": 0.78183,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:03:00.998634",
+        "score": 0.512072,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:03:21.718137",
+        "score": 0.516747,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0335,
+        "obi_ema": 0.0335
+      },
+      {
+        "time": "2026-07-17T03:03:51.678966",
+        "score": 0.513832,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0043,
+        "obi_ema": 0.0277
+      },
+      {
+        "time": "2026-07-17T03:04:22.011530",
+        "score": 0.51153,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0046,
+        "obi_ema": 0.0231
+      },
+      {
+        "time": "2026-07-17T03:04:52.593166",
+        "score": 0.515178,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0595,
+        "obi_ema": 0.0304
+      },
+      {
+        "time": "2026-07-17T03:05:23.435579",
+        "score": 0.515536,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0339,
+        "obi_ema": 0.0311
+      },
+      {
+        "time": "2026-07-17T03:05:51.954599",
+        "score": 0.522887,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.1046,
+        "obi_ema": 0.0458
       }
     ],
     "HG=F": [
@@ -64472,6 +67732,886 @@
         "status": "HIGH CONVICTION",
         "regime": "CONTRACTION",
         "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:43:12.885464",
+        "score": 0.953291,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:43:22.474781",
+        "score": 0.502762,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:43:32.487165",
+        "score": 0.634862,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:43:42.234756",
+        "score": 0.81757,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:43:52.267136",
+        "score": 0.550315,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:02.224485",
+        "score": 0.561047,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:12.351979",
+        "score": 0.634772,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:22.362150",
+        "score": 0.601728,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:32.246009",
+        "score": 0.587364,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:42.714534",
+        "score": 0.546119,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:52.385062",
+        "score": 0.518576,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:45:02.749946",
+        "score": 0.506326,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:45:13.376285",
+        "score": 0.745392,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:22.373556",
+        "score": 0.79581,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:33.053467",
+        "score": 0.758282,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:42.695993",
+        "score": 0.755254,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:52.337162",
+        "score": 0.515054,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:46:02.549708",
+        "score": 0.57863,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:46:12.616207",
+        "score": 0.60777,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:46:22.702835",
+        "score": 0.954533,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:46:32.577464",
+        "score": 0.769004,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:46:42.637071",
+        "score": 0.839163,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:46:52.659129",
+        "score": 0.796554,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:47:02.594357",
+        "score": 0.510228,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:47:12.756661",
+        "score": 0.600376,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:47:22.836788",
+        "score": 0.789559,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:47:32.493252",
+        "score": 0.52368,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:47:42.338244",
+        "score": 0.701634,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:47:52.409483",
+        "score": 0.602625,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:48:02.638842",
+        "score": 0.778513,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:12.564567",
+        "score": 0.795769,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:23.351150",
+        "score": 0.87945,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:32.552821",
+        "score": 0.79848,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:42.685218",
+        "score": 0.899748,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:53.190784",
+        "score": 0.999,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:02.591759",
+        "score": 0.980459,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:12.465941",
+        "score": 0.744931,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:22.572763",
+        "score": 0.743514,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:32.791291",
+        "score": 0.603761,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:49:42.525535",
+        "score": 0.538454,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:49:52.606280",
+        "score": 0.62509,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:50:03.216169",
+        "score": 0.699801,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:50:12.940821",
+        "score": 0.942089,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:50:22.539577",
+        "score": 0.542534,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:50:32.708899",
+        "score": 0.788314,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:50:43.158601",
+        "score": 0.574008,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:50:52.619914",
+        "score": 0.773255,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:03.098584",
+        "score": 0.73495,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:13.155117",
+        "score": 0.702866,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:22.778810",
+        "score": 0.727193,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:32.671478",
+        "score": 0.604085,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:51:42.588368",
+        "score": 0.825766,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:52.696437",
+        "score": 0.7004,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:02.763216",
+        "score": 0.917231,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:13.358871",
+        "score": 0.966445,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:22.677389",
+        "score": 0.965058,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:32.706629",
+        "score": 0.728852,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:43.513767",
+        "score": 0.982424,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:52.839553",
+        "score": 0.961436,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:53:03.025930",
+        "score": 0.569661,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:12.727901",
+        "score": 0.635439,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:22.752144",
+        "score": 0.580192,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:33.231763",
+        "score": 0.524421,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:42.656090",
+        "score": 0.582318,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:52.682449",
+        "score": 0.633304,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:54:02.616380",
+        "score": 0.599124,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:54:12.740478",
+        "score": 0.87456,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:54:23.226936",
+        "score": 0.732859,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:54:32.894971",
+        "score": 0.575811,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:54:43.100739",
+        "score": 0.915231,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:54:53.359595",
+        "score": 0.963381,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:02.984233",
+        "score": 0.97626,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:13.262153",
+        "score": 0.956042,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:22.832887",
+        "score": 0.753644,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:32.761227",
+        "score": 0.773492,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:43.473474",
+        "score": 0.931186,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:52.784108",
+        "score": 0.921264,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:56:02.874786",
+        "score": 0.630592,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:12.905020",
+        "score": 0.563021,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:22.780053",
+        "score": 0.607601,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:32.684874",
+        "score": 0.552679,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:42.727733",
+        "score": 0.567313,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:52.832571",
+        "score": 0.584395,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:02.788648",
+        "score": 0.888459,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:57:13.606902",
+        "score": 0.954606,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:57:23.484922",
+        "score": 0.554229,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:33.214151",
+        "score": 0.540255,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:42.914991",
+        "score": 0.527063,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:53.223707",
+        "score": 0.535794,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:03.042722",
+        "score": 0.662685,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:58:12.965577",
+        "score": 0.628596,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:22.890832",
+        "score": 0.588607,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:32.861190",
+        "score": 0.656581,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:58:42.894506",
+        "score": 0.573509,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:53.192075",
+        "score": 0.532319,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:03.231759",
+        "score": 0.634348,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:12.957000",
+        "score": 0.658029,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:59:23.095715",
+        "score": 0.594201,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:33.035192",
+        "score": 0.679755,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:59:43.474883",
+        "score": 0.64172,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:53.616297",
+        "score": 0.502035,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:00:04.310217",
+        "score": 0.78345,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T03:00:20.248766",
+        "score": 0.835878,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:00:28.480975",
+        "score": 0.558033,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:00:43.200173",
+        "score": 0.582773,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:00:55.452738",
+        "score": 0.636995,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:07.485506",
+        "score": 0.632988,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:26.564858",
+        "score": 0.636209,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:29.531132",
+        "score": 0.538265,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:44.381206",
+        "score": 0.531092,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:57.015701",
+        "score": 0.869149,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:06.095421",
+        "score": 0.850737,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:15.397017",
+        "score": 0.608058,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:02:22.940505",
+        "score": 0.534277,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:02:32.009011",
+        "score": 0.743891,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:41.358793",
+        "score": 0.746066,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:51.130163",
+        "score": 0.78183,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:03:01.026812",
+        "score": 0.512072,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:03:21.719596",
+        "score": 0.516747,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0335,
+        "obi_ema": 0.0335
+      },
+      {
+        "time": "2026-07-17T03:03:51.693525",
+        "score": 0.513832,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0043,
+        "obi_ema": 0.0277
+      },
+      {
+        "time": "2026-07-17T03:04:22.019122",
+        "score": 0.51153,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0046,
+        "obi_ema": 0.0231
+      },
+      {
+        "time": "2026-07-17T03:04:52.594336",
+        "score": 0.515178,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0595,
+        "obi_ema": 0.0304
+      },
+      {
+        "time": "2026-07-17T03:05:23.436912",
+        "score": 0.515536,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0339,
+        "obi_ema": 0.0311
+      },
+      {
+        "time": "2026-07-17T03:05:51.969363",
+        "score": 0.522887,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.1046,
+        "obi_ema": 0.0458
       }
     ],
     "EURUSD": [
@@ -79529,6 +83669,886 @@
         "status": "HIGH CONVICTION",
         "regime": "CONTRACTION",
         "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:43:13.243186",
+        "score": 0.953291,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:43:22.493529",
+        "score": 0.502762,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:43:32.502735",
+        "score": 0.634862,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:43:42.238706",
+        "score": 0.81757,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:43:52.268445",
+        "score": 0.550315,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:02.231295",
+        "score": 0.561047,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:12.352983",
+        "score": 0.634772,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:22.375248",
+        "score": 0.601728,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:32.247105",
+        "score": 0.587364,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:42.728676",
+        "score": 0.546119,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:52.410733",
+        "score": 0.518576,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:45:02.750849",
+        "score": 0.506326,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:45:13.377009",
+        "score": 0.745392,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:22.380040",
+        "score": 0.79581,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:33.058530",
+        "score": 0.758282,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:42.697188",
+        "score": 0.755254,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:52.337807",
+        "score": 0.515054,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:46:02.550614",
+        "score": 0.57863,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:46:12.632468",
+        "score": 0.60777,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:46:22.704098",
+        "score": 0.954533,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:46:32.578656",
+        "score": 0.769004,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:46:42.654095",
+        "score": 0.839163,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:46:52.666510",
+        "score": 0.796554,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:47:02.595765",
+        "score": 0.510228,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:47:12.758066",
+        "score": 0.600376,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:47:22.854157",
+        "score": 0.789559,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:47:32.495633",
+        "score": 0.52368,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:47:42.339107",
+        "score": 0.701634,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:47:52.434871",
+        "score": 0.602625,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:48:02.643805",
+        "score": 0.778513,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:12.581635",
+        "score": 0.795769,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:23.714891",
+        "score": 0.87945,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:32.554031",
+        "score": 0.79848,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:42.699223",
+        "score": 0.899748,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:53.536889",
+        "score": 0.999,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:02.592442",
+        "score": 0.980459,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:12.466944",
+        "score": 0.744931,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:22.573457",
+        "score": 0.743514,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:32.794326",
+        "score": 0.603761,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:49:42.526655",
+        "score": 0.538454,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:49:52.610382",
+        "score": 0.62509,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:50:03.234103",
+        "score": 0.699801,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:50:12.941437",
+        "score": 0.942089,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:50:22.540400",
+        "score": 0.542534,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:50:32.725987",
+        "score": 0.788314,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:50:43.170725",
+        "score": 0.574008,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:50:52.621545",
+        "score": 0.773255,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:03.100213",
+        "score": 0.73495,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:13.158624",
+        "score": 0.702866,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:22.792555",
+        "score": 0.727193,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:32.688936",
+        "score": 0.604085,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:51:42.595988",
+        "score": 0.825766,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:52.703140",
+        "score": 0.7004,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:02.768304",
+        "score": 0.917231,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:13.993092",
+        "score": 0.966445,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:22.686785",
+        "score": 0.965058,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:32.730157",
+        "score": 0.728852,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:43.863542",
+        "score": 0.982424,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:52.856110",
+        "score": 0.961436,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:53:03.027660",
+        "score": 0.569661,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:12.748679",
+        "score": 0.635439,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:22.763036",
+        "score": 0.580192,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:33.232576",
+        "score": 0.524421,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:42.662615",
+        "score": 0.582318,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:52.698076",
+        "score": 0.633304,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:54:02.617038",
+        "score": 0.599124,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:54:12.741420",
+        "score": 0.87456,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:54:23.231150",
+        "score": 0.732859,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:54:32.905581",
+        "score": 0.575811,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:54:43.103908",
+        "score": 0.915231,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:54:53.715212",
+        "score": 0.963381,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:03.004997",
+        "score": 0.97626,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:13.282361",
+        "score": 0.956042,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:22.834145",
+        "score": 0.753644,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:32.773127",
+        "score": 0.773492,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:43.831439",
+        "score": 0.931186,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:52.784757",
+        "score": 0.921264,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:56:02.875932",
+        "score": 0.630592,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:12.906410",
+        "score": 0.563021,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:22.796333",
+        "score": 0.607601,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:32.685650",
+        "score": 0.552679,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:42.734420",
+        "score": 0.567313,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:52.833337",
+        "score": 0.584395,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:02.792737",
+        "score": 0.888459,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:57:13.981697",
+        "score": 0.954606,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:57:23.512346",
+        "score": 0.554229,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:33.215215",
+        "score": 0.540255,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:42.915821",
+        "score": 0.527063,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:53.224449",
+        "score": 0.535794,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:03.043662",
+        "score": 0.662685,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:58:12.970052",
+        "score": 0.628596,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:22.891966",
+        "score": 0.588607,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:32.870138",
+        "score": 0.656581,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:58:42.910903",
+        "score": 0.573509,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:53.194764",
+        "score": 0.532319,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:03.232648",
+        "score": 0.634348,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:12.958217",
+        "score": 0.658029,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:59:23.105454",
+        "score": 0.594201,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:33.036074",
+        "score": 0.679755,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:59:43.494775",
+        "score": 0.64172,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:53.618770",
+        "score": 0.502035,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:00:04.323176",
+        "score": 0.78345,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T03:00:20.249689",
+        "score": 0.835878,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:00:28.481845",
+        "score": 0.558033,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:00:43.202774",
+        "score": 0.582773,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:00:55.464643",
+        "score": 0.636995,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:07.546861",
+        "score": 0.632988,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:26.581248",
+        "score": 0.636209,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:29.549993",
+        "score": 0.538265,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:44.386388",
+        "score": 0.531092,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:57.365808",
+        "score": 0.869149,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:06.111147",
+        "score": 0.850737,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:15.398309",
+        "score": 0.608058,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:02:22.974649",
+        "score": 0.534277,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:02:32.009749",
+        "score": 0.743891,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:41.375351",
+        "score": 0.746066,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:51.146622",
+        "score": 0.78183,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:03:01.027764",
+        "score": 0.512072,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:03:21.720879",
+        "score": 0.516747,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0335,
+        "obi_ema": 0.0335
+      },
+      {
+        "time": "2026-07-17T03:03:51.694939",
+        "score": 0.513832,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0043,
+        "obi_ema": 0.0277
+      },
+      {
+        "time": "2026-07-17T03:04:22.021501",
+        "score": 0.51153,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0046,
+        "obi_ema": 0.0231
+      },
+      {
+        "time": "2026-07-17T03:04:52.618605",
+        "score": 0.515178,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0595,
+        "obi_ema": 0.0304
+      },
+      {
+        "time": "2026-07-17T03:05:23.441123",
+        "score": 0.515536,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0339,
+        "obi_ema": 0.0311
+      },
+      {
+        "time": "2026-07-17T03:05:51.979869",
+        "score": 0.522887,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.1046,
+        "obi_ema": 0.0458
       }
     ],
     "AUDUSD": [
@@ -94586,6 +99606,886 @@
         "status": "HIGH CONVICTION",
         "regime": "CONTRACTION",
         "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:43:13.589601",
+        "score": 0.953291,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:43:22.502058",
+        "score": 0.502762,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:43:32.516974",
+        "score": 0.634862,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:43:42.244609",
+        "score": 0.81757,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:43:52.269602",
+        "score": 0.550315,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:02.238711",
+        "score": 0.561047,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:12.353914",
+        "score": 0.634772,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:22.385038",
+        "score": 0.601728,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:32.249414",
+        "score": 0.587364,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:42.734974",
+        "score": 0.546119,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:44:52.416764",
+        "score": 0.518576,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:45:02.752285",
+        "score": 0.506326,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:45:13.377790",
+        "score": 0.745392,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:22.388491",
+        "score": 0.79581,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:33.061960",
+        "score": 0.758282,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:42.700867",
+        "score": 0.755254,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:45:52.357636",
+        "score": 0.515054,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:46:02.551414",
+        "score": 0.57863,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:46:12.644974",
+        "score": 0.60777,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:46:22.705347",
+        "score": 0.954533,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:46:32.579771",
+        "score": 0.769004,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:46:42.655502",
+        "score": 0.839163,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:46:52.670841",
+        "score": 0.796554,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:47:02.597479",
+        "score": 0.510228,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:47:12.759165",
+        "score": 0.600376,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:47:22.855701",
+        "score": 0.789559,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:47:32.496858",
+        "score": 0.52368,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:47:42.340004",
+        "score": 0.701634,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:47:52.457327",
+        "score": 0.602625,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:48:02.646267",
+        "score": 0.778513,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:12.595023",
+        "score": 0.795769,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:24.153047",
+        "score": 0.87945,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:32.555104",
+        "score": 0.79848,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:42.718843",
+        "score": 0.899748,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:48:53.900064",
+        "score": 0.999,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:02.593020",
+        "score": 0.980459,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:12.469989",
+        "score": 0.744931,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:22.588334",
+        "score": 0.743514,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:49:32.795260",
+        "score": 0.603761,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:49:42.527438",
+        "score": 0.538454,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:49:52.612129",
+        "score": 0.62509,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:50:03.254679",
+        "score": 0.699801,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:50:12.942131",
+        "score": 0.942089,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:50:22.541131",
+        "score": 0.542534,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:50:32.727223",
+        "score": 0.788314,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:50:43.194678",
+        "score": 0.574008,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:50:52.626288",
+        "score": 0.773255,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:03.101188",
+        "score": 0.73495,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:13.163697",
+        "score": 0.702866,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:22.827399",
+        "score": 0.727193,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:32.704117",
+        "score": 0.604085,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:51:42.600783",
+        "score": 0.825766,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:51:52.704430",
+        "score": 0.7004,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:02.794001",
+        "score": 0.917231,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:14.360107",
+        "score": 0.966445,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:22.687892",
+        "score": 0.965058,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:32.751226",
+        "score": 0.728852,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:44.231646",
+        "score": 0.982424,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:52:52.857369",
+        "score": 0.961436,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:53:03.030142",
+        "score": 0.569661,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:12.763399",
+        "score": 0.635439,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:22.790486",
+        "score": 0.580192,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:33.233456",
+        "score": 0.524421,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:42.663610",
+        "score": 0.582318,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:53:52.711711",
+        "score": 0.633304,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:54:02.617699",
+        "score": 0.599124,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:54:12.742865",
+        "score": 0.87456,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:54:23.232315",
+        "score": 0.732859,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:54:32.935118",
+        "score": 0.575811,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:54:43.104854",
+        "score": 0.915231,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:54:54.086919",
+        "score": 0.963381,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:03.022512",
+        "score": 0.97626,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:13.292763",
+        "score": 0.956042,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:22.849059",
+        "score": 0.753644,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:32.774152",
+        "score": 0.773492,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:44.182787",
+        "score": 0.931186,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:55:52.785936",
+        "score": 0.921264,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:56:02.878737",
+        "score": 0.630592,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:12.907204",
+        "score": 0.563021,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:22.801888",
+        "score": 0.607601,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:32.697329",
+        "score": 0.552679,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:42.735262",
+        "score": 0.567313,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:56:52.842345",
+        "score": 0.584395,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:02.823572",
+        "score": 0.888459,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:57:14.334740",
+        "score": 0.954606,
+        "status": "INEVITABLE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:57:23.530234",
+        "score": 0.554229,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:33.216184",
+        "score": 0.540255,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:42.916610",
+        "score": 0.527063,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:57:53.225133",
+        "score": 0.535794,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:03.044534",
+        "score": 0.662685,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:58:12.993473",
+        "score": 0.628596,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:22.893071",
+        "score": 0.588607,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:32.871176",
+        "score": 0.656581,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:58:42.946700",
+        "score": 0.573509,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:58:53.195671",
+        "score": 0.532319,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:03.233753",
+        "score": 0.634348,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:12.960293",
+        "score": 0.658029,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T02:59:23.119588",
+        "score": 0.594201,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:33.036996",
+        "score": 0.679755,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T02:59:43.514810",
+        "score": 0.64172,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T02:59:53.619813",
+        "score": 0.502035,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:00:04.338296",
+        "score": 0.78345,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 1
+      },
+      {
+        "time": "2026-07-17T03:00:20.275745",
+        "score": 0.835878,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:00:28.486782",
+        "score": 0.558033,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:00:43.203652",
+        "score": 0.582773,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:00:55.482055",
+        "score": 0.636995,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:07.559747",
+        "score": 0.632988,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:26.590211",
+        "score": 0.636209,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:29.561431",
+        "score": 0.538265,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:44.407653",
+        "score": 0.531092,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:01:57.736230",
+        "score": 0.869149,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:06.132304",
+        "score": 0.850737,
+        "status": "HIGH CONVICTION",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:15.399183",
+        "score": 0.608058,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:02:23.004122",
+        "score": 0.534277,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:02:32.014651",
+        "score": 0.743891,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:41.387775",
+        "score": 0.746066,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:02:51.174692",
+        "score": 0.78183,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": -1
+      },
+      {
+        "time": "2026-07-17T03:03:01.063555",
+        "score": 0.512072,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0
+      },
+      {
+        "time": "2026-07-17T03:03:21.733713",
+        "score": 0.516747,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0335,
+        "obi_ema": 0.0335
+      },
+      {
+        "time": "2026-07-17T03:03:51.695699",
+        "score": 0.513832,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0043,
+        "obi_ema": 0.0277
+      },
+      {
+        "time": "2026-07-17T03:04:22.026838",
+        "score": 0.51153,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0046,
+        "obi_ema": 0.0231
+      },
+      {
+        "time": "2026-07-17T03:04:52.650641",
+        "score": 0.515178,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0595,
+        "obi_ema": 0.0304
+      },
+      {
+        "time": "2026-07-17T03:05:23.442072",
+        "score": 0.515536,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.0339,
+        "obi_ema": 0.0311
+      },
+      {
+        "time": "2026-07-17T03:05:51.990036",
+        "score": 0.522887,
+        "status": "NOISE",
+        "regime": "CONTRACTION",
+        "direction": 0,
+        "obi_raw": 0.1046,
+        "obi_ema": 0.0458
       }
     ]
   },
@@ -94609,11 +100509,12 @@
     "NASA": 1.0,
     "EIA": 0.6990000000000001,
     "OpenAQ": 0.14,
-    "ETH": 0.52908656677465,
+    "ETH": 0.5321618915186,
     "RealYield": 2.35,
-    "OBI": -0.74765687568995
+    "OBI": 0.10457985499651057
   },
-  "last_cycle_utc": "2026-07-17T02:43:02.179727+00:00",
-  "cycle_count": 1990,
-  "signals_live": 6
+  "last_cycle_utc": "2026-07-17T03:05:51.994572+00:00",
+  "cycle_count": 2114,
+  "signals_live": 6,
+  "obi_ema": 0.0458
 }

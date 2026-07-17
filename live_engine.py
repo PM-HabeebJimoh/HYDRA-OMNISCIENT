@@ -35,8 +35,26 @@ logging.basicConfig(
 logger = logging.getLogger('HYDRA-S3-DAEMON')
 
 STATE_FILE   = os.path.join(os.path.dirname(os.path.abspath(__file__)), "enterprise_state.json")
-POLL_SECONDS = 10
-HEARTBEAT_N  = 60    # every 60 cycles = every 10 minutes
+POLL_SECONDS = 30    # 30s poll — matches Bloomberg/Reuters refresh cadence; slower = less microstructure noise
+HEARTBEAT_N  = 20    # every 20 cycles = every 10 minutes at 30s poll
+
+# ── OBI Exponential Moving Average ────────────────────────────────────────────
+# Raw Kraken L2 OBI (even at 200 levels) fluctuates ±0.2–0.4 per 30s snapshot.
+# EMA with α=0.20 provides ~5-cycle (~2.5 min) smoothing window, converting
+# microstructure noise into a stable directional signal.
+_OBI_EMA_ALPHA: float       = 0.20
+_obi_ema_val:   float | None = None   # global EMA state across cycles
+
+# ── Status Hysteresis Thresholds ───────────────────────────────────────────────
+# Entry thresholds (score must REACH these to upgrade status):
+#   NOISE → HIGH CONVICTION : score ≥ 0.80
+#   HIGH CONVICTION → INEVITABLE : score ≥ 0.95
+# Exit thresholds (score must DROP BELOW these to downgrade status):
+#   INEVITABLE → HIGH CONVICTION : score < 0.90   (5-pt band)
+#   HIGH CONVICTION → NOISE      : score < 0.74   (6-pt band)
+# This prevents rapid NOISE↔HC flipping when OBI hovers near the 0.55 boundary.
+_HC_EXIT_SCORE   = 0.74
+_INEV_EXIT_SCORE = 0.90
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -91,10 +109,52 @@ def save_state(state: dict):
 
 _asset_prev:          dict = {}   # asset → {status, direction, score}
 _initial_signal_last: dict = {}   # asset → epoch seconds of last INITIAL_SIGNAL alert
+_hysteresis_status:   dict = {}   # asset → current hysteresis-gated status string
 
 # Cooldown constants
 _INITIAL_COOLDOWN_S  = 600   # 10 min between INITIAL_SIGNAL per asset
 _HC_COOLDOWN_S       = 300   # 5 min between any HIGH CONVICTION alert (in dispatcher)
+
+# Status rank map (used by trigger and hysteresis)
+_STATUS_RANK = {'NOISE': 0, 'HIGH CONVICTION': 1, 'INEVITABLE': 2, 'DATA_GAP': -1}
+
+
+def _apply_hysteresis(asset: str, raw_status: str, score: float) -> str:
+    """
+    Prevent rapid status bouncing by applying separate entry/exit thresholds.
+
+    Entry thresholds (must REACH to upgrade):
+      NOISE → HIGH CONVICTION : score ≥ 0.80
+      HIGH CONVICTION → INEVITABLE : score ≥ 0.95
+
+    Exit thresholds (must DROP BELOW to downgrade):
+      INEVITABLE → HIGH CONVICTION : score < 0.90   (5-pt hysteresis band)
+      HIGH CONVICTION → NOISE      : score < 0.74   (6-pt hysteresis band)
+
+    Without hysteresis, OBI hovering near 0.55 (score ~0.79–0.81) causes
+    NOISE↔HC flipping every cycle. The 6-point band absorbs that noise.
+    """
+    prev_hyst = _hysteresis_status.get(asset, 'NOISE')
+    prev_rank = _STATUS_RANK.get(prev_hyst, 0)
+    raw_rank  = _STATUS_RANK.get(raw_status, 0)
+
+    if raw_rank > prev_rank:
+        # Upgrade: raw_status has already passed the entry threshold in convergence.py
+        result = raw_status
+    elif raw_rank == prev_rank:
+        result = prev_hyst
+    else:
+        # Potential downgrade — apply exit threshold
+        if prev_hyst == 'INEVITABLE' and score >= _INEV_EXIT_SCORE:
+            result = 'INEVITABLE'     # Hold INEVITABLE until score < 0.90
+        elif prev_hyst == 'HIGH CONVICTION' and score >= _HC_EXIT_SCORE:
+            result = 'HIGH CONVICTION' # Hold HC until score < 0.74
+        else:
+            result = raw_status        # Genuine downgrade confirmed
+
+    _hysteresis_status[asset] = result
+    return result
+
 
 def _surgical_trigger(asset: str, score: float, status: str,
                        direction: int) -> tuple[bool, str]:
@@ -103,8 +163,8 @@ def _surgical_trigger(asset: str, score: float, status: str,
     A new Opportunity ID is generated when:
       1. Status ESCALATES to a higher tier (NOISE→HC, HC→INEVITABLE, or NOISE→INEVITABLE)
       2. Direction changes (and new direction is not 0)
-      3. Score surges > 0.05 while already active (score >= 0.70)
-      4. Score first crosses 0.70 for this asset (INITIAL_SIGNAL, with 10-min cooldown)
+      3. Score surges > 0.08 while already active (score >= 0.70)  [raised from 0.05]
+      4. Score first crosses 0.70 for this asset (INITIAL_SIGNAL, 10-min cooldown)
     """
     prev = _asset_prev.get(asset)
 
@@ -118,7 +178,6 @@ def _surgical_trigger(asset: str, score: float, status: str,
         now = time.time()
         last_init = _initial_signal_last.get(asset, 0)
         if now - last_init < _INITIAL_COOLDOWN_S:
-            # Still in cooldown — update state but suppress alert
             _asset_prev[asset] = {'status': status, 'direction': direction, 'score': score}
             remaining = int(_INITIAL_COOLDOWN_S - (now - last_init))
             logger.debug(f"[{asset}] INITIAL_SIGNAL suppressed — cooldown {remaining}s remaining")
@@ -127,13 +186,13 @@ def _surgical_trigger(asset: str, score: float, status: str,
         _asset_prev[asset] = {'status': status, 'direction': direction, 'score': score}
         return True, "INITIAL_SIGNAL"
 
-    # ── Already above threshold — check for changes ───────────────────────────
+    # ── Already above threshold — check for meaningful changes ────────────────
     reason = ""
 
+    prev_rank = _STATUS_RANK.get(prev['status'], 0)
+    curr_rank = _STATUS_RANK.get(status, 0)
+
     # Condition 1: Status escalated to a higher tier
-    STATUS_RANK = {'NOISE': 0, 'HIGH CONVICTION': 1, 'INEVITABLE': 2, 'DATA_GAP': -1}
-    prev_rank = STATUS_RANK.get(prev['status'], 0)
-    curr_rank = STATUS_RANK.get(status, 0)
     if curr_rank > prev_rank:
         reason = f"STATUS_ESCALATION [{prev['status']}→{status}]"
 
@@ -141,8 +200,8 @@ def _surgical_trigger(asset: str, score: float, status: str,
     elif direction != prev['direction'] and direction != 0 and prev['direction'] != 0:
         reason = f"DIRECTION_CHANGE [{prev['direction']}→{direction}]"
 
-    # Condition 3: Score surged > 0.05
-    elif score > prev['score'] + 0.05:
+    # Condition 3: Score surged > 0.08 (raised from 0.05 to reduce noise triggers)
+    elif score > prev['score'] + 0.08:
         reason = f"SCORE_SURGE [{prev['score']:.4f}→{score:.4f}]"
 
     # Update tracked state
@@ -158,13 +217,16 @@ def _surgical_trigger(asset: str, score: float, status: str,
 # ══════════════════════════════════════════════════════════════════════════════
 
 async def live_daemon():
+    global _obi_ema_val
+
     logger.info("Starting daemon event loop...")
     logger.info("╔══════════════════════════════════════════════════════════╗")
     logger.info("║   HYDRA-S3 ENTERPRISE DAEMON v5.1  —  24/7 ACTIVATED    ║")
     logger.info("╠══════════════════════════════════════════════════════════╣")
     logger.info("║   S3-SURGICAL-TRIGGER ARMED                              ║")
-    logger.info("║   Signals fetched ONCE per cycle — 5 assets share state  ║")
+    logger.info("║   Signals ONCE per cycle · OBI EMA-smoothed · 30s poll  ║")
     logger.info("║   INITIAL_SIGNAL cooldown: 10 min per asset              ║")
+    logger.info("║   Status hysteresis: HC exits at <0.74 · INEV at <0.90  ║")
     logger.info("╚══════════════════════════════════════════════════════════╝")
 
     engine = S3ConvergenceEngine()
@@ -176,7 +238,7 @@ async def live_daemon():
         logger.warning(f"Startup alert failed (non-fatal): {e}")
 
     logger.info(f"Monitoring {len(MONITORED_ASSETS)} assets: {MONITORED_ASSETS}")
-    logger.info(f"Poll: {POLL_SECONDS}s | Heartbeat: every {HEARTBEAT_N} cycles")
+    logger.info(f"Poll: {POLL_SECONDS}s | Heartbeat: every {HEARTBEAT_N} cycles | OBI EMA α={_OBI_EMA_ALPHA}")
 
     cycle = state.get('cycle_count', 0)
 
@@ -197,12 +259,30 @@ async def live_daemon():
                 # ── Fetch all 6 signals ONCE per cycle (shared across assets) ──
                 try:
                     world_state = await collector.collect_all_parallel(
-                        obi_symbol='XBTUSD'  # Kraken BTC/USD — universal OBI proxy
+                        obi_symbol='XBTUSD'  # Kraken BTC/USD (200-level deep book)
                     )
                 except Exception as collect_err:
                     logger.error(f"Collector error: {collect_err}")
                     world_state = {k: None for k in
                                    ['NASA', 'EIA', 'OpenAQ', 'ETH', 'RealYield', 'OBI']}
+
+                # ── OBI Exponential Moving Average ────────────────────────────
+                # Raw OBI from a single L2 snapshot is noisy (±0.3 per cycle).
+                # EMA(α=0.20) smooths over ~5 cycles (~2.5 min) for stable scoring.
+                # raw_obi is stored in last_signals for display; ema_obi is used for scoring.
+                raw_obi = world_state.get('OBI')
+                if raw_obi is not None:
+                    if _obi_ema_val is None:
+                        _obi_ema_val = raw_obi
+                    else:
+                        _obi_ema_val = (_OBI_EMA_ALPHA * raw_obi +
+                                        (1.0 - _OBI_EMA_ALPHA) * _obi_ema_val)
+                    logger.debug(f"OBI raw={raw_obi:+.4f}  EMA={_obi_ema_val:+.4f}")
+
+                # Build smoothed world state for convergence evaluation
+                world_state_eval = {**world_state}
+                if _obi_ema_val is not None:
+                    world_state_eval['OBI'] = _obi_ema_val
 
                 # ── Update API health map ─────────────────────────────────────
                 for sig, val in world_state.items():
@@ -213,12 +293,16 @@ async def live_daemon():
                 # ── Per-asset evaluation (all share the same world state) ──────
                 for asset in MONITORED_ASSETS:
                     try:
-                        report    = engine.evaluate(world_state)
+                        # Evaluate with EMA-smoothed OBI
+                        report    = engine.evaluate(world_state_eval)
                         score     = report['score']
-                        status    = report['status']
+                        raw_status = report['status']
                         regime    = report['regime_name']
                         direction = report['direction']
                         lat_sum   = report.get('latent_sum', 0.0)
+
+                        # ── Apply status hysteresis to prevent NOISE↔HC bouncing ──
+                        status = _apply_hysteresis(asset, raw_status, score)
 
                         # ── History entry (includes direction for UI rendering) ─
                         state['history'][asset].append({
@@ -227,15 +311,17 @@ async def live_daemon():
                             "status":    status,
                             "regime":    regime,
                             "direction": direction,
+                            "obi_raw":   round(raw_obi, 4) if raw_obi is not None else None,
+                            "obi_ema":   round(_obi_ema_val, 4) if _obi_ema_val is not None else None,
                         })
                         if len(state['history'][asset]) > 10_000:
                             state['history'][asset] = state['history'][asset][-10_000:]
 
+                        obi_log = _obi_ema_val if _obi_ema_val is not None else world_state_eval.get('OBI', 'n/a')
                         logger.info(
                             f"[{asset:7s}] score={score:.4f} | {status:16s} | "
                             f"{regime:11s} | signals={live_ct}/6 | "
-                            f"OBI={world_state.get('OBI', 'n/a')!r:.6} "
-                            f"RY={world_state.get('RealYield', 'n/a')!r}"
+                            f"OBI_ema={obi_log!r:.6} RY={world_state.get('RealYield', 'n/a')!r}"
                         )
 
                         # ── S3-Surgical-Trigger ──────────────────────────────
@@ -287,7 +373,8 @@ async def live_daemon():
 
             # ── End-of-cycle state updates ────────────────────────────────────
             state['opportunities'] = state['opportunities'][-2000:]
-            state['last_signals']  = world_state
+            state['last_signals']  = world_state      # raw signals for display
+            state['obi_ema']       = round(_obi_ema_val, 4) if _obi_ema_val is not None else None
             state['signals_live']  = sum(1 for v in world_state.values() if v is not None)
 
         except asyncio.CancelledError:
