@@ -1,0 +1,28 @@
+{
+  "model": "HYDRA-S3-MAX",
+  "test": "test2_hold_regime",
+  "period": "2026-07-01 to 2026-07-27 (real data Jul 1-23)",
+  "data_source": "Real API calls (Yahoo Finance, FRED) - HTTP 200 only",
+  "initial_capital": 100000.0,
+  "metrics": {
+    "total_return_pct": 4.57,
+    "total_trades": 3,
+    "total_pyramids": 4,
+    "win_rate_pct": 33.33,
+    "profit_factor": 1.37,
+    "max_drawdown_pct": -11.74,
+    "sharpe_ratio": 1.72,
+    "avg_win_pct": 0.55,
+    "avg_loss_pct": -0.2,
+    "final_equity": 104572.52
+  },
+  "goals_met": false,
+  "config": {
+    "leverage": 250,
+    "pyramid_trigger": 0.01,
+    "pyramid_size_mult": 1.0,
+    "max_pyramids": 20,
+    "no_hard_stop": true,
+    "inevitable_threshold": 0.95
+  }
+}
