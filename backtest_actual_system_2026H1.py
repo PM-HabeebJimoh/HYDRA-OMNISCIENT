@@ -133,18 +133,24 @@ def build_sessions(px: pd.DataFrame) -> pd.DataFrame:
     return wide
 
 
-def run(mode: str, wide: pd.DataFrame, ry: pd.DataFrame) -> tuple[list[DayRecord], list[Trade]]:
+def run(mode: str, wide: pd.DataFrame, ry: pd.DataFrame,
+        start: str = START, end: str = END) -> tuple[list[DayRecord], list[Trade]]:
     """mode: 'as_published' | 'point_in_time'"""
     yields = ry.set_index("date")["real_yield"].sort_index()
     y_dates = list(yields.index)
     y_vals = list(yields.values)
 
-    sessions = [d for d in wide.index if START <= d <= END]
+    # Evaluate only inside [start, end], but keep the full session list so the
+    # point-in-time signal for the first evaluated day can legitimately come
+    # from the last completed session *before* the window opens.
+    all_sessions = list(wide.index)
+    sessions = [d for d in all_sessions if start <= d <= end]
     equity = INITIAL_CAPITAL
     days: list[DayRecord] = []
     trades: list[Trade] = []
 
-    for i, date in enumerate(sessions):
+    for date in sessions:
+        i = all_sessions.index(date)
         row = wide.loc[date]
 
         # ── regime input ────────────────────────────────────────────────────
@@ -169,7 +175,7 @@ def run(mode: str, wide: pd.DataFrame, ry: pd.DataFrame) -> tuple[list[DayRecord
                 days.append(DayRecord(date, regime, yv, yasof, "-", False, False,
                                       "no prior session for signal", equity, equity))
                 continue
-            sig_date = sessions[i - 1]
+            sig_date = all_sessions[i - 1]
         sig = wide.loc[sig_date]
 
         down = {a: sig[(a, "close")] < sig[(a, "open")] for a in ASSETS}

@@ -35,9 +35,18 @@ OUT = os.path.join(ROOT, "data")
 # the session date must be recovered with the real tz database (a fixed UTC
 # offset silently mis-dates every bar once DST starts).
 FEEDS = {
-    "XAUUSD": {"file": "yahoo_GC=F_2026H1.json", "tz": "America/New_York"},
-    "EURUSD": {"file": "yahoo_EURUSD=X_2026H1.json", "tz": "Europe/London"},
-    "AUDUSD": {"file": "yahoo_AUDUSD=X_2026H1.json", "tz": "Europe/London"},
+    "XAUUSD": {
+        "files": ["yahoo_GC=F_2026H1.json", "yahoo_GC=F_2026-07.json"],
+        "tz": "America/New_York",
+    },
+    "EURUSD": {
+        "files": ["yahoo_EURUSD=X_2026H1.json", "yahoo_EURUSD=X_2026-07.json"],
+        "tz": "Europe/London",
+    },
+    "AUDUSD": {
+        "files": ["yahoo_AUDUSD=X_2026H1.json", "yahoo_AUDUSD=X_2026-07.json"],
+        "tz": "Europe/London",
+    },
 }
 
 
@@ -50,10 +59,14 @@ def load_prices() -> pd.DataFrame:
     rows = []
     dropped_flat = 0
     for asset, cfg in FEEDS.items():
-        with open(os.path.join(RAW, cfg["file"])) as fh:
-            payload = json.load(fh)
+        blocks = []
+        for fname in cfg["files"]:
+            with open(os.path.join(RAW, fname)) as fh:
+                payload = json.load(fh)
+            for month, block in payload["months"].items():
+                blocks.append((f"{month}|{fname}", block))
 
-        for month, block in payload["months"].items():
+        for month, block in blocks:
             ts = block["timestamp"]
             for i, epoch in enumerate(ts):
                 o, h, l, c = (
@@ -102,6 +115,21 @@ def load_prices() -> pd.DataFrame:
     if len(bad):
         raise SystemExit(f"Inconsistent OHLC bars remain after repair:\n{bad}")
 
+    # Month files overlap at the boundary (e.g. the 2026-07-01/02 bars appear in
+    # both the H1 pull and the July pull). Identical duplicates are collapsed;
+    # a genuine disagreement between two pulls of the same session is fatal.
+    key = ["date", "asset"]
+    dupes = df[df.duplicated(key, keep=False)]
+    for (d, a), grp in dupes.groupby(key):
+        vals = grp[["open", "high", "low", "close"]].drop_duplicates()
+        if len(vals) > 1:
+            raise SystemExit(
+                f"Conflicting OHLC for {a} on {d} across source files:\n{grp}"
+            )
+    n_before = len(df)
+    df = df.drop_duplicates(key, keep="first")
+    df.attrs["dropped_dupes"] = n_before - len(df)
+
     df = df.sort_values(["date", "asset"]).reset_index(drop=True)
     df.attrs["dropped_flat"] = dropped_flat
     return df
@@ -125,6 +153,7 @@ def main() -> None:
 
     print("Daily OHLC bars written:", len(prices))
     print("Flat/stale vendor bars dropped:", prices.attrs.get("dropped_flat", 0))
+    print("Overlapping duplicate bars collapsed:", prices.attrs.get("dropped_dupes", 0))
     print("Bars whose high/low envelope was widened to contain open/close:",
           int(prices["envelope_fixed"].sum()))
     for _, r in prices[prices["envelope_fixed"]].iterrows():
