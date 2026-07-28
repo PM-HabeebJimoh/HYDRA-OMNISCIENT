@@ -1,0 +1,40 @@
+{
+  "model": "HYDRA-S3-MAX",
+  "period": "2026-07-01 to 2026-07-27 (real data Jul 1-23)",
+  "data_disclosure": {
+    "real_data": "Gold CLOSE, EUR/AUD returns, FRED yield (API HTTP 200)",
+    "reconstructed": "EUR/AUD prices from real returns, OPEN = prev CLOSE",
+    "not_available": "Daily HIGH/LOW (intraday not archived free)",
+    "entry": "OPEN (prev day CLOSE - best approximation)",
+    "exit": "CLOSE (real API close)"
+  },
+  "strategy": {
+    "risk_per_day": 0.2,
+    "leverage": 500,
+    "assets": [
+      "XAUUSD",
+      "EURUSD",
+      "AUDUSD"
+    ],
+    "direction": "SHORT (CONTRACTION: Real Yield > 0.7%)",
+    "filter": "EUR down AND AUD down",
+    "compounding": true
+  },
+  "metrics": {
+    "initial_capital": 100000.0,
+    "final_equity": 940614.01,
+    "total_return_pct": 840.61,
+    "total_trades": 15,
+    "asset_wins": 14,
+    "asset_losses": 1,
+    "asset_win_rate_pct": 93.33,
+    "trade_days": 5,
+    "day_wins": 4,
+    "day_losses": 1,
+    "day_win_rate_pct": 80.0,
+    "profit_factor": 4.33,
+    "max_drawdown_pct": -27.33,
+    "sharpe_ratio": 7.71
+  },
+  "goals_met": "False"
+}
