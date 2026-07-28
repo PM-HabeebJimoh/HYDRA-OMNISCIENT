@@ -56,10 +56,6 @@ execution:
   stop_check: "intraday"        # Check stops using high/low
   stop_behavior: "exit_at_stop" # Exit immediately when stop hit
   allow_reentry_same_day: false # No re-entry after stop
-  # 1 = signal read from the previous completed session, traded on the next
-  #     open (causally valid). 0 reads the signal off the traded session's own
-  #     close, which is look-ahead biased and only a diagnostic upper bound.
-  signal_lag_days: 1
 
 # Regime Mapping
 regime_direction:

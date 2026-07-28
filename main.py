@@ -123,7 +123,6 @@ def run_agba_metta_backtest():
             "audusd": "CME front-month AUD future (Yahoo Finance 6A=F), daily OHLC",
             "real_yield": "FRED DFII10 (10Y TIPS constant-maturity real yield)"
         },
-        "signal_lag_days": getattr(config.execution, "signal_lag_days", 1),
         "metrics": metrics,
         "goals_met": goal_wr and goal_roi and goal_dd
     }

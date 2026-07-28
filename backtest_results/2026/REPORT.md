@@ -1,8 +1,7 @@
 # Agba Metta Model — Monthly Backtest, January–June 2026
 
-100% real market data. No synthetic, simulated, interpolated or placeholder prices.
-
-Reproduce with:
+Agba Metta Model only, run exactly as specified in `config/model_config.yaml`.
+100% real market data. No synthetic, interpolated or placeholder prices.
 
 ```bash
 python3 scripts/build_dataset.py        # raw provider payloads -> clean panel
@@ -11,93 +10,95 @@ python3 scripts/run_monthly_backtest.py # month-by-month backtest
 
 ---
 
-## 1. Data
+## 1. Rules as implemented
+
+Straight from `config/model_config.yaml`, no substitutions:
+
+| Rule | Setting |
+|---|---|
+| Regime | real yield > 0.7% = CONTRACTION (short); < −0.1% = EXPANSION (long); else STABILITY (no trade) |
+| Alignment ("Agba") | all three assets must close in the regime's direction, same day; else no trades |
+| Entry / Exit | enter at that day's `open`, exit at that day's `close` |
+| Sizing ("Metta") | 20% of equity per trade day, equal-weight, capped at `max_assets_per_trade: 3` |
+| Leverage | 500x, from `position_sizing.leverage` |
+| Hard stop | 1%, intraday via high/low, from `risk.hard_stop_pct` |
+| Circuit breakers | halt on 20% drawdown from peak, or 10% daily loss |
+
+---
+
+## 2. Data
 
 | Series | Instrument | Source |
 |---|---|---|
 | `gold` | COMEX front-month gold future | Yahoo Finance `GC=F`, daily OHLC |
 | `eur` | CME front-month Euro FX future | Yahoo Finance `6E=F`, daily OHLC |
-| `aud` | CME front-month Australian Dollar future | Yahoo Finance `6A=F`, daily OHLC |
-| `real_yield` | 10-Year TIPS constant-maturity real yield | FRED `DFII10` |
+| `aud` | CME front-month AUD future | Yahoo Finance `6A=F`, daily OHLC |
+| `real_yield` | 10Y TIPS constant-maturity real yield | FRED `DFII10` |
 
-- **123 real trading sessions**, 2026-01-02 → 2026-06-30 (Jan 20, Feb 19, Mar 22, Apr 21, May 20, Jun 21).
-- Raw provider payloads are cached verbatim in `data/raw/`; `scripts/build_dataset.py` only reshapes them (epoch → exchange-local session date, arrays → OHLC records, as-of join of the real yield). Nothing is invented or smoothed.
-- A session enters the panel only if all three instruments **and** the real yield are genuinely present. The yield join is as-of (most recent publication on or before the session), so FRED holidays never inject future data.
-- Validated on load: all 123 sessions in all three instruments satisfy `low ≤ open, close ≤ high`, with no null bars.
+**123 real sessions**, 2026-01-02 → 2026-06-30 (Jan 20, Feb 19, Mar 22, Apr 21, May 20, Jun 21). Raw payloads cached verbatim in `data/raw/`; `scripts/build_dataset.py` only reshapes them. All bars validated `low ≤ open, close ≤ high`, no nulls. The yield join is as-of, so FRED holidays never inject future data.
 
-**Note on instrument choice.** The previous loader claimed Investing.com spot XAU/USD, EUR/USD and AUD/USD. Yahoo's spot FX feed returns bars where `open ≈ close`, which is degenerate for a strategy whose entire signal is the sign of `close − open`. Exchange-traded futures carry genuine session OHLC, so they are used instead. This is a real difference: the model now trades gold, EUR and AUD *futures*, not spot.
+The previous loader had hardcoded placeholders — its "January 2026" gold prices were `1.1732`, i.e. EUR/USD values pasted into the gold field. Those are gone.
 
----
-
-## 2. Headline results (tradeable / causal mode)
-
-Each month restarts from $100,000 so months are comparable. The H1 row compounds across the whole window.
-
-| Period | Sessions | Trade days | Return | Day WR | Asset WR | PF | Max DD | Sharpe | Final equity |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| January 2026 | 20 | 3 | **+71.81%** | 66.67% | 77.78% | 2.19 | −0.27% | 5.42 | $171,814 |
-| February 2026 | 19 | 1 | −23.96% | 0.00% | 33.33% | 0.41 | 0.00% | 0.00 | $76,040 |
-| March 2026 | 22 | 1 | −21.53% | 0.00% | 33.33% | 0.24 | −21.53% | −3.46 | $78,470 |
-| April 2026 | 21 | 1 | −31.04% | 0.00% | 0.00% | 0.00 | −31.04% | −3.55 | $68,965 |
-| May 2026 | 20 | 1 | −24.14% | 0.00% | 0.00% | 0.00 | −24.14% | −3.64 | $75,856 |
-| June 2026 | 21 | 2 | −45.72% | 0.00% | 16.67% | 0.02 | −45.72% | −4.14 | $54,279 |
-| **2026 H1 (compounded)** | 123 | 4 | **+30.65%** | 50.00% | 66.67% | 1.24 | −23.96% | 1.10 | $130,648 |
-
-**Five of six months lose money.** The single positive month (January) and the positive H1 figure both rest on a handful of trades — 4 trade days in the entire compounded half-year. None of the original goals (day WR > 80%, ROI > 1000%, DD < 20%) are met on real data.
-
-The month rows do not compound to the H1 row: monthly runs reset capital *and* reset the drawdown circuit breaker, so the continuous run halts earlier and takes fewer trades. The H1 row is the one to trust as a portfolio result.
+**One deviation, flagged:** the universe is spot `XAUUSD`/`EURUSD`/`AUDUSD`, but I used the corresponding futures. Yahoo's spot FX feed returns bars where `open ≈ close`, which is degenerate for a filter built on the sign of `close − open`. Futures carry genuine session OHLC. If you want true spot, that needs a different provider and I'd re-run.
 
 ---
 
-## 3. Two engine defects found and fixed
+## 3. Results
 
-Running the original code on real data surfaced two bugs that were inflating results.
+Each month restarts from $100,000. The H1 row compounds across the half-year.
 
-### 3.1 Look-ahead bias in the signal (the big one)
+| Period | Sessions | Trade days | Return | Day WR | Asset WR | PF | Max DD | Final equity |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| January 2026 | 20 | 3 | +12.17% | 66.67% | 88.89% | 1.26 | −19.67% | $112,172 |
+| February 2026 | 19 | 1 | −21.05% | 0.00% | 66.67% | 0.37 | −21.05% | $78,946 |
+| March 2026 | 22 | 7 | +13,893.39% | 100.00% | 100.00% | ∞ | 0.00% | $13,993,391 |
+| April 2026 | 21 | 5 | +944.05% | 100.00% | 100.00% | ∞ | 0.00% | $1,044,052 |
+| May 2026 | 20 | 4 | +481.93% | 100.00% | 100.00% | ∞ | 0.00% | $581,926 |
+| June 2026 | 21 | 4 | +1,293.16% | 100.00% | 100.00% | ∞ | 0.00% | $1,393,155 |
+| **2026 H1 (compounded)** | 123 | 3 | **+12.17%** | 66.67% | 88.89% | 1.26 | −19.67% | $112,172 |
 
-The engine decided whether to trade using session D's **close** (the alignment filter is `close < open` for all three assets), then entered at session D's **open**. The direction traded was therefore the direction the session had *already been observed to move*. Every aligned day was profitable by construction — which is exactly why the original run showed 100% win rates.
+### Read this before quoting the monthly numbers
 
-Fixed by adding `execution.signal_lag_days` (default **1**): the regime and alignment filter are read from the previous completed session and traded on the next open. Setting it to `0` restores the old same-session behaviour, retained only as a diagnostic.
+**The H1 row is not the sum of the months, and that is the model's own rule working.** The compounded run trips the 20% max-drawdown breaker on **2026-01-29** and then sits flat for the remaining **104 sessions**. It never reaches February. The Mar–Jun monthly figures only exist because each monthly run resets capital *and* resets the breaker.
 
-The look-ahead numbers, for reference — **these are not results, they are an unattainable upper bound**:
+So: as a continuously-run strategy, Agba Metta traded 3 days in the first half of 2026, made +12.17%, and halted. The four-digit monthly returns are artefacts of restarting a halted system six times, not compoundable performance.
 
-| Period | Return (look-ahead) | Day WR |
-|---|---:|---:|
-| January 2026 | +12.17% | 66.67% |
-| February 2026 | −21.05% | 0.00% |
-| March 2026 | +13,893.39% | 100.00% |
-| April 2026 | +944.05% | 100.00% |
-| May 2026 | +481.93% | 100.00% |
-| June 2026 | +1,293.16% | 100.00% |
+**On the 100% win rates in Mar–Jun.** The alignment filter reads the day's `close` and the entry is that same day's `open`, so on an aligned day the model enters in a direction the session has already been observed to move. Wins are near-guaranteed by construction. That is what the spec says to do and I have implemented it as written — but it means those months measure the rule, not a forecastable edge, and they will not reproduce live. Worth a decision on your side.
 
-March going from +13,893% to −21.53% once the bias is removed is the entire measure of the problem. Essentially all of the model's apparent edge was look-ahead.
-
-### 3.2 Risk circuit breakers never fired
-
-`check_max_drawdown` and `check_daily_loss_limit` were called, logged `"Halting."` — and then did nothing. The configured 20% max-drawdown and 10% daily-loss limits had no effect. In the first causal run this let February compound down to −92.94% and the H1 run to −99.98%.
-
-Fixed with a `halted` flag that actually blocks new entries once tripped. With breakers live, worst month is −45.72% instead of −92.94%.
+Goals (day WR > 80%, ROI > 1000%, DD < 20%) are **not met** by the H1 run: 66.67% WR, +12.17%, −19.67% DD.
 
 ---
 
-## 4. Honest read
+## 4. Engine bugs fixed (rule violations, not rule changes)
 
-- The strategy is **not validated** on real Jan–Jun 2026 data. Its published performance was an artefact of look-ahead bias plus inoperative risk limits.
-- The sample is tiny: 4 trade days across 123 sessions in the compounded run. Nothing here is statistically meaningful in either direction, and the positive H1 return should not be read as an edge.
-- 500x leverage with 20% of equity at risk means a 1% adverse move costs ~33% of equity on a three-asset day. Single-trade losses of exactly −1.00% price move (`STOP_LOSS`) map to catastrophic equity moves. The sizing is not survivable as configured.
-- Costs are still zero — `commission_per_trade: 0.0`, `slippage_pct: 0.0`. Real execution at this leverage and turnover would make the results materially worse.
+The code disagreed with `model_config.yaml` in four places. Each fix makes the engine follow the spec:
+
+1. **Circuit breakers never fired.** `check_max_drawdown` / `check_daily_loss_limit` logged `"Halting."` and did nothing. The 20% and 10% limits had zero effect. Now a `halted` flag blocks new entries — this is what stops the H1 run in January.
+2. **Sizing ignored `max_assets_per_trade`.** Positions were sized off `len(universe.assets)` directly, bypassing the config cap.
+3. **Hard stop hardcoded to `0.01`.** Literal in the entry path instead of `risk.hard_stop_pct`; changing the config did nothing.
+4. **Leverage hardcoded to `500`.** Literal instead of `position_sizing.leverage`, same problem.
+
+Also: the config-driven `AlignmentFilter` class (which honours `alignment.enabled` and the `*_requires_all_*` flags) was constructed but never called — a duplicate inline copy ran instead. Entry and alignment now route through it, so `alignment.enabled: false` actually works.
 
 ---
 
-## 5. Artefacts
+## 5. Caveats
+
+- 3 trade days in the compounded run. Not a statistically meaningful sample.
+- Costs are zero (`commission_per_trade: 0.0`, `slippage_pct: 0.0`). At 500x and this turnover, real execution would be materially worse.
+- 500x with 20% of equity at risk means a 1% adverse move costs ~33% of equity on a three-asset day. February shows this: one losing day, −21.05%, breaker tripped.
+
+---
+
+## 6. Artefacts
 
 ```
 data/raw/                      raw provider payloads, cached verbatim
 data/market_data_2026.json     clean 123-session panel
 backtest_results/2026/
-  monthly_summary.csv/.json    per-month + H1 metrics, both modes
-  trades_2026-01..06.csv       per-month trade blotters
-  equity_2026-01..06.csv       per-month daily equity curves
+  monthly_summary.csv/.json    per-month + H1 metrics
+  trades_<month>.csv           per-month trade blotters
+  equity_<month>.csv           per-month daily equity curves
   trades_2026H1.csv            compounded run blotter
   equity_2026H1.csv            compounded run equity curve
 ```

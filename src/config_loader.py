@@ -75,12 +75,6 @@ class ExecutionConfig:
     stop_check: str
     stop_behavior: str
     allow_reentry_same_day: bool
-    # 0 = regime + alignment are read off the same session that is traded.
-    #     That session's close is not knowable at its open, so 0 is look-ahead
-    #     biased and is only meaningful as a diagnostic upper bound.
-    # 1 = signal is taken from the previous completed session and traded on the
-    #     next open. This is the causally valid ("tradeable") setting.
-    signal_lag_days: int = 1
 
 
 @dataclass

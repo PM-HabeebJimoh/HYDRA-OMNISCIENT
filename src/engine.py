@@ -209,11 +209,8 @@ class AgbaMettaEngine:
             aligned = gold_up and eur_up and aud_up
             return AlignmentResult(aligned, f"Gold: {'↑' if market_data.gold.close > market_data.gold.open else '↓'}, EUR: {'↑' if market_data.eur.close > market_data.eur.open else '↓'}, AUD: {'↑' if market_data.aud.close > market_data.aud.open else '↓'}")
 
-    def open_positions_for_day(self, market_data, regime: Regime, date: str,
-                               signal_data=None) -> List[Trade]:
-        """Open positions for aligned assets at the traded session's open"""
-        if signal_data is None:
-            signal_data = market_data
+    def open_positions_for_day(self, market_data, regime: Regime, date: str) -> List[Trade]:
+        """Open positions for aligned assets at the day's open (Agba Metta rule)"""
         trades = []
         # Handle both Regime enum and string
         regime_str = regime.name if hasattr(regime, 'name') else str(regime)
@@ -222,22 +219,23 @@ class AgbaMettaEngine:
         if direction == 0:
             return trades
 
-        # Check alignment on the signal session
-        alignment = self.check_alignment(signal_data, regime)
+        # Agba Metta alignment: all assets must confirm the regime direction
+        alignment = self.alignment_filter.check_alignment(market_data, regime)
         if not alignment.aligned:
             logger.info(f"  {date} | MISALIGNED: {alignment.reason} - SKIPPING")
             return trades
 
         logger.info(f"  {date} | ALIGNED: {alignment.reason} - ENTERING TRADES")
 
-        # Calculate position sizes
-        num_assets = len(self.config.universe.assets)
+        # Metta sizing: equal weight across the assets actually traded, capped
+        # by max_assets_per_trade from config.
+        tradable = self.config.universe.assets[: self.position_sizer.max_assets]
         total_position, position_per_asset = self.position_sizer.calculate_position_size(
-            self.equity, num_assets
+            self.equity, len(tradable)
         )
 
         # Open position for each asset
-        for asset_obj in self.config.universe.assets:
+        for asset_obj in tradable:
             asset_symbol = asset_obj.symbol
             ohlc = market_data.get_asset_ohlc(asset_symbol)
             if ohlc is None:
@@ -246,11 +244,8 @@ class AgbaMettaEngine:
             entry_price = ohlc.open
             direction_int = self.regime_direction_map[regime.name]
 
-            # Calculate stop price (1% hard stop)
-            if direction_int == Direction.SHORT.value:
-                stop_price = entry_price * (1 + 0.01)
-            else:
-                stop_price = entry_price * (1 - 0.01)
+            # Hard stop from config (risk.hard_stop_pct)
+            stop_price = self.risk_manager.calculate_stop_price(entry_price, direction_int)
 
             # Create position
             position = Position(
@@ -259,7 +254,7 @@ class AgbaMettaEngine:
                 entry_price=entry_price,
                 stop_price=stop_price,
                 position_size=position_per_asset,
-                leverage=500,
+                leverage=self.position_sizer.leverage,
                 entry_date=date,
                 regime=regime.name
             )
@@ -268,7 +263,8 @@ class AgbaMettaEngine:
 
             logger.info(f"    {asset_symbol} {'SHORT' if direction_int==-1 else 'LONG'} | "
                        f"Entry: {entry_price:.5f} | Stop: {stop_price:.5f} | "
-                       f"Size: ${position_per_asset:,.0f} | Lev: 500x")
+                       f"Size: ${position_per_asset:,.0f} | "
+                       f"Lev: {self.position_sizer.leverage}x")
 
         return trades
 
@@ -343,24 +339,13 @@ class AgbaMettaEngine:
 
         return closed_trades
 
-    def process_day(self, market_data, date: str, signal_data=None) -> Tuple[List[Trade], float]:
-        """
-        Process a single trading day.
-
-        `market_data` is the session actually traded (entry at its open, exit at
-        its close). `signal_data` is the session the regime and alignment filter
-        are read from. When signal_lag_days > 0 the caller passes the previous
-        completed session, so no future information is used. When it is None the
-        signal is read off the traded session itself (look-ahead diagnostic).
-        """
-        if signal_data is None:
-            signal_data = market_data
-
+    def process_day(self, market_data, date: str) -> Tuple[List[Trade], float]:
+        """Process a single trading day per the Agba Metta rules."""
         # Reset daily tracking
         self.risk_manager.reset_daily(self.equity)
 
-        # Determine regime from the signal session
-        real_yield = signal_data.real_yield
+        # Determine regime from the day's real yield
+        real_yield = market_data.real_yield
         regime = self.determine_regime(real_yield)
 
         logger.info(f">>> {date} | Yield: {real_yield:.2f}% | Regime: {regime.name}")
@@ -374,14 +359,11 @@ class AgbaMettaEngine:
 
         # Check for new trades (only if flat and not halted by a risk breaker)
         if not self.open_positions and not self.halted:
-            # Alignment is evaluated on the signal session, never the traded one
-            alignment = self.check_alignment(signal_data, regime)
+            alignment = self.alignment_filter.check_alignment(market_data, regime)
             is_trade_day = alignment.aligned and regime != Regime.STABILITY
 
             if is_trade_day:
-                new_trades = self.open_positions_for_day(
-                    market_data, regime, date, signal_data=signal_data
-                )
+                new_trades = self.open_positions_for_day(market_data, regime, date)
                 # These will be closed at end of day
                 if self.open_positions:
                     closed = self.manage_positions(market_data, date)
@@ -445,25 +427,12 @@ def run_backtest(config: AgbaMettaConfig, market_data_dict: Dict[str, dict]) -> 
 
     # Run backtest
     dates = sorted(market_data_map.keys())
-    lag = getattr(config.execution, "signal_lag_days", 1)
 
-    for i, date in enumerate(dates):
+    for date in dates:
         if date < config.backtest.start_date or date > config.backtest.end_date:
             continue
 
-        market_data = market_data_map[date]
-
-        # Resolve the session the signal is read from. With lag >= 1 this is a
-        # previous completed session, so the decision uses only information
-        # available before the traded session opens.
-        if lag <= 0:
-            signal_data = market_data
-        elif i - lag >= 0:
-            signal_data = market_data_map[dates[i - lag]]
-        else:
-            continue  # not enough history yet to form a causal signal
-
-        engine.process_day(market_data, date, signal_data=signal_data)
+        engine.process_day(market_data_map[date], date)
 
     # Calculate metrics
     metrics = calculate_metrics(engine.closed_trades, engine.equity_curve, config.backtest.initial_capital)

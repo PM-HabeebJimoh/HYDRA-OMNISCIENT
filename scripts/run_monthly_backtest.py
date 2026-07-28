@@ -51,12 +51,7 @@ def month_bounds(ym: str) -> tuple[str, str]:
 def run_window(config, label: str, start: str, end: str, tag: str,
                persist: bool = True) -> dict:
     """Backtest one date window and persist its artefacts."""
-    # With a lagged signal the first tradeable session needs a prior session, so
-    # feed the engine a short warm-up of real history before the window.
-    lag = getattr(config.execution, "signal_lag_days", 1)
-    warm_start = (pd.Timestamp(start) - pd.Timedelta(days=10 * max(lag, 1))).strftime("%Y-%m-%d")
-
-    data = load_market_data_for_backtest(warm_start, end)
+    data = load_market_data_for_backtest(start, end)
     if not data:
         print(f"  {label}: no real sessions in window - skipped")
         return {}
@@ -70,7 +65,6 @@ def run_window(config, label: str, start: str, end: str, tag: str,
     sessions = [d for d in sorted(data) if start <= d <= end]
     row = {
         "period": label,
-        "signal_lag_days": lag,
         "start": sessions[0],
         "end": sessions[-1],
         "sessions": len(sessions),
@@ -129,11 +123,6 @@ def main() -> None:
     )
     print("-" * 96)
 
-    # --- Primary run: causal signal (previous session -> next open) ---------
-    config.execution.signal_lag_days = 1
-    print("MODE: tradeable / causal (signal_lag_days=1)")
-    print("-" * 96)
-
     rows = []
     for ym, label in MONTHS:
         start, end = month_bounds(ym)
@@ -145,23 +134,8 @@ def main() -> None:
     continuous = run_window(
         config, "2026 H1 (compounded)", "2026-01-01", "2026-06-30", "2026H1"
     )
-
-    # --- Diagnostic run: same-session signal (look-ahead upper bound) -------
-    print("=" * 96)
-    print("MODE: same-session signal (signal_lag_days=0) - LOOK-AHEAD BIASED,")
-    print("      reported only as an unattainable upper bound, not a result.")
-    print("-" * 96)
-
-    config.execution.signal_lag_days = 0
-    lookahead_rows = []
-    for ym, label in MONTHS:
-        start, end = month_bounds(ym)
-        row = run_window(config, label, start, end, f"{ym}_lookahead", persist=False)
-        if row:
-            lookahead_rows.append(row)
     print("=" * 96)
 
-    config.execution.signal_lag_days = 1
     all_rows = rows + ([continuous] if continuous else [])
     df = pd.DataFrame(all_rows)
     df.to_csv(OUT_DIR / "monthly_summary.csv", index=False)
@@ -189,14 +163,6 @@ def main() -> None:
         },
         "months": rows,
         "continuous_h1": continuous,
-        "lookahead_diagnostic": {
-            "warning": "signal_lag_days=0 reads the traded session's own close "
-                       "to decide whether to enter at that session's open. It is "
-                       "look-ahead biased and unattainable in live trading; it is "
-                       "kept only to quantify how much of the headline edge came "
-                       "from that bias.",
-            "months": lookahead_rows,
-        },
     }
     (OUT_DIR / "monthly_summary.json").write_text(json.dumps(payload, indent=2, default=str))
 

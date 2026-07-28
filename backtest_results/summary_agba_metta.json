@@ -18,22 +18,21 @@
     "audusd": "CME front-month AUD future (Yahoo Finance 6A=F), daily OHLC",
     "real_yield": "FRED DFII10 (10Y TIPS constant-maturity real yield)"
   },
-  "signal_lag_days": 1,
   "metrics": {
     "initial_capital": 100000.0,
-    "final_equity": 130648.22,
-    "total_return_pct": 30.65,
-    "trade_days": 4,
+    "final_equity": 112172.14,
+    "total_return_pct": 12.17,
+    "trade_days": 3,
     "day_wins": 2,
-    "day_losses": 2,
-    "day_win_rate_pct": 50.0,
-    "asset_trades": 12,
+    "day_losses": 1,
+    "day_win_rate_pct": 66.67,
+    "asset_trades": 9,
     "asset_wins": 8,
-    "asset_losses": 4,
-    "asset_win_rate_pct": 66.67,
-    "profit_factor": 1.24,
-    "max_drawdown_pct": -23.96,
-    "sharpe_ratio": 1.1
+    "asset_losses": 1,
+    "asset_win_rate_pct": 88.89,
+    "profit_factor": 1.26,
+    "max_drawdown_pct": -19.67,
+    "sharpe_ratio": 0.69
   },
   "goals_met": false
 }
