@@ -1,0 +1,38 @@
+{
+  "model": "Agba Metta Model",
+  "version": "1.0.0",
+  "period": "2026-07-01 to 2026-07-24",
+  "config": {
+    "risk_per_trade_pct": 0.2,
+    "leverage": 500,
+    "hard_stop_pct": 0.01,
+    "max_drawdown_pct": 0.2,
+    "alignment_enabled": true,
+    "entry": "open",
+    "exit": "close",
+    "stop_loss_type": "hard"
+  },
+  "data_sources": {
+    "gold": "Investing.com XAU/USD historical",
+    "eurusd": "Investing.com EUR/USD historical",
+    "audusd": "Investing.com AUD/USD historical",
+    "real_yield": "FRED DFII10 (10Y TIPS real yield)"
+  },
+  "metrics": {
+    "initial_capital": 100000.0,
+    "final_equity": 1126407.83,
+    "total_return_pct": 1026.41,
+    "trade_days": 4,
+    "day_wins": 4,
+    "day_losses": 0,
+    "day_win_rate_pct": 100.0,
+    "asset_trades": 12,
+    "asset_wins": 12,
+    "asset_losses": 0,
+    "asset_win_rate_pct": 100.0,
+    "profit_factor": "inf",
+    "max_drawdown_pct": 0.0,
+    "sharpe_ratio": 8.41
+  },
+  "goals_met": "True"
+}

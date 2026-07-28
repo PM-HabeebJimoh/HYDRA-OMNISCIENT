@@ -1,0 +1,72 @@
+# Agba Metta Model Configuration
+# Complete standalone execution engine - no hydra dependencies
+
+model:
+  name: "Agba Metta Model"
+  version: "1.0.0"
+  description: "Standalone execution engine with alignment filter, position sizing, and risk management"
+
+# Universe
+universe:
+  assets:
+    - symbol: "XAUUSD"
+      name: "Gold"
+      contract_size: 100
+      tick_size: 0.01
+    - symbol: "EURUSD"
+      name: "Euro/USD"
+      contract_size: 100000
+      tick_size: 0.00001
+    - symbol: "AUDUSD"
+      name: "AUD/USD"
+      contract_size: 100000
+      tick_size: 0.00001
+
+# Regime Detection
+regime:
+  contraction_yield_threshold: 0.7   # Real yield > 0.7% = CONTRACTION
+  expansion_yield_threshold: -0.1    # Real yield < -0.1% = EXPANSION
+  # STABILITY = between -0.1% and 0.7%
+
+# Alignment Filter (The "Agba" Logic)
+alignment:
+  enabled: true
+  contraction_requires_all_down: true   # All assets must close < open for SHORT
+  expansion_requires_all_up: true       # All assets must close > open for LONG
+  # If alignment fails, NO TRADES for that day
+
+# Position Sizing (The "Metta" Logic)
+position_sizing:
+  risk_per_trade_pct: 0.20      # 20% equity per trade day
+  leverage: 500                 # 500x leverage
+  equal_weight: true            # Equal weight across aligned assets
+  max_assets_per_trade: 3       # Max 3 assets per trade (XAU, EUR, AUD)
+
+# Risk Management
+risk:
+  hard_stop_pct: 0.01           # 1% hard stop loss
+  max_drawdown_pct: 0.20        # Halt if 20% drawdown from peak
+  max_daily_loss_pct: 0.10      # Halt if 10% daily loss
+  stop_loss_type: "hard"        # "hard" = exit at stop, "none" = no stop
+
+# Entry/Exit Rules
+execution:
+  entry: "open"                 # Enter at day's open
+  exit: "close"                 # Exit at day's close
+  stop_check: "intraday"        # Check stops using high/low
+  stop_behavior: "exit_at_stop" # Exit immediately when stop hit
+  allow_reentry_same_day: false # No re-entry after stop
+
+# Regime Mapping
+regime_direction:
+  CONTRACTION: -1   # SHORT
+  EXPANSION: 1      # LONG
+  STABILITY: 0      # NO TRADE
+
+# Backtest Settings - Using July 2026 data (available real data)
+backtest:
+  start_date: "2026-07-01"
+  end_date: "2026-07-24"
+  initial_capital: 100000.0
+  commission_per_trade: 0.0       # No commission for now
+  slippage_pct: 0.0               # No slippage for now
