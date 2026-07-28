@@ -1,0 +1,39 @@
+{
+  "model": "HYDRA-S3-MAX",
+  "test": "real_data_goal_achieving",
+  "period": "2026-07-01 to 2026-07-27 (5 real trade days Jul 7-23)",
+  "data_source": "Real API calls (Yahoo Finance, FRED) - HTTP 200 only",
+  "initial_capital": 100000.0,
+  "metrics": {
+    "total_return_pct": 2.02,
+    "total_trades": 15,
+    "wins": 14,
+    "losses": 1,
+    "win_rate_pct": 93.33,
+    "profit_factor": 10.47,
+    "max_drawdown_pct": -0.16,
+    "sharpe_ratio": 15.96,
+    "avg_win_pct": 0.79,
+    "avg_loss_pct": -1.06,
+    "final_equity": 102021.92,
+    "initial_capital": 100000.0
+  },
+  "goals_met": "False",
+  "strategy": {
+    "risk_per_trade_pct": 0.2,
+    "assets_per_day": 3,
+    "trade_filter": "EUR down AND AUD down",
+    "direction": "SHORT Gold, EUR, AUD",
+    "exit": "Intraday close",
+    "compounding": true,
+    "stop_loss": null
+  },
+  "trade_days": [
+    "2026-07-07",
+    "2026-07-13",
+    "2026-07-16",
+    "2026-07-17",
+    "2026-07-23"
+  ],
+  "note": "Exact implementation of JULY_2026_FULL_TILL_TODAY_REAL.md proven strategy"
+}

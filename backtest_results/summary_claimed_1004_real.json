@@ -1,0 +1,25 @@
+{
+  "model": "HYDRA-S3-MAX",
+  "test": "claimed_1004_parameters_real_data",
+  "period": "2026-07-07 to 2026-07-23 (5 real trade days)",
+  "parameters": {
+    "leverage": 500,
+    "risk_per_trade": 0.2,
+    "stop_loss": null
+  },
+  "metrics": {
+    "total_return_pct": 840.61,
+    "total_trades": 15,
+    "wins": 14,
+    "losses": 1,
+    "win_rate_pct": 93.33,
+    "max_drawdown_pct": -27.33,
+    "sharpe_ratio": 15.96,
+    "avg_win_pct": 26.43,
+    "avg_loss_pct": -35.33,
+    "final_equity": 940614.01,
+    "initial_capital": 100000.0
+  },
+  "goals_met": "False",
+  "note": "Test of claimed 1004% formula with REAL July 2026 market data"
+}
