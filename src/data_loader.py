@@ -4,10 +4,12 @@ Agba Metta Model - Real Data Loader
 Reads the real market-data panel produced by scripts/build_dataset.py. Every
 value traces back to a provider payload cached under data/raw/:
 
-  * gold       COMEX front-month gold future        (Yahoo Finance GC=F)
-  * eur        CME front-month Euro FX future       (Yahoo Finance 6E=F)
-  * aud        CME front-month AUD future           (Yahoo Finance 6A=F)
+  * gold       XAUUSD spot   (Investing.com pair 68)
+  * eur        EURUSD spot   (Investing.com pair 1)
+  * aud        AUDUSD spot   (Investing.com pair 5)
   * real_yield FRED DFII10 10-Year TIPS real yield
+
+SPOT, not futures - the same series the July 2026 reference backtest used.
 
 There are no hardcoded, synthetic or placeholder prices in this module. If the
 panel is missing the loader raises rather than falling back to invented data.
@@ -20,7 +22,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Dict
 
-DATA_FILE = Path(__file__).resolve().parent.parent / "data" / "market_data_2026.json"
+DATA_FILE = Path(__file__).resolve().parent.parent / "data" / "market_data_spot.json"
 
 REQUIRED_FIELDS = ("open", "high", "low", "close")
 
@@ -31,7 +33,7 @@ def load_real_ohlc_data() -> Dict[str, dict]:
     if not DATA_FILE.exists():
         raise FileNotFoundError(
             f"Real market data panel not found at {DATA_FILE}. "
-            "Run: python3 scripts/build_dataset.py"
+            "Run: python3 scripts/build_spot_dataset.py"
         )
 
     with DATA_FILE.open() as fh:

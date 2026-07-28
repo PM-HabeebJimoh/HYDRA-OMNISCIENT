@@ -1,0 +1,22 @@
+{
+  "model": "Agba Metta Model v1.0.0",
+  "period": "2026-01-01 to 2026-01-31",
+  "instruments": "SPOT XAUUSD/EURUSD/AUDUSD (Investing.com pairs 68/1/5) + FRED DFII10",
+  "sessions": 21,
+  "metrics": {
+    "initial_capital": 100000.0,
+    "final_equity": 321171.88,
+    "total_return_pct": 221.17,
+    "trade_days": 4,
+    "day_wins": 4,
+    "day_losses": 0,
+    "day_win_rate_pct": 100.0,
+    "asset_trades": 12,
+    "asset_wins": 11,
+    "asset_losses": 1,
+    "asset_win_rate_pct": 91.67,
+    "profit_factor": 3.92,
+    "max_drawdown_pct": 0.0,
+    "sharpe_ratio": 7.42
+  }
+}
