@@ -56,6 +56,10 @@ execution:
   stop_check: "intraday"        # Check stops using high/low
   stop_behavior: "exit_at_stop" # Exit immediately when stop hit
   allow_reentry_same_day: false # No re-entry after stop
+  # 1 = signal read from the previous completed session, traded on the next
+  #     open (causally valid). 0 reads the signal off the traded session's own
+  #     close, which is look-ahead biased and only a diagnostic upper bound.
+  signal_lag_days: 1
 
 # Regime Mapping
 regime_direction:
@@ -63,10 +67,10 @@ regime_direction:
   EXPANSION: 1      # LONG
   STABILITY: 0      # NO TRADE
 
-# Backtest Settings - Using July 2026 data (available real data)
+# Backtest Settings - real data window covered by data/market_data_2026.json
 backtest:
-  start_date: "2026-07-01"
-  end_date: "2026-07-24"
+  start_date: "2026-01-01"
+  end_date: "2026-06-30"
   initial_capital: 100000.0
   commission_per_trade: 0.0       # No commission for now
   slippage_pct: 0.0               # No slippage for now

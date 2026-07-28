@@ -118,11 +118,12 @@ def run_agba_metta_backtest():
             "stop_loss_type": "hard"
         },
         "data_sources": {
-            "gold": "Investing.com XAU/USD historical",
-            "eurusd": "Investing.com EUR/USD historical",
-            "audusd": "Investing.com AUD/USD historical",
-            "real_yield": "FRED DFII10 (10Y TIPS real yield)"
+            "gold": "COMEX front-month gold future (Yahoo Finance GC=F), daily OHLC",
+            "eurusd": "CME front-month Euro FX future (Yahoo Finance 6E=F), daily OHLC",
+            "audusd": "CME front-month AUD future (Yahoo Finance 6A=F), daily OHLC",
+            "real_yield": "FRED DFII10 (10Y TIPS constant-maturity real yield)"
         },
+        "signal_lag_days": getattr(config.execution, "signal_lag_days", 1),
         "metrics": metrics,
         "goals_met": goal_wr and goal_roi and goal_dd
     }

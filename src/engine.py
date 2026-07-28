@@ -173,6 +173,10 @@ class AgbaMettaEngine:
         self.closed_trades: List[Trade] = []
         self.equity_curve: List[DailyEquity] = []
         self.risk_manager.peak_equity = config.backtest.initial_capital
+        # Circuit-breaker state. Once tripped the engine stops opening new
+        # positions for the remainder of the run.
+        self.halted = False
+        self.halt_reason = None
 
     def determine_regime(self, real_yield: float) -> Regime:
         """Determine regime from real yield"""
@@ -205,8 +209,11 @@ class AgbaMettaEngine:
             aligned = gold_up and eur_up and aud_up
             return AlignmentResult(aligned, f"Gold: {'↑' if market_data.gold.close > market_data.gold.open else '↓'}, EUR: {'↑' if market_data.eur.close > market_data.eur.open else '↓'}, AUD: {'↑' if market_data.aud.close > market_data.aud.open else '↓'}")
 
-    def open_positions_for_day(self, market_data, regime: Regime, date: str) -> List[Trade]:
-        """Open positions for aligned assets at day's open"""
+    def open_positions_for_day(self, market_data, regime: Regime, date: str,
+                               signal_data=None) -> List[Trade]:
+        """Open positions for aligned assets at the traded session's open"""
+        if signal_data is None:
+            signal_data = market_data
         trades = []
         # Handle both Regime enum and string
         regime_str = regime.name if hasattr(regime, 'name') else str(regime)
@@ -215,8 +222,8 @@ class AgbaMettaEngine:
         if direction == 0:
             return trades
 
-        # Check alignment
-        alignment = self.check_alignment(market_data, regime)
+        # Check alignment on the signal session
+        alignment = self.check_alignment(signal_data, regime)
         if not alignment.aligned:
             logger.info(f"  {date} | MISALIGNED: {alignment.reason} - SKIPPING")
             return trades
@@ -336,13 +343,24 @@ class AgbaMettaEngine:
 
         return closed_trades
 
-    def process_day(self, market_data, date: str) -> Tuple[List[Trade], float]:
-        """Process a single trading day"""
+    def process_day(self, market_data, date: str, signal_data=None) -> Tuple[List[Trade], float]:
+        """
+        Process a single trading day.
+
+        `market_data` is the session actually traded (entry at its open, exit at
+        its close). `signal_data` is the session the regime and alignment filter
+        are read from. When signal_lag_days > 0 the caller passes the previous
+        completed session, so no future information is used. When it is None the
+        signal is read off the traded session itself (look-ahead diagnostic).
+        """
+        if signal_data is None:
+            signal_data = market_data
+
         # Reset daily tracking
         self.risk_manager.reset_daily(self.equity)
 
-        # Determine regime
-        real_yield = market_data.real_yield
+        # Determine regime from the signal session
+        real_yield = signal_data.real_yield
         regime = self.determine_regime(real_yield)
 
         logger.info(f">>> {date} | Yield: {real_yield:.2f}% | Regime: {regime.name}")
@@ -354,14 +372,16 @@ class AgbaMettaEngine:
             closed = self.manage_positions(market_data, date)
             closed_trades.extend(closed)
 
-        # Check for new trades (only if no open positions)
-        if not self.open_positions:
-            # Check alignment
-            alignment = self.check_alignment(market_data, regime)
+        # Check for new trades (only if flat and not halted by a risk breaker)
+        if not self.open_positions and not self.halted:
+            # Alignment is evaluated on the signal session, never the traded one
+            alignment = self.check_alignment(signal_data, regime)
             is_trade_day = alignment.aligned and regime != Regime.STABILITY
 
             if is_trade_day:
-                new_trades = self.open_positions_for_day(market_data, regime, date)
+                new_trades = self.open_positions_for_day(
+                    market_data, regime, date, signal_data=signal_data
+                )
                 # These will be closed at end of day
                 if self.open_positions:
                     closed = self.manage_positions(market_data, date)
@@ -389,12 +409,18 @@ class AgbaMettaEngine:
         if self.equity > self.risk_manager.peak_equity:
             self.risk_manager.peak_equity = self.equity
 
-        # Check risk limits
+        # Check risk limits. These actually halt the engine: previously they
+        # only logged, so the configured max-drawdown and daily-loss circuit
+        # breakers had no effect on the backtest at all.
         if self.risk_manager.check_max_drawdown(self.equity):
-            logger.warning(f"  MAX DRAWDOWN EXCEEDED! Halting.")
+            logger.warning("  MAX DRAWDOWN EXCEEDED! Halting.")
+            self.halted = True
+            self.halt_reason = "MAX_DRAWDOWN"
 
         if self.risk_manager.check_daily_loss_limit(self.equity):
-            logger.warning(f"  DAILY LOSS LIMIT EXCEEDED! Halting.")
+            logger.warning("  DAILY LOSS LIMIT EXCEEDED! Halting.")
+            self.halted = True
+            self.halt_reason = self.halt_reason or "DAILY_LOSS_LIMIT"
 
         return closed_trades, self.equity
 
@@ -419,12 +445,25 @@ def run_backtest(config: AgbaMettaConfig, market_data_dict: Dict[str, dict]) -> 
 
     # Run backtest
     dates = sorted(market_data_map.keys())
-    for date in dates:
+    lag = getattr(config.execution, "signal_lag_days", 1)
+
+    for i, date in enumerate(dates):
         if date < config.backtest.start_date or date > config.backtest.end_date:
             continue
 
         market_data = market_data_map[date]
-        engine.process_day(market_data, date)
+
+        # Resolve the session the signal is read from. With lag >= 1 this is a
+        # previous completed session, so the decision uses only information
+        # available before the traded session opens.
+        if lag <= 0:
+            signal_data = market_data
+        elif i - lag >= 0:
+            signal_data = market_data_map[dates[i - lag]]
+        else:
+            continue  # not enough history yet to form a causal signal
+
+        engine.process_day(market_data, date, signal_data=signal_data)
 
     # Calculate metrics
     metrics = calculate_metrics(engine.closed_trades, engine.equity_curve, config.backtest.initial_capital)
