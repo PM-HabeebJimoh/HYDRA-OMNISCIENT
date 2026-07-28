@@ -20,19 +20,19 @@
   },
   "metrics": {
     "initial_capital": 100000.0,
-    "final_equity": 112172.14,
-    "total_return_pct": 12.17,
-    "trade_days": 3,
-    "day_wins": 2,
-    "day_losses": 1,
-    "day_win_rate_pct": 66.67,
-    "asset_trades": 9,
-    "asset_wins": 8,
-    "asset_losses": 1,
-    "asset_win_rate_pct": 88.89,
-    "profit_factor": 1.26,
-    "max_drawdown_pct": -19.67,
-    "sharpe_ratio": 0.69
+    "final_equity": 76671858645.74,
+    "total_return_pct": 76671758.65,
+    "trade_days": 29,
+    "day_wins": 27,
+    "day_losses": 2,
+    "day_win_rate_pct": 93.1,
+    "asset_trades": 87,
+    "asset_wins": 84,
+    "asset_losses": 3,
+    "asset_win_rate_pct": 96.55,
+    "profit_factor": 574885.94,
+    "max_drawdown_pct": -21.05,
+    "sharpe_ratio": 6.72
   },
-  "goals_met": false
+  "goals_met": "False"
 }

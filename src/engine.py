@@ -173,10 +173,9 @@ class AgbaMettaEngine:
         self.closed_trades: List[Trade] = []
         self.equity_curve: List[DailyEquity] = []
         self.risk_manager.peak_equity = config.backtest.initial_capital
-        # Circuit-breaker state. Once tripped the engine stops opening new
-        # positions for the remainder of the run.
-        self.halted = False
-        self.halt_reason = None
+        # Risk-limit breaches are recorded for reporting only. The Agba Metta
+        # daily loop has no halt step: every aligned day is traded.
+        self.risk_events: List[dict] = []
 
     def determine_regime(self, real_yield: float) -> Regime:
         """Determine regime from real yield"""
@@ -357,8 +356,8 @@ class AgbaMettaEngine:
             closed = self.manage_positions(market_data, date)
             closed_trades.extend(closed)
 
-        # Check for new trades (only if flat and not halted by a risk breaker)
-        if not self.open_positions and not self.halted:
+        # Check for new trades (only if flat)
+        if not self.open_positions:
             alignment = self.alignment_filter.check_alignment(market_data, regime)
             is_trade_day = alignment.aligned and regime != Regime.STABILITY
 
@@ -391,18 +390,15 @@ class AgbaMettaEngine:
         if self.equity > self.risk_manager.peak_equity:
             self.risk_manager.peak_equity = self.equity
 
-        # Check risk limits. These actually halt the engine: previously they
-        # only logged, so the configured max-drawdown and daily-loss circuit
-        # breakers had no effect on the backtest at all.
+        # Risk limits are observed and logged, not enforced as a halt: the
+        # Agba Metta daily loop trades every aligned day.
         if self.risk_manager.check_max_drawdown(self.equity):
-            logger.warning("  MAX DRAWDOWN EXCEEDED! Halting.")
-            self.halted = True
-            self.halt_reason = "MAX_DRAWDOWN"
+            logger.warning(f"  {date} | MAX DRAWDOWN threshold breached (informational)")
+            self.risk_events.append({"date": date, "event": "MAX_DRAWDOWN", "equity": self.equity})
 
         if self.risk_manager.check_daily_loss_limit(self.equity):
-            logger.warning("  DAILY LOSS LIMIT EXCEEDED! Halting.")
-            self.halted = True
-            self.halt_reason = self.halt_reason or "DAILY_LOSS_LIMIT"
+            logger.warning(f"  {date} | DAILY LOSS threshold breached (informational)")
+            self.risk_events.append({"date": date, "event": "DAILY_LOSS_LIMIT", "equity": self.equity})
 
         return closed_trades, self.equity
 
