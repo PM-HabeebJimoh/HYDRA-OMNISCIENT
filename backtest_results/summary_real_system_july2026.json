@@ -1,0 +1,40 @@
+{
+  "model": "HYDRA-S3-MAX",
+  "config": "ACTUAL system config (config.py, live_engine.py)",
+  "period": "2026-07-01 to 2026-07-24 (today=2026-07-28)",
+  "data_sources": {
+    "gold": "Investing.com XAU/USD historical data",
+    "eurusd": "Investing.com EUR/USD historical data",
+    "audusd": "Investing.com AUD/USD historical data",
+    "real_yield": "FRED DFII10 (10Y TIPS real yield)"
+  },
+  "system_config": {
+    "hard_stop_pct": 0.01,
+    "risk_per_day": 0.2,
+    "leverage": 500,
+    "alignment_filter": true,
+    "regime_thresholds": {
+      "contraction": 0.7,
+      "expansion": -0.1
+    }
+  },
+  "metrics": {
+    "initial_capital": 100000.0,
+    "final_equity": 1126407.83,
+    "total_return_pct": 1026.41,
+    "trade_days": 4,
+    "day_wins": 4,
+    "day_losses": 0,
+    "day_win_rate_pct": 100.0,
+    "asset_trades": 12,
+    "asset_wins": 12,
+    "asset_losses": 0,
+    "asset_win_rate_pct": 100.0,
+    "profit_factor": "inf",
+    "max_drawdown_pct": 0.0,
+    "sharpe_ratio": 8.41,
+    "stop_loss_hits": 0
+  },
+  "goals_met": "True",
+  "data_verification": "All OHLC from Investing.com/FRED historical tables (public HTTP 200)"
+}
