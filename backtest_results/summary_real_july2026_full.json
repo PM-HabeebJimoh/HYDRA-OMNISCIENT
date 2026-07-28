@@ -1,0 +1,37 @@
+{
+  "model": "HYDRA-S3-MAX",
+  "period": "2026-07-01 to 2026-07-27 (real data Jul 1-23)",
+  "data_source": "Real API calls (Yahoo Finance, Forex, FRED) - HTTP 200",
+  "ohlc_note": "CLOSE = real API close; OPEN = prev real close; HIGH/LOW = constructed from real daily range",
+  "strategy": {
+    "risk_per_day": 0.2,
+    "leverage": 500,
+    "assets": [
+      "XAUUSD",
+      "EURUSD",
+      "AUDUSD"
+    ],
+    "direction": "SHORT (CONTRACTION: Real Yield > 0.7%)",
+    "entry": "OPEN",
+    "exit": "CLOSE (intraday)",
+    "compounding": true,
+    "filter": "EUR down AND AUD down"
+  },
+  "metrics": {
+    "initial_capital": 100000.0,
+    "final_equity": 940061.06,
+    "total_return_pct": 840.06,
+    "total_trades": 15,
+    "asset_wins": 14,
+    "asset_losses": 1,
+    "asset_win_rate_pct": 93.33,
+    "trade_days": 5,
+    "day_wins": 4,
+    "day_losses": 1,
+    "day_win_rate_pct": 80.0,
+    "profit_factor": 4.31,
+    "max_drawdown_pct": -27.48,
+    "sharpe_ratio": 7.7
+  },
+  "goals_met": "False"
+}
