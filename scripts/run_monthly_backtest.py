@@ -31,7 +31,7 @@ from src.config_loader import load_config
 from src.data_loader import load_market_data_for_backtest
 from src.engine import run_backtest
 
-OUT_DIR = ROOT / "backtest_results" / "2026"
+OUT_DIR = ROOT / "backtest_results" / "2026_spot"
 
 MONTHS = [
     ("2026-01", "January 2026"),
@@ -118,7 +118,7 @@ def main() -> None:
         f"Hard stop {config.risk.hard_stop_pct * 100:.0f}%"
     )
     print(
-        "Data             : COMEX GC=F, CME 6E=F, CME 6A=F daily OHLC + FRED DFII10 "
+        "Data             : SPOT XAUUSD/EURUSD/AUDUSD (Investing.com) + FRED DFII10 "
         "(real, cached in data/raw/)"
     )
     print("-" * 96)
@@ -146,9 +146,9 @@ def main() -> None:
         "capital_treatment": "each month restarts from initial capital; "
                              "the H1 row compounds across the whole window",
         "data_sources": {
-            "gold": "COMEX front-month gold future (Yahoo Finance GC=F), daily OHLC",
-            "eur": "CME front-month Euro FX future (Yahoo Finance 6E=F), daily OHLC",
-            "aud": "CME front-month AUD future (Yahoo Finance 6A=F), daily OHLC",
+            "gold": "XAUUSD spot (Investing.com pair 68), daily OHLC",
+            "eur": "EURUSD spot (Investing.com pair 1), daily OHLC",
+            "aud": "AUDUSD spot (Investing.com pair 5), daily OHLC",
             "real_yield": "FRED DFII10, 10-Year TIPS constant-maturity real yield",
         },
         "config": {
