@@ -1,0 +1,54 @@
+4H bars: 1013  2025-12-01 .. 2026-07-27
+macro: CURVE, DXY, FEDBAL, GVZ, HYSPREAD, RRP, VIX, VIX3M
+
+==============================================================================
+DIRECTION: ALL NINE LAYERS COMBINED, WALK-FORWARD (refit every 5 bars)
+==============================================================================
+
+--- GOLD  samples=952  features=84
+    logistic  OOS acc 50.37%   z vs 50% = +0.21   n=802
+    rf        OOS acc 50.37%   z vs 50% = +0.21   n=802
+    gb        OOS acc 50.62%   z vs 50% = +0.35   n=802
+    ENSEMBLE  OOS acc 49.25%   z vs 50% = -0.42   n=802
+
+--- EUR  samples=952  features=84
+    logistic  OOS acc 49.25%   z vs 50% = -0.42   n=802
+    rf        OOS acc 52.74%   z vs 50% = +1.55   n=802
+    gb        OOS acc 52.87%   z vs 50% = +1.62   n=802
+    ENSEMBLE  OOS acc 53.37%   z vs 50% = +1.91   n=802
+
+--- AUD  samples=952  features=84
+    logistic  OOS acc 49.25%   z vs 50% = -0.42   n=802
+    rf        OOS acc 52.62%   z vs 50% = +1.48   n=802
+    gb        OOS acc 49.88%   z vs 50% = -0.07   n=802
+    ENSEMBLE  OOS acc 50.12%   z vs 50% = +0.07   n=802
+
+==============================================================================
+CONFIDENCE FILTER -- where >80% would have to come from
+==============================================================================
+A real combination should get much more accurate when it is confident.
+
+  GOLD
+    logistic   top100%: 50.4%(n=802)  top 50%: 50.4%(n=401)  top 19%: 49.7%(n=161)  top  9%: 51.9%(n= 81)  top  5%: 48.8%(n= 41)
+    rf         top100%: 50.4%(n=802)  top 50%: 53.6%(n=401)  top 19%: 53.4%(n=161)  top  9%: 50.6%(n= 81)  top  5%: 41.5%(n= 41)
+    gb         top100%: 50.6%(n=802)  top 50%: 49.1%(n=401)  top 19%: 43.5%(n=161)  top  9%: 40.7%(n= 81)  top  5%: 36.6%(n= 41)
+    ens        top100%: 49.3%(n=802)  top 50%: 49.9%(n=401)  top 19%: 49.7%(n=161)  top  9%: 46.9%(n= 81)  top  5%: 36.6%(n= 41)
+
+  EUR
+    logistic   top100%: 49.3%(n=802)  top 50%: 50.1%(n=401)  top 19%: 49.7%(n=161)  top  9%: 51.9%(n= 81)  top  5%: 46.3%(n= 41)
+    rf         top100%: 52.7%(n=802)  top 50%: 50.9%(n=401)  top 19%: 51.6%(n=161)  top  9%: 50.6%(n= 81)  top  5%: 36.6%(n= 41)
+    gb         top100%: 52.9%(n=802)  top 50%: 53.4%(n=401)  top 19%: 49.1%(n=161)  top  9%: 50.6%(n= 81)  top  5%: 48.8%(n= 41)
+    ens        top100%: 53.4%(n=802)  top 50%: 51.6%(n=401)  top 19%: 50.9%(n=161)  top  9%: 49.4%(n= 81)  top  5%: 46.3%(n= 41)
+
+  AUD
+    logistic   top100%: 49.3%(n=802)  top 50%: 50.6%(n=401)  top 19%: 50.9%(n=161)  top  9%: 48.1%(n= 81)  top  5%: 39.0%(n= 41)
+    rf         top100%: 52.6%(n=802)  top 50%: 51.1%(n=401)  top 19%: 50.9%(n=161)  top  9%: 49.4%(n= 81)  top  5%: 56.1%(n= 41)
+    gb         top100%: 49.9%(n=802)  top 50%: 51.9%(n=401)  top 19%: 50.3%(n=161)  top  9%: 56.8%(n= 81)  top  5%: 61.0%(n= 41)
+    ens        top100%: 50.1%(n=802)  top 50%: 50.6%(n=401)  top 19%: 52.8%(n=161)  top  9%: 58.0%(n= 81)  top  5%: 58.5%(n= 41)
+
+==============================================================================
+MAGNITUDE, same combined features (the control that has always worked)
+==============================================================================
+  gold  next-bar RANGE  IC=+0.4923  t=+16.00  R2= 24.2%  n=802
+  eur   next-bar RANGE  IC=+0.5157  t=+17.03  R2= 26.6%  n=802
+  aud   next-bar RANGE  IC=+0.4727  t=+15.17  R2= 22.3%  n=802

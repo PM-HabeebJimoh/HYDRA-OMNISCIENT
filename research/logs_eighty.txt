@@ -1,0 +1,64 @@
+==============================================================================
+WHICH QUESTIONS CAN BE ANSWERED AT >80%?
+==============================================================================
+asset  question                             base%    acc%   top20%   top10%
+gold   DIRECTION next bar up                 50.9   49.75    49.1%    51.9%
+gold   MAGNITUDE range > med20               50.5   62.34    70.2%    74.1%
+gold   MAGNITUDE range > 75th pct            72.1   72.32    81.4%    82.7%
+gold   MAGNITUDE range < med20 (quiet)       50.5   62.34    70.2%    74.1%
+eur    DIRECTION next bar up                 54.4   54.36    44.1%    48.1%
+eur    MAGNITUDE range > med20               51.0   67.58    78.3%    79.0%
+eur    MAGNITUDE range > 75th pct            71.9   72.32    89.4%    91.4%
+eur    MAGNITUDE range < med20 (quiet)       51.0   67.58    78.3%    79.0%
+aud    DIRECTION next bar up                 51.9   51.50    47.2%    43.2%
+aud    MAGNITUDE range > med20               50.4   58.35    70.2%    74.1%
+aud    MAGNITUDE range > 75th pct            72.9   72.57    79.5%    80.2%
+aud    MAGNITUDE range < med20 (quiet)       50.4   58.35    70.2%    74.1%
+
+==============================================================================
+THE HIGH-CONFIDENCE MAGNITUDE CALL: how accurate can it get?
+==============================================================================
+
+  GOLD  (base rate 50.5%)
+    top 100% most confident  n= 802  accuracy  62.3%
+    top  50% most confident  n= 401  accuracy  66.6%
+    top  30% most confident  n= 241  accuracy  66.8%
+    top  19% most confident  n= 161  accuracy  70.2%
+    top   9% most confident  n=  81  accuracy  74.1%
+    top   5% most confident  n=  41  accuracy  78.0%
+    top   2% most confident  n=  17  accuracy  76.5%
+
+  EUR  (base rate 51.0%)
+    top 100% most confident  n= 802  accuracy  67.6%
+    top  50% most confident  n= 401  accuracy  72.8%
+    top  30% most confident  n= 241  accuracy  73.4%
+    top  19% most confident  n= 161  accuracy  78.3%
+    top   9% most confident  n=  81  accuracy  79.0%
+    top   5% most confident  n=  41  accuracy  78.0%
+    top   2% most confident  n=  17  accuracy  88.2%
+
+  AUD  (base rate 50.4%)
+    top 100% most confident  n= 802  accuracy  58.4%
+    top  50% most confident  n= 401  accuracy  60.6%
+    top  30% most confident  n= 241  accuracy  68.9%
+    top  19% most confident  n= 161  accuracy  70.2%
+    top   9% most confident  n=  81  accuracy  74.1%
+    top   5% most confident  n=  41  accuracy  75.6%
+    top   2% most confident  n=  17  accuracy  52.9%
+
+==============================================================================
+DOES THE 80% MAGNITUDE CALL MAKE MONEY? (straddle, worst-case whipsaw)
+==============================================================================
+Buy a bracket only when the model is confident the range will be LARGE.
+  gold  top 100% predicted-big  n= 201  mean +0.0992%  t=+1.82  WR 51.7%
+  gold  top  50% predicted-big  n= 125  mean +0.1236%  t=+1.52  WR 54.4%
+  gold  top  19% predicted-big  n=  62  mean +0.1435%  t=+0.96  WR 53.2%
+  gold  top   9% predicted-big  n=  38  mean +0.0732%  t=+0.33  WR 50.0%
+  eur   top 100% predicted-big  n= 201  mean -0.0044%  t=-0.40  WR 42.8%
+  eur   top  50% predicted-big  n= 138  mean -0.0087%  t=-0.65  WR 39.1%
+  eur   top  19% predicted-big  n=  63  mean -0.0139%  t=-0.64  WR 41.3%
+  eur   top   9% predicted-big  n=  32  mean -0.0228%  t=-0.65  WR 37.5%
+  aud   top 100% predicted-big  n= 206  mean -0.0120%  t=-0.75  WR 43.2%
+  aud   top  50% predicted-big  n= 121  mean -0.0265%  t=-1.22  WR 42.1%
+  aud   top  19% predicted-big  n=  59  mean -0.0440%  t=-1.18  WR 42.4%
+  aud   top   9% predicted-big  n=  33  mean -0.0048%  t=-0.10  WR 48.5%
