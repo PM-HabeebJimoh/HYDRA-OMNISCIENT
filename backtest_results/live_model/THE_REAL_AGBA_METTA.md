@@ -1,86 +1,100 @@
 # The Real Agba Metta Model
 
-Corrected. My previous write-up described the **author's code**, not the model.
-The code enters on the signal candle. **The model does not** — the signal candle
-and the entry candle are two different candles.
+Corrected again. I had been adding a step the model does not have.
 
-## The four steps
+## Your specification — 11 steps, verbatim
 
 ```
-STEP 1  REGIME     real yield (FRED DFII10)
-                     > 0.7%  ->  CONTRACTION  ->  SHORT
-                     < -0.1% ->  EXPANSION    ->  LONG
-                     between ->  STABILITY    ->  no trade
-
-STEP 2  SIGNAL     candle i CLOSES
-                   all 3 of XAUUSD / EURUSD / AUDUSD closed in the regime
-                   direction  ->  SIGNAL CONFIRMED
-                   mixed      ->  no signal
-
-STEP 3  ENTRY      candle i+1 OPEN          <-- NEXT CANDLE
-                   1% hard stop from the ACTUAL entry price
-
-STEP 4  EXIT       candle i+1 CLOSE, unless the stop hits intraday
+ 1  Wait for candle close.
+ 2  Check XAUUSD, EURUSD, AUDUSD direction.
+ 3  If all 3 close UP from their opens, signal LONG.
+ 4  If all 3 close DOWN from their opens, signal SHORT.
+ 5  If mixed, skip.
+ 6  Enter on next candle open.
+ 7  Use 20% equity split across the 3 assets.
+ 8  Use 500x leverage.
+ 9  LONG stop  = entry x 0.99
+10  SHORT stop = entry x 1.01
+11  Exit at next candle close unless stop hits first.
 ```
 
-Sizing: 20% of equity per signal, split equally across the 3 assets, 500x.
+**Direction comes from the alignment itself.** Steps 3 and 4 *are* the signal.
+There is no real-yield step, no regime, no external filter.
 
-**The signal candle is never traded.** You cannot act on a close until it has
-happened, and by then that candle is gone. You trade the candle *after* it.
+## What I kept getting wrong
 
-## Why this is the whole model
+I have twice described the model as "real yield sets direction → alignment
+confirms it." That is the **author's config**, not your model. And it does real
+damage:
 
-The author's `trades_agba_metta.csv` has `entry_date == exit_date` on 12 of 12
-trades — it reads the close of day D and buys the open of day D. That is the
-implementation, and it is what produces +1026.41% with 12/12 wins, 0 stops and
-0.00% drawdown. **A model that only enters candles it has already seen close
-in its favour cannot lose.**
+| | |
+|---|---|
+| real yield range, whole sample | **1.67 to 2.34** |
+| days above 0.7 (CONTRACTION/SHORT) | **409 of 409** |
+| days below −0.1 (EXPANSION/LONG) | **0 of 409** |
 
-With the correct next-candle timing, on the same real July 2026 bars:
+**The gate is a constant.** It never selects anything. Its only effect is to
+delete every LONG signal the alignment produces:
 
-| TF | timing | signals | asset WR | stops | return | maxDD |
-|---|---|---:|---:|---:|---:|---:|
-| DAILY | same candle (code) | 4 | 100.0% | 0 | **+953.78%** | 0.00% |
-| DAILY | **NEXT candle (model)** | 4 | 33.3% | 2 | **−81.78%** | −82.82% |
-| 4H | same candle (code) | 30 | 100.0% | 0 | **+82,144.71%** | 0.00% |
-| 4H | **NEXT candle (model)** | 31 | 55.9% | 1 | **+29.96%** | −68.36% |
-| 1H | same candle (code) | 94 | 100.0% | 0 | **+5,128,203.35%** | 0.00% |
-| 1H | **NEXT candle (model)** | 95 | 56.8% | 2 | **−35.29%** | −79.03% |
+| TF | all-3 aligned | UP (LONG) | DOWN (SHORT) | kept by gate | **DELETED** |
+|---|---:|---:|---:|---:|---:|
+| DAILY | 98 | 51 | 47 | 47 | **51** |
+| 4H | 517 | 269 | 248 | 248 | **269** |
+| 1H | 1834 | 907 | 927 | 927 | **907** |
 
-## Every trade, July 2026 daily, correct timing
+The gate throws away **half the model** — 907 of 1834 signals on 1H — and
+contributes nothing in return.
 
-| asset | signal candle | entry candle | entry | exit | move | exit |
-|---|---|---|---:|---:|---:|---|
-| XAUUSD | 07-07 | **07-08** | 4098.58 | 4076.04 | +0.550% | CLOSE |
-| EURUSD | 07-07 | **07-08** | 1.14020 | 1.14210 | −0.167% | CLOSE |
-| AUDUSD | 07-07 | **07-08** | 0.69220 | 0.69360 | −0.202% | CLOSE |
-| XAUUSD | 07-13 | **07-14** | 4001.24 | 4041.25 | −1.000% | **STOP** |
-| EURUSD | 07-13 | **07-14** | 1.13840 | 1.14210 | −0.325% | CLOSE |
-| AUDUSD | 07-13 | **07-14** | 0.69200 | 0.69892 | −1.000% | **STOP** |
-| XAUUSD | 07-16 | **07-17** | 3986.48 | 4017.23 | −0.771% | CLOSE |
-| EURUSD | 07-16 | **07-17** | 1.14460 | 1.14380 | +0.070% | CLOSE |
-| AUDUSD | 07-16 | **07-17** | 0.70000 | 0.69810 | +0.271% | CLOSE |
-| XAUUSD | 07-23 | **07-24** | 4047.32 | 4052.98 | −0.140% | CLOSE |
-| EURUSD | 07-23 | **07-24** | 1.13760 | 1.13710 | +0.044% | CLOSE |
-| AUDUSD | 07-23 | **07-24** | 0.69670 | 0.69830 | −0.230% | CLOSE |
+## The model, run as specified
 
-4 signals → 12 asset trades, 2 stopped. Final $18,219.68, **−81.78%**.
+Both sides traded, direction from the alignment, entry on the **next** candle:
 
-Note the signal/entry columns are always one candle apart. That single column is
-the difference between +953.78% and −81.78%.
+**DAILY**
 
-## The regime gate has never fired LONG
+| month | signals | LONG | SHORT | WR | return | *(with gate)* |
+|---|---:|---:|---:|---:|---:|---:|
+| Dec25 | 4 | 4 | 0 | 66.7% | **+88.78%** | 0 signals |
+| Jan26 | 12 | 9 | 3 | 50.0% | **+158.72%** | −42.44% |
+| Feb26 | 10 | 6 | 4 | 40.0% | −95.88% | −97.07% |
+| Mar26 | 6 | 3 | 3 | 11.1% | −100.00% | −60.17% |
+| Apr26 | 19 | 10 | 9 | 35.1% | −99.64% | −90.20% |
+| May26 | 19 | 10 | 9 | 49.1% | −94.99% | −87.13% |
+| Jun26 | 11 | 4 | 7 | 36.4% | −73.15% | −32.92% |
+| Jul26 | 8 | 3 | 5 | 33.3% | −83.52% | −81.78% |
 
-Real yield ran **1.67 to 2.34** across all of 2025–2026 — always above 0.7. So
-CONTRACTION is permanent and the model is **SHORT-only, 100% of the time**. The
-EXPANSION branch has never executed a single trade.
+**4H**
 
-## Summary
+| month | signals | LONG | SHORT | WR | return |
+|---|---:|---:|---:|---:|---:|
+| Dec25 | 50 | 32 | 18 | 50.0% | **+68.11%** |
+| Jan26 | 57 | 38 | 19 | 53.2% | **+446.76%** |
+| Feb26 | 60 | 36 | 24 | 42.8% | −99.79% |
+| Mar26 | 79 | 38 | 41 | 45.1% | −99.98% |
+| Apr26 | 84 | 43 | 41 | 48.0% | −96.69% |
+| May26 | 67 | 34 | 33 | 59.7% | **+865.99%** |
+| Jun26 | 65 | 25 | 40 | 48.2% | −99.99% |
+| Jul26 | 55 | 23 | 32 | 48.5% | −50.52% |
 
-**Real yield sets the direction → wait for a candle to close with all three
-assets confirming it → enter the NEXT candle's open at 20% equity and 500x →
-exit that candle's close or a 1% stop.**
+**1H** — negative every month (−79% to −99.9%), 180–271 signals per month.
 
-Source: `cebb21c:config/model_config.yaml`, `cebb21c:src/engine.py`,
-`cebb21c:backtest_results/trades_agba_metta.csv`
-Reproduce: `python3 -m research.real_model`
+Note Dec25 daily: **4 signals, all LONG**. Under the regime gate that month has
+**zero** trades. The gate does not just reduce the model — it can silence it
+entirely.
+
+## Summary — the real model
+
+**A candle closes → if XAUUSD, EURUSD and AUDUSD all closed the same way, that is
+your signal (all up = LONG, all down = SHORT) → mixed means skip → enter the NEXT
+candle's open with 20% of equity split three ways at 500x → 1% stop from entry →
+exit that candle's close.**
+
+Five things follow from the real spec:
+
+1. **It trades both directions.** LONG and SHORT, decided by the candles.
+2. **No real yield, no regime, no external data.** Price only.
+3. **The signal candle is never traded** — you enter the one after it.
+4. Best months are **Jan26 4H +446.76%** and **May26 4H +865.99%**.
+5. It loses money in most months at 500x on this data. The three timeframes are
+   consistent about that.
+
+Reproduce: `python3 -m research.spec_check`, `python3 -m research.true_agba`
