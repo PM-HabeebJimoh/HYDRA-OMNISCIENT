@@ -1,0 +1,54 @@
+==============================================================================
+R1  CROSS-SECTIONAL DIRECTION  (dollar-neutral: does the common
+    USD factor hide a predictable residual?)
+==============================================================================
+Pairs are gold/eur, gold/aud, eur/aud. Target = will X outperform Y.
+A long/short pair has NO net dollar exposure by construction.
+
+  gold/eur   acc 51.62%  z=+0.92  n=802   top19%: 47.2%   top9%: 45.7%
+           spread PnL mean -0.0228%  t=-0.85  WR 48.1%  (costs 0.0330%)
+  gold/aud   acc 50.25%  z=+0.14  n=802   top19%: 49.1%   top9%: 53.1%
+           spread PnL mean -0.0488%  t=-1.95  WR 46.9%  (costs 0.0390%)
+  eur/aud   acc 53.12%  z=+1.77  n=802   top19%: 51.6%   top9%: 55.6%
+           spread PnL mean -0.0206%  t=-3.63  WR 44.6%  (costs 0.0240%)
+
+==============================================================================
+R2  INVERT THE MAGNITUDE TRADE  (sell range on predicted-QUIET bars)
+==============================================================================
+Buying range fails because the bracket scales with the forecast.
+Selling range on quiet bars: that scaling now works in my favour.
+Short straddle = fade both extremes, capped by a stop at k*ATR.
+
+asset  bucket                     n     mean%       t    WR%
+  gold  quiet-bar accuracy 61.97%  (50/50 question)
+        ALL bars                 802   +0.1404   +5.87   83.9
+        top 50% quiet            401   +0.1221   +3.16   84.3
+        top 20% quiet            161   -0.0157   -0.20   79.5
+        top 10% quiet             81   +0.1315   +1.40   82.7
+  eur   quiet-bar accuracy 67.96%  (50/50 question)
+        ALL bars                 802   +0.0397   +9.72   84.0
+        top 50% quiet            401   +0.0435   +7.11   83.5
+        top 20% quiet            161   +0.0376   +3.67   84.5
+        top 10% quiet             81   +0.0569   +6.76   84.0
+  aud   quiet-bar accuracy 62.34%  (50/50 question)
+        ALL bars                 802   +0.0614   +9.60   83.7
+        top 50% quiet            401   +0.0613   +6.73   83.3
+        top 20% quiet            161   +0.0781   +6.52   85.7
+        top 10% quiet             81   +0.0664   +4.00   82.7
+
+==============================================================================
+R3  PATH ORDER  (which barrier is touched FIRST -- not where it closes)
+==============================================================================
+  gold  up-first accuracy 50.92%  z=+0.38  n=436   top10%: 59.1%
+  eur   up-first accuracy 48.62%  z=-0.57  n=436   top10%: 54.5%
+  aud   up-first accuracy 48.42%  z=-0.66  n=444   top10%: 46.7%
+
+==============================================================================
+R4  SKEW  (can I predict asymmetry even with no directional mean?)
+==============================================================================
+Target: is the upper wick bigger than the lower wick next bar?
+If yes, a convex right-tail payoff profits at 50% directional accuracy.
+
+  gold  skew-sign accuracy 54.86%  z=+2.75  n=802   traded asym mean +0.0263%  t=+1.65
+  eur   skew-sign accuracy 50.62%  z=+0.35  n=802   traded asym mean -0.0095%  t=-3.58
+  aud   skew-sign accuracy 49.50%  z=-0.28  n=802   traded asym mean -0.0192%  t=-4.54
