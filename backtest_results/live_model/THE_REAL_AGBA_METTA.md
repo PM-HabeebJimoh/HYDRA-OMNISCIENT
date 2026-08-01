@@ -1,131 +1,86 @@
 # The Real Agba Metta Model
 
-Read directly from the author's committed code at `cebb21c` — not my variants,
-not V3, not Omega. This is what the model actually is.
+Corrected. My previous write-up described the **author's code**, not the model.
+The code enters on the signal candle. **The model does not** — the signal candle
+and the entry candle are two different candles.
 
-## The universe — fixed, 3 assets
-
-```
-XAUUSD  (Gold,   contract 100)
-EURUSD  (Euro,   contract 100,000)
-AUDUSD  (Aussie, contract 100,000)
-```
-
-## The logic — three gates in strict order
-
-**GATE 1 — REGIME (from FRED DFII10, 10Y TIPS real yield)**
+## The four steps
 
 ```
-real yield >  0.7%  ->  CONTRACTION  ->  SHORT
-real yield < -0.1%  ->  EXPANSION    ->  LONG
-in between          ->  STABILITY    ->  NO TRADE
+STEP 1  REGIME     real yield (FRED DFII10)
+                     > 0.7%  ->  CONTRACTION  ->  SHORT
+                     < -0.1% ->  EXPANSION    ->  LONG
+                     between ->  STABILITY    ->  no trade
+
+STEP 2  SIGNAL     candle i CLOSES
+                   all 3 of XAUUSD / EURUSD / AUDUSD closed in the regime
+                   direction  ->  SIGNAL CONFIRMED
+                   mixed      ->  no signal
+
+STEP 3  ENTRY      candle i+1 OPEN          <-- NEXT CANDLE
+                   1% hard stop from the ACTUAL entry price
+
+STEP 4  EXIT       candle i+1 CLOSE, unless the stop hits intraday
 ```
 
-**GATE 2 — ALIGNMENT (the "Agba" logic)**
+Sizing: 20% of equity per signal, split equally across the 3 assets, 500x.
 
-```
-CONTRACTION: ALL THREE must close < open   -> confirm SHORT
-EXPANSION:   ALL THREE must close > open   -> confirm LONG
-mixed                                      -> NO TRADE that day
-```
+**The signal candle is never traded.** You cannot act on a close until it has
+happened, and by then that candle is gone. You trade the candle *after* it.
 
-**GATE 3 — SIZING (the "Metta" logic)**
+## Why this is the whole model
 
-```
-risk_per_trade_pct  0.20     20% of equity per trade day
-leverage            500x
-equal_weight        true     split equally across the 3 assets
-max_assets          3
-```
+The author's `trades_agba_metta.csv` has `entry_date == exit_date` on 12 of 12
+trades — it reads the close of day D and buys the open of day D. That is the
+implementation, and it is what produces +1026.41% with 12/12 wins, 0 stops and
+0.00% drawdown. **A model that only enters candles it has already seen close
+in its favour cannot lose.**
 
-**EXECUTION**
+With the correct next-candle timing, on the same real July 2026 bars:
 
-```
-entry        day's OPEN
-exit         day's CLOSE
-hard stop    1% from entry, checked intraday on high/low
-re-entry     not allowed after a stop
-```
+| TF | timing | signals | asset WR | stops | return | maxDD |
+|---|---|---:|---:|---:|---:|---:|
+| DAILY | same candle (code) | 4 | 100.0% | 0 | **+953.78%** | 0.00% |
+| DAILY | **NEXT candle (model)** | 4 | 33.3% | 2 | **−81.78%** | −82.82% |
+| 4H | same candle (code) | 30 | 100.0% | 0 | **+82,144.71%** | 0.00% |
+| 4H | **NEXT candle (model)** | 31 | 55.9% | 1 | **+29.96%** | −68.36% |
+| 1H | same candle (code) | 94 | 100.0% | 0 | **+5,128,203.35%** | 0.00% |
+| 1H | **NEXT candle (model)** | 95 | 56.8% | 2 | **−35.29%** | −79.03% |
 
-**RISK LIMITS (declared in config, but the engine never halts on them)**
+## Every trade, July 2026 daily, correct timing
 
-```
-max_drawdown_pct   0.20
-max_daily_loss_pct 0.10
-```
-`src/engine.py` records these as `risk_events` for reporting only. Comment in the
-code: *"The Agba Metta daily loop has no halt step: every aligned day is traded."*
+| asset | signal candle | entry candle | entry | exit | move | exit |
+|---|---|---|---:|---:|---:|---|
+| XAUUSD | 07-07 | **07-08** | 4098.58 | 4076.04 | +0.550% | CLOSE |
+| EURUSD | 07-07 | **07-08** | 1.14020 | 1.14210 | −0.167% | CLOSE |
+| AUDUSD | 07-07 | **07-08** | 0.69220 | 0.69360 | −0.202% | CLOSE |
+| XAUUSD | 07-13 | **07-14** | 4001.24 | 4041.25 | −1.000% | **STOP** |
+| EURUSD | 07-13 | **07-14** | 1.13840 | 1.14210 | −0.325% | CLOSE |
+| AUDUSD | 07-13 | **07-14** | 0.69200 | 0.69892 | −1.000% | **STOP** |
+| XAUUSD | 07-16 | **07-17** | 3986.48 | 4017.23 | −0.771% | CLOSE |
+| EURUSD | 07-16 | **07-17** | 1.14460 | 1.14380 | +0.070% | CLOSE |
+| AUDUSD | 07-16 | **07-17** | 0.70000 | 0.69810 | +0.271% | CLOSE |
+| XAUUSD | 07-23 | **07-24** | 4047.32 | 4052.98 | −0.140% | CLOSE |
+| EURUSD | 07-23 | **07-24** | 1.13760 | 1.13710 | +0.044% | CLOSE |
+| AUDUSD | 07-23 | **07-24** | 0.69670 | 0.69830 | −0.230% | CLOSE |
 
-## The author's own recorded result
+4 signals → 12 asset trades, 2 stopped. Final $18,219.68, **−81.78%**.
 
-```
-period            2026-07-01 to 2026-07-24
-initial capital   $100,000
-final equity      $1,126,407.83
-total return      +1026.41%
-trade days        4
-day win rate      100.00%  (4/4)
-asset win rate    100.00%  (12/12)
-profit factor     inf
-max drawdown      0.00%
-Sharpe            8.41
-goals_met         True
-```
+Note the signal/entry columns are always one candle apart. That single column is
+the difference between +953.78% and −81.78%.
 
-## Why it returns 1026% — proven from the author's own trade file
+## The regime gate has never fired LONG
 
-The equity comes from **compounding 20% of a growing balance at 500x**:
+Real yield ran **1.67 to 2.34** across all of 2025–2026 — always above 0.7. So
+CONTRACTION is permanent and the model is **SHORT-only, 100% of the time**. The
+EXPANSION branch has never executed a single trade.
 
-| trade day | position size per asset |
-|---|---:|
-| 2026-07-07 | $6,666.67 |
-| 2026-07-13 | $11,442.34 |
-| 2026-07-16 | $23,485.23 |
-| 2026-07-23 | $43,083.53 |
+## Summary
 
-**6.46× growth in position size across 4 trade days.** 20% × 500x = **100× equity
-notional per asset**, so a 1.4% gold move returns 143% of the trade's stake.
-
-## The one thing you should know about it
-
-From the author's own `trades_agba_metta.csv`:
-
-```
-trades where entry_date == exit_date : 12 of 12
-stops hit                            : 0 of 12
-losing trades                        : 0 of 12
-```
-
-**Every trade opens and closes on the same day.** Alignment is tested on that
-day's **close**; entry is that same day's **open**.
-
-Example, the first trade:
-
-```
-XAUUSD-2026-07-07-CLOSE
-  entry 4166.99 at the OPEN  of 2026-07-07
-  exit  4107.32 at the CLOSE of 2026-07-07
-```
-
-The close that authorises the trade is the same close it exits at. **The model
-enters at a price that has already passed by the time its own signal exists.**
-
-That is why 12 of 12 trades win, 0 of 12 stops are hit, and max drawdown is
-exactly 0.00%. It only ever enters days it has already seen close in its favour.
-
-This is not a criticism of the idea — it is a property of the code as written,
-and it is the single reason the +1026.41% cannot be reproduced live. When I move
-entry to the next bar's open and change nothing else, July 2026 goes from
-**+1026%** to **−72.32%**, 3 stops fire, and drawdown becomes −84.36%.
-
-## Summary in one line
-
-**Agba Metta = real-yield regime picks the direction → all three of gold/EUR/AUD
-must confirm it with same-direction candles → trade all three at 20% equity and
-500x with a 1% stop, open to close.**
-
-The regime gate has never once fired LONG: real yield ran 1.67–2.34 across
-2025–2026, always above 0.7, so the live model is **short-only, 100% of the time**.
+**Real yield sets the direction → wait for a candle to close with all three
+assets confirming it → enter the NEXT candle's open at 20% equity and 500x →
+exit that candle's close or a 1% stop.**
 
 Source: `cebb21c:config/model_config.yaml`, `cebb21c:src/engine.py`,
-`cebb21c:backtest_results/{summary,trades}_agba_metta.{json,csv}`
+`cebb21c:backtest_results/trades_agba_metta.csv`
+Reproduce: `python3 -m research.real_model`
