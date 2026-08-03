@@ -1,0 +1,73 @@
+==============================================================================
+XAUUSD CANDLE STUDY
+==============================================================================
+1H bars: 3899  2025-12-01 .. 2026-07-30
+timeframes: 1H(3899), 2H(2035), 4H(1055), 8H(547), 12H(377), 1D(207), 1W(348)
+
+==============================================================================
+1. SINGLE FEATURES, EVERY TIMEFRAME
+==============================================================================
+feature              1H        2H        4H        8H       12H        1D
+above_ma          50.1%    51.1%    50.8%    50.2%    51.5%    51.9%
+big_body          50.5%    51.5%    50.5%    57.1%    50.4%    53.8%
+clv_hi            50.2%    52.7%    51.2%    56.2%    52.8%    52.0%
+clv_lo            52.7%    57.2%    51.2%    54.5%    59.7%    56.4%
+doji              51.5%    50.9%    53.5%    51.4%    52.8%        -
+engulf_dn         50.3%    52.3%    50.5%    50.0%    58.8%    52.6%
+engulf_up         52.6%    50.6%    51.7%    57.7%    51.2%        -
+exp_vol           51.6%    52.4%    52.6%    53.6%    50.0%    59.1%
+gap_dn            50.8%    52.3%    50.6%    53.9%    56.3%    51.3%
+gap_up            50.1%    50.9%    50.9%    50.2%    50.9%    50.5%
+hh                50.9%    50.5%    50.4%    52.6%    52.7%    57.0%
+inside            50.4%    51.0%    50.2%    52.8%    55.6%    51.5%
+ll                51.5%    51.4%    50.0%    52.7%    51.3%    54.1%
+low_vol           50.4%    50.3%    51.2%    52.0%    50.5%    53.2%
+lower_wick        51.0%    51.1%    52.4%    56.2%    53.5%        -
+mom_up            50.8%    50.0%    52.0%    52.9%    51.7%    52.9%
+nr                50.5%    50.2%    50.6%    50.9%    54.1%    55.4%
+outside           50.6%    51.0%    50.0%    51.7%    51.4%        -
+streak2d          52.0%    54.2%    51.4%    50.0%    50.0%    53.2%
+streak2u          51.9%    52.2%    51.4%    50.8%    54.3%    53.3%
+streak3d          53.6%    55.2%    54.4%    55.1%    59.0%        -
+streak3u          51.8%    53.0%    54.0%    51.6%    52.0%        -
+up                50.2%    52.5%    50.5%    51.6%    50.3%    50.0%
+upper_wick        50.6%    53.0%    51.5%    51.9%    59.5%        -
+wr                50.8%    50.2%    50.4%    51.2%    54.8%    50.9%
+
+==============================================================================
+2. EXHAUSTIVE COMBINATION SEARCH (1-, 2- and 3-feature)
+==============================================================================
+cells tested: 69391
+noise expectation for max|z|: 4.72
+
+   acc%       z      n   tf  rule
+  61.54   +3.53    234   2H  UP: NOT above_ma AND clv_lo AND NOT low_vol
+  58.02   +3.42    455   2H  UP: clv_lo AND NOT doji AND NOT up
+  60.07   +3.39    283   2H  UP: NOT above_ma AND clv_lo AND NOT doji
+  59.23   +3.38    336   2H  UP: clv_lo AND NOT low_vol AND NOT up
+  57.89   +3.37    456   2H  UP: clv_lo AND NOT doji AND NOT streak2u
+  57.86   +3.36    458   2H  UP: clv_lo AND NOT doji AND NOT engulf_up
+  59.06   +3.35    342   2H  UP: clv_lo AND NOT engulf_up AND NOT low_vol
+  57.77   +3.32    457   2H  UP: clv_lo AND NOT doji AND NOT streak3u
+  57.53   +3.31    485   2H  UP: clv_lo AND NOT engulf_up AND NOT streak3u
+  57.73   +3.31    459   2H  UP: clv_lo AND NOT doji
+  57.73   +3.31    459   2H  UP: NOT clv_hi AND clv_lo AND NOT doji
+  57.73   +3.31    459   2H  UP: clv_lo AND NOT doji AND NOT lower_wick
+  59.00   +3.31    339   2H  UP: clv_lo AND NOT low_vol AND NOT streak2u
+  59.15   +3.31    328   2H  UP: clv_lo AND NOT doji AND NOT low_vol
+  59.60   +3.31    297   2H  UP: NOT above_ma AND clv_lo AND NOT engulf_up
+
+==============================================================================
+3. IS ANY CELL ABOVE 85%?
+==============================================================================
+  cells at or above 85% accuracy with n>=40: 0
+  best available: 61.54% at n=234
+
+==============================================================================
+4. EMPIRICAL NULL: repeat the ENTIRE search on shuffled labels
+==============================================================================
+If the search itself manufactures 70%+ cells, the winners are noise.
+  shuffled-label max z: median 3.38  95th 3.76  max 3.78
+  actual best z: 3.53
+  empirical p-value: 0.200
+  -> DOES NOT SURVIVE the search-induced null
