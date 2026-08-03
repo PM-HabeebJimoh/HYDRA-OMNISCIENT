@@ -1,0 +1,54 @@
+{
+ "coverage": "2026-07-01..2026-07-27, 22 trading days, real Investing.com 1H; 4H resampled from 1H",
+ "note": "Jul 28-31 EURUSD/AUDUSD 1H unavailable - provider chunk misalignment; excluded rather than approximated",
+ "1H": {
+  "bars": 351,
+  "V1_500x": {
+   "ret": 144591477684.4373,
+   "dd": 0.0,
+   "n": 179,
+   "eq": 144591477784437.28,
+   "wr": 100.0,
+   "stops": 0,
+   "dead": false,
+   "S": 95,
+   "L": 84
+  },
+  "V3_400x_cap2": {
+   "ret": 2862515356.5805273,
+   "dd": 0.0,
+   "n": 179,
+   "eq": 2862515456580.5273,
+   "wr": 100.0,
+   "stops": 0,
+   "dead": false,
+   "S": 95,
+   "L": 84
+  }
+ },
+ "4H": {
+  "bars": 98,
+  "V1_500x": {
+   "ret": 20005401.58609691,
+   "dd": 0.0,
+   "n": 54,
+   "eq": 20005501586.09691,
+   "wr": 100.0,
+   "stops": 0,
+   "dead": false,
+   "S": 31,
+   "L": 23
+  },
+  "V3_400x_cap2": {
+   "ret": 2261627.131984259,
+   "dd": 0.0,
+   "n": 54,
+   "eq": 2261727131.984259,
+   "wr": 100.0,
+   "stops": 0,
+   "dead": false,
+   "S": 31,
+   "L": 23
+  }
+ }
+}

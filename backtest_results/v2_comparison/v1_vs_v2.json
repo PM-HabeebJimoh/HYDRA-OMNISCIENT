@@ -1,0 +1,503 @@
+{
+  "months": [
+    {
+      "month": "2025-01",
+      "v1": {
+        "trade_days": 2,
+        "asset_trades": 6,
+        "asset_wins": 6,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 68.2712308699977,
+        "final_equity": 168271.2308699977,
+        "max_dd": 0.0,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 1,
+        "asset_trades": 3,
+        "asset_wins": 3,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 21.90586479012333,
+        "final_equity": 121905.86479012332,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2025-02",
+      "v1": {
+        "trade_days": 5,
+        "asset_trades": 15,
+        "asset_wins": 15,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 487.85042613685965,
+        "final_equity": 587850.4261368597,
+        "max_dd": 0.0,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 3,
+        "asset_trades": 9,
+        "asset_wins": 9,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 167.0555630453237,
+        "final_equity": 267055.5630453237,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2025-03",
+      "v1": {
+        "trade_days": 5,
+        "asset_trades": 15,
+        "asset_wins": 15,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 327.235284693498,
+        "final_equity": 427235.284693498,
+        "max_dd": 0.0,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 3,
+        "asset_trades": 9,
+        "asset_wins": 9,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 45.84212100083596,
+        "final_equity": 145842.12100083596,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2025-04",
+      "v1": {
+        "trade_days": 6,
+        "asset_trades": 18,
+        "asset_wins": 15,
+        "stops": 3,
+        "day_win_rate": 100.0,
+        "return_pct": 2488.188953154225,
+        "final_equity": 2588188.953154225,
+        "max_dd": 0.0,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 6,
+        "asset_trades": 18,
+        "asset_wins": 15,
+        "stops": 3,
+        "day_win_rate": 83.33333333333334,
+        "return_pct": 373.64542962646016,
+        "final_equity": 473645.4296264602,
+        "max_dd": -4.135678036405725,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2025-05",
+      "v1": {
+        "trade_days": 10,
+        "asset_trades": 30,
+        "asset_wins": 29,
+        "stops": 1,
+        "day_win_rate": 100.0,
+        "return_pct": 13689.102175458871,
+        "final_equity": 13789102.17545887,
+        "max_dd": 0.0,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 9,
+        "asset_trades": 27,
+        "asset_wins": 26,
+        "stops": 1,
+        "day_win_rate": 100.0,
+        "return_pct": 402.6448566764281,
+        "final_equity": 502644.8566764281,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2025-06",
+      "v1": {
+        "trade_days": 2,
+        "asset_trades": 6,
+        "asset_wins": 6,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 175.51591841753753,
+        "final_equity": 275515.9184175375,
+        "max_dd": 0.0,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 2,
+        "asset_trades": 6,
+        "asset_wins": 6,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 70.61520439538577,
+        "final_equity": 170615.20439538578,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2025-07",
+      "v1": {
+        "trade_days": 9,
+        "asset_trades": 27,
+        "asset_wins": 27,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 5392.657644878742,
+        "final_equity": 5492657.644878742,
+        "max_dd": 0.0,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 8,
+        "asset_trades": 24,
+        "asset_wins": 24,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 1310.2906214864374,
+        "final_equity": 1410290.6214864375,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2025-08",
+      "v1": {
+        "trade_days": 6,
+        "asset_trades": 18,
+        "asset_wins": 18,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 721.4423760390853,
+        "final_equity": 821442.3760390852,
+        "max_dd": 0.0,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 4,
+        "asset_trades": 12,
+        "asset_wins": 12,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 191.36025782908294,
+        "final_equity": 291360.25782908296,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2025-09",
+      "v1": {
+        "trade_days": 5,
+        "asset_trades": 15,
+        "asset_wins": 14,
+        "stops": 1,
+        "day_win_rate": 80.0,
+        "return_pct": 289.06924405129206,
+        "final_equity": 389069.2440512921,
+        "max_dd": -14.713299184716497,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 3,
+        "asset_trades": 9,
+        "asset_wins": 9,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 153.15504331690107,
+        "final_equity": 253155.04331690108,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2025-10",
+      "v1": {
+        "trade_days": 5,
+        "asset_trades": 15,
+        "asset_wins": 14,
+        "stops": 1,
+        "day_win_rate": 80.0,
+        "return_pct": 684.3781356605684,
+        "final_equity": 784378.1356605685,
+        "max_dd": -13.176198218839088,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 4,
+        "asset_trades": 12,
+        "asset_wins": 11,
+        "stops": 1,
+        "day_win_rate": 100.0,
+        "return_pct": 161.3808932148915,
+        "final_equity": 261380.89321489152,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2025-11",
+      "v1": {
+        "trade_days": 4,
+        "asset_trades": 12,
+        "asset_wins": 12,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 321.34231286953474,
+        "final_equity": 421342.3128695347,
+        "max_dd": 0.0,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 2,
+        "asset_trades": 6,
+        "asset_wins": 6,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 34.451863480587306,
+        "final_equity": 134451.86348058732,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2025-12",
+      "v1": {
+        "trade_days": 1,
+        "asset_trades": 3,
+        "asset_wins": 3,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 17.788033363359656,
+        "final_equity": 117788.03336335965,
+        "max_dd": 0.0,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 0,
+        "asset_trades": 0,
+        "asset_wins": 0,
+        "stops": 0,
+        "day_win_rate": 0.0,
+        "return_pct": 0.0,
+        "final_equity": 100000.0,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2026-01",
+      "v1": {
+        "trade_days": 4,
+        "asset_trades": 12,
+        "asset_wins": 11,
+        "stops": 1,
+        "day_win_rate": 100.0,
+        "return_pct": 221.1718833306862,
+        "final_equity": 321171.8833306862,
+        "max_dd": 0.0,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 2,
+        "asset_trades": 6,
+        "asset_wins": 5,
+        "stops": 1,
+        "day_win_rate": 100.0,
+        "return_pct": 71.9797657735608,
+        "final_equity": 171979.7657735608,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2026-02",
+      "v1": {
+        "trade_days": 4,
+        "asset_trades": 12,
+        "asset_wins": 10,
+        "stops": 2,
+        "day_win_rate": 75.0,
+        "return_pct": 197.40721836853658,
+        "final_equity": 297407.21836853656,
+        "max_dd": -12.182850488310171,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 4,
+        "asset_trades": 12,
+        "asset_wins": 10,
+        "stops": 2,
+        "day_win_rate": 100.0,
+        "return_pct": 45.30814178488403,
+        "final_equity": 145308.14178488404,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2026-03",
+      "v1": {
+        "trade_days": 7,
+        "asset_trades": 21,
+        "asset_wins": 19,
+        "stops": 2,
+        "day_win_rate": 100.0,
+        "return_pct": 9721.266288867952,
+        "final_equity": 9821266.288867952,
+        "max_dd": 0.0,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 7,
+        "asset_trades": 21,
+        "asset_wins": 19,
+        "stops": 2,
+        "day_win_rate": 100.0,
+        "return_pct": 999.7523468386267,
+        "final_equity": 1099752.3468386268,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2026-04",
+      "v1": {
+        "trade_days": 6,
+        "asset_trades": 18,
+        "asset_wins": 17,
+        "stops": 1,
+        "day_win_rate": 83.33333333333334,
+        "return_pct": 1139.8130146596468,
+        "final_equity": 1239813.014659647,
+        "max_dd": -24.064487152211445,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 5,
+        "asset_trades": 15,
+        "asset_wins": 15,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 177.99393858036447,
+        "final_equity": 277993.93858036445,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2026-05",
+      "v1": {
+        "trade_days": 9,
+        "asset_trades": 27,
+        "asset_wins": 26,
+        "stops": 1,
+        "day_win_rate": 88.88888888888889,
+        "return_pct": 5120.385130444745,
+        "final_equity": 5220385.1304447455,
+        "max_dd": -13.631697493580115,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 7,
+        "asset_trades": 21,
+        "asset_wins": 21,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 340.3836612830165,
+        "final_equity": 440383.6612830165,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2026-06",
+      "v1": {
+        "trade_days": 7,
+        "asset_trades": 21,
+        "asset_wins": 20,
+        "stops": 1,
+        "day_win_rate": 100.0,
+        "return_pct": 10060.91688502328,
+        "final_equity": 10160916.885023281,
+        "max_dd": 0.0,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 7,
+        "asset_trades": 21,
+        "asset_wins": 20,
+        "stops": 1,
+        "day_win_rate": 100.0,
+        "return_pct": 567.8660122193007,
+        "final_equity": 667866.0122193007,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    },
+    {
+      "month": "2026-07",
+      "v1": {
+        "trade_days": 6,
+        "asset_trades": 18,
+        "asset_wins": 18,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 1796.050049090908,
+        "final_equity": 1896050.049090908,
+        "max_dd": 0.0,
+        "capped_days": 0
+      },
+      "v2": {
+        "trade_days": 4,
+        "asset_trades": 12,
+        "asset_wins": 12,
+        "stops": 0,
+        "day_win_rate": 100.0,
+        "return_pct": 188.45980678667428,
+        "final_equity": 288459.8067866743,
+        "max_dd": 0.0,
+        "capped_days": 0
+      }
+    }
+  ],
+  "compound": {
+    "v1": {
+      "trade_days": 103,
+      "asset_trades": 309,
+      "asset_wins": 295,
+      "stops": 14,
+      "day_win_rate": 95.14563106796116,
+      "return_pct": 3.321763337777236e+21,
+      "final_equity": 3.321763337777236e+24,
+      "max_dd": -24.06448715221145,
+      "capped_days": 0
+    },
+    "v2": {
+      "trade_days": 81,
+      "asset_trades": 243,
+      "asset_wins": 232,
+      "stops": 11,
+      "day_win_rate": 98.76543209876543,
+      "return_pct": 17898293.76042682,
+      "final_equity": 17898393760.42682,
+      "max_dd": -2.067839018202864,
+      "capped_days": 0
+    }
+  }
+}

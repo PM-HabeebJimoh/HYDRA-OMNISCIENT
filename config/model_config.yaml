@@ -63,10 +63,10 @@ regime_direction:
   EXPANSION: 1      # LONG
   STABILITY: 0      # NO TRADE
 
-# Backtest Settings - Using July 2026 data (available real data)
+# Backtest Settings - real data window covered by data/market_data_2026.json
 backtest:
-  start_date: "2026-07-01"
-  end_date: "2026-07-24"
+  start_date: "2026-01-01"
+  end_date: "2026-06-30"
   initial_capital: 100000.0
   commission_per_trade: 0.0       # No commission for now
   slippage_pct: 0.0               # No slippage for now

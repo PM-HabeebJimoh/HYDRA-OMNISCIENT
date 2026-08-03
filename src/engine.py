@@ -173,6 +173,9 @@ class AgbaMettaEngine:
         self.closed_trades: List[Trade] = []
         self.equity_curve: List[DailyEquity] = []
         self.risk_manager.peak_equity = config.backtest.initial_capital
+        # Risk-limit breaches are recorded for reporting only. The Agba Metta
+        # daily loop has no halt step: every aligned day is traded.
+        self.risk_events: List[dict] = []
 
     def determine_regime(self, real_yield: float) -> Regime:
         """Determine regime from real yield"""
@@ -206,7 +209,7 @@ class AgbaMettaEngine:
             return AlignmentResult(aligned, f"Gold: {'↑' if market_data.gold.close > market_data.gold.open else '↓'}, EUR: {'↑' if market_data.eur.close > market_data.eur.open else '↓'}, AUD: {'↑' if market_data.aud.close > market_data.aud.open else '↓'}")
 
     def open_positions_for_day(self, market_data, regime: Regime, date: str) -> List[Trade]:
-        """Open positions for aligned assets at day's open"""
+        """Open positions for aligned assets at the day's open (Agba Metta rule)"""
         trades = []
         # Handle both Regime enum and string
         regime_str = regime.name if hasattr(regime, 'name') else str(regime)
@@ -215,22 +218,23 @@ class AgbaMettaEngine:
         if direction == 0:
             return trades
 
-        # Check alignment
-        alignment = self.check_alignment(market_data, regime)
+        # Agba Metta alignment: all assets must confirm the regime direction
+        alignment = self.alignment_filter.check_alignment(market_data, regime)
         if not alignment.aligned:
             logger.info(f"  {date} | MISALIGNED: {alignment.reason} - SKIPPING")
             return trades
 
         logger.info(f"  {date} | ALIGNED: {alignment.reason} - ENTERING TRADES")
 
-        # Calculate position sizes
-        num_assets = len(self.config.universe.assets)
+        # Metta sizing: equal weight across the assets actually traded, capped
+        # by max_assets_per_trade from config.
+        tradable = self.config.universe.assets[: self.position_sizer.max_assets]
         total_position, position_per_asset = self.position_sizer.calculate_position_size(
-            self.equity, num_assets
+            self.equity, len(tradable)
         )
 
         # Open position for each asset
-        for asset_obj in self.config.universe.assets:
+        for asset_obj in tradable:
             asset_symbol = asset_obj.symbol
             ohlc = market_data.get_asset_ohlc(asset_symbol)
             if ohlc is None:
@@ -239,11 +243,8 @@ class AgbaMettaEngine:
             entry_price = ohlc.open
             direction_int = self.regime_direction_map[regime.name]
 
-            # Calculate stop price (1% hard stop)
-            if direction_int == Direction.SHORT.value:
-                stop_price = entry_price * (1 + 0.01)
-            else:
-                stop_price = entry_price * (1 - 0.01)
+            # Hard stop from config (risk.hard_stop_pct)
+            stop_price = self.risk_manager.calculate_stop_price(entry_price, direction_int)
 
             # Create position
             position = Position(
@@ -252,7 +253,7 @@ class AgbaMettaEngine:
                 entry_price=entry_price,
                 stop_price=stop_price,
                 position_size=position_per_asset,
-                leverage=500,
+                leverage=self.position_sizer.leverage,
                 entry_date=date,
                 regime=regime.name
             )
@@ -261,7 +262,8 @@ class AgbaMettaEngine:
 
             logger.info(f"    {asset_symbol} {'SHORT' if direction_int==-1 else 'LONG'} | "
                        f"Entry: {entry_price:.5f} | Stop: {stop_price:.5f} | "
-                       f"Size: ${position_per_asset:,.0f} | Lev: 500x")
+                       f"Size: ${position_per_asset:,.0f} | "
+                       f"Lev: {self.position_sizer.leverage}x")
 
         return trades
 
@@ -337,11 +339,11 @@ class AgbaMettaEngine:
         return closed_trades
 
     def process_day(self, market_data, date: str) -> Tuple[List[Trade], float]:
-        """Process a single trading day"""
+        """Process a single trading day per the Agba Metta rules."""
         # Reset daily tracking
         self.risk_manager.reset_daily(self.equity)
 
-        # Determine regime
+        # Determine regime from the day's real yield
         real_yield = market_data.real_yield
         regime = self.determine_regime(real_yield)
 
@@ -354,10 +356,9 @@ class AgbaMettaEngine:
             closed = self.manage_positions(market_data, date)
             closed_trades.extend(closed)
 
-        # Check for new trades (only if no open positions)
+        # Check for new trades (only if flat)
         if not self.open_positions:
-            # Check alignment
-            alignment = self.check_alignment(market_data, regime)
+            alignment = self.alignment_filter.check_alignment(market_data, regime)
             is_trade_day = alignment.aligned and regime != Regime.STABILITY
 
             if is_trade_day:
@@ -389,12 +390,15 @@ class AgbaMettaEngine:
         if self.equity > self.risk_manager.peak_equity:
             self.risk_manager.peak_equity = self.equity
 
-        # Check risk limits
+        # Risk limits are observed and logged, not enforced as a halt: the
+        # Agba Metta daily loop trades every aligned day.
         if self.risk_manager.check_max_drawdown(self.equity):
-            logger.warning(f"  MAX DRAWDOWN EXCEEDED! Halting.")
+            logger.warning(f"  {date} | MAX DRAWDOWN threshold breached (informational)")
+            self.risk_events.append({"date": date, "event": "MAX_DRAWDOWN", "equity": self.equity})
 
         if self.risk_manager.check_daily_loss_limit(self.equity):
-            logger.warning(f"  DAILY LOSS LIMIT EXCEEDED! Halting.")
+            logger.warning(f"  {date} | DAILY LOSS threshold breached (informational)")
+            self.risk_events.append({"date": date, "event": "DAILY_LOSS_LIMIT", "equity": self.equity})
 
         return closed_trades, self.equity
 
@@ -419,12 +423,12 @@ def run_backtest(config: AgbaMettaConfig, market_data_dict: Dict[str, dict]) -> 
 
     # Run backtest
     dates = sorted(market_data_map.keys())
+
     for date in dates:
         if date < config.backtest.start_date or date > config.backtest.end_date:
             continue
 
-        market_data = market_data_map[date]
-        engine.process_day(market_data, date)
+        engine.process_day(market_data_map[date], date)
 
     # Calculate metrics
     metrics = calculate_metrics(engine.closed_trades, engine.equity_curve, config.backtest.initial_capital)

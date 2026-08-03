@@ -1,0 +1,35 @@
+{
+  "v1": {
+    "trade_days": 103,
+    "asset_trades": 309,
+    "asset_wins": 295,
+    "stops": 14,
+    "day_win_rate": 95.14563106796116,
+    "return_pct": 3.321763337777236e+21,
+    "final_equity": 3.321763337777236e+24,
+    "max_dd": -24.06448715221145,
+    "capped_days": 0
+  },
+  "v2_full": {
+    "trade_days": 81,
+    "asset_trades": 243,
+    "asset_wins": 232,
+    "stops": 11,
+    "day_win_rate": 98.76543209876543,
+    "return_pct": 17898293.76042682,
+    "final_equity": 17898393760.42682,
+    "max_dd": -2.067839018202864,
+    "capped_days": 0
+  },
+  "v2_lite": {
+    "trade_days": 103,
+    "asset_trades": 309,
+    "asset_wins": 295,
+    "stops": 14,
+    "day_win_rate": 95.14563106796116,
+    "return_pct": 1.9515174098852522e+17,
+    "final_equity": 1.951517409885253e+20,
+    "max_dd": -10.000000000000005,
+    "capped_days": 2
+  }
+}
